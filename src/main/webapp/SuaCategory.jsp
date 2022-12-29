@@ -40,7 +40,7 @@
   <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
       </div>
@@ -252,16 +252,16 @@
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
-        <form action="#" method="post">
+        <form action="EditCategory" method="post">
       </div>
       <div class="modal-body">
         <div class="form-group">
           <label>ID</label>
-          <input name="pid" type="text" class="form-control" required>
+          <input name="id" type="text" class="form-control"  required>
         </div>
         <div class="form-group">
           <label>Tên danh mục</label>
-          <input name="name" type="text" class="form-control" required>
+          <input name="name" type="text" class="form-control"  required>
         </div>
         <div class="modal-footer">
           <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

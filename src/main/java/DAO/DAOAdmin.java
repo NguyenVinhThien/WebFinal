@@ -62,5 +62,23 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
+    public void editCategory(int id,String name)
+    {
+        String query="UPDATE categories\n"
+                + "SET name = ?\r\n"
+                + "WHERE id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setString(1,name);
+            ps.setInt(2,id);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
 }
 
