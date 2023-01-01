@@ -2,17 +2,16 @@
   Created by IntelliJ IDEA.
   User: acer
   Date: 12/29/2022
-  Time: 11:21 PM
+  Time: 11:15 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -193,119 +192,85 @@
           <div class="row">
             <div class="col-12">
               <div class="card">
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-header">
-                      <h4 class="card-title">Danh Sách User</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="table-responsive">
-                        <div id="example_wrapper" class="dataTables_wrapper">
-                          <div id="example_wrapper" class="dataTables_wrapper"><table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
-                            <thead>
-                            <tr role="row">
-                              <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã độc giả</th>
-                              <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 485.891px;">Tên độc giả</th>
-                              <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Chỉnh sửa: activate to sort column ascending" style="width: 202.938px;">Số phút còn lại</th>
-                              <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Chỉnh sửa: activate to sort column ascending" style="width: 202.938px;">Gia hạn</th>
-                              <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Xóa</th></tr>
-                            </thead>
-                            <tbody>
-                            <tr class="odd" role="row">
-                              <td class="sorting_1">3</td>
-                              <td>gi do ai biet</td>
-                              <td>so phut</td>
-                              <td><a href="#" class="btn btn-info" data-target="#editDanhMuc" data-toggle="modal">Gia hạn</a></td>
-                              <td><button class="btn btn-danger btn sweet-confirm destroy" data-url="#">Xóa</button>
-                              </td>
-                            </tbody>
-                          </div>
+                <div class="card-header">
+                  <h4 class="card-title">Thêm Tag
+                  </h4>
+                </div>
+                <div class="card-body">
+                  <form class="form-valide-with-icon" action="AddTag" method="POST" novalidate="novalidate">
+                    <div class="form-group">
+                      <label class="text-label">Mã Tag</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
+                                            </span>
                         </div>
+                        <input type="text" class="form-control" id="#" name="id" placeholder="Mã Tag" value="">
                       </div>
                     </div>
-                  </div>
-
+                    <div class="form-group">
+                      <label class="text-label">Tên Tag</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
+                                            </span>
+                        </div>
+                        <input type="text" class="form-control" id="#" name="name" placeholder="Tên Tag" value="">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                  </form>
                 </div>
               </div>
 
             </div>
-          </div>
-        </div>
 
-      </div>
-      <!-- /.container-fluid -->
-
-    </div>
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Bạn muốn đăng xuất ??</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Bạn chọn Logout sẽ đăng xuất ra hệ thống.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
           </div>
         </div>
       </div>
+
     </div>
-    <div class="modal fade" id="editDanhMuc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Gia hạn</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-            <form action="#" method="post">
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label>ID</label>
-              <input name="pid" type="text" class="form-control" required>
-            </div>
-            <div class="form-group">
-              <label>Tên độc giả</label>
-              <input name="name" type="text" class="form-control" required>
-            </div>
-            <div class="form-group">
-              <label>Số phút</label>
-              <input name="name" type="text" class="form-control" required>
-            </div>
-            <div class="modal-footer">
-              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-              <input type="submit" class="btn btn-success" value="Gia hạn">
-            </div>
-          </div>
-          </form>
+    <!-- /.container-fluid -->
+
+  </div>
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Bạn muốn đăng xuất ??</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Bạn chọn Logout sẽ đăng xuất ra hệ thống.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="TemplateAdmin/vendor/jquery/jquery.min.js"></script>
-    <script src="TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="TemplateAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="TemplateAdmin/vendor/jquery/jquery.min.js"></script>
+  <script src="TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="TemplateAdmin/js/sb-admin-2.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="TemplateAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="TemplateAdmin/vendor/chart.js/Chart.min.js"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="TemplateAdmin/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="TemplateAdmin/js/demo/chart-area-demo.js"></script>
-    <script src="TemplateAdmin/js/demo/chart-pie-demo.js"></script>
+  <!-- Page level plugins -->
+  <script src="TemplateAdmin/vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="TemplateAdmin/js/demo/chart-area-demo.js"></script>
+  <script src="TemplateAdmin/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
