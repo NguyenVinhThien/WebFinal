@@ -2,9 +2,9 @@ package Controller;
 
 import Uti.ServletUtils;
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import com.ute.ecwebapp.beans.User;
-import com.ute.ecwebapp.models.UserModel;
-import com.ute.ecwebapp.utils.ServletUtils;
+import beans.User;
+import Model.UserModel;
+import Uti.ServletUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -37,9 +37,13 @@ public class AccountServlet extends HttpServlet {
 
             case "/IsAvailable":
                 String username = request.getParameter("user");
-                User user = UserModel.findByUsername(username);
+                User user = null;
+                try {
+                    user = UserModel.findByUsername(username);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 boolean isAvailable = (user == null);
-
                 PrintWriter out = response.getWriter();
                 response.setContentType("application/json");
                 response.setCharacterEncoding("utf-8");
@@ -49,7 +53,7 @@ public class AccountServlet extends HttpServlet {
                 break;
 
             default:
-                ServletUtils.forward("/views/404.jsp", request, response);
+                ServletUtils.forward("/", request, response);
                 break;
         }
     }
@@ -58,16 +62,16 @@ public class AccountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
         switch (path) {
-            case "/Register":
+            case "/DangKy.jsp":
                 registerUser(request, response);
                 break;
 
-            case "/Login":
+            case "/DangNhap.jsp":
                 login(request, response);
                 break;
 
             default:
-                ServletUtils.forward("/views/404.jsp", request, response);
+                ServletUtils.forward("/404.jsp", request, response);
                 break;
         }
     }
@@ -82,19 +86,22 @@ public class AccountServlet extends HttpServlet {
 
         String username = request.getParameter("username");
         String name = request.getParameter("name");
+        String str_issue_at = request.getParameter("issue_at");
+        LocalDateTime issue_at = LocalDateTime.parse(str_issue_at, df);
+        int expiration = Integer.parseInt(request.getParameter("expiration"));
+        int role = 0;
+        String second_name = request.getParameter("second_name");
         String email = request.getParameter("email");
-        int permission = 0;
+        String otp = null;
+        LocalDateTime otp_exp = null;
 
-        User c = new User(0, username, bcryptHashString, name, email, dob, permission);
+        User c = new User(0, username, bcryptHashString, name, issue_at, expiration, role, second_name, dob,email, null, null);
         UserModel.add(c);
-        ServletUtils.forward("/views/vwAccount/Register.jsp", request, response);
+        ServletUtils.forward("/DangKy.jsp", request, response);
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // String name = request.getParameter("CatName");
-        // Category c = new Category(name);
-        // CategoryModel.add(c);
-        // ServletUtils.forward("/views/vwCategory/Add.jsp", request, response);
+
     }
 
 }

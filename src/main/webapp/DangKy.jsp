@@ -10,25 +10,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Account Registration</title>
+  <title>Đăng ký</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" type="text/css" href="./CSS_ALL/DangKy.css">
+
 </head>
 <body>
 <div class="form-container">
   <h1>Đăng Ký</h1>
-  <form action="/register" method="post" onsubmit="return checkPassword();">
-    <label for="account">Username</label>
-    <input type="text" id="account" name="account" placeholder="Nhập tài khoản" required>
-    <label for="full-name">Họ và Tên</label>
-    <input type="text" id="full-name" name="full-name" placeholder="Nhập họ tên" required>
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Nhập email" required>
-    <label for="dob">Ngày sinh</label>
-    <input type="date" id="dob" name="dob" placeholder="Nhập ngày sinh" required>
-    <label for="password">Mật khẩu</label>
-    <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
-    <label for="confirm-password">Xác nhận mật khẩu</label>
-    <input type="password" id="confirm-password" name="confirm-password" placeholder="Xác nhận mật khẩu" required>
+  <form action="" method="post" id="frmRegister" onsubmit="return checkPassword();">
+    <label for="txtUsername">Username</label>
+    <input type="text" id="txtUsername" name="username" placeholder="Nhập tài khoản" required>
+    <label for="txtName">Họ và Tên</label>
+    <input type="text" id="txtName" name="name" placeholder="Nhập họ tên" required>
+    <label for="txtEmail">Email</label>
+    <input type="email" id="txtEmail" name="email" placeholder="Nhập email" required>
+    <label for="txtDOB">Ngày sinh</label>
+    <input type="date" id="txtDOB" name="dob" placeholder="Nhập ngày sinh" required>
+    <label for="txtPassword">Mật khẩu</label>
+    <input type="password" id="txtPassword" name="rawpdw" placeholder="Nhập mật khẩu" required>
+    <label for="txtConfirm">Xác nhận mật khẩu</label>
+    <input type="password" id="txtConfirm" placeholder="Xác nhận mật khẩu" required>
     <div class="terms">
       Khi bấm tạo tài khoản bạn đã đồng ý với
       <a href="#" class="rule">quy định</a>
@@ -38,14 +40,43 @@
     <input type="submit" value="Tạo tài khoản">
   </form>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  $(`#frmRegister`).on('submit', function (e) {
+    e.preventDefault();
+
+    const username = $('#txtUsername').val();
+    if (username.length === 0) {
+      alert('Invalid username.');
+      return;
+    }
+
+    $.getJSON('${pageContext.request.contextPath}/Account/IsAvailable?user=' + username, function (data) {
+      if (data === true) {
+        $('#frmRegister').off('submit').submit();
+      } else {
+        alert('Username is not available.');
+      }
+    });
+  });
+
+  $(`#txtDOB`).datetimepicker({
+    format: 'd/m/Y',
+    timepicker: false,
+    mask: true
+  });
+
+  $('#txtUsername').select();
+</script>
 <script>
   function checkPassword() {
     // Get the password and confirm password fields
-    var password = document.getElementById('password');
-    var confirmPassword = document.getElementById('confirm-password');
+    const password = document.getElementById('txtPassword');
+    const confirmPassword = document.getElementById('txtConfirm');
 
     // Get the error message element
-    var errorMessage = document.getElementById('password-error');
+    const errorMessage = document.getElementById('password-error');
 
     // Check if the password and confirm password fields are the same
     if (password.value !== confirmPassword.value) {
