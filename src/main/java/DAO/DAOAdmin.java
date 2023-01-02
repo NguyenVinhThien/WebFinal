@@ -1,6 +1,7 @@
 package DAO;
 
 
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -149,5 +150,26 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
+    public void addArticle(String title, String astract, String content, int category, int premium, int writer)
+    {
+        String query="INSERT INTO articles (title,publish_date,views,abstract, content, categories_id, premium, writer_id, a_status) VALUES(?, null, 0, ?, ?, ?, ?, ?, 0)";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setString(1, title);
+            ps.setString(2, astract);
+            ps.setString(3, content);
+            ps.setInt(4,category);
+            ps.setInt(5,premium);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
+
+
 }
 
