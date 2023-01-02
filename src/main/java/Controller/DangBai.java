@@ -1,7 +1,7 @@
 package Controller;
 
 import DAO.DAOAdmin;
-import sun.tools.jconsole.JConsole;
+
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -33,8 +33,7 @@ public class DangBai extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
 //        response.getWriter().append("Served at: ").append(request.getContextPath());
-        RequestDispatcher rd= request.getRequestDispatcher("DangArticle.jsp");
-        rd.forward(request, response);
+        response.getWriter().append("Served at: ").append(request.getContextPath());
     }
 
     /**
@@ -45,13 +44,12 @@ public class DangBai extends HttpServlet {
         try {
             String title= request.getParameter("title");
             String abstract_article= request.getParameter("Tom_tat");
-            String content= request.getParameter("editor");
-            int categories_id= Integer.parseInt(request.getParameter("Chuyen_muc"));
-            int premium= Integer.parseInt(request.getParameter("premium"));
-            int writer_id= Integer.parseInt(request.getParameter("writer_id"));
-            System.out.println(content);
+            String content= request.getParameter("content");
+            int categories_id= Integer.parseInt(request.getParameter("cate"));
+            //int premium= Integer.parseInt(request.getParameter("premium"));
+            //int writer_id= Integer.parseInt(request.getParameter("writer_id"));
             DAOAdmin d= new DAOAdmin();
-            d.addArticle(title,abstract_article,content,categories_id,premium,writer_id);
+            d.addArticle(title,abstract_article,content,categories_id);
             response.sendRedirect("DangArticle.jsp");
         }catch(Exception e)
         {

@@ -50,7 +50,7 @@
     <div class="row mt-2 mb-3">
       <div class="col-md-6">
         <label class="labels">Chuyên mục</label>
-        <select class="form-control" name="Chuyen_muc">
+        <select class="form-control" name="cate">
           <option value="1">Xã Hội</option>
           <option value="2">Thế Giới</option>
           <option value="3">Văn Hóa</option>
@@ -76,7 +76,7 @@
                                                                                   class="form-control" value=""
                                                                                   placeholder="Tóm tắt"></div>
     </div>
-    <div id="editor" style="width: 100%">ABcd</div>
+    <textarea id="editor" style="width: 100%" name="content">ABcd</textarea>
     <button type="submit">Đăng bài viết</button>
   </form>
 </main>
