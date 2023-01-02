@@ -1,0 +1,328 @@
+.navbar .dropdown-menu div[class*="col"] {
+    margin-bottom:1rem;
+}
+
+.navbar .dropdown-menu {
+    border:none;
+}
+.nav-item{
+    padding-right: 0px;
+}
+#dropContent{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.navbar-custom{
+    background-color: #2FA1B3;
+}
+.customBtnSearch{
+    background-color: #FFFFFF;
+    color: #2FA1B3;
+    font-weight: bold;
+}
+.navbar-custom .navbar-brand,
+.nav-link {
+    color: white;
+}
+.nav-title{
+    color: #2FA1B3;
+}
+@media screen and (min-width: 992px) {
+
+    /* remove the padding from the navbar so the dropdown hover state is not broken */
+    .navbar {
+        padding-top:0px;
+        padding-bottom:0px;
+    }
+
+    /* remove the padding from the nav-item and add some margin to give some breathing room on hovers */
+    .navbar .nav-item {
+        padding:.5rem .5rem;
+        margin:0 .25rem;
+    }
+
+    /* makes the dropdown full width  */
+    .navbar .dropdown {position:static;}
+
+    .navbar .dropdown-menu {
+        width:100%;
+        left:0;
+        right:0;
+        top:65px;
+    }
+}
+
+.largeTitle{
+    font-size: 35px;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.smallTitle{
+    font-size: 25px;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+/* CSS card */
+.noibat{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 5%;
+}
+.groupCard{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.cardInfo{
+    width: 350px;
+    position: relative;
+    top: 4px;
+}
+.cardInfo:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    top: 0px;
+}
+.cardImg{
+    width: 350px;
+    height: 250px;
+}
+.groupCard{
+    display: flex;
+    justify-content: space-around;
+}
+.cardCategory{
+    font-size: 12px;
+    border: 1.5px solid #2FA1B3;
+    padding: 0 3px;
+    border-radius: 4px;
+    color: #2FA1B3;
+}
+.card-title:hover{
+    color: #2FA1B3;
+}
+
+
+
+.new-views{
+    width: 90%;
+    margin: 40px 5%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid lightgray;
+}
+.left{
+    width: 50%;
+    margin: 0 5%;
+}
+.newPost, .top10{
+    width: 100%;
+}
+.topViews{
+    width: 35%;
+    margin-left: 2%;
+    padding-left: 3%;
+    border-left: 1.5px solid lightgray;
+}
+.horizontalCard{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    width: 600px;
+}
+
+.smallCard{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+}
+
+.custom-card-title{
+    font-size: 15px;
+}
+
+.cardHorizontalImg{
+    width: 150px;
+    height: 100px;
+}
+.cardHorizontal-Body{
+    margin-left: 15px;
+}
+
+.topViewBg{
+    width: 350px;
+    height: 200px;
+}
+
+
+
+footer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 50px 0px;
+    background: #2FA1B3;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+footer .container {
+    width: 100%;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+footer .container .noi-dung {
+    margin-right: 30px;
+
+}
+footer .container .noi-dung.about {
+    width: 40%;
+}footer .container .noi-dung.about h2 {
+     position: relative;
+     color: #fff;
+     font-weight: 500;
+     margin-bottom: 15px;
+ }
+footer .container .noi-dung.about h2:before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #FFFFFF;
+}
+footer .container .noi-dung.about p {
+    color: #FFFFFF;
+}
+/*Thiết Lập Cho Thành Phần Icon Mạng Xã Hội*/
+.social-icon {
+    margin-top: 20px;
+    display: flex;
+}
+.social-icon li {
+    list-style: none;
+}
+.social-icon li a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.social-icon li a:hover {
+    background: #FFFFFF;
+}
+.social-icon li a .fa {
+    color: #fff;
+    font-size: 20px;
+}
+.links h2 {
+    position: relative;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.links h2 {
+    position: relative;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.links h2::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #FFFFFF;
+}
+
+.links {
+    position: relative;
+    width: 25%;
+}
+
+.links ul li {
+    list-style: none;
+}
+.links ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.links ul li a:hover {
+    color: #fff;
+}
+.contact h2 {
+    position: relative;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.contact h2::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #FFFFFF;
+}
+.contact {
+    width: calc(35% - 60px);
+    margin-right: 0 !important;
+}
+.contact .info {
+    position: relative;
+}
+.contact .info li {
+    display: flex;
+    margin-bottom: 16px;
+}
+.contact .info li span:nth-child(1) {
+    color: #fff;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.contact .info li span {
+    color: #FFFFFF;
+}
+.contact .info li a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.imgProduct{
+    width: 220px;
+    height: 250px;
+    border-radius: 3px;
+}
+.link{
+    text-decoration: none;
+}
