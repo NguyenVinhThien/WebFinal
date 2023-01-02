@@ -47,14 +47,10 @@
 </header>
 <main>
   <form id="article-form">
-    <!--        <h2>Create New Article</h2>-->
-    <div class="col-md-12"><label class="labels">Tiêu đề</label><input type="text"
-                                                                       class="form-control" value=""
-                                                                       placeholder="Tiêu đề"></div>
     <div class="row mt-2 mb-3">
       <div class="col-md-6">
         <label class="labels">Chuyên mục</label>
-        <select class="form-control">
+        <select class="form-control" name="Chuyen_muc">
           <option value="1">Xã Hội</option>
           <option value="2">Thế Giới</option>
           <option value="3">Văn Hóa</option>
@@ -68,8 +64,17 @@
         </select>
       </div>
       <div class="col-md-6"><label class="labels">Nhãn</label><input type="text"
+                                                                     name="Nhan"
                                                                      class="form-control" value=""
                                                                      placeholder="Nhãn"></div>
+      <div class="col-md-12"><label class="labels">Tiêu đề</label><input type="text"
+                                                                         name="Tieu_de"
+                                                                         class="form-control" value=""
+                                                                         placeholder="Tiêu đề"></div>
+      <div class="col-md-12"><label class="labels">Tóm tắt nội dung</label><input type="text"
+                                                                                  name="Tom_tat"
+                                                                                  class="form-control" value=""
+                                                                                  placeholder="Tóm tắt"></div>
     </div>
     <div id="editor" style="width: 100%">ABcd</div>
     <button type="submit">Đăng bài viết</button>
