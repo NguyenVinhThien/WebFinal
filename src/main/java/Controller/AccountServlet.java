@@ -4,13 +4,11 @@ import Uti.ServletUtils;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import beans.User;
 import Model.UserModel;
-import Uti.ServletUtils;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -62,11 +60,11 @@ public class AccountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
         switch (path) {
-            case "/DangKy.jsp":
+            case "/DangKy":
                 registerUser(request, response);
                 break;
 
-            case "/DangNhap.jsp":
+            case "/DangNhap":
                 login(request, response);
                 break;
 

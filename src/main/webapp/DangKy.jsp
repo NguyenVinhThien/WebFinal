@@ -11,9 +11,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Đăng ký</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" type="text/css" href="./CSS_ALL/DangKy.css">
-
 </head>
 <body>
 <div class="form-container">
@@ -26,7 +24,7 @@
     <label for="txtEmail">Email</label>
     <input type="email" id="txtEmail" name="email" placeholder="Nhập email" required>
     <label for="txtDOB">Ngày sinh</label>
-    <input type="date" id="txtDOB" name="dob" placeholder="Nhập ngày sinh" required>
+    <input type="text" id="txtDOB" name="dob" placeholder="Nhập ngày sinh" required>
     <label for="txtPassword">Mật khẩu</label>
     <input type="password" id="txtPassword" name="rawpdw" placeholder="Nhập mật khẩu" required>
     <label for="txtConfirm">Xác nhận mật khẩu</label>
@@ -37,20 +35,21 @@
       của tòa soạn
     </div>
     <div id="password-error" class="error"></div>
-    <input type="submit" value="Tạo tài khoản">
+    <button type="submit">Tạo tài khoản</button>
   </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
   $(`#frmRegister`).on('submit', function (e) {
     e.preventDefault();
 
-    const username = $('#txtUsername').val();
-    if (username.length === 0) {
-      alert('Invalid username.');
-      return;
-    }
+    // const username = $('#txtUsername').val();
+    // if (username.length === 0) {
+    //   alert('Invalid username.');
+    //   return;
+    // }
 
     $.getJSON('${pageContext.request.contextPath}/Account/IsAvailable?user=' + username, function (data) {
       if (data === true) {

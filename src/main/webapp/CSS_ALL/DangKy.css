@@ -34,8 +34,9 @@ body {
 }
 .form-container input[type="text"],
 .form-container input[type="email"],
-.form-container input[type="password"],
-.form-container input[type="date"] {
+.form-container input[type="password"]
+/*.form-container input[type="date"] */
+{
     width: 100%;
     padding: 12px 20px;
     margin-bottom: 10px;
@@ -44,7 +45,7 @@ body {
     border-radius: 4px;
     font-size: 16px;
 }
-.form-container input[type="submit"] {
+.form-container button[type="submit"] {
     width: 100%;
     background-color: #2fa1b3;
     color: white;
@@ -55,7 +56,7 @@ body {
     cursor: pointer;
     font-size: 16px;
 }
-.form-container input[type="submit"]:hover {
+.form-container button[type="submit"]:hover {
     background-color: #2fa1b3;
     transform: scale(1.03);
 }
