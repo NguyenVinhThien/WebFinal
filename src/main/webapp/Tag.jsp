@@ -74,8 +74,9 @@
       <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Lựa chọn:</h6>
-          <a class="collapse-item" href="Category.jsp">Thêm category</a>
-          <a class="collapse-item" href="ShowCategory">Danh sách category</a>
+          <a class="collapse-item" href="Category.jsp">Thêm danh mục</a>
+          <a class="collapse-item" href="ShowCategory">Danh sách danh mục chính</a>
+          <a class="collapse-item" href="ShowSubCategory">Danh sách mục phụ</a>
         </div>
       </div>
     </li>
