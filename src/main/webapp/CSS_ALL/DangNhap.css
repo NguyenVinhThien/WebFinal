@@ -1,0 +1,175 @@
+/* Định dạng toàn trang */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+    font-family: Arial, sans-serif;
+}
+
+/* Định dạng khối chứa form đăng nhập */
+.login-container {
+    width: 400px;
+    margin: 100px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    padding: 20px;
+}
+
+/* Định dạng phần tiêu đề */
+.login-container h1 {
+    padding: 0;
+    font-size: 26px;
+    font-weight: normal;
+    color: #555;
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+/* Định dạng nút đăng nhập bằng tài khoản */
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #2fa1b3;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.btn-primary:hover{
+    transform: scale(1.03);
+}
+
+/* Định dạng các mục nhập tài khoản và mật khẩu */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 378px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.forgot_change-password{
+    display: flex;
+    justify-content: space-between;
+}
+/* Định dạng liên kết đổi mật khẩu và quên mật khẩu */
+.forgot-password {
+    display: inline-block;
+    font-size: 14px;
+    color: #777;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    color: #337ab7;
+}
+
+/* Định dạng liên kết đăng ký tài khoản */
+.signup-link {
+    display: block;
+    font-size: 14px;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.signup-link:hover {
+    color: #337ab7;
+    transform: scale(1.03);
+}
+
+/* Định dạng phần tách "hoặc" giữa các nút đăng nhập bằng Facebook và Google */
+.or-separator {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.or-separator span {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 10px;
+    font-size: 16px;
+    color: #999;
+}
+
+.or-separator span:before,
+.or-separator span:after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 45px;
+    height: 1px;
+    background-color: #ccc;
+}
+
+.or-separator span:before {
+    margin-right: 5px;
+}
+
+.or-separator span:after {
+    margin-left: 5px;
+}
+
+.block-item {
+    width: 50%;
+    padding: 20px;
+}
+
+.block-item.right {
+    border-left: 1px solid #aaa;
+}
+
+i {
+    width: 50px;
+    font-size: 24px;
+}
+
+/* Định dạng nút đăng nhập bằng Facebook và Google */
+.btnn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    outline: none;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #666;
+    background: #e8e8e8;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btnn:hover {
+    transform: scale(1.03);
+}
+
+.btnn span {
+    font-size: 16px;
+}
+
+.facebook {
+    background: #3a589e;
+}
+.google {
+    background: #d34836;
+}

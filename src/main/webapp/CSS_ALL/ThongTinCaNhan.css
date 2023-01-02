@@ -1,0 +1,73 @@
+body {
+    background: #59b6c3
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #59b6c3
+}
+
+.profile-button {
+    background: #59b6c3;
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #59b6c3;
+    transform: scale(1.03);
+}
+
+.profile-button:focus {
+    background: #59b6c3;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #59b6c3;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #59b6c3;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #59b6c3;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #59b6c3
+}
+
+.join_date{
+    margin-top: 15px;
+    padding-top: 10px;
+    position: relative;
+    text-align: center;
+    font-size: 15px;
+    color: #828282;
+}
+
+.join_date:before {
+    content: '';
+    width: 140px;
+    height: 1px;
+    background: #E5E5E5;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -70px;
+}
+
+.btn_change_password{
+    font-size: 13px;
+    color: #828282;
+    padding-bottom: 1px;
+    top: 0;
+    right: 0;
+}

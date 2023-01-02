@@ -1,0 +1,64 @@
+/* Định dạng toàn trang */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+    font-family: Arial, sans-serif;
+}
+
+/* Định dạng khối chứa form gia hạn */
+.account-renewal-container {
+    width: 400px;
+    margin: 100px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    padding: 20px;
+}
+
+/* Định dạng phần tiêu đề */
+.account-renewal-container h1 {
+    padding: 0;
+    font-size: 26px;
+    font-weight: normal;
+    color: #555;
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+/* Định dạng nút đăng nhập bằng tài khoản */
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #2fa1b3;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.btn-primary:hover{
+    transform: scale(1.03);
+}
+
+/* Định dạng các mục nhập tài khoản và mật khẩu */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 378px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
