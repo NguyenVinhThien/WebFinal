@@ -1,5 +1,8 @@
 package Controller;
 
+import DAO.DAOAdmin;
+import sun.tools.jconsole.JConsole;
+
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,17 +43,15 @@ public class DangBai extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
         try {
-            String id_article= request.getParameter("id_article");
             String title= request.getParameter("title");
-            String publish_date= request.getParameter("publish_date");
-            int views= Integer.parseInt(request.getParameter("views"));
-            String abstract_article= request.getParameter("abstract_article");
-            String content= request.getParameter("content");
-            int categories_id= Integer.parseInt(request.getParameter("categories_id"));
+            String abstract_article= request.getParameter("Tom_tat");
+            String content= request.getParameter("editor");
+            int categories_id= Integer.parseInt(request.getParameter("Chuyen_muc"));
             int premium= Integer.parseInt(request.getParameter("premium"));
             int writer_id= Integer.parseInt(request.getParameter("writer_id"));
-            int status= Integer.parseInt(request.getParameter("status"));
-
+            System.out.println(content);
+            DAOAdmin d= new DAOAdmin();
+            d.addArticle(title,abstract_article,content,categories_id,premium,writer_id);
             response.sendRedirect("DangArticle.jsp");
         }catch(Exception e)
         {

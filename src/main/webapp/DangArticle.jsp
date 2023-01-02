@@ -68,7 +68,7 @@
                                                                      class="form-control" value=""
                                                                      placeholder="Nhãn"></div>
       <div class="col-md-12"><label class="labels">Tiêu đề</label><input type="text"
-                                                                         name="Tieu_de"
+                                                                         name="title"
                                                                          class="form-control" value=""
                                                                          placeholder="Tiêu đề"></div>
       <div class="col-md-12"><label class="labels">Tóm tắt nội dung</label><input type="text"
