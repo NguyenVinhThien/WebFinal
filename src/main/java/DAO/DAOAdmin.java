@@ -150,9 +150,9 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
-    public void addArticle(String title, String astract, String content, int category)
+    public void addArticle(String title, String astract, String content)
     {
-        String query="INSERT INTO articles (title,publish_date,views,abstract, content, categories_id, premium, writer_id, a_status) VALUES(?,, 0, ?, ?, ?, 0, 0, 0)";
+        String query="INSERT INTO articles (title,publish_date,views,abstract, content, categories_id, premium, writer_id, status) VALUES(?,null, 0, ?, ?, 11, 0, null, 0)";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
@@ -160,7 +160,7 @@ public class DAOAdmin {
             ps.setString(1, title);
             ps.setString(2, astract);
             ps.setString(3, content);
-            ps.setInt(4,category);
+
             //ps.setInt(5,premium);
             ps.executeUpdate();
             con.close();

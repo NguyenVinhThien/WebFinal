@@ -46,10 +46,11 @@ public class DangBai extends HttpServlet {
             String abstract_article= request.getParameter("Tom_tat");
             String content= request.getParameter("content");
             int categories_id= Integer.parseInt(request.getParameter("cate"));
+            System.out.println(categories_id);
             //int premium= Integer.parseInt(request.getParameter("premium"));
             //int writer_id= Integer.parseInt(request.getParameter("writer_id"));
             DAOAdmin d= new DAOAdmin();
-            d.addArticle(title,abstract_article,content,categories_id);
+            d.addArticle(title,abstract_article,content);
             response.sendRedirect("DangArticle.jsp");
         }catch(Exception e)
         {
