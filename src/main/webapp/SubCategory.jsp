@@ -2,16 +2,18 @@
   Created by IntelliJ IDEA.
   User: acer
   Date: 12/29/2022
-  Time: 11:15 PM
+  Time: 11:28 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -31,7 +33,6 @@
 </head>
 
 <body id="page-top">
-
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -39,7 +40,7 @@
   <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
       </div>
@@ -156,9 +157,6 @@
 
         <ul class="navbar-nav ml-auto">
 
-
-
-
           <div class="topbar-divider d-none d-sm-block"></div>
 
           <!-- Nav Item - User Information -->
@@ -189,88 +187,52 @@
 
         <!-- DataTales Example -->
         <div class="container-fluid">
-
           <div class="row">
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">Thêm danh mục chính
-                  </h4>
+                  <h4 class="card-title">Danh Sách Danh Mục Phụ</h4>
                 </div>
                 <div class="card-body">
-                  <form class="form-valide-with-icon" action="AddCategory" method="POST" novalidate="novalidate">
-                    <div class="form-group">
-                    <div class="form-group">
-                      <label class="text-label">Tên danh mục</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                                            <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
-                                            </span>
+                  <div class="table-responsive">
+                    <div id="example_wrapper" class="dataTables_wrapper">
+                      <div id="example_wrapper" class="dataTables_wrapper">
+                        <div class="d-flex justify-content-end ">
+                          <a href="#" class="btn btn-warning btn-icon-split align-content-center" data-target="#editDanhMuc" data-toggle="modal" >
+                                        <span class="icon text-white-50" >
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </span>
+                            <span class="text">Chỉnh sửa</span>
+                          </a>
                         </div>
-                        <input type="text" class="form-control" id="#" name="name" placeholder="Tên danh mục chính" value="">
+                        <table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
+                          <thead>
+                          <tr role="row">
+                            <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã</th>
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 485.891px;">Tên danh mục phụ</th>
+                            <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã danh mục chính</th>
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Xóa</th></tr>
+                          </thead>
+                          <c:forEach items="${listP}" var="o">
+                          <tbody>
+                          <tr class="odd" role="row">
+                            <td class="sorting_1">${o.id}</td>
+                            <td>${o.name}</td>
+                            <td class="sorting_1">${o.paren_ID}</td>
+                            <td>
+                              <a href ="DeleteSubCategory?id=${o.id}" >
+                                <button class="btn btn-danger btn sweet-confirm destroy">Xóa</button>
+                              </a>
+                            </td>
+                          </tbody>
+                          </c:forEach>
                       </div>
                     </div>
-                    <div class="form-group">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Thêm</button>
-                  </form>
-
+                  </div>
                 </div>
               </div>
 
             </div>
-
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <!-- /.container-fluid -->
-    <div class="container-fluid">
-
-      <!-- Page Heading -->
-
-      <!-- DataTales Example -->
-      <div class="container-fluid">
-
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">Thêm danh mục phụ
-                </h4>
-              </div>
-              <div class="card-body">
-                <form class="form-valide-with-icon" action="AddSubCategory" method="POST" novalidate="novalidate">
-                  <div class="form-group">
-                    <div class="form-group">
-                      <label class="text-label">Mã danh mục chính</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                                            <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
-                                            </span>
-                        </div>
-                        <input type="text" class="form-control" id="#" name="parent_id" placeholder="Mã danh mục chính" value="">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="form-group">
-                        <label class="text-label">Tên danh mục phụ</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                                            <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
-                                            </span>
-                          </div>
-                          <input type="text" class="form-control" id="#" name="name" placeholder="Tên danh mục phụ" value="">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                      </div>
-                      <button type="submit" class="btn btn-primary">Thêm</button>
-                </form>
-              </div>
-            </div>
-
           </div>
 
         </div>
@@ -281,43 +243,74 @@
   <!-- /.container-fluid -->
 
 </div>
-  </div>
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-       aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Bạn muốn đăng xuất ??</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Bạn chọn Logout sẽ đăng xuất ra hệ thống.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Bạn muốn đăng xuất ??</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Bạn chọn Logout sẽ đăng xuất ra hệ thống.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" href="login.html">Logout</a>
       </div>
     </div>
   </div>
+</div>
+<div class="modal fade" id="editDanhMuc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sửa danh mục</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form action="EditSubCategory" method="post">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>ID</label>
+            <input name="id" type="text" class="form-control"  required>
+          </div>
+          <div class="form-group">
+            <label>Tên danh mục</label>
+            <input name="name" type="text" class="form-control"  required>
+          </div>
+          <div class="form-group">
+            <label>Mã danh mục chính</label>
+            <input name="parent_id" type="text" class="form-control"  required>
+          </div>
+          <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+            <input type="submit" class="btn btn-success" value="Sửa">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
+<!-- Bootstrap core JavaScript-->
+<script src="TemplateAdmin/vendor/jquery/jquery.min.js"></script>
+<script src="TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="TemplateAdmin/vendor/jquery/jquery.min.js"></script>
-  <script src="TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="TemplateAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="TemplateAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="TemplateAdmin/js/sb-admin-2.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="TemplateAdmin/js/sb-admin-2.min.js"></script>
+<!-- Page level plugins -->
+<script src="TemplateAdmin/vendor/chart.js/Chart.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="TemplateAdmin/vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="TemplateAdmin/js/demo/chart-area-demo.js"></script>
-  <script src="TemplateAdmin/js/demo/chart-pie-demo.js"></script>
+<!-- Page level custom scripts -->
+<script src="TemplateAdmin/js/demo/chart-area-demo.js"></script>
+<script src="TemplateAdmin/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
