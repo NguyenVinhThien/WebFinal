@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: acer
@@ -21,13 +22,13 @@
   <title>Admin Newspaper</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="TemplateAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
           href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -80,9 +81,18 @@
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item active">
-      <a class="nav-link" href="Tag.jsp">
-        <span>Tag</span></a>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTag"
+         aria-expanded="true" aria-controls="collapseTwo">
+        <span>Tag</span>
+      </a>
+      <div id="collapseTag" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Lựa chọn:</h6>
+          <a class="collapse-item" href="ThemTag.jsp">Thêm tag</a>
+          <a class="collapse-item" href="ShowTag">Danh sách tag</a>
+        </div>
+      </div>
     </li>
 
     <!-- Divider -->
@@ -158,7 +168,7 @@
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
               <img class="img-profile rounded-circle"
-                   src="img/undraw_profile.svg">
+                   src="TemplateAdmin/img/undraw_profile.svg">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -194,18 +204,30 @@
                     <div class="card-body">
                       <div class="table-responsive">
                         <div id="example_wrapper" class="dataTables_wrapper">
-                          <div id="example_wrapper" class="dataTables_wrapper"><table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
+                          <div id="example_wrapper" class="dataTables_wrapper">
+                            <div class="d-flex justify-content-end ">
+                              <a href="#" class="btn btn-warning btn-icon-split align-content-center" data-target="#editDanhMuc" data-toggle="modal" >
+                                        <span class="icon text-white-50" >
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </span>
+                                <span class="text">Chỉnh sửa</span>
+                              </a>
+                            </div>
+                            <table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
                             <thead>
-                            <tr role="row"><th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 485.891px;">Tên tag</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Chỉnh sửa: activate to sort column ascending" style="width: 202.938px;">Chỉnh sửa</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Xóa</th></tr>
+                            <tr role="row"><th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 485.891px;">Tên tag</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Xóa</th></tr>
                             </thead>
+                            <c:forEach items="${listT}" var="t">
                             <tbody>
                             <tr class="odd" role="row">
-                              <td class="sorting_1">3</td>
-                              <td>Thương mại điện tử tổng hợp</td>
-                              <td><a href="#" class="btn btn-info" data-target="#editDanhMuc" data-toggle="modal">Sửa</a></td>
-                              <td><button class="btn btn-danger btn sweet-confirm destroy" data-url="#">Xóa</button>
+                              <td class="sorting_1">${t.id}</td>
+                              <td>${t.name}</td>
+                              <td>  <a href ="DeleteTag?id=${t.id}" >
+                                <button class="btn btn-danger btn sweet-confirm destroy">Xóa</button>
+                              </a>
                               </td>
                             </tbody>
+                            </c:forEach>
                           </div>
                         </div>
                       </div>
@@ -250,12 +272,12 @@
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
-            <form action="#" method="post">
+            <form action="EditTag" method="post">
           </div>
           <div class="modal-body">
             <div class="form-group">
               <label>ID</label>
-              <input name="pid" type="text" class="form-control" required>
+              <input name="id" type="text" class="form-control" required>
             </div>
             <div class="form-group">
               <label>Tên tag</label>
@@ -272,21 +294,21 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="TemplateAdmin/vendor/jquery/jquery.min.js"></script>
+    <script src="TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="TemplateAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="TemplateAdmin/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="TemplateAdmin/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="TemplateAdmin/js/demo/chart-area-demo.js"></script>
+    <script src="TemplateAdmin/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
