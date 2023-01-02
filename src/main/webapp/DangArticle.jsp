@@ -48,6 +48,9 @@
 <main>
   <form id="article-form">
     <!--        <h2>Create New Article</h2>-->
+    <div class="col-md-12"><label class="labels">Tiêu đề</label><input type="text"
+                                                                       class="form-control" value=""
+                                                                       placeholder="Tiêu đề"></div>
     <div class="row mt-2 mb-3">
       <div class="col-md-6">
         <label class="labels">Chuyên mục</label>
