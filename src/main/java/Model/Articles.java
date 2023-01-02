@@ -1,0 +1,112 @@
+package Model;
+
+public class Articles {
+    private int id_article;
+    private String title;
+    private String publish_date;
+    private int views;
+    private String abstract_article;
+    private String content;
+    private int categories_id;
+    private int premium;
+    private int writer_id;
+    private int status;
+
+
+    public int getId_article() {
+        return id_article;
+    }
+
+    public void setId_article(int id_article) {
+        this.id_article = id_article;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getPublish_date() {
+        return publish_date;
+    }
+
+    public void setPublish_date(String publish_date) {
+        this.publish_date = publish_date;
+    }
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
+
+    public String getAbstract_article() {
+        return abstract_article;
+    }
+
+    public void setAbstract_article(String abstract_article) {
+        this.abstract_article = abstract_article;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public int getCategories_id() {
+        return categories_id;
+    }
+
+    public void setCategories_id(int categories_id) {
+        this.categories_id = categories_id;
+    }
+
+    public int getPremium() {
+        return premium;
+    }
+
+    public void setPremium(int premium) {
+        this.premium = premium;
+    }
+
+    public int getWriter_id() {
+        return writer_id;
+    }
+
+    public void setWriter_id(int writer_id) {
+        this.writer_id = writer_id;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Articles() {
+
+    }
+
+    public Articles(int id_article, String title, String publish_date, int views, String abstract_article, int categories_id, int premium, int writer_id, int status) {
+        super();
+        this.id_article = id_article;
+        this.title = title;
+        this.publish_date = publish_date;
+        this.views = views;
+        this.abstract_article = abstract_article;
+        this.categories_id = categories_id;
+        this.premium = premium;
+        this.writer_id = writer_id;
+        this.status = status;
+    }
+}
