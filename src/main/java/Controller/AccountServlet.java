@@ -17,11 +17,12 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(name = "AccountServlet", urlPatterns = "/AccountServlet")
 public class AccountServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
 
-    public AccountServlet(){
+    public AccountServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -71,22 +72,9 @@ public class AccountServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String path = request.getPathInfo();
-//        switch (path) {
-//            case "/DangKy":
-//                registerUser(request, response);
-//                break;
-//
-//            case "/DangNhap":
-//                login(request, response);
-//                break;
-//
-//            default:
-//                ServletUtils.forward("/404.jsp", request, response);
-//                break;
-//        }
-// TODO Auto-generated method stub
+        // TODO Auto-generated method stub
         try {
+            request.setCharacterEncoding("UTF-8");
             String rawpwd = request.getParameter("rawpwd");
             String bcryptHashString = BCrypt.withDefaults().hashToString(12, rawpwd.toCharArray());
 
@@ -96,17 +84,9 @@ public class AccountServlet extends HttpServlet {
 
             String username = request.getParameter("username");
             String name = request.getParameter("name");
-//        String issue_at = null;
-//        LocalDateTime issue_at = LocalDateTime.parse(str_issue_at, df);
-//        int expiration = 0;
-//        int role = 0;
-//        String second_name = null;
             String email = request.getParameter("email");
-//        String otp = null;
-//        LocalDateTime otp_exp = null;
 
             UserModel c = new UserModel();
-//        UserModel.add(c);
             c.addUser(username, bcryptHashString, name, dob, email);
             response.sendRedirect("/DangKy.jsp");
         } catch (Exception e) {
