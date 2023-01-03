@@ -5,10 +5,16 @@
   Time: 7:03 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
+<%--<jsp:useBean id="categories" scope="request" type="java.util.List<Model.Categories>"/>--%>
 <html>
 
 <head>
+    <meta charset="utf-8">
     <title>computer engineering mutex concept - Google Search</title>
     <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
     <link rel="stylesheet"  href="CSS_ALL/TìmKiem.css" >
@@ -131,15 +137,17 @@
                                                 </td>
                                                 <td>
                                                     <div class="widget-26-job-title">
-                                                        <a href="#">Tên Báo</a>
+                                                        <a href="#">Tên báo</a>
                                                         <p class="m-0"><a href="#" class="employer-name">Tác giả.</a> <span class="text-muted time">ngày đăng </span></p>
                                                     </div>
                                                 </td>
+
                                                 <td>
                                                     <div class="widget-26-job-info">
-                                                        <p class="type m-0">Chuyên mục chính</p>
+                                                        <p class="type m-0">Danh mục chính</p>
                                                     </div>
                                                 </td>
+
                                                 <td>
                                                     <div class="widget-26-job-salary">lượt xem</div>
                                                 </td>
@@ -170,6 +178,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
+
                                             </tbody>
                                         </table>
                                     </div>
