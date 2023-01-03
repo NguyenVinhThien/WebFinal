@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@WebServlet(name = "AccountServlet", value = "/Account/*")
+@WebServlet(name = "AccountServlet", urlPatterns = "/Account/*")
 public class AccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,7 +51,7 @@ public class AccountServlet extends HttpServlet {
                 break;
 
             default:
-                ServletUtils.forward("/", request, response);
+                ServletUtils.forward("/404.jsp", request, response);
                 break;
         }
     }
@@ -99,7 +99,32 @@ public class AccountServlet extends HttpServlet {
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+//        String username = request.getParameter("username");
+//        String password = request.getParameter("password");
+//
+//        User user = UserModel.findByUsername(username);
+//        if (user != null) {
+//            BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
+//            if (result.verified) {
+//                HttpSession session = request.getSession();
+//                session.setAttribute("auth", true);
+//                session.setAttribute("authUser", user);
+//                // response.addCookie(new Cookie("ecWebAppAuthUser", user.getUsername()));
+//
+//                String url = (String) session.getAttribute("retUrl");
+//                if (url == null)
+//                    url = "/Home";
+//                ServletUtils.redirect(url, request, response);
+//            } else {
+//                request.setAttribute("hasError", true);
+//                request.setAttribute("errorMessage", "Invalid login.");
+//                ServletUtils.forward("/views/vwAccount/Login.jsp", request, response);
+//            }
+//        } else {
+//            request.setAttribute("hasError", true);
+//            request.setAttribute("errorMessage", "Invalid login.");
+//            ServletUtils.forward("/views/vwAccount/Login.jsp", request, response);
+//        }
     }
 
 }

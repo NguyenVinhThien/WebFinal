@@ -11,12 +11,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Đăng ký</title>
-  <link rel="stylesheet" type="text/css" href="./CSS_ALL/DangKy.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS_ALL/DangKy.css">
 </head>
 <body>
 <div class="form-container">
   <h1>Đăng Ký</h1>
-  <form action="" method="post" id="frmRegister" onsubmit="return checkPassword();">
+  <form action="./TrangChu.jsp" method="post" id="frmRegister" onsubmit="return checkPassword();">
     <label for="txtUsername">Username</label>
     <input type="text" id="txtUsername" name="username" placeholder="Nhập tài khoản" required>
     <label for="txtName">Họ và Tên</label>
@@ -39,7 +41,6 @@
   </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
   $(`#frmRegister`).on('submit', function (e) {
