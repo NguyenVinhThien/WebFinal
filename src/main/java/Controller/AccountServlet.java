@@ -16,11 +16,12 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(name = "AccountServlet", urlPatterns = "/AccountServlet")
 public class AccountServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
 
-    public AccountServlet(){
+    public AccountServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -84,7 +85,7 @@ public class AccountServlet extends HttpServlet {
 //                break;
 //        }
         // TODO Auto-generated method stub
-        try{
+        try {
             String rawpwd = request.getParameter("rawpwd");
             String bcryptHashString = BCrypt.withDefaults().hashToString(12, rawpwd.toCharArray());
 
@@ -107,7 +108,7 @@ public class AccountServlet extends HttpServlet {
 //        UserModel.add(c);
             c.addUser(username, bcryptHashString, name, dob, email);
             response.sendRedirect("/DangKy.jsp");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
 
         }
