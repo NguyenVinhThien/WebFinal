@@ -72,8 +72,9 @@
       <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Lựa chọn:</h6>
-          <a class="collapse-item" href="Category.jsp">Thêm category</a>
-          <a class="collapse-item" href="ShowCategory">Danh sách category</a>
+          <a class="collapse-item" href="Category.jsp">Thêm danh mục</a>
+          <a class="collapse-item" href="ShowCategory">Danh sách danh mục chính</a>
+          <a class="collapse-item" href="ShowSubCategory">Danh sách mục phụ</a>
         </div>
       </div>
     </li>
@@ -199,15 +200,6 @@
                 <div class="card-body">
                   <form class="form-valide-with-icon" action="AddTag" method="POST" novalidate="novalidate">
                     <div class="form-group">
-                      <label class="text-label">Mã Tag</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                                            <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
-                                            </span>
-                        </div>
-                        <input type="text" class="form-control" id="#" name="id" placeholder="Mã Tag" value="">
-                      </div>
-                    </div>
                     <div class="form-group">
                       <label class="text-label">Tên Tag</label>
                       <div class="input-group">

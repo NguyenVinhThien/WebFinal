@@ -169,7 +169,62 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
-
-
+    public List<Categories> getAllSubCategories()
+    {
+        List<Categories> list = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM categories where parent_id is not null");
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                list.add(new Categories(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3)
+                ));
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return list;
+    }
+    public void addSubCategory(String id, String name,String parent_id)
+    {
+        String query="INSERT INTO categories (id,name,parent_id) VALUES(?,?,?)";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setString(1,id);
+            ps.setString(2,name);
+            ps.setString(3,parent_id);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
+    public void editSubCategory(int id,String name,int parent_id)
+    {
+        String query="UPDATE categories\n"
+                + "SET name = ?, parent_id = ?\r\n"
+                + "WHERE id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setString(1,name);
+            ps.setInt(2,parent_id);
+            ps.setInt(3,id);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
 }
 
