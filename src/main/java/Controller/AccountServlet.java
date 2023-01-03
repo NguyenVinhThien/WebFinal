@@ -33,22 +33,22 @@ public class AccountServlet extends HttpServlet {
                 ServletUtils.forward("/ThongTinCaNhan.jsp", request, response);
                 break;
 
-            case "/IsAvailable":
-                String username = request.getParameter("user");
-                User user = null;
-                try {
-                    user = UserModel.findByUsername(username);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-                boolean isAvailable = (user == null);
-                PrintWriter out = response.getWriter();
-                response.setContentType("application/json");
-                response.setCharacterEncoding("utf-8");
-
-                out.print(isAvailable);
-                out.flush();
-                break;
+//            case "/IsAvailable":
+//                String username = request.getParameter("user");
+//                User user = null;
+//                try {
+//                    user = UserModel.findByUsername(username);
+//                } catch (SQLException e) {
+//                    throw new RuntimeException(e);
+//                }
+//                boolean isAvailable = (user == null);
+//                PrintWriter out = response.getWriter();
+//                response.setContentType("application/json");
+//                response.setCharacterEncoding("utf-8");
+//
+//                out.print(isAvailable);
+//                out.flush();
+//                break;
 
             default:
                 ServletUtils.forward("/404.jsp", request, response);
@@ -84,17 +84,18 @@ public class AccountServlet extends HttpServlet {
 
         String username = request.getParameter("username");
         String name = request.getParameter("name");
-        String issue_at = null;
+//        String issue_at = null;
 //        LocalDateTime issue_at = LocalDateTime.parse(str_issue_at, df);
-        int expiration = 0;
-        int role = 0;
-        String second_name = null;
+//        int expiration = 0;
+//        int role = 0;
+//        String second_name = null;
         String email = request.getParameter("email");
-        String otp = null;
-        LocalDateTime otp_exp = null;
+//        String otp = null;
+//        LocalDateTime otp_exp = null;
 
-        User c = new User(0, username, bcryptHashString, name, null, expiration, role, null, dob,email, null, null);
-        UserModel.add(c);
+        UserModel c = new UserModel();
+//        UserModel.add(c);
+        c.addUser(username, bcryptHashString, name, dob, email);
         ServletUtils.forward("/DangKy.jsp", request, response);
     }
 
