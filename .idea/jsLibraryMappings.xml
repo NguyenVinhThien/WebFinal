@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{jquery-3.2.1.slim, jquery-3.6.0, jquery-datetimepicker}" />
-    <file url="PROJECT" libraries="{@tinymce/tinymce-webcomponent, jquery-3.6.0, jquery-datetimepicker}" />
-    <includedPredefinedLibrary name="HTTP Response Handler" />
-  </component>
-</project>
