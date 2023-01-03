@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="article" scope="request" type="Model.Articles"/>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -126,7 +127,7 @@
     <div class="cardInfo">
       <img class="cardImg" src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">‘Cổng trời An Giang’, tọa độ check-in cực chất ở vùng đất Thất Sơn</h5>
+        <h5 class="card-title">${article.title}</h5>
         <span class="cardCategory">Kinh doanh</span>
         <p class="card-text"><small class="text-muted">Ngày đăng: 29/12/2022</small></p>
       </div>
