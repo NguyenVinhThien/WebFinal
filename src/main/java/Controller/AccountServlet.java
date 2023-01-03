@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.UserModel;
+import Uti.ServletUtils;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 import javax.servlet.ServletException;
@@ -64,8 +65,9 @@ public class AccountServlet extends HttpServlet {
 //                ServletUtils.forward("/404.jsp", request, response);
 //                break;
 //        }
-        // TODO Auto-generated method stub
-        response.getWriter().append("Served at: ").append(request.getContextPath());
+//        // TODO Auto-generated method stub
+//        response.getWriter().append("Served at: ").append(request.getContextPath());
+        ServletUtils.forward("/DangKy.jsp", request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
