@@ -67,7 +67,7 @@
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategory"
          aria-expanded="true" aria-controls="collapseTwo">
-        <span>Category</span>
+        <span>Danh Mục</span>
       </a>
       <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
@@ -295,7 +295,7 @@
         <div class="modal-body">Bạn chọn Logout sẽ đăng xuất ra hệ thống.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="TrangChu.jsp">Logout</a>
         </div>
       </div>
     </div>
