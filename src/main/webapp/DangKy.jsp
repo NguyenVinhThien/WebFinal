@@ -28,7 +28,7 @@
     <label for="txtDOB">Ngày sinh</label>
     <input type="text" id="txtDOB" name="dob" placeholder="Nhập ngày sinh" required>
     <label for="txtPassword">Mật khẩu</label>
-    <input type="password" id="txtPassword" name="rawpdw" placeholder="Nhập mật khẩu" required>
+    <input type="password" id="txtPassword" name="rawpwd" placeholder="Nhập mật khẩu" required>
     <label for="txtConfirm">Xác nhận mật khẩu</label>
     <input type="password" id="txtConfirm" placeholder="Xác nhận mật khẩu" required>
     <div class="terms">

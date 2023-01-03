@@ -83,9 +83,9 @@ public class AccountServlet extends HttpServlet {
 //                ServletUtils.forward("/404.jsp", request, response);
 //                break;
 //        }
-        // TODO Auto-generated method stub
-        try{
-            String rawpwd = request.getParameter("rawpdw");
+// TODO Auto-generated method stub
+        try {
+            String rawpwd = request.getParameter("rawpwd");
             String bcryptHashString = BCrypt.withDefaults().hashToString(12, rawpwd.toCharArray());
 
             String strDob = request.getParameter("dob") + " 00:00";
@@ -107,7 +107,7 @@ public class AccountServlet extends HttpServlet {
 //        UserModel.add(c);
             c.addUser(username, bcryptHashString, name, dob, email);
             response.sendRedirect("/DangKy.jsp");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
 
         }
