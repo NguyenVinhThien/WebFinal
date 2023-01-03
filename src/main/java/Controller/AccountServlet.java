@@ -84,16 +84,16 @@ public class AccountServlet extends HttpServlet {
 
         String username = request.getParameter("username");
         String name = request.getParameter("name");
-        String str_issue_at = request.getParameter("issue_at");
-        LocalDateTime issue_at = LocalDateTime.parse(str_issue_at, df);
-        int expiration = Integer.parseInt(request.getParameter("expiration"));
+        String issue_at = null;
+//        LocalDateTime issue_at = LocalDateTime.parse(str_issue_at, df);
+        int expiration = 0;
         int role = 0;
-        String second_name = request.getParameter("second_name");
+        String second_name = null;
         String email = request.getParameter("email");
         String otp = null;
         LocalDateTime otp_exp = null;
 
-        User c = new User(0, username, bcryptHashString, name, issue_at, expiration, role, second_name, dob,email, null, null);
+        User c = new User(0, username, bcryptHashString, name, null, expiration, role, null, dob,email, null, null);
         UserModel.add(c);
         ServletUtils.forward("/DangKy.jsp", request, response);
     }
