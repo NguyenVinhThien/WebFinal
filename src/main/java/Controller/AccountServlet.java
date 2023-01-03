@@ -99,7 +99,32 @@ public class AccountServlet extends HttpServlet {
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+//        String username = request.getParameter("username");
+//        String password = request.getParameter("password");
+//
+//        User user = UserModel.findByUsername(username);
+//        if (user != null) {
+//            BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
+//            if (result.verified) {
+//                HttpSession session = request.getSession();
+//                session.setAttribute("auth", true);
+//                session.setAttribute("authUser", user);
+//                // response.addCookie(new Cookie("ecWebAppAuthUser", user.getUsername()));
+//
+//                String url = (String) session.getAttribute("retUrl");
+//                if (url == null)
+//                    url = "/Home";
+//                ServletUtils.redirect(url, request, response);
+//            } else {
+//                request.setAttribute("hasError", true);
+//                request.setAttribute("errorMessage", "Invalid login.");
+//                ServletUtils.forward("/views/vwAccount/Login.jsp", request, response);
+//            }
+//        } else {
+//            request.setAttribute("hasError", true);
+//            request.setAttribute("errorMessage", "Invalid login.");
+//            ServletUtils.forward("/views/vwAccount/Login.jsp", request, response);
+//        }
     }
 
 }
