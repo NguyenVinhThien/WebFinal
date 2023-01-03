@@ -1,16 +1,15 @@
 package DAO;
 
 
-import java.awt.*;
+import Model.Categories;
+import Model.Tags;
+import Uti.ConnectDB;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
-import Model.Categories;
-import Model.Tags;
-import Uti.ConnectDB;
 
 public class DAOAdmin {
     public List<Categories> getAllCategories()
@@ -169,13 +168,14 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
-    public List<Categories> getAllSubCategories()
+    public List<Categories> getAllSubCategories(int parent_id)
     {
         List<Categories> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM categories where parent_id is not null");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM categories where parent_id = ?");
+            ps.setInt(1,parent_id);
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {

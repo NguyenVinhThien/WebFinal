@@ -76,7 +76,6 @@
           <h6 class="collapse-header">Lựa chọn:</h6>
           <a class="collapse-item" href="Category.jsp">Thêm danh mục</a>
           <a class="collapse-item" href="ShowCategory">Danh sách danh mục chính</a>
-          <a class="collapse-item" href="ShowSubCategory">Danh sách mục phụ</a>
         </div>
       </div>
     </li>

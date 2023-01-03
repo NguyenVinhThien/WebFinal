@@ -68,14 +68,13 @@
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategory"
          aria-expanded="true" aria-controls="collapseTwo">
-        <span>Danh Mục</span>
+        <span>Danh mục</span>
       </a>
       <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Lựa chọn:</h6>
           <a class="collapse-item" href="Category.jsp">Thêm danh mục</a>
           <a class="collapse-item" href="ShowCategory">Danh sách danh mục chính</a>
-          <a class="collapse-item" href="ShowSubCategory">Danh sách mục phụ</a>
         </div>
       </div>
     </li>
@@ -216,7 +215,7 @@
                         <tbody>
                         <tr class="odd" role="row">
                           <td class="sorting_1">${o.id}</td>
-                          <td>${o.name}</td>
+                          <td><a href="ShowSubCategory?id=${o.id}">${o.name}</a></td>
                           <td>
                             <a href ="DeleteCategory?id=${o.id}" >
                               <button class="btn btn-danger btn sweet-confirm destroy">Xóa</button>

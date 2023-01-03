@@ -9,6 +9,7 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,14 +69,16 @@
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategory"
          aria-expanded="true" aria-controls="collapseTwo">
-        <span>Danh Mục</span>
+        <span>Danh mục</span>
       </a>
       <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Lựa chọn:</h6>
           <a class="collapse-item" href="Category.jsp">Thêm danh mục</a>
           <a class="collapse-item" href="ShowCategory">Danh sách danh mục chính</a>
-          <a class="collapse-item" href="ShowSubCategory">Danh sách mục phụ</a>
+          <c:forEach items="${listP}" var="o">
+            <a class="collapse-item" href="ShowSubCategory?id=${o.id}">${o.name}</a>
+          </c:forEach>
         </div>
       </div>
     </li>
@@ -191,7 +194,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">Danh Sách Danh Mục Phụ</h4>
+                  <h4 class="card-title">Danh Sách Danh Mục Phụ  </h4>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
@@ -210,15 +213,13 @@
                           <tr role="row">
                             <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã</th>
                             <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 485.891px;">Tên danh mục phụ</th>
-                            <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã danh mục chính</th>
                             <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Xóa</th></tr>
                           </thead>
-                          <c:forEach items="${listP}" var="o">
+                          <c:forEach items="${listS}" var="o">
                           <tbody>
                           <tr class="odd" role="row">
-                            <td class="sorting_1">${o.id}</td>
+                            <td>${o.id}</td>
                             <td>${o.name}</td>
-                            <td class="sorting_1">${o.paren_ID}</td>
                             <td>
                               <a href ="DeleteSubCategory?id=${o.id}" >
                                 <button class="btn btn-danger btn sweet-confirm destroy">Xóa</button>

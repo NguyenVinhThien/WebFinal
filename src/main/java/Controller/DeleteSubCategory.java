@@ -1,15 +1,13 @@
 package Controller;
 
-import java.io.IOException;
-
+import DAO.DAOAdmin;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import DAO.DAOAdmin;
+import java.io.IOException;
 
 /**
  * Servlet implementation class DeleteCategory
@@ -33,7 +31,7 @@ public class DeleteSubCategory extends HttpServlet {
         String id =request.getParameter("id");
         DAOAdmin dao = new DAOAdmin();
         dao.deleteCategory(id);
-        response.sendRedirect("ShowSubCategory");
+        response.sendRedirect("ShowCategory");
     }
 
     /**
