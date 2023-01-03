@@ -32,8 +32,10 @@ public class ShowSubCategory extends HttpServlet {
         // TODO Auto-generated method stub
         DAOAdmin d= new DAOAdmin();
         int parent_id = Integer.parseInt(request.getParameter("id"));
+        String name = d.getCategoryName(parent_id);
         List<Categories> list= d.getAllSubCategories(parent_id);
         request.setAttribute("listS", list);
+        request.setAttribute("name",name);
         request.getRequestDispatcher("SubCategory.jsp").forward(request, response);
     }
 

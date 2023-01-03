@@ -226,5 +226,24 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
-}
 
+    public String getCategoryName(int parent_id)
+    {
+        String name = new String();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT categories.name FROM categories where id = ?");
+            ps.setInt(1,parent_id);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                name = new String(rs.getString(1));
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return name;
+    }
+}
