@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@WebServlet(name = "AccountServlet", value = "/Account/*")
+@WebServlet(name = "AccountServlet", urlPatterns = "/Account/*")
 public class AccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,7 +51,7 @@ public class AccountServlet extends HttpServlet {
                 break;
 
             default:
-                ServletUtils.forward("/", request, response);
+                ServletUtils.forward("/404.jsp", request, response);
                 break;
         }
     }
