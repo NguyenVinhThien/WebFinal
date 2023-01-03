@@ -7,7 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="listT" scope="request" type="java.util.List<Model.Tags>"/>
+<jsp:useBean id="listCat" scope="request" type="java.util.List<Model.Categories>"/>
+<jsp:useBean id="listSubCat" scope="request" type="java.util.List<Model.Categories>"/>
+
 <%--<jsp:useBean id="article" scope="request" type="Model.Articles"/>--%>
 <html lang="en">
 <head>
@@ -63,54 +65,61 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <div class="row" id="dropContent">
+            <c:forEach items="${listCat}" var="l">
             <div class="col-sm-6 col-lg-3 groupCatalog">
-              <span class="nav-title">THẾ GIỚI</span>
-              <a class="dropdown-item" href="#">Tư liệu</a>
-              <a class="dropdown-item" href="#">Phân tích</a>
+              <span class="nav-title">${l.name}</span>
+                <c:forEach items="${listSubCat}" var="s">
+                  <c:if test="${l.id eq s.paren_ID}">
+                    <a class="dropdown-item" href="#">${s.name}</a>
+                  </c:if>
+                </c:forEach>
+<%--              <a class="dropdown-item" href="#">Tư liệu</a>--%>
+<%--              <a class="dropdown-item" href="#">Phân tích</a>--%>
             </div>
-            <div class="col-sm-6 col-lg-3">
-              <span class="nav-title">XÃ HỘI</span>
-              <a class="dropdown-item" href="#">Thời sự</a>
-              <a class="dropdown-item" href="#">Giao thông</a>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-              <span class="nav-title">VĂN HÓA</span>
-              <a class="dropdown-item" href="#">Ẩm thực</a>
-              <a class="dropdown-item" href="#">Du lịch</a>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-              <span class="nav-title">KINH DOANH</span>
-              <a class="dropdown-item" href="#">Doanh nghiệp</a>
-              <a class="dropdown-item" href="#">Mua sắm</a>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-              <span class="nav-title">GIẢI TRÍ</span>
-              <a class="dropdown-item" href="#">Âm nhạc</a>
-              <a class="dropdown-item" href="#">Điện ảnh</a>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-              <span class="nav-title">GIÁO DỤC</span>
-              <a class="dropdown-item" href="#">Tuyển sinh</a>
-              <a class="dropdown-item" href="#">Chân dung nhà giáo</a>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-              <span class="nav-title">THỂ THAO</span>
-              <a class="dropdown-item" href="#">Bóng đá quốc tế</a>
-              <a class="dropdown-item" href="#">Bóng đá Việt Nam</a>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-              <span class="nav-title">ĐỜI SỐNG</span>
-              <a class="dropdown-item" href="#">Dinh dưỡng- làm đẹp</a>
-              <a class="dropdown-item" href="#">Sức khỏe- Y tế</a>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-              <span class="nav-title">PHÁP LUẬT</span>
-              <a class="dropdown-item" href="#">An ninh- Trật tự</a>
-              <a class="dropdown-item" href="#">Hình sự- Dân sự</a>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-              <span class="nav-title">KHOA HỌC</span>
-            </div>
+            </c:forEach>
+<%--            <div class="col-sm-6 col-lg-3">--%>
+<%--              <span class="nav-title">XÃ HỘI</span>--%>
+<%--              <a class="dropdown-item" href="#">Thời sự</a>--%>
+<%--              <a class="dropdown-item" href="#">Giao thông</a>--%>
+<%--            </div>--%>
+<%--            <div class="col-sm-6 col-lg-3">--%>
+<%--              <span class="nav-title">VĂN HÓA</span>--%>
+<%--              <a class="dropdown-item" href="#">Ẩm thực</a>--%>
+<%--              <a class="dropdown-item" href="#">Du lịch</a>--%>
+<%--            </div>--%>
+<%--            <div class="col-sm-6 col-lg-3">--%>
+<%--              <span class="nav-title">KINH DOANH</span>--%>
+<%--              <a class="dropdown-item" href="#">Doanh nghiệp</a>--%>
+<%--              <a class="dropdown-item" href="#">Mua sắm</a>--%>
+<%--            </div>--%>
+<%--            <div class="col-sm-6 col-lg-3">--%>
+<%--              <span class="nav-title">GIẢI TRÍ</span>--%>
+<%--              <a class="dropdown-item" href="#">Âm nhạc</a>--%>
+<%--              <a class="dropdown-item" href="#">Điện ảnh</a>--%>
+<%--            </div>--%>
+<%--            <div class="col-sm-6 col-lg-3">--%>
+<%--              <span class="nav-title">GIÁO DỤC</span>--%>
+<%--              <a class="dropdown-item" href="#">Tuyển sinh</a>--%>
+<%--              <a class="dropdown-item" href="#">Chân dung nhà giáo</a>--%>
+<%--            </div>--%>
+<%--            <div class="col-sm-6 col-lg-3">--%>
+<%--              <span class="nav-title">THỂ THAO</span>--%>
+<%--              <a class="dropdown-item" href="#">Bóng đá quốc tế</a>--%>
+<%--              <a class="dropdown-item" href="#">Bóng đá Việt Nam</a>--%>
+<%--            </div>--%>
+<%--            <div class="col-sm-6 col-lg-3">--%>
+<%--              <span class="nav-title">ĐỜI SỐNG</span>--%>
+<%--              <a class="dropdown-item" href="#">Dinh dưỡng- làm đẹp</a>--%>
+<%--              <a class="dropdown-item" href="#">Sức khỏe- Y tế</a>--%>
+<%--            </div>--%>
+<%--            <div class="col-sm-6 col-lg-3">--%>
+<%--              <span class="nav-title">PHÁP LUẬT</span>--%>
+<%--              <a class="dropdown-item" href="#">An ninh- Trật tự</a>--%>
+<%--              <a class="dropdown-item" href="#">Hình sự- Dân sự</a>--%>
+<%--            </div>--%>
+<%--            <div class="col-sm-6 col-lg-3">--%>
+<%--              <span class="nav-title">KHOA HỌC</span>--%>
+<%--            </div>--%>
           </div>
         </div>
       </li>

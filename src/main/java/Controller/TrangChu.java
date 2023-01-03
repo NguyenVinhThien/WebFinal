@@ -2,6 +2,7 @@ package Controller;
 
 import DAO.DAOAdmin;
 import Model.Articles;
+import Model.Categories;
 import Model.Tags;
 
 import javax.servlet.*;
@@ -18,8 +19,10 @@ public class TrangChu extends HttpServlet {
 //        Articles art= new Articles(1, "Nguyen Vinh Thine", "22/11", 3, "dh spk", 4, 0, 2, 0);
 //        request.setAttribute("article", art);
         DAOAdmin d= new DAOAdmin();
-        List<Tags> list= d.getAllTag();
-        request.setAttribute("listT", list);
+        List<Categories> listMainCat= d.getAllCategories();
+        request.setAttribute("listCat", listMainCat);
+        List<Categories> listSubCat= d.getSubCategories();
+        request.setAttribute("listSubCat", listSubCat);
         RequestDispatcher rd= request.getRequestDispatcher("TrangChu.jsp");
         rd.forward(request, response);
     }

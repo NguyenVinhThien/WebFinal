@@ -33,6 +33,27 @@ public class DAOAdmin {
         }
         return list;
     }
+    public List<Categories> getSubCategories()
+    {
+        List<Categories> list = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM categories where parent_id is not null");
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                list.add(new Categories(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3)
+                ));
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return list;
+    }
     public void deleteCategory(String id)
     {
         String query="DELETE FROM categories WHERE id= ? ";
