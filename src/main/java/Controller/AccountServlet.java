@@ -85,7 +85,7 @@ public class AccountServlet extends HttpServlet {
 //        }
         // TODO Auto-generated method stub
         try{
-            String rawpwd = request.getParameter("rawpwd");
+            String rawpwd = request.getParameter("rawpdw");
             String bcryptHashString = BCrypt.withDefaults().hashToString(12, rawpwd.toCharArray());
 
             String strDob = request.getParameter("dob") + " 00:00";
