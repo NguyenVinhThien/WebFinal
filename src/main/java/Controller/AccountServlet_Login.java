@@ -33,55 +33,18 @@ public class AccountServlet_Login extends HttpServlet {
         String path = request.getPathInfo();
         if ("/DangNhap".equals(path)) {
             ServletUtils.forward("/DangNhap.jsp", request, response);
-
-//            case "/IsAvailable":
-//                String username = request.getParameter("user");
-//                User user = null;
-//                user = UserModel.findByUsername(username);
-//                boolean isAvailable = (user == null);
-//
-//                PrintWriter out = response.getWriter();
-//                response.setContentType("application/json");
-//                response.setCharacterEncoding("utf-8");
-//
-//                out.print(isAvailable);
-//                out.flush();
-//                break;
         } else {
             ServletUtils.forward("/404.jsp", request, response);
         }
-////        // TODO Auto-generated method stub
-////        response.getWriter().append("Served at: ").append(request.getContextPath());
-//        ServletUtils.forward("/DangKy.jsp", request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        // TODO Auto-generated method stub
-//        try {
-//            request.setCharacterEncoding("UTF-8");
-//            String rawpwd = request.getParameter("rawpwd");
-//            String bcryptHashString = BCrypt.withDefaults().hashToString(12, rawpwd.toCharArray());
-//
-//            String strDob = request.getParameter("dob") + " 00:00";
-//            DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-//            LocalDateTime dob = LocalDateTime.parse(strDob, df);
-//
-//            String username = request.getParameter("username");
-//            String name = request.getParameter("name");
-//            String email = request.getParameter("email");
-//
-//            UserModel c = new UserModel();
-//            c.addUser(username, bcryptHashString, name, dob, email);
-//            response.sendRedirect("/WebFinal/Account/DangKy");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
         try {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             User user = UserModel.findByUsername(username);
             if (user != null) {
-                BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
+            BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
                 if (result.verified) {
 //                HttpSession session = request.getSession();
 //                session.setAttribute("auth", true);

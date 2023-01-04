@@ -78,7 +78,7 @@ public class AccountServlet extends HttpServlet {
 
             UserModel c = new UserModel();
             c.addUser(username, bcryptHashString, name, dob, email);
-            response.sendRedirect("/WebFinal/Account/DangKy");
+            response.sendRedirect("/WebFinal/Account_Login/DangNhap");
         } catch (Exception e) {
             e.printStackTrace();
         }
