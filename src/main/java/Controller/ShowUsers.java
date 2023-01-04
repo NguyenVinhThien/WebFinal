@@ -32,7 +32,7 @@ public class ShowUsers extends HttpServlet {
         // TODO Auto-generated method stub
         DAOAdmin d = new DAOAdmin();
         List<User> userList = d.getAllUsers();
-        request.setAttribute("listU", userList);
+        request.setAttribute("listP", userList);
         request.getRequestDispatcher("Giahan.jsp").forward(request, response);
     }
 
