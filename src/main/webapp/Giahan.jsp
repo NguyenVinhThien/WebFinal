@@ -5,8 +5,9 @@
   Time: 11:21 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,7 +120,7 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="Giahan.jsp"
+      <a class="nav-link collapsed" href="ShowUsers"
          aria-expanded="true">
         <span>Gia hạn</span>
       </a>
@@ -198,7 +199,7 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h4 class="card-title">Danh Sách User</h4>
+                      <h4 class="card-title">Danh Sách User Cần Gia Hạn</h4>
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">
@@ -210,17 +211,20 @@
                               <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 485.891px;">Tên độc giả</th>
                               <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Chỉnh sửa: activate to sort column ascending" style="width: 202.938px;">Số phút còn lại</th>
                               <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Chỉnh sửa: activate to sort column ascending" style="width: 202.938px;">Gia hạn</th>
-                              <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Xóa</th></tr>
                             </thead>
+                            <c:forEach items="${listU}" var="o">
                             <tbody>
                             <tr class="odd" role="row">
-                              <td class="sorting_1">3</td>
-                              <td>gi do ai biet</td>
-                              <td>so phut</td>
-                              <td><a href="#" class="btn btn-info" data-target="#editDanhMuc" data-toggle="modal">Gia hạn</a></td>
-                              <td><button class="btn btn-danger btn sweet-confirm destroy" data-url="#">Xóa</button>
-                              </td>
+                              <td class="sorting_1">${o.id}</td>
+                              <td>${o.name}</td>
+                              <td id = "">${o.expiration}</td>
+                              <td><a href="UpdateUsers?id=${o.id}">
+                                <button class="btn btn-info" data-url="#">Gia hạn</button>
+                              </a></td>
+                              </tr>
                             </tbody>
+                            </c:forEach>
+                          </div>
                           </div>
                         </div>
                       </div>
@@ -289,6 +293,7 @@
         </div>
       </div>
     </div>
+</div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="TemplateAdmin/vendor/jquery/jquery.min.js"></script>

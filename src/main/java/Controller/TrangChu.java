@@ -23,6 +23,8 @@ public class TrangChu extends HttpServlet {
         request.setAttribute("listCat", listMainCat);
         List<Categories> listSubCat= d.getSubCategories();
         request.setAttribute("listSubCat", listSubCat);
+        List<Tags> listTags= d.getAllTag();
+        request.setAttribute("listTags", listTags);
         RequestDispatcher rd= request.getRequestDispatcher("TrangChu.jsp");
         rd.forward(request, response);
     }

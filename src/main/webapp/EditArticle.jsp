@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Home
@@ -47,12 +48,12 @@
     <h1>New Article E-Newspaper</h1>
 </header>
 <main>
-    <form id="article-form" action="EditBai" method="POST" novalidate="novalidate">
+    <form id="article-form" action="EditArticle?id=${article.id_article}" method="POST" novalidate="novalidate">
         <div class="row mt-2 mb-3">
             <div class="col-md-6">
                 <label class="labels">Chuyên mục</label>
                 <select class="form-control" name="cate">
-                    <option value="" selected></option>
+                    <option value=""> selected</option>
                     <option value="1">Xã Hội</option>
                     <option value="2">Thế Giới</option>
                     <option value="3">Văn Hóa</option>
@@ -66,7 +67,6 @@
                 </select>
             </div>
             <div class="col-md-6"><label class="labels">Nhãn</label><input type="text"
-                                                                           name="Nhan"
                                                                            class="form-control" value=""
                                                                            placeholder="Nhãn"></div>
             <div class="col-md-12"><label class="labels">Tiêu đề</label><input type="text"
@@ -78,7 +78,7 @@
                                                                                         class="form-control" value=""
                                                                                         placeholder="Tóm tắt"></div>
         </div>
-        <textarea id="editor" style="width: 100%" name="content">${article.content}</textarea>
+        <textarea id="editbai" style="width: 100%" name="content">${article.content}</textarea>
         <button type="submit">Đăng bài viết</button>
     </form>
 </main>

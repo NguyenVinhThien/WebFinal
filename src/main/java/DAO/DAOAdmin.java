@@ -5,6 +5,7 @@ import Model.Articles;
 import Model.Categories;
 import Model.Tags;
 import Uti.ConnectDB;
+import Model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -311,6 +312,53 @@ public class DAOAdmin {
             ps.setString(2,title);
             ps.setString(3,abstract_article);
             ps.setInt(4,id);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
+    public List<User> getAllUsers()
+    {
+        List<User> list = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users where issue_at is null");
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                list.add(new User(rs.getInt(1),
+                        null,
+                        null,
+                        rs.getString(4),
+                        null,
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                ));
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return list;
+    }
+    public void UpdateUser(int id)
+    {
+        String query="UPDATE  users\n"
+                + "SET issue_at = CURDATE() , expiration = expiration + 7\r\n"
+                + "WHERE id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setInt(1,id);
             ps.executeUpdate();
             con.close();
         }catch(Exception e)

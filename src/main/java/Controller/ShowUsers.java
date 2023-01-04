@@ -1,6 +1,8 @@
 package Controller;
 
+
 import DAO.DAOAdmin;
+import Model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,16 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 
-@WebServlet("/EditArticle")
-public class EditArticle extends HttpServlet {
+@WebServlet(name="ShowUsers",urlPatterns={"/ShowUsers"})
+public class ShowUsers extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditArticle() {
+    public ShowUsers() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,6 +30,10 @@ public class EditArticle extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
+        DAOAdmin d = new DAOAdmin();
+        List<User> userList = d.getAllUsers();
+        request.setAttribute("listU", userList);
+        request.getRequestDispatcher("Giahan.jsp").forward(request, response);
     }
 
     /**
@@ -34,20 +41,8 @@ public class EditArticle extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-        try {
-            String id= request.getParameter("id");
-            int i= Integer.parseInt(id);
-            String title= request.getParameter("title");
-            String abstract_article= request.getParameter("Tom_tat");
-            String content= request.getParameter("content");
-            DAOAdmin d= new DAOAdmin();
-            d.editArticle(i,title,content,abstract_article);
-            response.sendRedirect("EditArticle.jsp");
-        }catch(Exception e)
-        {
-            e.printStackTrace();
-        }
+        doGet(request, response);
     }
 
-
 }
+
