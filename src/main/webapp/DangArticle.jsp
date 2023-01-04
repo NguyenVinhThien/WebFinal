@@ -77,7 +77,7 @@
                                                                                   placeholder="Tóm tắt"></div>
     </div>
     <textarea id="editor" style="width: 100%" name="content">ABcd</textarea>
-    <button type="submit">Đăng bài viết</button>
+    <button type="submit" href="EditArticle?id=3">Đăng bài viết</button>
   </form>
 </main>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" crossorigin="anonymous"></script>
