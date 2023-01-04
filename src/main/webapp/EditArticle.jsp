@@ -78,7 +78,7 @@
                                                                                         class="form-control" value=""
                                                                                         placeholder="Tóm tắt"></div>
         </div>
-        <textarea id="editbai" style="width: 100%" name="content">${article.content}</textarea>
+        <textarea id="editor" style="width: 100%" name="content">${article.content}</textarea>
         <button type="submit">Đăng bài viết</button>
     </form>
 </main>
