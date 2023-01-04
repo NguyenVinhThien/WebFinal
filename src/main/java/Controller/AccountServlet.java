@@ -3,7 +3,7 @@ package Controller;
 import Model.UserModel;
 import Uti.ServletUtils;
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import beans.User;
+import Model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -5,7 +5,7 @@ import Model.Articles;
 import Model.Categories;
 import Model.Tags;
 import Uti.ConnectDB;
-import beans.User;
+import Model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -330,17 +330,17 @@ public class DAOAdmin {
             while(rs.next())
             {
                 list.add(new User(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
+                        null,
+                        null,
                         rs.getString(4),
-                        rs.getTimestamp(5).toLocalDateTime(),
+                        null,
                         rs.getInt(6),
                         rs.getInt(7),
-                        rs.getString(8),
-                        rs.getTimestamp(9).toLocalDateTime(),
-                        rs.getString(10),
-                        rs.getString(11),
-                        rs.getTimestamp(12).toLocalDateTime()
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
                 ));
             }
         }catch(Exception e)
