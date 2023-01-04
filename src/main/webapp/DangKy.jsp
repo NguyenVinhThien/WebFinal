@@ -56,7 +56,7 @@
       if (data === true) {
     $('#frmRegister').off('submit').submit();
     } else {
-      alert('Username is not available.');
+      alert('Tên tài khoản đã được sử dụng');
     }
     });
   });

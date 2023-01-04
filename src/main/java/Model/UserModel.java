@@ -21,12 +21,11 @@ public class UserModel {
                 return null;
             }
 
-            User user = new User();
-            user.setUsername(rs.getString("username"));
-            user.setPassword(rs.getString("password"));
-            user.setName(rs.getString("name"));
+            //            user.setUsername(rs.getString("username"));
+//            user.setPassword(rs.getString("password"));
+//            user.setName(rs.getString("name"));
             // set other fields from ResultSet
-            return user;
+            return new User();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

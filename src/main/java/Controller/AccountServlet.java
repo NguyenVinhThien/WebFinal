@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -39,28 +40,18 @@ public class AccountServlet extends HttpServlet {
                 break;
 
             case "/IsAvailable":
-//                String username = request.getParameter("user");
-//                User user = null;
-//                try {
-//                    user = UserModel.findByUsername(username);
-//                } catch (SQLException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                boolean isAvailable = (user == null);
-//                PrintWriter out = response.getWriter();
-//                response.setContentType("application/json");
-//                response.setCharacterEncoding("utf-8");
-//
-//                out.print(isAvailable);
-//                out.flush();
-//                break;
-                String username = ServletUtils.getStringParam(request, "username", "");
+                String username = request.getParameter("user");
+                User user = null;
+                user = UserModel.findByUsername(username);
+                boolean isAvailable = (user == null);
 
-                User user = UserModel.findByUsername(username);
-                boolean isTaken = user != null;
-
+                PrintWriter out = response.getWriter();
                 response.setContentType("application/json");
-                response.getWriter().write("{\"isTaken\": " + isTaken + "}");
+                response.setCharacterEncoding("utf-8");
+
+                out.print(isAvailable);
+                out.flush();
+                break;
             default:
                 ServletUtils.forward("/404.jsp", request, response);
                 break;
