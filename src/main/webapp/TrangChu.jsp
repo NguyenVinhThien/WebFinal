@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="listCat" scope="request" type="java.util.List<Model.Categories>"/>
 <jsp:useBean id="listSubCat" scope="request" type="java.util.List<Model.Categories>"/>
+<jsp:useBean id="listTags" scope="request" type="java.util.List<Model.Tags>"/>
 
 <%--<jsp:useBean id="article" scope="request" type="Model.Articles"/>--%>
 <html lang="en">
@@ -73,57 +74,23 @@
                     <a class="dropdown-item" href="#">${s.name}</a>
                   </c:if>
                 </c:forEach>
-<%--              <a class="dropdown-item" href="#">Tư liệu</a>--%>
-<%--              <a class="dropdown-item" href="#">Phân tích</a>--%>
             </div>
             </c:forEach>
-<%--            <div class="col-sm-6 col-lg-3">--%>
-<%--              <span class="nav-title">XÃ HỘI</span>--%>
-<%--              <a class="dropdown-item" href="#">Thời sự</a>--%>
-<%--              <a class="dropdown-item" href="#">Giao thông</a>--%>
-<%--            </div>--%>
-<%--            <div class="col-sm-6 col-lg-3">--%>
-<%--              <span class="nav-title">VĂN HÓA</span>--%>
-<%--              <a class="dropdown-item" href="#">Ẩm thực</a>--%>
-<%--              <a class="dropdown-item" href="#">Du lịch</a>--%>
-<%--            </div>--%>
-<%--            <div class="col-sm-6 col-lg-3">--%>
-<%--              <span class="nav-title">KINH DOANH</span>--%>
-<%--              <a class="dropdown-item" href="#">Doanh nghiệp</a>--%>
-<%--              <a class="dropdown-item" href="#">Mua sắm</a>--%>
-<%--            </div>--%>
-<%--            <div class="col-sm-6 col-lg-3">--%>
-<%--              <span class="nav-title">GIẢI TRÍ</span>--%>
-<%--              <a class="dropdown-item" href="#">Âm nhạc</a>--%>
-<%--              <a class="dropdown-item" href="#">Điện ảnh</a>--%>
-<%--            </div>--%>
-<%--            <div class="col-sm-6 col-lg-3">--%>
-<%--              <span class="nav-title">GIÁO DỤC</span>--%>
-<%--              <a class="dropdown-item" href="#">Tuyển sinh</a>--%>
-<%--              <a class="dropdown-item" href="#">Chân dung nhà giáo</a>--%>
-<%--            </div>--%>
-<%--            <div class="col-sm-6 col-lg-3">--%>
-<%--              <span class="nav-title">THỂ THAO</span>--%>
-<%--              <a class="dropdown-item" href="#">Bóng đá quốc tế</a>--%>
-<%--              <a class="dropdown-item" href="#">Bóng đá Việt Nam</a>--%>
-<%--            </div>--%>
-<%--            <div class="col-sm-6 col-lg-3">--%>
-<%--              <span class="nav-title">ĐỜI SỐNG</span>--%>
-<%--              <a class="dropdown-item" href="#">Dinh dưỡng- làm đẹp</a>--%>
-<%--              <a class="dropdown-item" href="#">Sức khỏe- Y tế</a>--%>
-<%--            </div>--%>
-<%--            <div class="col-sm-6 col-lg-3">--%>
-<%--              <span class="nav-title">PHÁP LUẬT</span>--%>
-<%--              <a class="dropdown-item" href="#">An ninh- Trật tự</a>--%>
-<%--              <a class="dropdown-item" href="#">Hình sự- Dân sự</a>--%>
-<%--            </div>--%>
-<%--            <div class="col-sm-6 col-lg-3">--%>
-<%--              <span class="nav-title">KHOA HỌC</span>--%>
-<%--            </div>--%>
+
           </div>
         </div>
       </li>
+      <li class="nav-item dropdown" style="position: relative">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLinkTag" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Tag
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownLinkTag">
 
+          <c:forEach items="${listTags}" var="t">
+            <a class="dropdown-item" href="#">${t.name}</a>
+          </c:forEach>
+        </div>
+      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
