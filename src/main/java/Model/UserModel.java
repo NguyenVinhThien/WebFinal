@@ -21,11 +21,21 @@ public class UserModel {
                 return null;
             }
 
-            //            user.setUsername(rs.getString("username"));
-//            user.setPassword(rs.getString("password"));
-//            user.setName(rs.getString("name"));
+            User user = new User();
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
+            user.setName(rs.getString("name"));
+            user.setSecond_name(rs.getString("second_name"));
+            user.setEmail(rs.getString("email"));
+            user.setOtp(rs.getString("otp"));
+            user.setIssue_at(rs.getTimestamp("issue_at").toLocalDateTime());
+            user.setDob(rs.getTimestamp("dob").toLocalDateTime());
+            user.setOtp_exp(rs.getTimestamp("otp_exp").toLocalDateTime());
+            user.setId(rs.getInt("id"));
+            user.setExpiration(rs.getInt("expiration"));
+            user.setRole(rs.getInt("role"));
             // set other fields from ResultSet
-            return new User();
+            return user;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
