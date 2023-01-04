@@ -1,7 +1,6 @@
 package Model;
 
 import Uti.ConnectDB;
-import beans.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

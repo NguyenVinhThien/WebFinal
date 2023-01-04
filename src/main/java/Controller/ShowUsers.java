@@ -2,7 +2,7 @@ package Controller;
 
 
 import DAO.DAOAdmin;
-import beans.User;
+import Model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
