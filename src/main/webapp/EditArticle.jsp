@@ -48,7 +48,7 @@
     <h1>New Article E-Newspaper</h1>
 </header>
 <main>
-    <form id="article-form" action="EditArticle?id=${article.id_article}" method="POST" novalidate="novalidate">
+    <form id="article-form" action="Edit?id=${article.id_article}" method="POST" novalidate="novalidate">
         <div class="row mt-2 mb-3">
             <div class="col-md-6">
                 <label class="labels">Chuyên mục</label>
@@ -78,7 +78,7 @@
                                                                                         class="form-control" value=""
                                                                                         placeholder="Tóm tắt"></div>
         </div>
-        <textarea id="editbai" style="width: 100%" name="content">${article.content}</textarea>
+        <textarea id="editor" style="width: 100%" name="content">${article.content}</textarea>
         <button type="submit">Đăng bài viết</button>
     </form>
 </main>

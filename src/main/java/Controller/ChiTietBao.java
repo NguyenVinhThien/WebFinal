@@ -9,15 +9,15 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "TimKiemServlet", value = "/TimKiemServlet")
-public class TimKiemServlet extends HttpServlet {
+@WebServlet(name = "ChiTietBao", value = "/ChiTietBao")
+public class ChiTietBao extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DAOAdmin d= new DAOAdmin();
-        int catId= Integer.parseInt(request.getParameter("catId"));
-        List <Articles> list= d.getArticleByCatId(catId);
-        request.setAttribute("listArticles", list);
-        RequestDispatcher rd= request.getRequestDispatcher("TimKiem.jsp");
+        int articleId= Integer.parseInt(request.getParameter("articleId"));
+        Articles art= d.getArticle(articleId);
+        request.setAttribute("articleDetails", art);
+        RequestDispatcher rd= request.getRequestDispatcher("ChiTietBao.jsp");
         rd.forward(request, response);
     }
 
