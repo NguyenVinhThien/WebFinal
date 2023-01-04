@@ -46,19 +46,19 @@
   $(`#frmRegister`).on('submit', function (e) {
     e.preventDefault();
 
-    // const username = $('#txtUsername').val();
+    const username = $('#txtUsername').val();
     // if (username.length === 0) {
     //   alert('Invalid username.');
     //   return;
     // }
 
-    <%--$.getJSON('${pageContext.request.contextPath}/Account/IsAvailable?user=' + username, function (data) {--%>
-    <%--  if (data === true) {--%>
+    $.getJSON('${pageContext.request.contextPath}/Account/IsAvailable?user=' + username, function (data) {
+      if (data === true) {
     $('#frmRegister').off('submit').submit();
-    // } else {
-    //   alert('Username is not available.');
-    // }
-    <%--});--%>
+    } else {
+      alert('Username is not available.');
+    }
+    });
   });
 
   $(`#txtDOB`).datetimepicker({
