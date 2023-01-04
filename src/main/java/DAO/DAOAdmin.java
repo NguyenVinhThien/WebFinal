@@ -1,6 +1,7 @@
 package DAO;
 
 
+import Model.Articles;
 import Model.Categories;
 import Model.Tags;
 import Uti.ConnectDB;
@@ -266,5 +267,54 @@ public class DAOAdmin {
             e.getMessage();
         }
         return name;
+    }
+
+    public Articles getArticle(int id)
+    {
+        Articles name = new Articles();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where id = ?");
+            ps.setInt(1,id);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                name = new Articles(rs.getInt(1),
+                                    rs.getString(2),
+                                    rs.getString(3),
+                                    rs.getInt(4),
+                                    rs.getString(5),
+                                    rs.getInt(6),
+                                    rs.getInt(7),
+                                    rs.getInt(8),
+                                    rs.getInt(9));
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return name;
+    }
+
+    public void editArticle(int id, String title, String content, String abstract_article)
+    {
+        String query="UPDATE articles\n"
+                + "SET content = ?, title = ?, abstract = ?\r\n"
+                + "WHERE id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setString(1,content);
+            ps.setString(2,title);
+            ps.setString(3,abstract_article);
+            ps.setInt(4,id);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
     }
 }
