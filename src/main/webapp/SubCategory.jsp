@@ -76,9 +76,6 @@
           <h6 class="collapse-header">Lựa chọn:</h6>
           <a class="collapse-item" href="Category.jsp">Thêm danh mục</a>
           <a class="collapse-item" href="ShowCategory">Danh sách danh mục chính</a>
-          <c:forEach items="${listP}" var="o">
-            <a class="collapse-item" href="ShowSubCategory?id=${o.id}">${o.name}</a>
-          </c:forEach>
         </div>
       </div>
     </li>
