@@ -97,12 +97,15 @@ public class Articles {
 
     }
 
-    public Articles(int id_article, String title, String publish_date, int views, String abstract_article, int categories_id, int premium, int writer_id, int status) {
+
+
+    public Articles(int id_article, String title, String publish_date, int views, String abstract_article,String content, int categories_id, int premium, int writer_id, int status) {
         super();
         this.id_article = id_article;
         this.title = title;
         this.publish_date = publish_date;
         this.views = views;
+        this.content = content;
         this.abstract_article = abstract_article;
         this.categories_id = categories_id;
         this.premium = premium;

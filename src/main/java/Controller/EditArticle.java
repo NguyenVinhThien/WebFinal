@@ -1,15 +1,14 @@
 package Controller;
 
-import java.io.IOException;
+import DAO.DAOAdmin;
+import Model.Articles;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-import DAO.DAOAdmin;
-import Model.Articles;
+import java.io.IOException;
 
 
 @WebServlet(name ="EditArticle",urlPatterns={"/EditArticle"})

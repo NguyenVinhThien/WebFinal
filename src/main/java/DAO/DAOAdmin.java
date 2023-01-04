@@ -285,10 +285,11 @@ public class DAOAdmin {
                                     rs.getString(3),
                                     rs.getInt(4),
                                     rs.getString(5),
-                                    rs.getInt(6),
+                                     rs.getString(6),
                                     rs.getInt(7),
                                     rs.getInt(8),
-                                    rs.getInt(9));
+                                    rs.getInt(9),
+                                    rs.getInt(10));
             }
         }catch(Exception e)
         {

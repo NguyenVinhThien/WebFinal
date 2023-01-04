@@ -1,14 +1,13 @@
 package Controller;
 
-import java.io.IOException;
+import DAO.DAOAdmin;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-import DAO.DAOAdmin;
+import java.io.IOException;
 
 /**
  * Servlet implementation class EditCategory
@@ -46,7 +45,7 @@ public class EditSubCategory extends HttpServlet {
             int pid = Integer.parseInt(parent_id);
             DAOAdmin d= new DAOAdmin();
             d.editSubCategory(i,name,pid);
-            response.sendRedirect("ShowSubCategory");
+            response.sendRedirect("ShowCategory");
         }catch(Exception e)
         {
             e.printStackTrace();

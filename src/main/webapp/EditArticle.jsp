@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Home
@@ -51,7 +52,7 @@
             <div class="col-md-6">
                 <label class="labels">Chuyên mục</label>
                 <select class="form-control" name="cate">
-                    <option value="" selected>${articles.id}</option>
+                    <option value="" selected></option>
                     <option value="1">Xã Hội</option>
                     <option value="2">Thế Giới</option>
                     <option value="3">Văn Hóa</option>
@@ -70,7 +71,7 @@
                                                                            placeholder="Nhãn"></div>
             <div class="col-md-12"><label class="labels">Tiêu đề</label><input type="text"
                                                                                name="title"
-                                                                               class="form-control" value=""
+                                                                               class="form-control" value="${article.title}"
                                                                                placeholder="Tiêu đề"></div>
             <div class="col-md-12"><label class="labels">Tóm tắt nội dung</label><input type="text"
                                                                                         name="Tom_tat"
