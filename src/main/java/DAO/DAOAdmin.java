@@ -5,6 +5,7 @@ import Model.Articles;
 import Model.Categories;
 import Model.Tags;
 import Uti.ConnectDB;
+import beans.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -317,5 +318,35 @@ public class DAOAdmin {
         {
             e.getStackTrace();
         }
+    }
+    public List<User> getAllUsers()
+    {
+        List<User> list = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users");
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                list.add(new User(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getTimestamp(5).toLocalDateTime(),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getString(8),
+                        rs.getTimestamp(9).toLocalDateTime(),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getTimestamp(12).toLocalDateTime()
+                ));
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return list;
     }
 }
