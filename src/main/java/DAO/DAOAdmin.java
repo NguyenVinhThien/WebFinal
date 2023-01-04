@@ -325,7 +325,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users where issue_at is null");
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {
@@ -348,5 +348,22 @@ public class DAOAdmin {
             e.getMessage();
         }
         return list;
+    }
+    public void UpdateUser(int id)
+    {
+        String query="UPDATE  users\n"
+                + "SET issue_at = CURDATE() , expiration = expiration + 7\r\n"
+                + "WHERE id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setInt(1,id);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
     }
 }
