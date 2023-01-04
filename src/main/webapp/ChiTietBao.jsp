@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:useBean id="articleDetails" scope="request" type="Model.Articles"/>
 <html lang="en">
 
 <head>
@@ -224,38 +227,38 @@
 <!-- ##### Header Area End ##### -->
 
 <!-- ##### Breaking News Area Start ##### -->
-<section class="breaking-news-area clearfix">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <!-- Breaking News Widget -->
-        <div class="breaking-news-ticker d-flex flex-wrap align-items-center">
-          <div class="title">
-            <h6>Trending</h6>
-          </div>
-          <div id="breakingNewsTicker" class="ticker">
-            <ul>
-              <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum.</a></li>
-              <li><a href="#">Welcome to Colorlib Family.</a></li>
-              <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<%--<section class="breaking-news-area clearfix">--%>
+<%--  <div class="container-fluid">--%>
+<%--    <div class="row">--%>
+<%--      <div class="col-12">--%>
+<%--        <!-- Breaking News Widget -->--%>
+<%--        <div class="breaking-news-ticker d-flex flex-wrap align-items-center">--%>
+<%--          <div class="title">--%>
+<%--            <h6>Trending</h6>--%>
+<%--          </div>--%>
+<%--          <div id="breakingNewsTicker" class="ticker">--%>
+<%--            <ul>--%>
+<%--              <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum.</a></li>--%>
+<%--              <li><a href="#">Welcome to Colorlib Family.</a></li>--%>
+<%--              <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque</a></li>--%>
+<%--            </ul>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--    </div>--%>
+<%--  </div>--%>
+<%--</section>--%>
 <!-- ##### Breaking News Area End ##### -->
 
 <!-- ##### Post Details Title Area Start ##### -->
-<div class="post-details-title-area bg-overlay clearfix" >
+<div class="post-details-title-area bg-overlay clearfix" style="height: 250px; margin-top: 10px">
   <div class="container-fluid h-100">
     <div class="row h-100 align-items-center">
       <div class="col-12 col-lg-8">
         <!-- Post Content -->
         <div class="post-content">
-          <p class="tag"><span>Local News</span></p>
-          <p class="post-title">Live out your Mario Kart dreams on the streets of Tokyo</p>
+
+          <p class="post-title">${articleDetails.title}</p>
           <div class="d-flex align-items-center">
             <span class="post-date mr-30">June 20, 2018</span>
             <span class="post-date">By Michael Smith</span>
@@ -274,13 +277,8 @@
       <!-- Post Details Content Area -->
       <div class="col-12 col-lg-8">
         <div class="post-details-content mb-100">
-          <p>Nullam lacinia ex eleifend orci porttitor, suscipit interdum augue condimentum. Etiam pretium turpis eget nibh laoreet iaculis. Proin ac urna at lectus volutpat lobortis. Vestibulum venenatis iaculis diam vitae lobortis. Donec tincidunt viverra elit, sed consectetur est pr etium ac.</p>
-          <p>Mauris nec mauris tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elit nisl, faucibus eu tempus vel, imperdiet at felis. Sed sed nibh et augue feugiat pharetra. Praesent ultrices nec tortor et gravida. Sed id rhoncus est. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur vitae luctus turpis. Maecenas diam ex, mattis vel dolor ut, fermentum consectetur ex.</p>
-          <img class="mb-30" src="img/bg-img/31.jpg" alt="">
-          <p>Nullam lacinia ex eleifend orci porttitor, suscipit interdum augue condimentum. Etiam pretium turpis eget nibh laoreet iaculis. Proin ac urna at lectus volutpat lobortis. Vestibulum venenatis iaculis diam vitae lobortis. Donec tincidunt viverra elit, sed consectetur est pr etium ac.</p>
-          <p>Mauris nec mauris tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elit nisl, faucibus eu tempus vel, imperdiet at felis. Sed sed nibh et augue feugiat pharetra. Praesent ultrices nec tortor et gravida. Sed id rhoncus est. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur vitae luctus turpis. Maecenas diam ex, mattis vel dolor ut, fermentum consectetur ex. </p>
-          <h5 class="mb-30">A good news after all</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elit nisl, faucibus eu tempus vel, imperdiet at felis. Sed sed nibh et augue feugiat pharetra. Praesent ultrices nec tortor et gravida. Sed id rhoncus est. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur vitae luctus turpis. Maecenas diam ex, mattis vel dolor ut, fermentum consectetur ex.</p>
+          <p>${articleDetails.content}</p>
+          <img class="mb-30" src="https://file.hstatic.net/200000201143/file/phong-cach-retro-vintage__1__fca23f5efab949f6a79fee9ac237c9f9_grande.jpg" alt="">
         </div>
 
         <!-- Comment Area Start -->
@@ -401,7 +399,7 @@
 
           <!-- Latest News Widget -->
           <div class="single-widget-area news-widget mb-30">
-            <h4>Latest News</h4>
+            <h4>Tin mới</h4>
 
             <!-- Single News Area -->
             <div class="single-blog-post d-flex style-4 mb-30">
@@ -478,36 +476,35 @@
           <div class="single-widget-area">
 
             <!-- Single News Area -->
-            <div class="single-blog-post style-2 mb-5">
-              <!-- Blog Thumbnail -->
-              <div class="blog-thumbnail">
-                <a href="#"><img src="img/bg-img/14.jpg" alt=""></a>
-              </div>
+<%--            <div class="single-blog-post style-2 mb-5">--%>
+<%--              <!-- Blog Thumbnail -->--%>
+<%--              <div class="blog-thumbnail">--%>
+<%--                <a href="#"><img src="img/bg-img/14.jpg" alt=""></a>--%>
+<%--              </div>--%>
 
-              <!-- Blog Content -->
-              <div class="blog-content">
-                <span class="post-date">June 20, 2018</span>
-                <a href="#" class="post-title">Elon Musk: Tesla worker admitted to sabotage</a>
-                <a href="#" class="post-author">By Michael Smith</a>
-              </div>
-            </div>
+<%--              <!-- Blog Content -->--%>
+<%--              <div class="blog-content">--%>
+<%--                <span class="post-date">June 20, 2018</span>--%>
+<%--                <a href="#" class="post-title">Elon Musk: Tesla worker admitted to sabotage</a>--%>
+<%--                <a href="#" class="post-author">By Michael Smith</a>--%>
+<%--              </div>--%>
+<%--            </div>--%>
 
             <!-- Single News Area -->
-            <div class="single-blog-post style-2 mb-5">
-              <!-- Blog Thumbnail -->
-              <div class="blog-thumbnail">
-                <a href="#"><img src="img/bg-img/15.jpg" alt=""></a>
-              </div>
+<%--            <div class="single-blog-post style-2 mb-5">--%>
+<%--              <!-- Blog Thumbnail -->--%>
+<%--              <div class="blog-thumbnail">--%>
+<%--                <a href="#"><img src="img/bg-img/15.jpg" alt=""></a>--%>
+<%--              </div>--%>
 
-              <!-- Blog Content -->
-              <div class="blog-content">
-                <span class="post-date">June 20, 2018</span>
-                <a href="#" class="post-title">Rachel Sm ith breaks down while discussing border crisis</a>
-                <a href="#" class="post-author">By Michael Smith</a>
-              </div>
-            </div>
+<%--              <!-- Blog Content -->--%>
+<%--              <div class="blog-content">--%>
+<%--                <span class="post-date">June 20, 2018</span>--%>
+<%--                <a href="#" class="post-title">Rachel Sm ith breaks down while discussing border crisis</a>--%>
+<%--                <a href="#" class="post-author">By Michael Smith</a>--%>
+<%--              </div>--%>
+<%--            </div>--%>
           </div>
-
         </div>
       </div>
     </div>

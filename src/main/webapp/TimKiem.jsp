@@ -149,7 +149,7 @@
 
                                                             <td>
                                                                 <div class="widget-26-job-title">
-                                                                    <a href="#">${lA.title}</a>
+                                                                    <a href="${pageContext.request.contextPath}/ChiTietBao?articleId=${lA.id_article}">${lA.title}</a>
                                                                     <p class="m-0"><a href="#" class="employer-name">${lA.writer_id}</a> <span class="text-muted time">ngày đăng </span></p>
                                                                 </div>
                                                             </td>

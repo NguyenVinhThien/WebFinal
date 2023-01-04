@@ -68,7 +68,9 @@
           <div class="row" id="dropContent">
             <c:forEach items="${listCat}" var="l">
             <div class="col-sm-6 col-lg-3 groupCatalog">
-              <span class="nav-title">${l.name}</span>
+                <a href="${pageContext.request.contextPath}/TimKiemServlet?catId=${l.id}">
+                    <span class="nav-title">${l.name}</span>
+                </a>
                 <c:forEach items="${listSubCat}" var="s">
                   <c:if test="${l.id eq s.paren_ID}">
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/TimKiemServlet?catId=${s.id}">${s.name}</a>
