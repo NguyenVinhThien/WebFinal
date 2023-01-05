@@ -7,6 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class UserModel {
     public static User findByUsername(String username) {
@@ -16,25 +19,45 @@ public class UserModel {
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
 
-            if (!rs.next()) {
+            List<User> list = new ArrayList<>();
+            while (rs.next()) {
+//                User user = new User();
+//                // set user fields from ResultSet
+//                user.setUsername(rs.getString("username"));
+//                user.setPassword(rs.getString("password"));
+//                user.setName(rs.getString("name"));
+//                user.setSecond_name(rs.getString("second_name"));
+//                user.setEmail(rs.getString("email"));
+//                user.setOtp(rs.getString("otp"));
+//                user.setIssue_at(rs.getTimestamp("issue_at").toLocalDateTime());
+//                user.setDob(rs.getTimestamp("dob").toLocalDateTime());
+//                user.setOtp_exp(rs.getTimestamp("otp_exp").toLocalDateTime());
+//                user.setId(rs.getInt("id"));
+//                user.setExpiration(rs.getInt("expiration"));
+//                user.setRole(rs.getInt("role"));
+//
+//                list.add(user);
+                list.add(new User(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        null,
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        null,
+                        rs.getTimestamp(9).toLocalDateTime(),
+                        rs.getString(10),
+                        null,
+                        null
+                ));
+            }
+
+            if (list.size() == 0) {
                 return null;
             }
 
-            User user = new User();
-            user.setUsername(rs.getString("username"));
-            user.setPassword(rs.getString("password"));
-            user.setName(rs.getString("name"));
-            user.setSecond_name(rs.getString("second_name"));
-            user.setEmail(rs.getString("email"));
-            user.setOtp(rs.getString("otp"));
-            user.setIssue_at(rs.getTimestamp("issue_at").toLocalDateTime());
-            user.setDob(rs.getTimestamp("dob").toLocalDateTime());
-            user.setOtp_exp(rs.getTimestamp("otp_exp").toLocalDateTime());
-            user.setId(rs.getInt("id"));
-            user.setExpiration(rs.getInt("expiration"));
-            user.setRole(rs.getInt("role"));
-            // set other fields from ResultSet
-            return user;
+
+            return list.get(0);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
