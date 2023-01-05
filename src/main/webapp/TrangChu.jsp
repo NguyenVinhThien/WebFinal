@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: USER
@@ -7,9 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:useBean id="listCat" scope="request" type="java.util.List<Model.Categories>"/>
 <jsp:useBean id="listSubCat" scope="request" type="java.util.List<Model.Categories>"/>
 <jsp:useBean id="listTags" scope="request" type="java.util.List<Model.Tags>"/>
+<jsp:useBean id="listTopHotArt" scope="request" type="java.util.List<Model.Articles>"/>
+
 
 <%--<jsp:useBean id="article" scope="request" type="Model.Articles"/>--%>
 <html lang="en">
@@ -104,30 +107,40 @@
 <div class="noibat">
   <div class="largeTitle">Tin nổi bật</div>
   <div class="groupCard">
-    <div class="cardInfo">
-      <img class="cardImg" src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">${article}</h5>
-        <span class="cardCategory">Kinh doanh</span>
-        <p class="card-text"><small class="text-muted">Ngày đăng: 29/12/2022</small></p>
+    <c:forEach items="${listTopHotArt}" var="lh">
+      <div class="cardInfo">
+        <img class="cardImg" src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">${lh.title}</h5>
+          <span class="cardCategory">${lh.categories_id}</span>
+          <p class="card-text"><small class="text-muted">Ngày đăng: ${lh.writer_id}</small></p>
+        </div>
       </div>
-    </div>
-    <div class="cardInfo">
-      <img class="cardImg" src="https://static-images.vnncdn.net/files/publish/2022/12/25/1-2-969.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Đồi cỏ cháy mênh mông đẹp như phim, thu hút du khách tại Cao Bằng</h5>
-        <span class="cardCategory">Du lịch</span>
-        <p class="card-text"><small class="text-muted">Ngày đăng: 29/12/2022</small></p>
-      </div>
-    </div>
-    <div class="cardInfo">
-      <img class="cardImg" src="https://petrotimes-cdn.mastercms.vn/stores/news_dataimages/lethutrang/122022/20/10/hc-2320221220100248.5227520.jpg?rt=20221220100438" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Hai điểm “săn mây” tuyệt đẹp ở Hòa Bình</h5>
-        <span class="cardCategory">Du lịch</span>
-        <p class="card-text"><small class="text-muted">Ngày đăng: 29/12/2022</small></p>
-      </div>
-    </div>
+    </c:forEach>
+<%--    <div class="cardInfo">--%>
+<%--      <img class="cardImg" src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="Card image cap">--%>
+<%--      <div class="card-body">--%>
+<%--        <h5 class="card-title">${article}</h5>--%>
+<%--        <span class="cardCategory">Kinh doanh</span>--%>
+<%--        <p class="card-text"><small class="text-muted">Ngày đăng: 29/12/2022</small></p>--%>
+<%--      </div>--%>
+<%--    </div>--%>
+<%--    <div class="cardInfo">--%>
+<%--      <img class="cardImg" src="https://static-images.vnncdn.net/files/publish/2022/12/25/1-2-969.jpg" alt="Card image cap">--%>
+<%--      <div class="card-body">--%>
+<%--        <h5 class="card-title">Đồi cỏ cháy mênh mông đẹp như phim, thu hút du khách tại Cao Bằng</h5>--%>
+<%--        <span class="cardCategory">Du lịch</span>--%>
+<%--        <p class="card-text"><small class="text-muted">Ngày đăng: 29/12/2022</small></p>--%>
+<%--      </div>--%>
+<%--    </div>--%>
+<%--    <div class="cardInfo">--%>
+<%--      <img class="cardImg" src="https://petrotimes-cdn.mastercms.vn/stores/news_dataimages/lethutrang/122022/20/10/hc-2320221220100248.5227520.jpg?rt=20221220100438" alt="Card image cap">--%>
+<%--      <div class="card-body">--%>
+<%--        <h5 class="card-title">Hai điểm “săn mây” tuyệt đẹp ở Hòa Bình</h5>--%>
+<%--        <span class="cardCategory">Du lịch</span>--%>
+<%--        <p class="card-text"><small class="text-muted">Ngày đăng: 29/12/2022</small></p>--%>
+<%--      </div>--%>
+<%--    </div>--%>
   </div>
 </div>
 <div class="new-views">

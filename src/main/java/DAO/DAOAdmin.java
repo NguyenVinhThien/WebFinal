@@ -85,6 +85,33 @@ public class DAOAdmin {
         }
         return list;
     }
+    public List<Articles> getTopHotArticle()
+    {
+        List<Articles> list = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("select * from articles where yearweek(publish_date, 1)= yearweek(curdate(), 1) order by views desc limit 3");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                list.add(new Articles(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getInt(10)));
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return list;
+    }
     public void deleteCategory(String id)
     {
         String query="DELETE FROM categories WHERE id= ? ";

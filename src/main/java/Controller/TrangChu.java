@@ -16,15 +16,19 @@ public class TrangChu extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//        Articles art= new Articles(1, "Nguyen Vinh Thine", "22/11", 3, "dh spk", 4, 0, 2, 0);
-//        request.setAttribute("article", art);
         DAOAdmin d= new DAOAdmin();
         List<Categories> listMainCat= d.getAllCategories();
         request.setAttribute("listCat", listMainCat);
+
         List<Categories> listSubCat= d.getSubCategories();
         request.setAttribute("listSubCat", listSubCat);
+
         List<Tags> listTags= d.getAllTag();
         request.setAttribute("listTags", listTags);
+
+        List<Articles> listTopHotArt= d.getTopHotArticle();
+        request.setAttribute("listTopHotArt", listTopHotArt);
+
         RequestDispatcher rd= request.getRequestDispatcher("TrangChu.jsp");
         rd.forward(request, response);
     }
