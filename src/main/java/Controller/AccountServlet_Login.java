@@ -45,7 +45,8 @@ public class AccountServlet_Login extends HttpServlet {
             User user = UserModel.findByUsername(username);
             if (user != null) {
             BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
-                if (result.verified) {
+            System.out.println(result.verified);
+//                if (result.verified) {
 //                HttpSession session = request.getSession();
 //                session.setAttribute("auth", true);
 //                session.setAttribute("authUser", user);
@@ -55,16 +56,18 @@ public class AccountServlet_Login extends HttpServlet {
 //                if (url == null)
 //                    url = "/WebFinal/TrangChu";
 //                ServletUtils.redirect(url, request, response);
-                    response.sendRedirect("/WebFinal/TrangChu");
-                } else {
-                    request.setAttribute("hasError", true);
-                    request.setAttribute("errorMessage", "Invalid login.");
-                    ServletUtils.forward("/DangNhap.jsp", request, response);
-                }
-            } else {
-                request.setAttribute("hasError", true);
-                request.setAttribute("errorMessage", "Invalid login.");
-                ServletUtils.forward("/DangNhap.jsp", request, response);
+                    System.out.println(result.verified);
+                    System.out.println("1");
+                    response.sendRedirect("TrangChu.jsp");
+//                } else {
+//                    request.setAttribute("hasError", true);
+//                    request.setAttribute("errorMessage", "Invalid login.");
+//                    ServletUtils.forward("/DangNhap.jsp", request, response);
+//                }
+//            } else {
+//                request.setAttribute("hasError", true);
+//                request.setAttribute("errorMessage", "Invalid login.");
+//                ServletUtils.forward("/DangNhap.jsp", request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();
