@@ -97,8 +97,10 @@ public class AccountServlet extends HttpServlet {
             String password = request.getParameter("password");
             User user = UserModel.findByUsername(username);
             if (user != null) {
-                CharSequence charSeq = user.getPassword();
-                BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), charSeq);
+//                CharSequence charSeq = user.getPassword();
+//                BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), charSeq);
+                BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword().toCharArray());
+
                 if (result.verified) {
                     response.sendRedirect("/WebFinal/TrangChu");
                 } else {
