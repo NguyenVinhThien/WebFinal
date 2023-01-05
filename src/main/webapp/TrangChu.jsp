@@ -108,12 +108,17 @@
   <div class="largeTitle">Tin nổi bật</div>
   <div class="groupCard">
     <c:forEach items="${listTopHotArt}" var="lh">
+
       <div class="cardInfo">
         <img class="cardImg" src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">${lh.title}</h5>
-          <span class="cardCategory">${lh.categories_id}</span>
-          <p class="card-text"><small class="text-muted">Ngày đăng: ${lh.writer_id}</small></p>
+          <c:forEach items="${listCat}" var="lc">
+            <c:if test="${lh.categories_id eq lc.id}">
+              <span class="cardCategory">${lc.name}</span>
+            </c:if>
+          </c:forEach>
+          <p class="card-text"><small class="text-muted">Ngày đăng: ${lh.publish_date}</small></p>
         </div>
       </div>
     </c:forEach>
