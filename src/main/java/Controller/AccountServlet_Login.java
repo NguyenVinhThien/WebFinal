@@ -1,9 +1,9 @@
 package Controller;
 
-import Model.User;
-import DAO.UserModel;
+import Model.UserModel;
 import Uti.ServletUtils;
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import Model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +16,6 @@ import java.io.IOException;
 @WebServlet(name = "AccountServlet_Login", urlPatterns = "/Account_Login/*")
 public class AccountServlet_Login extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private User user;
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,21 +44,33 @@ public class AccountServlet_Login extends HttpServlet {
             String password = request.getParameter("password");
             User user = UserModel.findByUsername(username);
             if (user != null) {
-                BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
-                if (result.verified) {
-                    response.sendRedirect("/WebFinal/TrangChu");
-                } else {
-                    request.setAttribute("hasError", true);
-                    request.setAttribute("errorMessage", "Invalid login.");
-                    ServletUtils.forward("/DangNhap.jsp", request, response);
-                }
-            } else {
-                request.setAttribute("hasError", true);
-                request.setAttribute("errorMessage", "Invalid login.");
-                ServletUtils.forward("/DangNhap.jsp", request, response);
+            BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
+            System.out.println(result.verified);
+//                if (result.verified) {
+//                HttpSession session = request.getSession();
+//                session.setAttribute("auth", true);
+//                session.setAttribute("authUser", user);
+//                // response.addCookie(new Cookie("ecWebAppAuthUser", user.getUsername()));
+//
+//                String url = (String) session.getAttribute("retUrl");
+//                if (url == null)
+//                    url = "/WebFinal/TrangChu";
+//                ServletUtils.redirect(url, request, response);
+                    System.out.println(result.verified);
+                    System.out.println("1");
+                    response.sendRedirect("TrangChu.jsp");
+//                } else {
+//                    request.setAttribute("hasError", true);
+//                    request.setAttribute("errorMessage", "Invalid login.");
+//                    ServletUtils.forward("/DangNhap.jsp", request, response);
+//                }
+//            } else {
+//                request.setAttribute("hasError", true);
+//                request.setAttribute("errorMessage", "Invalid login.");
+//                ServletUtils.forward("/DangNhap.jsp", request, response);
             }
         } catch (Exception e) {
-            throw new ServletException(e);
+            e.printStackTrace();
         }
     }
 }
