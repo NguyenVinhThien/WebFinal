@@ -10,6 +10,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "TrangChu", value = "/TrangChu")
 public class TrangChu extends HttpServlet {
@@ -26,7 +27,7 @@ public class TrangChu extends HttpServlet {
         List<Tags> listTags= d.getAllTag();
         request.setAttribute("listTags", listTags);
 
-        List<Articles> listTopHotArt= d.getTopHotArticle();
+        Map<Articles,String> listTopHotArt= d.getTopHotArticle();
         request.setAttribute("listTopHotArt", listTopHotArt);
 
         RequestDispatcher rd= request.getRequestDispatcher("TrangChu.jsp");

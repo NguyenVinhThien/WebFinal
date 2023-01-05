@@ -11,7 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DAOAdmin {
     public List<Categories> getAllCategories()
@@ -85,17 +87,18 @@ public class DAOAdmin {
         }
         return list;
     }
-    public List<Articles> getTopHotArticle()
+    public Map<Articles,String> getTopHotArticle()
     {
-        List<Articles> list = new ArrayList<>();
+        Map<Articles,String> list = new HashMap<>();
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select * from articles where yearweek(publish_date, 1)= yearweek(curdate(), 1) order by views desc limit 3");
+            PreparedStatement ps = con.prepareStatement("select * from (select a.*, b.name  from articles a INNER JOIN categories b on a.categories_id = b.id) as c where yearweek(publish_date, 1)= yearweek(curdate(), 1) order by views desc limit 3");
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
-                list.add(new Articles(rs.getInt(1),
+                list.put(new Articles(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
                         rs.getInt(4),
@@ -104,7 +107,7 @@ public class DAOAdmin {
                         rs.getInt(7),
                         rs.getInt(8),
                         rs.getInt(9),
-                        rs.getInt(10)));
+                        rs.getInt(10)),rs.getString(11));
             }
         }catch(Exception e)
         {
