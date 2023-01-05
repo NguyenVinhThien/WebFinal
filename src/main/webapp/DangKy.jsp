@@ -18,7 +18,7 @@
 <body>
 <div class="form-container">
   <h1>Đăng Ký</h1>
-  <form action="AccountServlet" method="POST" id="frmRegister" onsubmit="return checkPassword();">
+  <form action="" method="POST" id="frmRegister" onsubmit="return checkPassword();">
     <label for="txtUsername">Username</label>
     <input type="text" id="txtUsername" name="username" placeholder="Nhập tài khoản" required>
     <label for="txtName">Họ và Tên</label>

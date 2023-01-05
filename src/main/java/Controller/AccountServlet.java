@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.UserModel;
+import DAO.UserModel;
 import Uti.ServletUtils;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import Model.User;
@@ -18,25 +18,16 @@ import java.time.format.DateTimeFormatter;
 
 @WebServlet(name = "AccountServlet", urlPatterns = "/Account/*")
 public class AccountServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-
-    public AccountServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
         switch (path) {
             case "/DangKy":
                 ServletUtils.forward("/DangKy.jsp", request, response);
+                break;
+
+            case "/DangNhap":
+                ServletUtils.forward("/DangNhap.jsp", request, response);
                 break;
 
             case "/IsAvailable":
@@ -56,13 +47,30 @@ public class AccountServlet extends HttpServlet {
                 ServletUtils.forward("/404.jsp", request, response);
                 break;
         }
-////        // TODO Auto-generated method stub
-////        response.getWriter().append("Served at: ").append(request.getContextPath());
-//        ServletUtils.forward("/DangKy.jsp", request, response);
+    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String path = request.getPathInfo();
+        switch (path) {
+            case "/DangKy":
+                registerUser(request, response);
+                break;
+
+            case "/DangNhap":
+                login(request, response);
+                break;
+
+//            case "/Logout":
+//                logout(request, response);
+//                break;
+
+            default:
+                ServletUtils.forward("/404.jsp", request, response);
+                break;
+        }
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
+    private void registerUser(HttpServletRequest request, HttpServletResponse response){
         try {
             request.setCharacterEncoding("UTF-8");
             String rawpwd = request.getParameter("rawpwd");
@@ -78,9 +86,33 @@ public class AccountServlet extends HttpServlet {
 
             UserModel c = new UserModel();
             c.addUser(username, bcryptHashString, name, dob, email);
-            response.sendRedirect("/WebFinal/Account_Login/DangNhap");
+            response.sendRedirect("/WebFinal/Account/DangNhap");
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        try {
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            User user = UserModel.findByUsername(username);
+            if (user != null) {
+                CharSequence charSeq = user.getPassword();
+                BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), charSeq);
+                if (result.verified) {
+                    response.sendRedirect("/WebFinal/TrangChu");
+                } else {
+                    request.setAttribute("hasError", true);
+                    request.setAttribute("errorMessage", "Invalid login.");
+                    ServletUtils.forward("/DangNhap.jsp", request, response);
+                }
+            } else {
+                request.setAttribute("hasError", true);
+                request.setAttribute("errorMessage", "Invalid login.");
+                ServletUtils.forward("/DangNhap.jsp", request, response);
+            }
+        } catch (Exception e) {
+            throw new ServletException(e);
         }
     }
 }

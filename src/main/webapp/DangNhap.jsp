@@ -28,7 +28,7 @@
             </button>
         </div>
     </c:if>
-    <form action="AccountServlet_Login" method="POST" id="frmLogin">
+    <form action="" method="POST" id="frmLogin">
         <div class="form-group">
             <label for="txtUsername">Tài khoản</label>
             <input type="text" id="txtUsername" name="username" placeholder="Nhập tài khoản" required>
