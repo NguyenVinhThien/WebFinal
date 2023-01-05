@@ -118,6 +118,7 @@
               <span class="cardCategory">${lc.name}</span>
             </c:if>
           </c:forEach>
+
           <p class="card-text"><small class="text-muted">Ngày đăng: ${lh.publish_date}</small></p>
         </div>
       </div>
