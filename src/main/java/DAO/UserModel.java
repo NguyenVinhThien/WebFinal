@@ -1,5 +1,6 @@
-package Model;
+package DAO;
 
+import Model.User;
 import Uti.ConnectDB;
 
 import java.sql.Connection;
@@ -21,22 +22,6 @@ public class UserModel {
 
             List<User> list = new ArrayList<>();
             while (rs.next()) {
-//                User user = new User();
-//                // set user fields from ResultSet
-//                user.setUsername(rs.getString("username"));
-//                user.setPassword(rs.getString("password"));
-//                user.setName(rs.getString("name"));
-//                user.setSecond_name(rs.getString("second_name"));
-//                user.setEmail(rs.getString("email"));
-//                user.setOtp(rs.getString("otp"));
-//                user.setIssue_at(rs.getTimestamp("issue_at").toLocalDateTime());
-//                user.setDob(rs.getTimestamp("dob").toLocalDateTime());
-//                user.setOtp_exp(rs.getTimestamp("otp_exp").toLocalDateTime());
-//                user.setId(rs.getInt("id"));
-//                user.setExpiration(rs.getInt("expiration"));
-//                user.setRole(rs.getInt("role"));
-//
-//                list.add(user);
                 list.add(new User(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
@@ -51,12 +36,9 @@ public class UserModel {
                         null
                 ));
             }
-
             if (list.size() == 0) {
                 return null;
             }
-
-
             return list.get(0);
         } catch (SQLException e) {
             throw new RuntimeException(e);
