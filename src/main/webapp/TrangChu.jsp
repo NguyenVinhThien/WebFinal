@@ -106,7 +106,7 @@
       <c:choose>
         <c:when test="${auth}">
           <form id="frmLogout" method="post" action="${pageContext.request.contextPath}/Account/Logout"></form>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" style="position: relative">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownR" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Hi, <b>${authUser.name}!</b>
             </a>
