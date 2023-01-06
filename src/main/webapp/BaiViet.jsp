@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -45,7 +46,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.jsp">
+                <a class="nav-link" href="${pageContext.request.contextPath}/Admin/BaiViet">
                     <span>Quản lý bài viết</span></a>
             </li>
 
@@ -181,7 +182,7 @@
                     </ul>
 
                 </nav>
-    
+
                 <div class="container-fluid  ">
 
                     <div class="row ">
@@ -240,14 +241,22 @@
 
                         <!-- Page Heading -->
                         <h1 class="h3 mb-2 text-gray-800">Danh sách bài viết</h1>
-    
+
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
+                                        <thead >
                                             <tr>
+                                                <div class="result-sorting justify-content-end">
+                                                    <span>Phân loại:</span>
+                                                    <select class="form-control border-0 " id="exampleOption">
+                                                        <option value="1" class="text-primary">Tất cả</option>
+                                                        <option value="2" class="text-success">Draft</option>
+                                                        <option value="3" class="text-warning">Đã duyệt</option>
+                                                    </select>
+                                                </div>
                                                 <th>ID</th>
                                                 <th>Title</th>
                                                 <th>Content</th>
@@ -260,36 +269,42 @@
                                                 <th>Abstract</th>
                                             </tr>
                                         </thead>
+                                        <c:forEach items="${list}" var="t">
                                         <tbody>
                                             <tr>
-                                                <td>1</td>
-                                                <td> Sữa Ông Thọ
+                                                <td>${t.id_article}</td>
+                                                <td> ${t.title}
                                                     </td>
-                                                <td>Chó QD ngu</td>
-                                                <td>1</td>
-                                                <td>Yes</td>
-                                                <td>1</td>
-                                                <td>Draft</td>
-                                                <td>28/12/2022</td>
-                                                <td>100</td>
-                                                <td></td>
-                                                <td>    <a href="#" class="btn btn-success btn-icon-split" data-target="#addBaiviet" data-toggle="modal">
+                                                <td>${t.content}</td>
+                                                <td>${t.categories_id}</td>
+                                                <td>${t.premium}</td>
+                                                <td>${t.writer_id}</td>
+                                                <td>${t.status}</td>
+                                                <td>${t.publish_date}</td>
+                                                <td>${t.views}</td>
+                                                <td>${t.abstract_article}</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-sm-center">
+                                                    <a href="#" class="btn btn-success btn-icon-split" data-target="#addBaiviet" data-toggle="modal">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-check"></i>
                                                     </span>
                                                     <span class="text">Xuất bản</span>
-                                                </a></td>
-                                                <td><div class="d-flex justify-content-end">
-                                                    <a href="#" class="btn btn-danger btn-icon-split align-items-center" data-target="#deleteBaiviet" data-toggle="modal" >
+                                                </a>
+                                                    </div>
+                                                </td>
+                                                <td><div class="d-flex justify-content-sm-center">
+                                                    <a href="#" class="btn btn-danger btn-icon-split " data-target="#deleteBaiviet" data-toggle="modal" >
                                                         <span class="icon text-white-50 ">
                                                             <i class="fas fa-trash"></i>
                                                         </span>
-                                                        <span class="text">Delete</span>
+                                                        <span class="text">Xoá</span>
                                                     </a>
                                                 </div></td>
                                                 
                                             </tr>
                                         </tbody>
+                                        </c:forEach>
                                     </table>
                                 </div>
                             </div>
@@ -299,7 +314,7 @@
                     <!-- /.container-fluid -->
     
                  </div>
-                
+
                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">

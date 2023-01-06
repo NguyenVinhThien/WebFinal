@@ -472,4 +472,32 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
+    public List<Articles> getAllArticle()
+    {
+        List<Articles> list = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where status = 0 or status = 3");
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                list.add(new Articles(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getInt(10)))
+                ;
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return list;
+    }
 }
