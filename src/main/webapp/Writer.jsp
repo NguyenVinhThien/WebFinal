@@ -31,14 +31,11 @@
             <p>Dummy Heading</p>
 
             <li>
-                <a href="#">About</a>
+                <a href="#">Bài Viết Của Tôi</a>
             </li>
 
             <li>
-                <a href="#">Portfolio</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
+                <a href="DangBai">Đăng Bài</a>
             </li>
         </ul>
 
@@ -61,113 +58,136 @@
         <div class="container">
             <h2>Chi tiết bài viết</h2>
             <form>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="ArticleID">Mã bài viết</label>
-                        <input type="text" class="form-control" id="ArticleID" placeholder="Mã bài viết">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="authorID">Mã tác giả</label>
-                        <input type="text" class="form-control" id="authorID" placeholder="Mã tác giả">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputNameArticle">Tên bài viết</label>
-                    <input type="text" class="form-control" id="inputNameArticle" placeholder="Tên bài viết">
-                </div>
-                <div class="form-group">
-                    <label for="articleContent">Nội dung bài viết</label>
-                    <textarea class="form-control" id="articleContent" rows="3"></textarea>
-                </div>
+                <table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
+                    <thead>
+                    <tr role="row">
+                        <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">ID bài viết</th>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 485.891px;">Tên Bài Viết</th>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Chỉnh Sửa</th></tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${listP}" var="o">
+                    <tbody>
+                    <tr class="odd" role="row">
+                        <td class="sorting_1">${o.id}</td>
+                        <td><a>${o.name}</a></td>
+                        <td>
+                            <a href ="EditArticle?id=${o.id}" >
+                                <button class="btn btn-danger btn sweet-confirm destroy">Chỉnh sửa</button>
+                            </a>
+                        </td>
+                    </tbody>
+                    </c:forEach>
+                    </tbody>
+<%--                <div class="modal fade" id="duyetModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">--%>
+<%--                    <div class="modal-dialog modal-dialog-centered" role="document">--%>
+<%--                        <div class="modal-content">--%>
+<%--                            <div class="modal-header">--%>
+<%--                                <h5 class="modal-title" id="modelTitle">Duyệt bài viết</h5>--%>
+<%--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+<%--                                    <span aria-hidden="true">&times;</span>--%>
+<%--                                </button>--%>
+<%--                            </div>--%>
+<%--                            <div class="modal-body">--%>
 
-                <div class="modal fade" id="duyetModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modelTitle">Duyệt bài viết</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
+<%--                                <div class="card shadow mb-4">--%>
+<%--                                    <div class="card-body">--%>
+<%--                                        <div class="table-responsive">--%>
+<%--                                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">--%>
+<%--                                                <thead>--%>
+<%--                                                <tr>--%>
+<%--                                                    <th>ID</th>--%>
+<%--                                                    <th>Title</th>--%>
+<%--                                                    <th>Content</th>--%>
+<%--                                                    <th>Category_id</th>--%>
+<%--                                                    <th>Premium</th>--%>
+<%--                                                    <th>Writer_id</th>--%>
+<%--                                                    <th>Status</th>--%>
+<%--                                                    <th>Public Date</th>--%>
+<%--                                                    <th>Views</th>--%>
+<%--                                                    <th>Abstract</th>--%>
+<%--                                                </tr>--%>
+<%--                                                </thead>--%>
+<%--                                                <tbody>--%>
+<%--                                                <tr>--%>
+<%--                                                    <td>1</td>--%>
+<%--                                                    <td> Sữa Ông Thọ--%>
+<%--                                                    </td>--%>
+<%--                                                    <td>Chó QD ngu</td>--%>
+<%--                                                    <td>1</td>--%>
+<%--                                                    <td>Yes</td>--%>
+<%--                                                    <td>1</td>--%>
+<%--                                                    <td>Draft</td>--%>
+<%--                                                    <td>28/12/2022</td>--%>
+<%--                                                    <td>100</td>--%>
+<%--                                                    <td></td>--%>
+<%--                                                    <td>    <a href="#" class="btn btn-success btn-icon-split" data-target="#addBaiviet" data-toggle="modal">--%>
+<%--                                                    <span class="icon text-white-50">--%>
+<%--                                                        <i class="fas fa-check"></i>--%>
+<%--                                                    </span>--%>
+<%--                                                        <span class="text">Xuất bản</span>--%>
+<%--                                                    </a></td>--%>
+<%--                                                    <td><div class="d-flex justify-content-end">--%>
+<%--                                                        <a href="#" class="btn btn-danger btn-icon-split align-items-center" data-target="#deleteBaiviet" data-toggle="modal" >--%>
+<%--                                                        <span class="icon text-white-50 ">--%>
+<%--                                                            <i class="fas fa-trash"></i>--%>
+<%--                                                        </span>--%>
+<%--                                                            <span class="text">Delete</span>--%>
+<%--                                                        </a>--%>
+<%--                                                    </div></td>--%>
 
-                                <form>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="artID">Mã bài viết</label>
-                                            <input type="text" class="form-control" id="artID" placeholder="Mã bài viết">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="authID">Mã tác giả</label>
-                                            <input type="text" class="form-control" id="authID" placeholder="Mã tác giả">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="artName">Tên bài viết</label>
-                                        <input type="text" class="form-control" id="artName" placeholder="Tên bài viết">
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label for="inputState">Hashtag</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Choose...</option>
-                                                <option>...</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="inputZip">Ngày xuất bản</label>
-                                            <input type="date" class="form-control" id="inputZip">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>
-                                <button type="button" class="btn btn-success">Xác nhận</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="tuchoiModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Từ chối bài viết</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputEmail4">Mã bài viết</label>
-                                            <input type="text" class="form-control" id="inputEmail4" placeholder="Mã bài viết">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputPassword4">Mã tác giả</label>
-                                            <input type="text" class="form-control" id="inputPassword4" placeholder="Mã tác giả">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputAddress">Tên bài viết</label>
-                                        <input type="text" class="form-control" id="inputAddress" placeholder="Tên bài viết">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Ghi chú</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>
-                                <button type="button" class="btn btn-danger">Xác nhận</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tuchoiModalCenter">Từ chối</button>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#duyetModalCenter">Duyệt bài</button>
+<%--                                                </tr>--%>
+<%--                                                </tbody>--%>
+<%--                                            </table>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="modal-footer">--%>
+<%--                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>--%>
+<%--                                <button type="button" class="btn btn-success">Xác nhận</button>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div class="modal fade" id="tuchoiModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">--%>
+<%--                    <div class="modal-dialog modal-dialog-centered" role="document">--%>
+<%--                        <div class="modal-content">--%>
+<%--                            <div class="modal-header">--%>
+<%--                                <h5 class="modal-title" id="exampleModalLongTitle">Từ chối bài viết</h5>--%>
+<%--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+<%--                                    <span aria-hidden="true">&times;</span>--%>
+<%--                                </button>--%>
+<%--                            </div>--%>
+<%--                            <div class="modal-body">--%>
+<%--                                <form>--%>
+<%--                                    <div class="form-row">--%>
+<%--                                        <div class="form-group col-md-6">--%>
+<%--                                            <label for="inputEmail4">Mã bài viết</label>--%>
+<%--                                            <input type="text" class="form-control" id="inputEmail4" placeholder="Mã bài viết">--%>
+<%--                                        </div>--%>
+<%--                                        <div class="form-group col-md-6">--%>
+<%--                                            <label for="inputPassword4">Mã tác giả</label>--%>
+<%--                                            <input type="text" class="form-control" id="inputPassword4" placeholder="Mã tác giả">--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="form-group">--%>
+<%--                                        <label for="inputAddress">Tên bài viết</label>--%>
+<%--                                        <input type="text" class="form-control" id="inputAddress" placeholder="Tên bài viết">--%>
+<%--                                    </div>--%>
+<%--                                    <div class="form-group">--%>
+<%--                                        <label for="exampleFormControlTextarea1">Ghi chú</label>--%>
+<%--                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>--%>
+<%--                                    </div>--%>
+<%--                                </form>--%>
+<%--                            </div>--%>
+<%--                            <div class="modal-footer">--%>
+<%--                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>--%>
+<%--                                <button type="button" class="btn btn-danger">Xác nhận</button>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
 
             </form>
         </div>
