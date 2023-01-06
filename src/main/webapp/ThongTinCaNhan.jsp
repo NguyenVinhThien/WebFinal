@@ -40,31 +40,31 @@
           <div class="row mt-3">
             <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control"
                                                                                 placeholder="Tên tài khoản"
-                                                                                value="ducdt2192@gmail.com">
+                                                                                value="${username}">
             </div>
             <div class="col-md-12"><label class="labels">Họ và Tên</label><input type="text"
                                                                                  class="form-control"
                                                                                  placeholder="Họ và tên"
-                                                                                 value="Đỗ Trung Đức"></div>
+                                                                                 value=""></div>
             <div class="col-md-12"><label class="labels">Bút danh</label><input type="text"
                                                                                 class="form-control"
                                                                                 placeholder="Bút danh"
-                                                                                value="tdyuk11"></div>
+                                                                                value=""></div>
             <div class="col-md-12"><label class="labels">Ngày sinh</label><input type="date"
                                                                                  class="form-control"
 
                                                                                  value="" min="1922-12-31" max="2022-12-31"></div>
-            <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control"
+            <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control"
                                                                              placeholder="Nhập Email"
-                                                                             value="ducdt2192@gmail.com"></div>
+                                                                             value=""></div>
             <div class="col-md-12"><label class="labels">Mật khẩu</label><input type="password"
                                                                                 class="form-control"
-                                                                                value="ducspkt2020" readonly>
+                                                                                value="" readonly>
               <a href="#" class="btn_change_password">Đổi mật khẩu</a>
             </div>
           </div>
           <div class="mt-3 text-center">
-            <button class="btn btn-primary profile-button" type="button">Lưu Thay Đổi</button>
+            <button class="btn btn-primary profile-button" type="submit">Lưu Thay Đổi</button>
           </div>
         </div>
       </div>
