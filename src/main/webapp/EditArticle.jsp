@@ -53,7 +53,7 @@
             <div class="col-md-6">
                 <label class="labels">Chuyên mục</label>
                 <select class="form-control" name="cate">
-                    <option value=""> selected</option>
+                    <option value=""/>
                     <option value="1">Xã Hội</option>
                     <option value="2">Thế Giới</option>
                     <option value="3">Văn Hóa</option>

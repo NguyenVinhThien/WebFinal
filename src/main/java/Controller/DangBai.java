@@ -34,6 +34,9 @@ public class DangBai extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
 //        response.getWriter().append("Served at: ").append(request.getContextPath());
+        String id= request.getParameter("id");
+        int i= Integer.parseInt(id);
+        request.setAttribute("author", i);
         ServletUtils.forward("/DangArticle.jsp", request, response);
     }
 
@@ -47,13 +50,18 @@ public class DangBai extends HttpServlet {
             String abstract_article= request.getParameter("Tom_tat");
             String content= request.getParameter("content");
             int categories_id= Integer.parseInt(request.getParameter("cate"));
-            System.out.println(categories_id);
-            //int premium= Integer.parseInt(request.getParameter("premium"));
-            //int writer_id= Integer.parseInt(request.getParameter("writer_id"));
+            int premium;
+            try{
+                premium= Integer.parseInt(request.getParameter("qq"));
+            }
+            catch (NumberFormatException e){
+                premium = 0;
+            }
+            int writer_id= Integer.parseInt(request.getParameter("writer"));
+            System.out.println(premium);
             DAOAdmin d= new DAOAdmin();
-            d.addArticle(title,abstract_article,content);
-            RequestDispatcher rd= request.getRequestDispatcher("DangArticle.jsp");
-            rd.forward(request, response);
+            d.addArticle(title,abstract_article,content,categories_id,premium,writer_id);
+            response.sendRedirect("Writer.jsp");;
         }catch(Exception e)
         {
             e.printStackTrace();

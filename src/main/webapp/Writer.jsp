@@ -35,7 +35,7 @@
             </li>
 
             <li>
-                <a href="DangBai">Đăng Bài</a>
+                <a href="DangBai?id=${writer}">Đăng Bài</a>
             </li>
         </ul>
 

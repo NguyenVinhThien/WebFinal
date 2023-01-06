@@ -47,8 +47,8 @@
 </header>
 <main>
   <form id="article-form" action="DangBai" method="POST" novalidate="novalidate">
-    <div class="row mt-2 mb-3">
-      <div class="col-md-6">
+    <div class="row mb-2">
+      <div class="col-md-4 mt-3">
         <label class="labels">Chuyên mục</label>
         <select class="form-control" name="cate">
           <option value="1">Xã Hội</option>
@@ -63,21 +63,27 @@
           <option value="10">Pháp Luật</option>
         </select>
       </div>
-      <div class="col-md-6"><label class="labels">Nhãn</label><input type="text"
-                                                                     name="Nhan"
-                                                                     class="form-control" value=""
-                                                                     placeholder="Nhãn"></div>
-      <div class="col-md-12"><label class="labels">Tiêu đề</label><input type="text"
-                                                                         name="title"
-                                                                         class="form-control" value=""
-                                                                         placeholder="Tiêu đề"></div>
-      <div class="col-md-12"><label class="labels">Tóm tắt nội dung</label><input type="text"
-                                                                                  name="Tom_tat"
-                                                                                  class="form-control" value=""
-                                                                                  placeholder="Tóm tắt"></div>
+      <div class="col-md-4 mt-3"><label class="labels">Nhãn</label><input type="text"
+                                                                          name="Nhan"
+                                                                          class="form-control" value=""
+                                                                          placeholder="Nhãn"></div>
+      <div class="col-md-4 mt-3"><label class="labels">ID Author</label><input type="text"
+                                                                               name="writer"
+                                                                               class="form-control" value="${author}"
+                                                                               placeholder="ID_Author"></div>
+      <div class="col-md-12 mt-3"><label class="labels">Tiêu đề</label><input type="text"
+                                                                              name="title"
+                                                                              class="form-control" value=""
+                                                                              placeholder="Tiêu đề"></div>
+      <div class="col-md-12 mt-3"><label class="labels">Tóm tắt nội dung</label><input type="text"
+                                                                                       name="Tom_tat"
+                                                                                       class="form-control" value=""
+                                                                                       placeholder="Tóm tắt"></div>
+      <label class="col-md-12 mt-3">
+        <input id="checkPremium" type="checkbox"  name="qq" value="1">Premium</label>
     </div>
     <textarea id="editor" style="width: 100%" name="content">ABcd</textarea>
-    <button type="submit" href="EditArticle?id=3">Đăng bài viết</button>
+    <button type="submit">Đăng bài viết</button>
   </form>
 </main>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" crossorigin="anonymous"></script>
