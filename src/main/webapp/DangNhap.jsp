@@ -21,11 +21,8 @@
 <div class="login-container">
     <h1>Đăng nhập</h1>
     <c:if test="${hasError}">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div class="alert" role="alert">
             <strong>Login failed!</strong> ${errorMessage}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
         </div>
     </c:if>
     <form action="" method="POST" id="frmLogin">
