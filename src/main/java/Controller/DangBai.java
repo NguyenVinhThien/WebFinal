@@ -2,14 +2,12 @@ package Controller;
 
 import DAO.DAOAdmin;
 
-
-import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 
 /**
@@ -22,6 +20,7 @@ public class DangBai extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+
     public DangBai() {
         super();
         // TODO Auto-generated constructor stub
