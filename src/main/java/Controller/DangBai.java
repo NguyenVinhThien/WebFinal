@@ -1,7 +1,9 @@
 package Controller;
 
 import DAO.DAOAdmin;
+import Uti.ServletUtils;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +34,7 @@ public class DangBai extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
 //        response.getWriter().append("Served at: ").append(request.getContextPath());
-        response.getWriter().append("Served at: ").append(request.getContextPath());
+        ServletUtils.forward("/DangArticle.jsp", request, response);
     }
 
     /**
