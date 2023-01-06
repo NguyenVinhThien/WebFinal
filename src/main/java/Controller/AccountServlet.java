@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -60,9 +61,9 @@ public class AccountServlet extends HttpServlet {
                 login(request, response);
                 break;
 
-//            case "/Logout":
-//                logout(request, response);
-//                break;
+            case "/Logout":
+                logout(request, response);
+                break;
 
             default:
                 ServletUtils.forward("/404.jsp", request, response);
@@ -99,7 +100,14 @@ public class AccountServlet extends HttpServlet {
             if (user != null) {
                 BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword().toCharArray());
                 if (result.verified) {
-                    response.sendRedirect("/WebFinal/TrangChu");
+                    HttpSession session = request.getSession();
+                    session.setAttribute("auth", true);
+                    session.setAttribute("authUser", user);
+                    String url = (String) session.getAttribute("retUrl");
+                    if (url == null)
+                        url = "/TrangChu";
+                    ServletUtils.redirect(url, request, response);
+//                    response.sendRedirect("/WebFinal/TrangChu");
                 } else {
                     request.setAttribute("hasError", true);
                     request.setAttribute("errorMessage", "Invalid login.");
@@ -113,5 +121,15 @@ public class AccountServlet extends HttpServlet {
         } catch (Exception e) {
             throw new ServletException(e);
         }
+    }
+    private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        session.setAttribute("auth", false);
+        session.setAttribute("authUser", new User());
+
+        String url = request.getHeader("referer");
+        if (url == null)
+            url = "/TrangChu";
+        ServletUtils.redirect(url, request, response);
     }
 }

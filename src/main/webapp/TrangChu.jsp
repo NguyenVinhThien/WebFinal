@@ -12,7 +12,8 @@
 <jsp:useBean id="listSubCat" scope="request" type="java.util.List<Model.Categories>"/>
 <jsp:useBean id="listTags" scope="request" type="java.util.List<Model.Tags>"/>
 <jsp:useBean id="listTopHotArt" scope="request" type="java.util.Map<Model.Articles,java.lang.String>"/>
-
+<jsp:useBean id="authUser" scope="session" type="Model.User"/>
+<%--<jsp:useBean id="auth" scope="session" type="Model.User"/>--%>
 
 <%--<jsp:useBean id="article" scope="request" type="Model.Articles"/>--%>
 <html lang="en">
@@ -101,6 +102,35 @@
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn customBtnSearch my-2 my-sm-0" type="submit">Search</button>
     </form>
+    <ul class="navbar-nav">
+      <c:choose>
+        <c:when test="${auth}">
+          <form id="frmLogout" method="post" action="${pageContext.request.contextPath}/Account/Logout"></form>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownR" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Hi, <b>${authUser.name}!</b>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="${pageContext.request.contextPath}/Account/Profile">
+                Profile
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="javascript: $('#frmLogout').submit()">
+                Sign Out
+              </a>
+            </div>
+          </li>
+        </c:when>
+        <c:otherwise>
+          <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/Account/DangKy">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/Account/DangNhap">Login</a>
+          </li>
+        </c:otherwise>
+      </c:choose>
+    </ul>
   </div>
 </nav>
 
