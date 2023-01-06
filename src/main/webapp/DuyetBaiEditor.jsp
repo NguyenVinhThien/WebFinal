@@ -6,8 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
 
     <meta charset="UTF-8">
@@ -25,20 +25,16 @@
     <script type="text/javascript">
         tinymce.init({
             selector: '#editor',
-            width: 1200,
+            width: 1000,
             height: 600,
             plugins: [
                 'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
                 'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
                 'media', 'table', 'emoticons', 'template', 'help'
             ],
-            toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
-                'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
-                'forecolor backcolor emoticons | help',
-            menu: {
-                favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons'}
-            },
-            menubar: 'favs file edit view insert format tools table help',
+            toolbar: false,
+            menu: false,
+            menubar: false,
             content_css: 'css/content.css'
         });
     </script>
