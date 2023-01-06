@@ -51,7 +51,8 @@ public class DangBai extends HttpServlet {
             //int writer_id= Integer.parseInt(request.getParameter("writer_id"));
             DAOAdmin d= new DAOAdmin();
             d.addArticle(title,abstract_article,content);
-            response.sendRedirect("DangArticle.jsp");
+            RequestDispatcher rd= request.getRequestDispatcher("DangArticle.jsp");
+            rd.forward(request, response);
         }catch(Exception e)
         {
             e.printStackTrace();
