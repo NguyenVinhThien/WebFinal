@@ -565,8 +565,9 @@ public class DAOAdmin {
             Connection con = ConnectDB.getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where writer_id = ?");
             ps.setInt(1, authorID);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
                 list.add(new Articles(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
@@ -576,9 +577,11 @@ public class DAOAdmin {
                         rs.getInt(7),
                         rs.getInt(8),
                         rs.getInt(9),
-                        rs.getInt(10)));
+                        rs.getInt(10)))
+                ;
             }
-        } catch (Exception e) {
+        }catch(Exception e)
+        {
             e.getMessage();
         }
         return list;
