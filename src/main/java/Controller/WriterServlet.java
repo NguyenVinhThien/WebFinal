@@ -46,6 +46,7 @@ public class WriterServlet extends HttpServlet {
             case "/DangBai": {
                 String id= request.getParameter("id");
                 int i= Integer.parseInt(id);
+                d.getAllMainCategories();
                 request.setAttribute("author", i);
                 ServletUtils.forward("/DangArticle.jsp", request, response);
                 break;
