@@ -18,7 +18,7 @@ public class TrangChu extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         DAOAdmin d= new DAOAdmin();
-        List<Categories> listMainCat= d.getAllCategories();
+        List<Categories> listMainCat= d.getAllMainCategories();
         request.setAttribute("listCat", listMainCat);
 
         List<Categories> listSubCat= d.getSubCategories();

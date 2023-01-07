@@ -51,7 +51,7 @@ public class AdminServlet extends HttpServlet {
                 break;
             }
             case "/Category/ShowCategory": {
-                List<Categories> list = d.getAllCategories();
+                List<Categories> list = d.getAllMainCategories();
                 request.setAttribute("listP", list);
                 request.getRequestDispatcher("/SuaCategory.jsp").forward(request, response);
                 break;

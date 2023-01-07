@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DAOAdmin {
-    public List<Categories> getAllCategories()
+    public List<Categories> getAllMainCategories()
     {
         List<Categories> list = new ArrayList<>();
         try {
