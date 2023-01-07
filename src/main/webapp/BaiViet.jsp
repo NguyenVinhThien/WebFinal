@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -14,13 +15,13 @@
     <title>Admin Newspaper</title>
 
     <!-- Custom fonts for this template-->
-    <link href="TemplateAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/TemplateAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -45,29 +46,29 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.jsp">
+                <a class="nav-link" href="${pageContext.request.contextPath}/Admin/BaiViet">
                     <span>Quản lý bài viết</span></a>
             </li>
 
-    
+
             <hr class="sidebar-divider">
 
-       
-        
+
+
             <div class="sidebar-heading">
                 Quản lý category và tag
             </div>
-        
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategory"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                   aria-expanded="true" aria-controls="collapseTwo">
                     <span>Danh Mục</span>
                 </a>
                 <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Lựa chọn:</h6>
-                        <a class="collapse-item" href="Category.jsp">Thêm danh mục</a>
-                        <a class="collapse-item" href="ShowCategory">Danh sách danh mục chính</a>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}/Admin/Category/ThemCategory">Thêm danh mục</a>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}/Admin/Category/ShowCategory">Danh sách danh mục chính</a>
                     </div>
                 </div>
             </li>
@@ -81,8 +82,8 @@
                 <div id="collapseTag" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Lựa chọn:</h6>
-                        <a class="collapse-item" href="ThemTag.jsp">Thêm tag</a>
-                        <a class="collapse-item" href="ShowTag">Danh sách tag</a>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}/Admin/Tag/ThemTag">Thêm tag</a>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}/Admin/Tag/ShowTag">Danh sách tag</a>
                     </div>
                 </div>
             </li>
@@ -94,11 +95,16 @@
             <div class="sidebar-heading">
                 Quản lý danh sách người dùng
             </div>
-
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="${pageContext.request.contextPath}/Admin/User/ShowUser"
+                   aria-expanded="true">
+                    <span>Danh sách người dùng</span>
+                </a>
+            </li>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                   aria-expanded="true" aria-controls="collapseTwo">
                     <span>Phân công</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -112,8 +118,8 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="ShowUsers"
-                    aria-expanded="true">
+                <a class="nav-link collapsed" href="${pageContext.request.contextPath}/Admin/User/UserExtend"
+                   aria-expanded="true">
                     <span>Gia hạn</span>
                 </a>
             </li>
@@ -127,7 +133,7 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-        
+
 
         </ul>
         <!-- End of Sidebar -->
@@ -160,7 +166,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                                 <img class="img-profile rounded-circle"
-                                    src="TemplateAdmin/img/undraw_profile.svg">
+                                    src="${pageContext.request.contextPath}/TemplateAdmin/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -176,7 +182,7 @@
                     </ul>
 
                 </nav>
-    
+
                 <div class="container-fluid  ">
 
                     <div class="row ">
@@ -235,14 +241,22 @@
 
                         <!-- Page Heading -->
                         <h1 class="h3 mb-2 text-gray-800">Danh sách bài viết</h1>
-    
+
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
+                                        <thead >
                                             <tr>
+                                                <div class="result-sorting justify-content-end">
+                                                    <span>Phân loại:</span>
+                                                    <select class="form-control border-0 " id="exampleOption">
+                                                        <option value="1" class="text-primary">Tất cả</option>
+                                                        <option value="2" class="text-success">Draft</option>
+                                                        <option value="3" class="text-warning">Đã duyệt</option>
+                                                    </select>
+                                                </div>
                                                 <th>ID</th>
                                                 <th>Title</th>
                                                 <th>Content</th>
@@ -255,36 +269,42 @@
                                                 <th>Abstract</th>
                                             </tr>
                                         </thead>
+                                        <c:forEach items="${list}" var="t">
                                         <tbody>
                                             <tr>
-                                                <td>1</td>
-                                                <td> Sữa Ông Thọ
+                                                <td>${t.id_article}</td>
+                                                <td> ${t.title}
                                                     </td>
-                                                <td>Chó QD ngu</td>
-                                                <td>1</td>
-                                                <td>Yes</td>
-                                                <td>1</td>
-                                                <td>Draft</td>
-                                                <td>28/12/2022</td>
-                                                <td>100</td>
-                                                <td></td>
-                                                <td>    <a href="#" class="btn btn-success btn-icon-split" data-target="#addBaiviet" data-toggle="modal">
+                                                <td>${t.content}</td>
+                                                <td>${t.categories_id}</td>
+                                                <td>${t.premium}</td>
+                                                <td>${t.writer_id}</td>
+                                                <td>${t.status}</td>
+                                                <td>${t.publish_date}</td>
+                                                <td>${t.views}</td>
+                                                <td>${t.abstract_article}</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-sm-center">
+                                                    <a href="#" class="btn btn-success btn-icon-split" data-target="#addBaiviet" data-toggle="modal">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-check"></i>
                                                     </span>
                                                     <span class="text">Xuất bản</span>
-                                                </a></td>
-                                                <td><div class="d-flex justify-content-end">
-                                                    <a href="#" class="btn btn-danger btn-icon-split align-items-center" data-target="#deleteBaiviet" data-toggle="modal" >
+                                                </a>
+                                                    </div>
+                                                </td>
+                                                <td><div class="d-flex justify-content-sm-center">
+                                                    <a href="#" class="btn btn-danger btn-icon-split " data-target="#deleteBaiviet" data-toggle="modal" >
                                                         <span class="icon text-white-50 ">
                                                             <i class="fas fa-trash"></i>
                                                         </span>
-                                                        <span class="text">Delete</span>
+                                                        <span class="text">Xoá</span>
                                                     </a>
                                                 </div></td>
                                                 
                                             </tr>
                                         </tbody>
+                                        </c:forEach>
                                     </table>
                                 </div>
                             </div>
@@ -294,7 +314,7 @@
                     <!-- /.container-fluid -->
     
                  </div>
-                
+
                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -315,23 +335,24 @@
             </div>
         
     </div>
-                
+        </div>
+    </div>
     <!-- Bootstrap core JavaScript-->
-    <script src="TemplateAdmin/vendor/jquery/jquery.min.js"></script>
-    <script src="TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/jquery/jquery.min.js"></script>
+            <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="TemplateAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="TemplateAdmin/js/sb-admin-2.min.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="${pageContext.request.contextPath}/TemplateAdmin/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="TemplateAdmin/vendor/chart.js/Chart.min.js"></script>
+            <!-- Page level plugins -->
+            <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="TemplateAdmin/js/demo/chart-area-demo.js"></script>
-    <script src="TemplateAdmin/js/demo/chart-pie-demo.js"></script>
+            <!-- Page level custom scripts -->
+            <script src="${pageContext.request.contextPath}/TemplateAdmin/js/demo/chart-area-demo.js"></script>
+            <script src="${pageContext.request.contextPath}/TemplateAdmin/js/demo/chart-pie-demo.js"></script>
 
 </body>
 

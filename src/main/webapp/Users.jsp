@@ -1,8 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: acer
   Date: 12/29/2022
-  Time: 11:31 PM
+  Time: 11:30 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -198,61 +199,61 @@
           <div class="row">
             <div class="col-12">
               <div class="card">
-                <div class="card-header">
-                  <h4 class="card-title">Thêm biên tập viên
-                  </h4>
-                </div>
-                <div class="card-body">
-                  <form class="form-valide-with-icon" action="#" method="POST" novalidate="novalidate">
-                    <div class="form-group">
-                      <label class="text-label">Mã biên tập viên</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                                            <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
-                                            </span>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title">Danh Sách Tag</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <div id="example_wrapper" class="dataTables_wrapper">
+                          <div id="example_wrapper" class="dataTables_wrapper">
+                            <div class="d-flex justify-content-end ">
+                              <a href="#" class="btn btn-warning btn-icon-split align-content-center" data-target="#editDanhMuc" data-toggle="modal" >
+                                        <span class="icon text-white-50" >
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </span>
+                                <span class="text">Chỉnh sửa</span>
+                              </a>
+                            </div>
+                            <table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
+                              <thead>
+                              <tr role="row"><th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã User</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên đăng nhập: activate to sort column ascending" style="width: 485.891px;">Tên đăng nhập</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Họ và tên: activate to sort column ascending" style="width: 171.672px;">Họ và tên</th>
+                              <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Bút danh: activate to sort column ascending" style="width: 171.672px;">Bút danh</th>
+                              <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 171.672px;">Email</th>
+                              <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Xoá</th></tr>
+                              </thead>
+                              <c:forEach items="${list}" var="t">
+                              <tbody>
+                              <tr class="odd" role="row">
+                                <td class="sorting_1">${t.id}</td>
+                                <td>${t.username}</td>
+                                <td>${t.name}</td>
+                                <td>${t.second_name}</td>
+                                <td>${t.email}</td>
+                                <td><a href ="DeleteUser?id=${t.id}">
+                                  <button class="btn btn-danger btn sweet-confirm destroy">Xóa</button>
+                                </a>
+                                </td>
+                              </tbody>
+                              </c:forEach>
+                          </div>
                         </div>
-                        <input type="text" class="form-control" id="#" name="name" placeholder="Mã" value="">
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label class="text-label">Tên biên tập viên</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                                            <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
-                                            </span>
-                        </div>
-                        <input type="text" class="form-control" id="#" name="name" placeholder="Tên" value="">
-                      </div>
-                      <div class="form-group">
-                        <label class="text-label">Mã danh mục</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                                                <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
-                                                </span>
-                          </div>
-                          <input type="text" class="form-control" id="#" name="name" placeholder="Mã danh mục" value="">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="text-label">Tên danh mục</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                                                <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
-                                                </span>
-                          </div>
-                          <input type="text" class="form-control" id="#" name="name" placeholder=" Tên danh mục" value="">
-                        </div>
-                      </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Thêm</button>
-                  </form>
+                  </div>
+
                 </div>
               </div>
-
 
             </div>
           </div>
         </div>
+
       </div>
       <!-- /.container-fluid -->
 
@@ -280,19 +281,19 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Sửa bài viết</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Sửa tag</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
-            <form action="#" method="post">
+            <form action="EditTag" method="post">
           </div>
           <div class="modal-body">
             <div class="form-group">
               <label>ID</label>
-              <input name="pid" type="text" class="form-control" required>
+              <input name="id" type="text" class="form-control" required>
             </div>
             <div class="form-group">
-              <label>Tên danh mục</label>
+              <label>Tên tag</label>
               <input name="name" type="text" class="form-control" required>
             </div>
             <div class="modal-footer">
@@ -304,8 +305,8 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
+
+    <!-- Bootstrap core JavaScript-->
     <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
