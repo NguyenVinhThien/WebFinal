@@ -3,9 +3,6 @@ package Controller;
 
 import DAO.DAOAdmin;
 import Model.Articles;
-import Model.Categories;
-import Model.Tags;
-import Model.User;
 import Uti.ServletUtils;
 
 import javax.servlet.RequestDispatcher;
@@ -40,6 +37,8 @@ public class WriterServlet extends HttpServlet {
             case "/ShowArticle": {
                 int author = Integer.parseInt(request.getParameter("id"));
                 List<Articles> list = d.getArticleByAuthor(author);
+                if (list == null){
+                System.out.println(0);}
                 String name = d.getUserName(author);
                 request.setAttribute("listA", list);
                 request.setAttribute("name", name);
@@ -67,12 +66,12 @@ public class WriterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
         String path = request.getPathInfo();
-//        switch (path) {
-//            case "/DangBai": {
-//                AddArticle(request,response);
-//                break;
-//            }
-//        }
+        switch (path) {
+            case "/DangBai": {
+                AddArticle(request,response);
+                break;
+            }
+        }
     }
     private void AddArticle(HttpServletRequest request, HttpServletResponse response){
         try {

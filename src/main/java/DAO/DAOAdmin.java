@@ -563,7 +563,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where  writer_id = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where writer_id = ?");
             ps.setInt(1, authorID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
