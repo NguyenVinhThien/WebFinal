@@ -1,18 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: acer
-  Date: 12/29/2022
-  Time: 11:28 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,6 +26,7 @@
 </head>
 
 <body id="page-top">
+
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -161,6 +155,9 @@
 
         <ul class="navbar-nav ml-auto">
 
+
+
+
           <div class="topbar-divider d-none d-sm-block"></div>
 
           <!-- Nav Item - User Information -->
@@ -185,114 +182,131 @@
         </ul>
 
       </nav>
-      <div class="container-fluid">
 
-        <!-- Page Heading -->
+      <div class="container-fluid  ">
 
-        <!-- DataTales Example -->
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h4 class="card-title">Danh Sách Danh Mục Chính</h4>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <div id="example_wrapper" class="dataTables_wrapper">
-                      <div id="example_wrapper" class="dataTables_wrapper">
-                        <div class="d-flex justify-content-end ">
-                          <a href="#" class="btn btn-warning btn-icon-split align-content-center" data-target="#editDanhMuc" data-toggle="modal" >
-                                        <span class="icon text-white-50" >
-                                            <i class="fas fa-exclamation-triangle"></i>
-                                        </span>
-                            <span class="text">Chỉnh sửa</span>
-                          </a>
-                        </div>
-                        <table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
-                        <thead>
-                        <tr role="row">
-                          <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã</th>
-                          <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 485.891px;">Tên danh mục</th>
-                          <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Xóa</th></tr>
-                        </thead>
-                        <c:forEach items="${listP}" var="o">
-                        <tbody>
-                        <tr class="odd" role="row">
-                          <td class="sorting_1">${o.id}</td>
-                          <td><a href="ShowSubCategory?id=${o.id}">${o.name}</a></td>
-                          <td>
-                            <a href ="DeleteCategory?id=${o.id}" >
-                              <button class="btn btn-danger btn sweet-confirm destroy">Xóa</button>
-                            </a>
-                          </td>
-                        </tbody>
-                        </c:forEach>
-                      </div>
+        <div class="row ">
+
+
+
+          <div class="col-xl-3 col-md-6 mb-4 ">
+            <div class="card border-left-warning shadow h-100 py-2 ">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                      Số bài viết đã duyệt</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      ${sumlistOke}
                     </div>
+                  </div>
+                  <div class="col-auto">
                   </div>
                 </div>
               </div>
-
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Danh sách bài viết đã duyệt</h1>
+          <!-- DataTales Example -->
+          <div class="d-flex justify-content-end ">
+            <a href="ShowBaiViet" class="btn btn-outline-primary  align-content-center" >
+              <span class="text">Tất cả</span>
+            </a>
+            <div class="col-auto">
+            </div>
+            <a href="ShowBaiVietDraft" class="btn btn-outline-success  align-content-center" >
+              <span class="text">Draft</span>
+            </a>
+            <div class="col-auto">
+            </div>
+            <a href="ShowBaiVietOk" class="btn btn-outline-warning  align-content-center" >
+              <span class="text">Đã Duyệt</span>
+            </a>
+          </div>
+          <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead >
+                  <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Category id</th>
+                    <th>Premium</th>
+                    <th>Writer id</th>
+                    <th>Status</th>
+                    <th>Public Date</th>
+                    <th>Views</th>
+                    <th><div class="d-flex justify-content-sm-center">Xuất bản</div></th>
+                    <th><div class="d-flex justify-content-sm-center">Xoá</div></th>
+                  </tr>
+                  </thead>
+                  <c:forEach items="${list}" var="t">
+                    <tbody>
+                    <tr>
+                      <td>${t.id_article}</td>
+                      <td> ${t.title}
+                      </td>
+                      <td><a href="${pageContext.request.contextPath}/ChiTietBao?articleId=${t.id_article}" class="btn btn-info btn-icon-split">
+                                                     <span class="icon text-white-50">
+                                                    <i class="fas fa-info-circle"></i>
+                                                     </span>
+                        <span class="text">Xem chi tiết</span>
+                      </a></td>
+                      <td>${t.categories_id}</td>
+                      <td>${t.premium}</td>
+                      <td>${t.writer_id}</td>
+                      <td>${t.status}</td>
+                      <td>${t.publish_date}</td>
+                      <td>${t.views}</td>
+                      <td>Đã xuất bản</td>
+                      <td><div class="d-flex justify-content-sm-center">
+                        <a href="DeleteArticle?id=${t.id_article}" class="btn btn-danger btn-icon-split " data-target="#deleteBaiviet" data-toggle="modal" >
+                                                        <span class="icon text-white-50 ">
+                                                            <i class="fas fa-trash"></i>
+                                                        </span>
+                          <span class="text">Xoá</span>
+                        </a>
+                      </div></td>
+                    </tr>
+                    </tbody>
+                  </c:forEach>
+                </table>
+              </div>
             </div>
           </div>
 
         </div>
-      </div>
-    </div>
+        <!-- /.container-fluid -->
 
-  </div>
-  <!-- /.container-fluid -->
+      </div>
 
-</div>
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Bạn muốn đăng xuất ??</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">Bạn chọn Logout sẽ đăng xuất ra hệ thống.</div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <a class="btn btn-primary" href="TrangChu">Logout</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="editDanhMuc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sửa danh mục</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-        <form action="EditCategory" method="post">
-      <div class="modal-body">
-        <div class="form-group">
-          <label>ID</label>
-          <input name="id" type="text" class="form-control"  required>
-        </div>
-        <div class="form-group">
-          <label>Tên danh mục</label>
-          <input name="name" type="text" class="form-control"  required>
-        </div>
-        <div class="modal-footer">
-          <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-          <input type="submit" class="btn btn-success" value="Sửa">
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Bạn muốn đăng xuất ??</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">Bạn chọn Logout sẽ đăng xuất ra hệ thống.</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+              <a class="btn btn-primary" href="TrangChu">Logout</a>
+            </div>
+          </div>
         </div>
       </div>
-      </form>
+
     </div>
   </div>
 </div>
-
 <!-- Bootstrap core JavaScript-->
 <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

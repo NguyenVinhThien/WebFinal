@@ -39,7 +39,7 @@
   <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="BaiViet.jsp">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="BaiVietDraft.jsp">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
       </div>
@@ -51,7 +51,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-      <a class="nav-link" href="BaiViet.jsp">
+      <a class="nav-link" href="BaiVietDraft.jsp">
         <span>Quản lý bài viết</span></a>
     </li>
 

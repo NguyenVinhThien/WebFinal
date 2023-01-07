@@ -39,7 +39,7 @@
       content_css: 'css/content.css'
     });
   </script>
-  <link rel="stylesheet" type="text/css" href="./CSS_ALL/DangArticle.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS_ALL/DangArticle.css">
 </head>
 <body>
 <header>
