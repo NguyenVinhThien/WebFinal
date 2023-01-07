@@ -535,7 +535,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where status = 0 or status = 3");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where status = 0 or status = 2");
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {
@@ -591,7 +591,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where status = 3");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where status = 2");
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {
@@ -616,7 +616,7 @@ public class DAOAdmin {
     public void Ok(int id)
     {
         String query="UPDATE  articles\n"
-                + "SET status = 3\r\n"
+                + "SET status = 2 ,publish_date = CURDATE()\r\n"
                 + "WHERE id = ?";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
