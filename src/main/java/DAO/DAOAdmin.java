@@ -513,7 +513,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users where role != 4");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users where role = 0");
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {

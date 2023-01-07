@@ -103,6 +103,10 @@ public class AdminServlet extends HttpServlet {
                 DeleteArticle(request,response);
                 break;
             }
+            case "/User/DeleteUser":{
+                DeleteUser(request,response);
+                break;
+            }
             case "/BaiViet/ShowBaiVietDraft": {
                 List<Articles> list = d.getAllArticleByDraft();
                 List<Articles> listDraft = d.getAllArticleByDraft();
@@ -315,6 +319,12 @@ public class AdminServlet extends HttpServlet {
         DAOAdmin dao = new DAOAdmin();
         dao.deleteArticle(id);
         response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiViet");
+    }
+    private void DeleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        String id =request.getParameter("id");
+        DAOAdmin d = new DAOAdmin();
+        d.deleteUser(id);
+        response.sendRedirect("/WebFinal/Admin/User/ShowUser");
     }
 }
 
