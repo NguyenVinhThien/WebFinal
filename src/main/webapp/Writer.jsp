@@ -66,7 +66,7 @@
                         <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Chỉnh Sửa</th></tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${listP}" var="o">
+                    <c:forEach items="${listA}" var="o">
                     <tbody>
                     <tr class="odd" role="row">
                         <td class="sorting_1">${o.id}</td>
