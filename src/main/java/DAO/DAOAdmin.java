@@ -58,7 +58,6 @@ public class DAOAdmin {
         }
         return list;
     }
-
     public List<Articles> getArticleByCatId(int catId)
     {
         List<Articles> list = new ArrayList<>();
@@ -115,6 +114,64 @@ public class DAOAdmin {
         }
         return list;
     }
+    public Map<Articles,String> getArticleByView()
+    {
+        Map<Articles,String> list = new HashMap<>();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("select * from (select a.*,b.name from articles a INNER JOIN categories b on a.categories_id = b.id) as c where current_date()>= c.publish_date order by views desc limit 10");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                list.put(new Articles(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getInt(10)),rs.getString(11));
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return list;
+    }
+
+    public Map<Articles,String> getNewArticle()
+    {
+        Map<Articles,String> list = new HashMap<>();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("select * from (select a.*,b.name from articles a INNER JOIN categories b on a.categories_id = b.id) as c where current_date()>= c.publish_date order by publish_date desc limit 10");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                list.put(new Articles(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getInt(10)),rs.getString(11));
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return list;
+    }
+
     public void deleteCategory(String id)
     {
         String query="DELETE FROM categories WHERE id= ? ";
