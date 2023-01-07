@@ -35,7 +35,7 @@
             </li>
 
             <li>
-                <a href="DangBai?id=${writer}">Đăng Bài</a>
+                <a href="DangBai?id=${name}">Đăng Bài</a>
             </li>
         </ul>
 
@@ -56,7 +56,7 @@
         </nav>
 
         <div class="container">
-            <h2>Chi tiết bài viết</h2>
+            <h2>Bài viết của tác giả ${name}</h2>
             <form>
                 <table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
                     <thead>
@@ -66,19 +66,20 @@
                         <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Chỉnh Sửa</th></tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${listP}" var="o">
+                    <c:forEach items="${listA}" var="o">
                     <tbody>
                     <tr class="odd" role="row">
-                        <td class="sorting_1">${o.id}</td>
-                        <td><a>${o.name}</a></td>
+                        <td class="sorting_1">${o.id_article}</td>
+                        <td><a>${o.title}</a></td>
                         <td>
-                            <a href ="EditArticle?id=${o.id}" >
+                            <a href ="EditArticle?id=${o.id_article}" >
                                 <button class="btn btn-danger btn sweet-confirm destroy">Chỉnh sửa</button>
                             </a>
                         </td>
                     </tbody>
                     </c:forEach>
                     </tbody>
+                </table>
 <%--                <div class="modal fade" id="duyetModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">--%>
 <%--                    <div class="modal-dialog modal-dialog-centered" role="document">--%>
 <%--                        <div class="modal-content">--%>

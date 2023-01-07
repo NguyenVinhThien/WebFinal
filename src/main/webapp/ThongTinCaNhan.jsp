@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="authUser" scope="session" type="Model.User"/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,26 +42,25 @@
           <div class="row mt-3">
             <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control"
                                                                                 placeholder="Tên tài khoản"
-                                                                                value="${username}">
+                                                                                value="${authUser.username}">
             </div>
             <div class="col-md-12"><label class="labels">Họ và Tên</label><input type="text"
                                                                                  class="form-control"
                                                                                  placeholder="Họ và tên"
-                                                                                 value=""></div>
+                                                                                 value="${authUser.name}"></div>
             <div class="col-md-12"><label class="labels">Bút danh</label><input type="text"
                                                                                 class="form-control"
                                                                                 placeholder="Bút danh"
-                                                                                value=""></div>
+                                                                                value="${authUser.second_name}"></div>
             <div class="col-md-12"><label class="labels">Ngày sinh</label><input type="date"
                                                                                  class="form-control"
-
-                                                                                 value="" min="1922-12-31" max="2022-12-31"></div>
+                                                                                 value="${authUser.dob}" min="1922-12-31" max="2022-12-31"></div>
             <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control"
                                                                              placeholder="Nhập Email"
-                                                                             value=""></div>
+                                                                             value="${authUser.email}"></div>
             <div class="col-md-12"><label class="labels">Mật khẩu</label><input type="password"
                                                                                 class="form-control"
-                                                                                value="" readonly>
+                                                                                value="********" readonly>
               <a href="#" class="btn_change_password">Đổi mật khẩu</a>
             </div>
           </div>

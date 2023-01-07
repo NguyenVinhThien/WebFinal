@@ -1,6 +1,8 @@
 package Controller;
 
+
 import DAO.DAOAdmin;
+import Model.Articles;
 import Uti.ServletUtils;
 
 import javax.servlet.RequestDispatcher;
@@ -10,20 +12,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 
-/**
- * Servlet implementation class AddCategory
- */
-@WebServlet(name="DangBai",urlPatterns={"/DangBai"})
-public class DangBai extends HttpServlet {
+@WebServlet(name="Writer",urlPatterns = "/Writer/*")
+public class WriterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-
-    public DangBai() {
+    public WriterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +31,33 @@ public class DangBai extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        DAOAdmin d = new DAOAdmin();
+        String path = request.getPathInfo();
+        switch (path) {
+            case "/ShowArticle": {
+                int author = Integer.parseInt(request.getParameter("id"));
+                List<Articles> list = d.getArticleByAuthor(author);
+                if (list == null){
+                System.out.println(0);}
+                String name = d.getUserName(author);
+                request.setAttribute("listA", list);
+                request.setAttribute("name", name);
+                request.getRequestDispatcher("/Writer.jsp").forward(request, response);
+                break;
+            }
+            case "/DangBai": {
+                String id= request.getParameter("id");
+                int i= Integer.parseInt(id);
+                request.setAttribute("author", i);
+                ServletUtils.forward("/DangArticle.jsp", request, response);
+            }
+            default: {
+                ServletUtils.forward("/404.jsp", request, response);
+                break;
+            }
+        }
         // TODO Auto-generated method stub
-//        response.getWriter().append("Served at: ").append(request.getContextPath());
-        String id= request.getParameter("id");
-        int i= Integer.parseInt(id);
-        request.setAttribute("author", i);
-        ServletUtils.forward("/DangArticle.jsp", request, response);
+
     }
 
     /**
@@ -45,6 +65,15 @@ public class DangBai extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
+        String path = request.getPathInfo();
+        switch (path) {
+            case "/DangBai": {
+                AddArticle(request,response);
+                break;
+            }
+        }
+    }
+    private void AddArticle(HttpServletRequest request, HttpServletResponse response){
         try {
             String title= request.getParameter("title");
             String abstract_article= request.getParameter("Tom_tat");
@@ -67,5 +96,5 @@ public class DangBai extends HttpServlet {
             e.printStackTrace();
         }
     }
-
 }
+

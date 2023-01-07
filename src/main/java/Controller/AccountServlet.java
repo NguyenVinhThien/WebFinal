@@ -28,7 +28,14 @@ public class AccountServlet extends HttpServlet {
                 break;
 
             case "/DangNhap":
-                ServletUtils.forward("/DangNhap.jsp", request, response);
+                HttpSession session = request.getSession();
+                if ((boolean) session.getAttribute("auth")) {
+                    ServletUtils.redirect("/TrangChu", request, response);
+                } else ServletUtils.forward("/DangNhap.jsp", request, response);
+                break;
+
+            case "/ThongTinCaNhan":
+                ServletUtils.forward("/ThongTinCaNhan.jsp", request, response);
                 break;
 
             case "/IsAvailable":
@@ -122,7 +129,7 @@ public class AccountServlet extends HttpServlet {
             throw new ServletException(e);
         }
     }
-    private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         session.setAttribute("auth", false);
         session.setAttribute("authUser", new User());
@@ -132,4 +139,23 @@ public class AccountServlet extends HttpServlet {
             url = "/TrangChu";
         ServletUtils.redirect(url, request, response);
     }
+//    private void Profile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        HttpSession session = request.getSession();
+//        User user = (User) session.getAttribute("authUser");
+//        int id = user.getId();
+//        String username = user.getUsername();
+//        String password = user.getPassword();
+//        String name = user.getName();
+//        LocalDateTime issue_at = user.getIssue_at();
+//        int expiration = user.getExpiration();
+//        int role = user.getRole();
+//        String second_name = user.getSecond_name();
+//        LocalDateTime dob = user.getDob();
+//        String email = user.getEmail();
+//        String otp = user.getOtp();;
+//        LocalDateTime otp_exp = user.getOtp_exp();
+//
+//        request.setAttribute("username", username);
+//
+//    }
 }
