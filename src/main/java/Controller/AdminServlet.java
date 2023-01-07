@@ -102,8 +102,7 @@ public class AdminServlet extends HttpServlet {
             case "/BaiViet/ShowBaiViet": {
                 List<Articles> list = d.getAllArticle();
                 request.setAttribute("list", list);
-                RequestDispatcher rd = request.getRequestDispatcher("/BaiViet.jsp");
-                rd.forward(request, response);
+                request.getRequestDispatcher("/BaiViet.jsp").forward(request, response);
                 break;
             }
             default: {

@@ -228,7 +228,9 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Số bài viết đã duyệt</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                         </div>
@@ -249,24 +251,15 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead >
                                             <tr>
-                                                <div class="result-sorting justify-content-end">
-                                                    <span>Phân loại:</span>
-                                                    <select class="form-control border-0 " id="exampleOption">
-                                                        <option value="1" class="text-primary">Tất cả</option>
-                                                        <option value="2" class="text-success">Draft</option>
-                                                        <option value="3" class="text-warning">Đã duyệt</option>
-                                                    </select>
-                                                </div>
                                                 <th>ID</th>
                                                 <th>Title</th>
                                                 <th>Content</th>
-                                                <th>Category_id</th>
+                                                <th>Category id</th>
                                                 <th>Premium</th>
-                                                <th>Writer_id</th>
+                                                <th>Writer id</th>
                                                 <th>Status</th>
                                                 <th>Public Date</th>
                                                 <th>Views</th>
-                                                <th>Abstract</th>
                                             </tr>
                                         </thead>
                                         <c:forEach items="${list}" var="t">
@@ -275,14 +268,18 @@
                                                 <td>${t.id_article}</td>
                                                 <td> ${t.title}
                                                     </td>
-                                                <td>${t.content}</td>
+                                                <td><a href="${pageContext.request.contextPath}/ChiTietBao?articleId=${t.id_article}" class="btn btn-info btn-icon-split">
+                                                     <span class="icon text-white-50">
+                                                    <i class="fas fa-info-circle"></i>
+                                                     </span>
+                                                    <span class="text">Xem chi tiết</span>
+                                                </a></td>
                                                 <td>${t.categories_id}</td>
                                                 <td>${t.premium}</td>
                                                 <td>${t.writer_id}</td>
                                                 <td>${t.status}</td>
                                                 <td>${t.publish_date}</td>
                                                 <td>${t.views}</td>
-                                                <td>${t.abstract_article}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-sm-center">
                                                     <a href="#" class="btn btn-success btn-icon-split" data-target="#addBaiviet" data-toggle="modal">

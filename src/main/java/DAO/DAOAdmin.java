@@ -4,8 +4,8 @@ package DAO;
 import Model.Articles;
 import Model.Categories;
 import Model.Tags;
-import Uti.ConnectDB;
 import Model.User;
+import Uti.ConnectDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
