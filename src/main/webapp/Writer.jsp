@@ -73,7 +73,7 @@
                         <td class="sorting_1">${o.id_article}</td>
                         <td>${o.title}</td>
                         <td>
-                            <a href ="EditArticle?id=${o.id_article}" >
+                            <a href ="${pageContext.request.contextPath}/Writer/EditArticle?id=${o.id_article}">
                                 <button class="btn btn-danger btn sweet-confirm destroy">Chỉnh sửa</button>
                             </a>
                         </td>

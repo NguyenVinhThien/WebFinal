@@ -5,7 +5,6 @@ import DAO.DAOAdmin;
 import Model.Articles;
 import Uti.ServletUtils;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,6 +50,15 @@ public class WriterServlet extends HttpServlet {
                 int i= Integer.parseInt(id);
                 request.setAttribute("author", i);
                 ServletUtils.forward("/DangArticle.jsp", request, response);
+                break;
+            }
+            case "/EditArticle":{
+                String id= request.getParameter("id");
+                int i= Integer.parseInt(id);
+                Articles t= d.getArticle(i);
+                request.setAttribute("article", t);
+                request.getRequestDispatcher("/EditArticle.jsp").forward(request, response);
+                break;
             }
             default: {
                 ServletUtils.forward("/404.jsp", request, response);
