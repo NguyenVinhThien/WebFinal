@@ -30,6 +30,9 @@ public class TrangChu extends HttpServlet {
         Map<Articles,String> listTopHotArt= d.getTopHotArticle();
         request.setAttribute("listTopHotArt", listTopHotArt);
 
+        Map<Articles,String> listArtByView= d.getArticleByView();
+        request.setAttribute("listArtByView", listArtByView);
+
         RequestDispatcher rd= request.getRequestDispatcher("TrangChu.jsp");
         rd.forward(request, response);
     }
