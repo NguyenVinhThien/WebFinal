@@ -20,12 +20,6 @@ public class AuthFilter implements Filter {
   @Override
   public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws ServletException, IOException {
     HttpServletRequest request = (HttpServletRequest) req;
-
-    // Cookie[] cookies = request.getCookies();
-    // for (Cookie c : cookies) {
-    //   System.out.printf("%s, %s\n", c.getName(), c.getValue());
-    // }
-
     HttpSession session = request.getSession();
     boolean auth = (boolean) session.getAttribute("auth");
     if (!auth) {
