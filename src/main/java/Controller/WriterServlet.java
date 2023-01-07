@@ -52,14 +52,6 @@ public class WriterServlet extends HttpServlet {
                 ServletUtils.forward("/DangArticle.jsp", request, response);
                 break;
             }
-            case "/EditArticle":{
-                String id= request.getParameter("id");
-                int i= Integer.parseInt(id);
-                Articles t= d.getArticle(i);
-                request.setAttribute("article", t);
-                request.getRequestDispatcher("/EditArticle.jsp").forward(request, response);
-                break;
-            }
             case "/EditArticle": {
                 String id= request.getParameter("id");
                 int i= Integer.parseInt(id);
