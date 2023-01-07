@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Home
@@ -51,17 +52,9 @@
       <div class="col-md-4 mt-3">
         <label class="labels">Chuyên mục</label>
         <select id="select" class="form-control" name="cate">
-          <option selected>Chọn Chuyên mục</option>
-          <option value="1">Xã Hội</option>
-          <option value="2">Thế Giới</option>
-          <option value="3">Văn Hóa</option>
-          <option value="4">Khoa Học</option>
-          <option value="5">Giáo Dục</option>
-          <option value="6">Giải Trí</option>
-          <option value="7">Thể Thao</option>
-          <option value="8">Đời Sống</option>
-          <option value="9">Kinh Tế</option>
-          <option value="10">Pháp Luật</option>
+          <c:forEach items="${listC}" var="t">
+            <option value="${t.id}">${t.name}</option>
+          </c:forEach>
         </select>
       </div>
       <div class="col-md-4 mt-3"><label class="labels">Nhãn</label><input type="text"

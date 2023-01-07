@@ -80,16 +80,6 @@
                                     <div>${t.name}</div>
                                 </c:if>
                             </c:forEach>
-<%--                        <select id="select${o.id_article}" class="form-control" name="cate">--%>
-<%--                        <c:forEach items="${listC}" var="t">--%>
-<%--                            <script type="text/javascript">--%>
-<%--                                if (${t.id} == ${o.categories_id})--%>
-<%--                                    document.getElementById('select${o.id_article}').add(new Option("${t.name}","${t.id}",false,true))--%>
-<%--                                else--%>
-<%--                                document.getElementById('select${o.id_article}').add(new Option("${t.name}","${t.id}"));--%>
-<%--                            </script>--%>
-<%--                        </c:forEach>--%>
-<%--                        </select>--%>
                         </td>
                         <td></td>
                         <td> <a href="EditArticle?id=${o.id_article}">

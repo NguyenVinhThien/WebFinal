@@ -41,7 +41,7 @@
             content_css: 'css/content.css'
         });
     </script>
-    <style><%@include file="/CSS_ALL/DangArticle.css"%></style>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS_ALL/DangArticle.css">
 </head>
 <body>
 <header>
@@ -50,19 +50,17 @@
 <main>
     <form id="article-form" method="POST" novalidate="novalidate">
         <div class="row mt-2 mb-3">
-            <div class="col-md-6">
+            <div class="col-md-4 mt-3">
                 <label class="labels">Chuyên mục</label>
-                <select class="form-control" name="cate">
-                    <option value="1">Xã Hội</option>
-                    <option value="2">Thế Giới</option>
-                    <option value="3">Văn Hóa</option>
-                    <option value="4">Khoa Học</option>
-                    <option value="5">Giáo Dục</option>
-                    <option value="6">Giải Trí</option>
-                    <option value="7">Thể Thao</option>
-                    <option value="8">Đời Sống</option>
-                    <option value="9">Kinh Tế</option>
-                    <option value="10">Pháp Luật</option>
+                <select id="select" class="form-control" name="cate">
+                    <c:forEach items="${listC}" var="t">
+                        <script type="text/javascript">
+                            if (${t.id} == ${article.categories_id})
+                                document.getElementById('select').add(new Option("${t.name}","${t.id}",false,true))
+                            else
+                                document.getElementById('select').add(new Option("${t.name}","${t.id}"));
+                        </script>
+                    </c:forEach>
                 </select>
             </div>
             <div class="col-md-4 mt-3"><label class="labels">Nhãn</label><input type="text"

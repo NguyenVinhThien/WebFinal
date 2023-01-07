@@ -49,7 +49,8 @@ public class WriterServlet extends HttpServlet {
             case "/DangBai": {
                 String id = request.getParameter("id");
                 int i = Integer.parseInt(id);
-                d.getAllMainCategories();
+                List<Categories> cate = d.getAllCategories();
+                request.setAttribute("listC", cate);
                 request.setAttribute("author", i);
                 ServletUtils.forward("/DangArticle.jsp", request, response);
                 break;
@@ -58,6 +59,8 @@ public class WriterServlet extends HttpServlet {
                 String id = request.getParameter("id");
                 int i = Integer.parseInt(id);
                 Articles t = d.getArticle(i);
+                List<Categories> cate = d.getAllCategories();
+                request.setAttribute("listC", cate);
                 request.setAttribute("article", t);
                 request.getRequestDispatcher("/EditArticle.jsp").forward(request, response);
                 break;
