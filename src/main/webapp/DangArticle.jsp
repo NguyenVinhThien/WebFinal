@@ -46,7 +46,7 @@
   <h1>New Article E-Newspaper</h1>
 </header>
 <main>
-  <form id="article-form" action="DangBai" method="POST" novalidate="novalidate">
+  <form id="article-form" method="POST" novalidate="novalidate">
     <div class="row mb-2">
       <div class="col-md-4 mt-3">
         <label class="labels">Chuyên mục</label>

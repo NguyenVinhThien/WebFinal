@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sửa bài viết</title>
+    <title>Đăng bài viết</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script
@@ -48,7 +48,7 @@
     <h1>New Article E-Newspaper</h1>
 </header>
 <main>
-    <form id="article-form" action="Edit?id=${article.id_article}" method="POST" novalidate="novalidate">
+    <form id="article-form" method="POST" novalidate="novalidate">
         <div class="row mt-2 mb-3">
             <div class="col-md-6">
                 <label class="labels">Chuyên mục</label>
@@ -69,6 +69,10 @@
             <div class="col-md-6"><label class="labels">Nhãn</label><input type="text"
                                                                            class="form-control" value=""
                                                                            placeholder="Nhãn"></div>
+            <div class="col-md-4 mt-3"><label class="labels">ID Author</label><input type="text"
+                                                                                     name="writer"
+                                                                                     class="form-control" value="${article.writer_id}"
+                                                                                     placeholder="ID_Author"></div>
             <div class="col-md-12"><label class="labels">Tiêu đề</label><input type="text"
                                                                                name="title"
                                                                                class="form-control" value="${article.title}"
@@ -77,6 +81,8 @@
                                                                                         name="Tom_tat"
                                                                                         class="form-control" value=""
                                                                                         placeholder="Tóm tắt"></div>
+            <label class="col-md-12 mt-3">
+                <input id="checkPremium" type="checkbox"  name="qq" value="1">Premium</label>
         </div>
         <textarea id="editor" style="width: 100%" name="content">${article.content}</textarea>
         <button type="submit">Đăng bài viết</button>
