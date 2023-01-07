@@ -17,7 +17,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Chi tiết duyệt</title>
-    <style><%@include file="/CSS_ALL/DuyetBaiEditor.css"%></style>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS_ALL/DuyetBaiEditor.css">
 
 </head>
 
@@ -30,11 +30,9 @@
 
         <ul class="list-unstyled components">
             <p>Dummy Heading</p>
-
             <li>
                 <a href="#">Bài Viết Của Tôi</a>
             </li>
-
             <li>
                 <a href="DangBai?id=${writer}">Đăng Bài</a>
             </li>
@@ -58,7 +56,6 @@
 
         <div class="container">
             <h2>Bài viết của tác giả ${name}</h2>
-            <form>
                 <table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
                     <thead>
                     <tr role="row">
@@ -72,14 +69,12 @@
                     <tr class="odd" role="row">
                         <td class="sorting_1">${o.id_article}</td>
                         <td>${o.title}</td>
-                        <td>
-                            <a href ="${pageContext.request.contextPath}/Writer/EditArticle?id=${o.id_article}">
-                                <button class="btn btn-danger btn sweet-confirm destroy">Chỉnh sửa</button>
-                            </a>
-                        </td>
-                    </tbody>
+                        <td> <a href="EditArticle?id=${o.id_article}">
+                            <button class="btn btn-danger btn sweet-confirm destroy">Chỉnh sửa</button>
+                        </a></td>
+                    </tr>
+                </tbody>
                     </c:forEach>
-                    </tbody>
                 </table>
 <%--                <div class="modal fade" id="duyetModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">--%>
 <%--                    <div class="modal-dialog modal-dialog-centered" role="document">--%>
@@ -190,8 +185,6 @@
 <%--                        </div>--%>
 <%--                    </div>--%>
 <%--                </div>--%>
-
-            </form>
         </div>
     </div>
 </div>

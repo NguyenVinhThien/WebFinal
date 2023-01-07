@@ -36,8 +36,6 @@ public class WriterServlet extends HttpServlet {
             case "/ShowArticle": {
                 int author = Integer.parseInt(request.getParameter("id"));
                 List<Articles> list = d.getArticleByAuthor(author);
-                if (list != null){
-                System.out.println(list.get(0).getId_article());}
                 String name = d.getUserName(author);
                 request.setAttribute("listA", list);
                 request.setAttribute("name", name);
@@ -56,7 +54,7 @@ public class WriterServlet extends HttpServlet {
                 String id= request.getParameter("id");
                 int i= Integer.parseInt(id);
                 Articles t= d.getArticle(i);
-                request.setAttribute("article", t);
+                request.setAttribute("article",t);
                 request.getRequestDispatcher("/EditArticle.jsp").forward(request, response);
                 break;
             }
