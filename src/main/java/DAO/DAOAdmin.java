@@ -557,14 +557,13 @@ public class DAOAdmin {
         }
         return list;
     }
-
-    public List<Articles> getArticleByAuthor(int authorID) {
+    public List<Articles> getAllArticleByDraft()
+    {
         List<Articles> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where writer_id = ?");
-            ps.setInt(1, authorID);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where status = 0");
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {
@@ -586,25 +585,63 @@ public class DAOAdmin {
         }
         return list;
     }
-
-    public String getUserName(int authorID)
+    public List<Articles> getAllArticleByOk()
     {
-        String name = new String();
+        List<Articles> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT users.name FROM users where id = ?");
-            ps.setInt(1,authorID);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where status = 3");
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {
-                name = new String(rs.getString(1));
+                list.add(new Articles(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getInt(10)))
+                ;
             }
         }catch(Exception e)
         {
             e.getMessage();
         }
-        return name;
+        return list;
+    }
+    public void Ok(int id)
+    {
+        String query="UPDATE  articles\n"
+                + "SET status = 3\r\n"
+                + "WHERE id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setInt(1,id);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
+    public void deleteArticle(String id)
+    {
+        String query="DELETE FROM articles WHERE id= ? ";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setString(1, id);
+            ps.executeUpdate();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
     }
 }
-

@@ -56,10 +56,6 @@ public class AdminServlet extends HttpServlet {
                 request.getRequestDispatcher("/SuaCategory.jsp").forward(request, response);
                 break;
             }
-            case "/BaiViet": {
-                request.getRequestDispatcher("/BaiViet.jsp").forward(request, response);
-                break;
-            }
             case "/Category/ThemCategory": {
                 request.getRequestDispatcher("/Category.jsp").forward(request, response);
                 break;
@@ -99,10 +95,59 @@ public class AdminServlet extends HttpServlet {
                 ExpireUser(request,response);
                 break;
             }
+            case "/BaiViet/Ok":{
+                Ok(request,response);
+                break;
+            }
+            case "/BaiViet/DeleteArticle":{
+                DeleteArticle(request,response);
+                break;
+            }
+            case "/BaiViet/ShowBaiVietDraft": {
+                List<Articles> list = d.getAllArticleByDraft();
+                List<Articles> listDraft = d.getAllArticleByDraft();
+                int count1 = 0;
+                for (Articles a : listDraft){
+                    count1++;
+                }
+                request.setAttribute("list", list);
+                request.setAttribute("sumlistDraft", count1);
+                request.getRequestDispatcher("/BaiVietDraft.jsp").forward(request, response);
+                break;
+            }
             case "/BaiViet/ShowBaiViet": {
                 List<Articles> list = d.getAllArticle();
+                List<Articles> listDraft = d.getAllArticleByDraft();
+                List<Articles> listOke = d.getAllArticleByOk();
+                int count = 0;
+                int count1 = 0;
+                int count2 = 0;
+                for (Articles s : list){
+                    count++;
+                }
+                for (Articles a : listDraft){
+                    count1++;
+                }
+                for (Articles a : listOke){
+                    count2++;
+                }
+                request.setAttribute("sumlist", count);
                 request.setAttribute("list", list);
+                request.setAttribute("sumlistDraft", count1);
+                request.setAttribute("sumlistOke", count2);
                 request.getRequestDispatcher("/BaiViet.jsp").forward(request, response);
+                break;
+            }
+            case "/BaiViet/ShowBaiVietOk": {
+                List<Articles> list = d.getAllArticleByOk();
+                List<Articles> listDraft = d.getAllArticleByOk();
+                int count1 = 0;
+                for (Articles a : listDraft){
+                    count1++;
+                }
+                request.setAttribute("list", list);
+                request.setAttribute("sumlistOke", count1);
+                request.getRequestDispatcher("/BaiVietOk.jsp").forward(request, response);
                 break;
             }
             default: {
@@ -252,6 +297,24 @@ public class AdminServlet extends HttpServlet {
         {
             e.printStackTrace();
         }
+    }
+    private void Ok(HttpServletRequest request, HttpServletResponse response){
+        try {
+            String id= request.getParameter("id");
+            int i= Integer.parseInt(id);
+            DAOAdmin d= new DAOAdmin();
+            d.Ok(i);
+            response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiVietDraft");
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    private void DeleteArticle(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        String id =request.getParameter("id");
+        DAOAdmin dao = new DAOAdmin();
+        dao.deleteArticle(id);
+        response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiViet");
     }
 }
 
