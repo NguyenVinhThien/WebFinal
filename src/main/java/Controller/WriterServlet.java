@@ -44,18 +44,18 @@ public class WriterServlet extends HttpServlet {
                 break;
             }
             case "/DangBai": {
-                String id= request.getParameter("id");
-                int i= Integer.parseInt(id);
+                String id = request.getParameter("id");
+                int i = Integer.parseInt(id);
                 d.getAllMainCategories();
                 request.setAttribute("author", i);
                 ServletUtils.forward("/DangArticle.jsp", request, response);
                 break;
             }
-            case "/EditArticle":{
-                String id= request.getParameter("id");
-                int i= Integer.parseInt(id);
-                Articles t= d.getArticle(i);
-                request.setAttribute("article",t);
+            case "/EditArticle": {
+                String id = request.getParameter("id");
+                int i = Integer.parseInt(id);
+                Articles t = d.getArticle(i);
+                request.setAttribute("article", t);
                 request.getRequestDispatcher("/EditArticle.jsp").forward(request, response);
                 break;
             }
@@ -76,31 +76,51 @@ public class WriterServlet extends HttpServlet {
         String path = request.getPathInfo();
         switch (path) {
             case "/DangBai": {
-                AddArticle(request,response);
+                AddArticle(request, response);
+                break;
+            }
+            case "/EditArticle": {
+                EditArticle(request, response);
                 break;
             }
         }
     }
-    private void AddArticle(HttpServletRequest request, HttpServletResponse response){
+
+    private void AddArticle(HttpServletRequest request, HttpServletResponse response) {
         try {
-            String title= request.getParameter("title");
-            String abstract_article= request.getParameter("Tom_tat");
-            String content= request.getParameter("content");
-            int categories_id= Integer.parseInt(request.getParameter("cate"));
+            String title = request.getParameter("title");
+            String abstract_article = request.getParameter("Tom_tat");
+            String content = request.getParameter("content");
+            int categories_id = Integer.parseInt(request.getParameter("cate"));
             int premium;
-            try{
-                premium= Integer.parseInt(request.getParameter("qq"));
-            }
-            catch (NumberFormatException e){
+            try {
+                premium = Integer.parseInt(request.getParameter("qq"));
+            } catch (NumberFormatException e) {
                 premium = 0;
             }
-            int writer_id= Integer.parseInt(request.getParameter("writer"));
+            int writer_id = Integer.parseInt(request.getParameter("writer"));
             System.out.println(premium);
-            DAOAdmin d= new DAOAdmin();
-            d.addArticle(title,abstract_article,content,categories_id,premium,writer_id);
-            response.sendRedirect("Writer.jsp");;
-        }catch(Exception e)
-        {
+            DAOAdmin d = new DAOAdmin();
+            d.addArticle(title, abstract_article, content, categories_id, premium, writer_id);
+            response.sendRedirect("/WebFinal/Writer/ShowArticle?id=" + writer_id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void EditArticle(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setCharacterEncoding("UTF-8");
+            String id = request.getParameter("id");
+            int i = Integer.parseInt(id);
+            String title = request.getParameter("title");
+            String abstract_article = request.getParameter("Tom_tat");
+            int writer_id = Integer.parseInt(request.getParameter("writer"));
+            String content = request.getParameter("content");
+            DAOAdmin d = new DAOAdmin();
+            d.editArticle(i, title, content, abstract_article);
+            response.sendRedirect("/WebFinal/Writer/ShowArticle?id=" + writer_id);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

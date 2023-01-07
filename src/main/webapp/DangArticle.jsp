@@ -50,7 +50,8 @@
     <div class="row mb-2">
       <div class="col-md-4 mt-3">
         <label class="labels">Chuyên mục</label>
-        <select class="form-control" name="cate">
+        <select id="select" class="form-control" name="cate">
+          <option selected>Chọn Chuyên mục</option>
           <option value="1">Xã Hội</option>
           <option value="2">Thế Giới</option>
           <option value="3">Văn Hóa</option>

@@ -18,7 +18,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Chi tiết duyệt</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS_ALL/DuyetBaiEditor.css">
-
+    <script src=
+                    "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(()=>{
+            $("select${o.id_article}").val('${o.categories_id}');
+        });
+    </script>
 </head>
 
 <body>
@@ -60,8 +67,9 @@
                     <thead>
                     <tr role="row">
                         <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">ID bài viết</th>
-                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 485.891px;">Tên Bài Viết</th>
-                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Chỉnh Sửa</th></tr>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 285.891px;">Tên Bài Viết</th>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Trạng Thái: activate to sort column ascending" style="width: 200px;">Trạng Thái</th>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Chỉnh Sửa: activate to sort column ascending" style="width: 171.672px;">Chỉnh Sửa</th></tr>
                     </thead>
                     <tbody>
                     <c:forEach items="${listA}" var="o">
@@ -69,6 +77,13 @@
                     <tr class="odd" role="row">
                         <td class="sorting_1">${o.id_article}</td>
                         <td>${o.title}</td>
+                        <td>
+                        <select id="select${o.id_article}" class="form-control" name="cate">
+                        <c:forEach items="${listC}" var="t">
+                            <option value="${t.id}">${t.name}</option>
+                        </c:forEach>
+                        </select>
+                        </td>
                         <td> <a href="EditArticle?id=${o.id_article}">
                             <button class="btn btn-danger btn sweet-confirm destroy">Chỉnh sửa</button>
                         </a></td>

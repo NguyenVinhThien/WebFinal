@@ -37,6 +37,28 @@ public class DAOAdmin {
         }
         return list;
     }
+        public List<Categories> getAllCategories()
+        {
+            List<Categories> list = new ArrayList<>();
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = ConnectDB.getConnection();
+                PreparedStatement ps = con.prepareStatement("SELECT * FROM categories");
+                ResultSet rs= ps.executeQuery();
+                while(rs.next())
+                {
+                    list.add(new Categories(rs.getInt(1),
+                            rs.getString(2),
+                            rs.getInt(3)
+                    ));
+                }
+            }catch(Exception e)
+            {
+                e.getMessage();
+            }
+            return list;
+        }
+
     public List<Categories> getSubCategories()
     {
         List<Categories> list = new ArrayList<>();
