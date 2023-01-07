@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: USER
@@ -35,7 +36,7 @@
             </li>
 
             <li>
-                <a href="DangBai?id=${name}">Đăng Bài</a>
+                <a href="DangBai?id=${writer}">Đăng Bài</a>
             </li>
         </ul>
 
@@ -70,7 +71,7 @@
                     <tbody>
                     <tr class="odd" role="row">
                         <td class="sorting_1">${o.id_article}</td>
-                        <td><a>${o.title}</a></td>
+                        <td>${o.title}</td>
                         <td>
                             <a href ="EditArticle?id=${o.id_article}" >
                                 <button class="btn btn-danger btn sweet-confirm destroy">Chỉnh sửa</button>

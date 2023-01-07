@@ -42,6 +42,7 @@ public class WriterServlet extends HttpServlet {
                 String name = d.getUserName(author);
                 request.setAttribute("listA", list);
                 request.setAttribute("name", name);
+                request.setAttribute("writer", author);
                 request.getRequestDispatcher("/Writer.jsp").forward(request, response);
                 break;
             }
