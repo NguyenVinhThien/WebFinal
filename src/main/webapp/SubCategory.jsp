@@ -228,12 +228,11 @@
                             </td>
                           </tbody>
                           </c:forEach>
-                      </div>
+                        </table>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
 

@@ -36,8 +36,6 @@ public class WriterServlet extends HttpServlet {
             case "/ShowArticle": {
                 int author = Integer.parseInt(request.getParameter("id"));
                 List<Articles> list = d.getArticleByAuthor(author);
-                if (list != null){
-                    System.out.println(list.get(0).getId_article());}
                 String name = d.getUserName(author);
                 request.setAttribute("listA", list);
                 request.setAttribute("name", name);
@@ -53,12 +51,13 @@ public class WriterServlet extends HttpServlet {
                 ServletUtils.forward("/DangArticle.jsp", request, response);
                 break;
             }
-            case "/EditArticle": {
+            case "/EditArticle":{
                 String id= request.getParameter("id");
                 int i= Integer.parseInt(id);
                 Articles t= d.getArticle(i);
-                request.setAttribute("article", t);
-                ServletUtils.forward("/EditArticle.jsp", request, response);
+                request.setAttribute("article",t);
+                request.getRequestDispatcher("/EditArticle.jsp").forward(request, response);
+                break;
             }
             default: {
                 ServletUtils.forward("/404.jsp", request, response);
@@ -80,15 +79,10 @@ public class WriterServlet extends HttpServlet {
                 AddArticle(request,response);
                 break;
             }
-            case "/EditArticle": {
-                EditArticle(request,response);
-                break;
-            }
         }
     }
     private void AddArticle(HttpServletRequest request, HttpServletResponse response){
         try {
-            request.setCharacterEncoding("UTF-8");
             String title= request.getParameter("title");
             String abstract_article= request.getParameter("Tom_tat");
             String content= request.getParameter("content");
@@ -104,24 +98,7 @@ public class WriterServlet extends HttpServlet {
             System.out.println(premium);
             DAOAdmin d= new DAOAdmin();
             d.addArticle(title,abstract_article,content,categories_id,premium,writer_id);
-            response.sendRedirect("/WebFinal/Writer/ShowArticle?id="+writer_id);
-        }catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    private void EditArticle(HttpServletRequest request, HttpServletResponse response){
-        try {
-            request.setCharacterEncoding("UTF-8");
-            String id= request.getParameter("id");
-            int i= Integer.parseInt(id);
-            String title= request.getParameter("title");
-            String abstract_article= request.getParameter("Tom_tat");
-            int writer_id= Integer.parseInt(request.getParameter("writer"));
-            String content= request.getParameter("content");
-            DAOAdmin d= new DAOAdmin();
-            d.editArticle(i,title,content,abstract_article);
-            response.sendRedirect("/WebFinal/Writer/ShowArticle?id="+writer_id);
+            response.sendRedirect("Writer.jsp");;
         }catch(Exception e)
         {
             e.printStackTrace();
