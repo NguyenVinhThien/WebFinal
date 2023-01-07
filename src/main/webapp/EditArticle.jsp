@@ -41,7 +41,7 @@
             content_css: 'css/content.css'
         });
     </script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS_ALL/DangArticle.css">
+    <style><%@include file="/CSS_ALL/DangArticle.css"%></style>
 </head>
 <body>
 <header>
@@ -65,23 +65,25 @@
                     <option value="10">Pháp Luật</option>
                 </select>
             </div>
-            <div class="col-md-6"><label class="labels">Nhãn</label><input type="text"
-                                                                           class="form-control" value=""
-                                                                           placeholder="Nhãn"></div>
+            <div class="col-md-4 mt-3"><label class="labels">Nhãn</label><input type="text"
+                                                                                name="Nhan"
+                                                                                class="form-control" value=""
+                                                                                placeholder="Nhãn"></div>
             <div class="col-md-4 mt-3"><label class="labels">ID Author</label><input type="text"
                                                                                      name="writer"
                                                                                      class="form-control" value="${article.writer_id}"
                                                                                      placeholder="ID_Author"></div>
-            <div class="col-md-12"><label class="labels">Tiêu đề</label><input type="text"
-                                                                               name="title"
-                                                                               class="form-control" value="${article.title}"
-                                                                               placeholder="Tiêu đề"></div>
-            <div class="col-md-12"><label class="labels">Tóm tắt nội dung</label><input type="text"
-                                                                                        name="Tom_tat"
-                                                                                        class="form-control" value=""
-                                                                                        placeholder="Tóm tắt"></div>
+            <div class="col-md-12 mt-3"><label class="labels">Tiêu đề</label><input type="text"
+                                                                                    name="title"
+                                                                                    class="form-control" value="${article.title}"
+                                                                                    placeholder="Tiêu đề"></div>
+            <div class="col-md-12 mt-3"><label class="labels">Tóm tắt nội dung</label><input type="text"
+                                                                                             name="Tom_tat"
+                                                                                             class="form-control" value="${article.abstract_article}"
+                                                                                             placeholder="Tóm tắt"></div>
             <label class="col-md-12 mt-3">
                 <input id="checkPremium" type="checkbox"  name="qq" value="1">Premium</label>
+
         </div>
         <textarea id="editor" style="width: 100%" name="content">${article.content}</textarea>
         <button type="submit">Đăng bài viết</button>

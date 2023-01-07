@@ -3,6 +3,7 @@ package Controller;
 
 import DAO.DAOAdmin;
 import Model.Articles;
+import Model.Categories;
 import Uti.ServletUtils;
 
 import javax.servlet.ServletException;
@@ -36,8 +37,10 @@ public class WriterServlet extends HttpServlet {
             case "/ShowArticle": {
                 int author = Integer.parseInt(request.getParameter("id"));
                 List<Articles> list = d.getArticleByAuthor(author);
+                List<Categories> cate = d.getAllCategories();
                 String name = d.getUserName(author);
                 request.setAttribute("listA", list);
+                request.setAttribute("listC", cate);
                 request.setAttribute("name", name);
                 request.setAttribute("writer", author);
                 request.getRequestDispatcher("/Writer.jsp").forward(request, response);

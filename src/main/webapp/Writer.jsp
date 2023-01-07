@@ -21,11 +21,7 @@
     <script src=
                     "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
     </script>
-    <script type="text/javascript">
-        $(document).ready(()=>{
-            $("select${o.id_article}").val('${o.categories_id}');
-        });
-    </script>
+
 </head>
 
 <body>
@@ -68,8 +64,9 @@
                     <tr role="row">
                         <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">ID bài viết</th>
                         <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 285.891px;">Tên Bài Viết</th>
-                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Trạng Thái: activate to sort column ascending" style="width: 200px;">Trạng Thái</th>
-                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Chỉnh Sửa: activate to sort column ascending" style="width: 171.672px;">Chỉnh Sửa</th></tr>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 175px;">Chuyên Mục</th>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Trạng Thái: activate to sort column ascending" style="width: 150px;">Trạng Thái</th>
+                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Chỉnh Sửa: activate to sort column ascending" style="width: 150px;">Chỉnh Sửa</th></tr>
                     </thead>
                     <tbody>
                     <c:forEach items="${listA}" var="o">
@@ -78,12 +75,23 @@
                         <td class="sorting_1">${o.id_article}</td>
                         <td>${o.title}</td>
                         <td>
-                        <select id="select${o.id_article}" class="form-control" name="cate">
-                        <c:forEach items="${listC}" var="t">
-                            <option value="${t.id}">${t.name}</option>
-                        </c:forEach>
-                        </select>
+                            <c:forEach items="${listC}" var="t">
+                                <c:if test="${t.id eq o.categories_id}">
+                                    <div>${t.name}</div>
+                                </c:if>
+                            </c:forEach>
+<%--                        <select id="select${o.id_article}" class="form-control" name="cate">--%>
+<%--                        <c:forEach items="${listC}" var="t">--%>
+<%--                            <script type="text/javascript">--%>
+<%--                                if (${t.id} == ${o.categories_id})--%>
+<%--                                    document.getElementById('select${o.id_article}').add(new Option("${t.name}","${t.id}",false,true))--%>
+<%--                                else--%>
+<%--                                document.getElementById('select${o.id_article}').add(new Option("${t.name}","${t.id}"));--%>
+<%--                            </script>--%>
+<%--                        </c:forEach>--%>
+<%--                        </select>--%>
                         </td>
+                        <td></td>
                         <td> <a href="EditArticle?id=${o.id_article}">
                             <button class="btn btn-danger btn sweet-confirm destroy">Chỉnh sửa</button>
                         </a></td>
@@ -207,9 +215,11 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script>
-
-    </script>
+<%--    <script type="text/javascript">--%>
+<%--        $(document).ready(()=>{--%>
+<%--            $("select${o.id_article}").after($("select${o.id_article}").val('${o.categories_id}'));--%>
+<%--        });--%>
+<%--    </script>--%>
 </body>
 
 </html>
