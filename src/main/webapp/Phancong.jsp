@@ -209,14 +209,22 @@
                     <div class="card-body">
                       <div class="table-responsive">
                         <div id="example_wrapper" class="dataTables_wrapper">
-                          <div id="example_wrapper" class="dataTables_wrapper"><table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
+                          <div id="example_wrapper" class="dataTables_wrapper">
+                            <div class="d-flex justify-content-end ">
+                              <a href="#" class="btn btn-warning btn-icon-split align-content-center" data-target="#editDanhMuc" data-toggle="modal" >
+                                        <span class="icon text-white-50" >
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </span>
+                                <span class="text">Chỉnh sửa</span>
+                              </a>
+                            </div>
+                            <table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
                             <thead>
                             <tr role="row">
                               <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã biên tập viên</th>
                               <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 485.891px;">Tên biên tập viên</th>
                               <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã danh mục</th>
                               <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 485.891px;">Tên danh mục</th>
-                              <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Chỉnh sửa: activate to sort column ascending" style="width: 202.938px;">Chỉnh sửa</th>
                               <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Xóa</th></tr>
                             </thead>
                             <c:forEach items="${list}" var="t">
@@ -226,8 +234,7 @@
                               <td>${t.nameEditor}</td>
                               <td>${t.category_id}</td>
                               <td>${t.nameCategory}</td>
-                              <td><a href="#" class="btn btn-info" data-target="#editDanhMuc" data-toggle="modal">Sửa</a></td>
-                              <td><button class="btn btn-danger btn sweet-confirm destroy" data-url="#">Xóa</button>
+                              <td><a href="DeleteEditor?id=${t.id}"><button  class="btn btn-danger btn sweet-confirm destroy" >Xóa</button></a>
                               </td>
                             </tbody>
                             </c:forEach>
@@ -270,20 +277,20 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Sửa bài viết</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Sửa phân công Editor</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
-            <form action="#" method="post">
           </div>
+            <form action="EditEditor" method="post">
           <div class="modal-body">
             <div class="form-group">
-              <label>ID</label>
-              <input name="pid" type="text" class="form-control" required>
+              <label>Mã biên tập viên</label>
+              <input name="editor_id" type="text" class="form-control" required>
             </div>
             <div class="form-group">
-              <label>Tên danh mục</label>
-              <input name="name" type="text" class="form-control" required>
+              <label>Mã danh mục</label>
+              <input name="category_id" type="text" class="form-control" required>
             </div>
             <div class="modal-footer">
               <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

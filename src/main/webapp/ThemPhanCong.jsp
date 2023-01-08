@@ -203,7 +203,7 @@
                   </h4>
                 </div>
                 <div class="card-body">
-                  <form class="form-valide-with-icon" action="#" method="POST" novalidate="novalidate">
+                  <form class="form-valide-with-icon" action="AddEditor" method="POST" novalidate="novalidate">
                     <div class="form-group">
                       <label class="text-label">Mã biên tập viên</label>
                       <div class="input-group">
@@ -211,18 +211,9 @@
                                             <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
                                             </span>
                         </div>
-                        <input type="text" class="form-control" id="#" name="name" placeholder="Mã" value="">
+                        <input type="text" class="form-control" id="#" name="editor_id" placeholder="Mã" value="">
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label class="text-label">Tên biên tập viên</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                                            <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
-                                            </span>
-                        </div>
-                        <input type="text" class="form-control" id="#" name="name" placeholder="Tên" value="">
-                      </div>
                       <div class="form-group">
                         <label class="text-label">Mã danh mục</label>
                         <div class="input-group">
@@ -230,20 +221,9 @@
                                                 <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
                                                 </span>
                           </div>
-                          <input type="text" class="form-control" id="#" name="name" placeholder="Mã danh mục" value="">
+                          <input type="text" class="form-control" id="#" name="category_id" placeholder="Mã danh mục" value="">
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label class="text-label">Tên danh mục</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                                                <span class="input-group-text"> <i class="fa fa-header" aria-hidden="true"></i>
-                                                </span>
-                          </div>
-                          <input type="text" class="form-control" id="#" name="name" placeholder=" Tên danh mục" value="">
-                        </div>
-                      </div>
-                    </div>
                     <button type="submit" class="btn btn-primary">Thêm</button>
                   </form>
                 </div>

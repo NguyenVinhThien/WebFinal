@@ -1022,4 +1022,53 @@ public class DAOAdmin {
         }
         return list;
     }
+    public void addEditor(String id, String editor_id,String category_id)
+    {
+        String query="INSERT INTO editor_manage_categories (id,editor_id,category_id) VALUES(?,?,?)";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setString(1,id);
+            ps.setString(2,editor_id);
+            ps.setString(3,category_id);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
+    public void deleteEditor(String id)
+    {
+        String query="DELETE FROM editor_manage_categories WHERE id = ? ";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setString(1, id);
+            ps.executeUpdate();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
+    public void editEditor(int editor_id,int category_id)
+    {
+        String query="UPDATE editor_manage_categories\n"
+                + "SET category_id = ? \r\n"
+                + "WHERE editor_id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setInt(1,category_id);
+            ps.setInt(2,editor_id);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
 }
