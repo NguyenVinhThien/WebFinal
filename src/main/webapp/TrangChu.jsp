@@ -13,7 +13,8 @@
 <jsp:useBean id="listTags" scope="request" type="java.util.List<Model.Tags>"/>
 <jsp:useBean id="listTopHotArt" scope="request" type="java.util.Map<Model.Articles,java.lang.String>"/>
 <jsp:useBean id="listArtByView" scope="request" type="java.util.Map<Model.Articles,java.lang.String>"/>
-<jsp:useBean id="listNewArt" scope="request" type="java.util.Map<Model.Articles,java.lang.String>"/>
+<%--<jsp:useBean id="listNewArt" scope="request" type="java.util.Map<Model.Articles,java.lang.String>"/>--%>
+<jsp:useBean id="listNewArt" scope="request" type="java.util.List<Model.ArticleHasCategories>"/>
 <jsp:useBean id="authUser" scope="session" type="Model.User"/>
 <%--<jsp:useBean id="auth" scope="session" type="Model.User"/>--%>
 
@@ -155,13 +156,27 @@
   <div class="left">
     <div class="newPost">
       <div class="largeTitle">Tin mới</div>
-      <c:forEach items="${listNewArt.keySet()}" var="ln">
+      <c:forEach items="${listNewArt}" var="ln">
       <div class="horizontalCard">
         <img src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="" class="cardHorizontalImg">
         <div class="cardHorizontal-Body">
-          <h5 class="card-title">${ln.title}</h5>
-          <span class="cardCategory">${listNewArt.get(ln)}</span>
-          <p class="card-text"><small class="text-muted">Ngày đăng: ${ln.publish_date}</small></p>
+          <h5 >
+            <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${ln.id_article}">${ln.title}</a>
+          </h5>
+          <c:choose>
+            <c:when test="${ln.parent_id eq 0}">
+              <span class="cardCategory">${ln.cat_name}</span>
+            </c:when>
+            <c:otherwise>
+              <c:forEach items="${listCat}" var="c">
+                <c:if test="${c.id eq ln.parent_id}">
+                  <span class="cardCategory">${c.name}</span>
+                </c:if>
+              </c:forEach>
+            </c:otherwise>
+          </c:choose>
+
+          <p class="card-text"><small class="text-muted">Ngày đăng: ${ln.publish_date }</small></p>
         </div>
       </div>
       </c:forEach>

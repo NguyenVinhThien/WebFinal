@@ -25,6 +25,11 @@
 .nav-link {
     color: white;
 }
+.card-title-custom{
+    text-decoration: none;
+    text-underline: none;
+    color: black;
+}
 .nav-title{
     color: #2FA1B3;
 }
