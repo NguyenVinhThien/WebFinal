@@ -611,7 +611,7 @@ public class DAOAdmin {
     }
     public int Count(String keyword)
     {
-        String query = "Select COUNT(*) as total from articles \n where title like \"%" + keyword + "%\"\n" + "and status = 0 or status = 2 ";
+        String query = "Select COUNT(*) as total from articles \n where title like \"%" + keyword + "%\"\n" + "and status = 0 or status = 2 " ;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
@@ -625,13 +625,14 @@ public class DAOAdmin {
         }
         return 0;
     }
-    public List<Articles> getAllArticleByDraft(String keyword)
+    public List<Articles> getAllArticleByDraft(String keyword,int page)
     {
+        int offset = (page - 1) * 10;
         List<Articles> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("Select * from articles where title like \"%" + keyword + "%\"" + "and status = 0");
+            PreparedStatement ps = con.prepareStatement("Select * from articles where title like \"%" + keyword + "%\"" + "and status = 0 \n" + "LIMIT 10" + " \n OFFSET " + Integer.toString(offset));
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {
@@ -669,13 +670,14 @@ public class DAOAdmin {
         }
         return 0;
     }
-    public List<Articles> getAllArticleByOk(String keyword)
+    public List<Articles> getAllArticleByOk(String keyword,int page)
     {
+        int offset = (page - 1) * 10;
         List<Articles> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("Select * from articles where title like \"%" + keyword + "%\"" + "and status = 2");
+            PreparedStatement ps = con.prepareStatement("Select * from articles where title like \"%" + keyword + "%\"" + "and status = 2 \n" + "LIMIT 10" + " \n OFFSET " + Integer.toString(offset));
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {

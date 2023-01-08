@@ -119,35 +119,38 @@ public class AdminServlet extends HttpServlet {
                 {
                     keyword ="";
                 }
-                List<Articles> list = d.getAllArticleByDraft(keyword);
-                List<Articles> listDraft = d.getAllArticleByDraft(keyword);
-                int count1 = 0;
-                for (Articles a : listDraft){
-                    count1++;
+                int page = 1;
+                if(request.getParameter("page") != null && request.getParameter("page") != "")
+                {
+                    page = Integer.parseInt(request.getParameter("page"));
                 }
+                int total1 = d.Count1(keyword);
+                int totalpage = (int) Math.ceil((float)total1/(float)10);
+                List<Articles> list = d.getAllArticleByDraft(keyword,page);
                 request.setAttribute("list", list);
-                request.setAttribute("sumlistDraft", count1);
+                request.setAttribute("total1", total1);
+                request.setAttribute("totalpage", totalpage);
+                request.setAttribute("page", page);
                 request.getRequestDispatcher("/BaiVietDraft.jsp").forward(request, response);
                 break;
             }
             case "/BaiViet/ShowBaiViet": {
                 request.setCharacterEncoding("UTF-8");
                 String keyword = request.getParameter("keyword");
+                if(keyword == null)
+                {
+                    keyword ="";
+                }
                 int page = 1;
                 if(request.getParameter("page") != null && request.getParameter("page") != "")
                 {
                     page = Integer.parseInt(request.getParameter("page"));
-                }
-                if(keyword == null)
-                {
-                    keyword ="";
                 }
                 int total = d.Count(keyword);
                 int total1 = d.Count1(keyword);
                 int total2 = d.Count2(keyword);
                 int totalpage = (int) Math.ceil((float)total/(float)10);
                 List<Articles> list = d.getAllArticle(keyword,page);
-                List<Articles> listOke = d.getAllArticleByOk(keyword);
                 request.setAttribute("list", list);
                 request.setAttribute("total", total);
                 request.setAttribute("total1", total1);
@@ -164,14 +167,19 @@ public class AdminServlet extends HttpServlet {
                 {
                     keyword ="";
                 }
-                List<Articles> list = d.getAllArticleByOk(keyword);
-                List<Articles> listDraft = d.getAllArticleByOk(keyword);
-                int count1 = 0;
-                for (Articles a : listDraft){
-                    count1++;
+                int page = 1;
+                if(request.getParameter("page") != null && request.getParameter("page") != "")
+                {
+                    page = Integer.parseInt(request.getParameter("page"));
                 }
+                int total2 = d.Count2(keyword);
+                int totalpage = (int) Math.ceil((float)total2/(float)10);
+                request.setAttribute("total2", total2);
+                request.setAttribute("total2", total2);
+                List<Articles> list = d.getAllArticleByOk(keyword,page);
                 request.setAttribute("list", list);
-                request.setAttribute("sumlistOke", count1);
+                request.setAttribute("totalpage", totalpage);
+                request.setAttribute("page", page);
                 request.getRequestDispatcher("/BaiVietOk.jsp").forward(request, response);
                 break;
             }

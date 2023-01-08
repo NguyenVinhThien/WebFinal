@@ -149,7 +149,7 @@
                 <form  class="d-none d-sm-inline-block form-inline navbar-search">
                     <div class="input-group">
                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                               aria-label="Search" aria-describedby="basic-addon2" name = "keyword">
+                               aria-label="Search" aria-describedby="basic-addon2" value="<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : ""%>" name = "keyword">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-search fa-sm"></i>
@@ -235,7 +235,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            Số bài viết đã duyệt</div>
+                                            Số bài viết đã xuất bản</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             ${total2}
                                         </div>
@@ -263,7 +263,7 @@
                         <div class="col-auto">
                         </div>
                         <a href="ShowBaiVietOk" class="btn btn-outline-warning  align-content-center" >
-                            <span class="text">Đã Duyệt</span>
+                            <span class="text">Đã Xuất Bản</span>
                         </a>
                     </div>
                     <div class="card shadow mb-4">
@@ -319,26 +319,26 @@
                                         <ul class="pagination">
                                             <c:if test="${page != 1}">
                                             <li class="paginate_button page-item" id="dataTable_previous">
-                                                <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiViet?keyword=<%= request.getParameter("keyword")%>&page=${page - 1 }" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                                <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiViet?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : ""%>&page=${page - 1 }" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
                                             </li>
                                             </c:if>
                                             <c:forEach var="i" begin="1" end ="${totalpage}" >
                                                 <c:choose>
                                                     <c:when test="${ page == i}">
                                                     <li class="paginate_button page-item active">
-                                                        <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiViet?keyword=<%= request.getParameter("keyword")%>&page=${i}" aria-controls="dataTable" data-dt-idx="${ i}" tabindex="0" class="page-link">${ i}</a>
+                                                        <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiViet?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : ""%>&page=${i}" aria-controls="dataTable"  tabindex="0" class="page-link">${ i}</a>
                                                     </li>
                                                 </c:when>
                                                     <c:otherwise>
                                                         <li class="paginate_button page-item">
-                                                            <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiViet?keyword=<%= request.getParameter("keyword")%>&page=${i}" aria-controls="dataTable" data-dt-idx="${ i}" tabindex="0" class="page-link">${ i}</a>
+                                                            <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiViet?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : ""%>&page=${i}" aria-controls="dataTable"  tabindex="0" class="page-link">${ i}</a>
                                                         </li>
                                                     </c:otherwise>
                                                 </c:choose >
                                             </c:forEach>
                                             <c:if test="${page < totalpage}">
                                             <li class="paginate_button page-item next" id="dataTable_next">
-                                                <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiViet?keyword=<%= request.getParameter("keyword")%>&page=${page + 1}" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                                                <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiViet?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : ""%>&page=${page + 1}" aria-controls="dataTable"  tabindex="0" class="page-link">Next</a>
                                             </li>
                                             </c:if>
                                         </ul>
