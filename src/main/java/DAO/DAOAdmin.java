@@ -37,6 +37,32 @@ public class DAOAdmin {
         }
         return list;
     }
+    public List<Categories> getAllMainCategoriesByEditor(int Editor_id)
+    {
+        List<Categories> list = new ArrayList<>();
+        String query = "SELECT a.* \n"
+                +"FROM categories a inner join editor_manage_categories b\n"
+                +"on a.id = b.category_id\n"
+                +"where a.parent_id is null and b.editor = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1,Editor_id);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                list.add(new Categories(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3)
+                ));
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return list;
+    }
         public List<Categories> getAllCategories()
         {
             List<Categories> list = new ArrayList<>();
