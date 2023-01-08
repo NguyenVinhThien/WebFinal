@@ -131,18 +131,45 @@ public class DAOAdmin {
         }
         return list;
     }
-    public Map<Articles,String> getTopHotArticle()
-    {
-        Map<Articles,String> list = new HashMap<>();
+//    public Map<Articles,String> getTopHotArticle()
+//    {
+//        Map<Articles,String> list = new HashMap<>();
+//
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Connection con = ConnectDB.getConnection();
+//            PreparedStatement ps = con.prepareStatement("select * from (select a.*, b.name  from articles a INNER JOIN categories b on a.categories_id = b.id) as c where yearweek(publish_date, 1)= yearweek(curdate(), 1) order by views desc limit 3");
+//            ResultSet rs = ps.executeQuery();
+//            while(rs.next())
+//            {
+//                list.put(new Articles(rs.getInt(1),
+//                        rs.getString(2),
+//                        rs.getString(3),
+//                        rs.getInt(4),
+//                        rs.getString(5),
+//                        rs.getString(6),
+//                        rs.getInt(7),
+//                        rs.getInt(8),
+//                        rs.getInt(9),
+//                        rs.getInt(10)),rs.getString(11));
+//            }
+//        }catch(Exception e)
+//        {
+//            e.getMessage();
+//        }
+//        return list;
+//    }
+    public List<ArticleHasCategories> getTopHotArticle(){
+        List<ArticleHasCategories> list = new ArrayList<>();
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select * from (select a.*, b.name  from articles a INNER JOIN categories b on a.categories_id = b.id) as c where yearweek(publish_date, 1)= yearweek(curdate(), 1) order by views desc limit 3");
+            PreparedStatement ps = con.prepareStatement("select a.*, c.name, c.parent_id from articles a inner join categories c on a.categories_id= c.id where yearweek(a.publish_date, 1)= yearweek(curdate() -7, 1) and a.publish_date<= current_date() order by a.views desc limit 3");
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
-                list.put(new Articles(rs.getInt(1),
+                list.add(new ArticleHasCategories(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
                         rs.getInt(4),
@@ -151,7 +178,9 @@ public class DAOAdmin {
                         rs.getInt(7),
                         rs.getInt(8),
                         rs.getInt(9),
-                        rs.getInt(10)),rs.getString(11));
+                        rs.getInt(10),
+                        rs.getString(11),
+                        rs.getInt(12)));
             }
         }catch(Exception e)
         {
