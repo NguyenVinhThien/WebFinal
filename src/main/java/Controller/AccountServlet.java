@@ -1,9 +1,9 @@
 package Controller;
 
 import DAO.UserModel;
+import Model.User;
 import Uti.ServletUtils;
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import Model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -28,10 +29,11 @@ public class AccountServlet extends HttpServlet {
                 break;
 
             case "/DangNhap":
-                HttpSession session = request.getSession();
-                if ((boolean) session.getAttribute("auth")) {
-                    ServletUtils.redirect("/TrangChu", request, response);
-                } else ServletUtils.forward("/DangNhap.jsp", request, response);
+//                HttpSession session = request.getSession();
+//                if ((boolean) session.getAttribute("auth")) {
+//                    ServletUtils.redirect("/TrangChu", request, response);
+//                } else ServletUtils.forward("/DangNhap.jsp", request, response);
+                ServletUtils.forward("/DangNhap.jsp", request, response);
                 break;
 
             case "/ThongTinCaNhan":
@@ -72,6 +74,10 @@ public class AccountServlet extends HttpServlet {
                 logout(request, response);
                 break;
 
+            case "/ThongTinCaNhan":
+                updateProfile(request, response);
+                break;
+
             default:
                 ServletUtils.forward("/404.jsp", request, response);
                 break;
@@ -92,8 +98,10 @@ public class AccountServlet extends HttpServlet {
             String name = request.getParameter("name");
             String email = request.getParameter("email");
 
+            LocalDateTime issue_at = LocalDateTime.now(Clock.systemDefaultZone());
+
             UserModel c = new UserModel();
-            c.addUser(username, bcryptHashString, name, dob, email);
+            c.addUser(username, bcryptHashString, name, issue_at, dob, email);
             response.sendRedirect("/WebFinal/Account/DangNhap");
         } catch (Exception e) {
             e.printStackTrace();
@@ -139,7 +147,7 @@ public class AccountServlet extends HttpServlet {
             url = "/TrangChu";
         ServletUtils.redirect(url, request, response);
     }
-//    private void Profile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void updateProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        HttpSession session = request.getSession();
 //        User user = (User) session.getAttribute("authUser");
 //        int id = user.getId();
@@ -156,6 +164,30 @@ public class AccountServlet extends HttpServlet {
 //        LocalDateTime otp_exp = user.getOtp_exp();
 //
 //        request.setAttribute("username", username);
+
+        try {
+            request.setCharacterEncoding("UTF-8");
+            String username = request.getParameter("username");
+
+            String strDob = request.getParameter("dob");
+            DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+            LocalDateTime dob = LocalDateTime.parse(strDob, df);
+
+            String name = request.getParameter("name");
+            String second_name = request.getParameter("second_name");
+            String email = request.getParameter("email");
+
+            UserModel c = new UserModel();
+            c.updateUser(username, name, second_name, dob, email);
 //
-//    }
+//            User user = UserModel.findByUsername(username);
+//            HttpSession session = request.getSession();
+//            session.setAttribute("authUser", user);
+//
+//
+            response.sendRedirect("/WebFinal/Account/DangNhap");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
