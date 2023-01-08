@@ -3,6 +3,7 @@ package Controller;
 import DAO.DAOAdmin;
 import Model.Articles;
 import Model.Categories;
+import Model.User;
 import Uti.ServletUtils;
 
 import javax.servlet.ServletException;
@@ -39,7 +40,7 @@ public class EditorServlet  extends HttpServlet {
                 String name = d.getUserName(editor);
                 request.setAttribute("listC", list);
                 request.setAttribute("name", name);
-                request.getRequestDispatcher("/Editor.jsp").forward(request, response);
+                request.getRequestDispatcher("/MainCategoryByEditor.jsp").forward(request, response);
                 break;
             }
 
@@ -49,32 +50,24 @@ public class EditorServlet  extends HttpServlet {
                 List<Categories> list = d.getAllSubCategories(parent_id);
                 request.setAttribute("listS", list);
                 request.setAttribute("name", name);
-                request.getRequestDispatcher("/SubCategory.jsp").forward(request, response);
+                request.getRequestDispatcher("/SubCategoryByEditor.jsp").forward(request, response);
                 break;
             }
 
-            case "/ShowArticle/Draft": {
-                int author = Integer.parseInt(request.getParameter("id"));
-                List<Articles> list = d.getArticleDraftByAuthor(author);
+            case "/ShowArticle/ByMainCategory":
+            case "/ShowArticle/BySubCategory": {
+                int catID = Integer.parseInt(request.getParameter("id"));
+                List<Articles> list = d.getArticleByCatId(catID);
                 List<Categories> cate = d.getAllCategories();
-                String name = d.getUserName(author);
+                List<User> name = d.getAllUsers();
                 request.setAttribute("listA", list);
                 request.setAttribute("listC", cate);
                 request.setAttribute("name", name);
-                request.setAttribute("writer", author);
                 request.setAttribute("path","chưa được duyệt");
-                request.getRequestDispatcher("/Writer.jsp").forward(request, response);
+                request.getRequestDispatcher("/ArticleByEditor.jsp").forward(request, response);
                 break;
             }
-            case "/DangBai": {
-                String id = request.getParameter("id");
-                int i = Integer.parseInt(id);
-                List<Categories> cate = d.getAllCategories();
-                request.setAttribute("listC", cate);
-                request.setAttribute("author", i);
-                ServletUtils.forward("/DangArticle.jsp", request, response);
-                break;
-            }
+
             case "/EditArticle": {
                 String id = request.getParameter("id");
                 int i = Integer.parseInt(id);
@@ -82,7 +75,7 @@ public class EditorServlet  extends HttpServlet {
                 List<Categories> cate = d.getAllCategories();
                 request.setAttribute("listC", cate);
                 request.setAttribute("article", t);
-                request.getRequestDispatcher("/EditArticle.jsp").forward(request, response);
+                request.getRequestDispatcher("/Editor.jsp").forward(request, response);
                 break;
             }
             default: {
