@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="authUser" scope="session" type="Model.User"/>
 <%--
   Created by IntelliJ IDEA.
   User: Home
@@ -63,7 +64,7 @@
                                                                           placeholder="Nhãn"></div>
       <div class="col-md-4 mt-3"><label class="labels">ID Author</label><input type="text"
                                                                                name="writer"
-                                                                               class="form-control" value="${author}"
+                                                                               class="form-control" value="${authUser.id}"
                                                                                placeholder="ID_Author"></div>
       <div class="col-md-12 mt-3"><label class="labels">Tiêu đề</label><input type="text"
                                                                               name="title"

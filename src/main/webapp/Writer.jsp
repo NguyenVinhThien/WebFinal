@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="authUser" scope="session" type="Model.User"/>
+
 <%--
   Created by IntelliJ IDEA.
   User: USER
@@ -37,19 +39,19 @@
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bài Viết Của Tôi</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li value="Tất cả">
-                        <a href="/WebFinal/Writer/ShowArticle?id=${writer}">Tất Cả Bài viết</a>
+                        <a href="/WebFinal/Writer/ShowArticle?id=${authUser.id}">Tất Cả Bài viết</a>
                     </li>
                     <li>
-                        <a href="/WebFinal/Writer/ShowArticle/Draft?id=${writer}">Bài Viết Draft</a>
+                        <a href="/WebFinal/Writer/ShowArticle/Draft?id=${authUser.id}">Bài Viết Draft</a>
                     </li>
                     <li>
-                        <a href="/WebFinal/Writer/ShowArticle/Ok?id=${writer}">Bài viết đã duyệt</a>
+                        <a href="/WebFinal/Writer/ShowArticle/Ok?id=${authUser.id}">Bài viết đã duyệt</a>
                     </li>
                 </ul>
             </li>
 
             <li>
-                <a href="/WebFinal/Writer/DangBai?id=${writer}">Đăng Bài</a>
+                <a href="/WebFinal/Writer/DangBai?id=${authUser.id}">Đăng Bài</a>
             </li>
         </ul>
 
