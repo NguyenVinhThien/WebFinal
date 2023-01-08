@@ -1,6 +1,5 @@
 package Controller;
 
-
 import DAO.DAOAdmin;
 import Model.Articles;
 import Model.Categories;
@@ -14,15 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-
-@WebServlet(name="Writer",urlPatterns = "/Writer/*")
-public class WriterServlet extends HttpServlet {
+@WebServlet(name="Editor",urlPatterns = "/Editor/*")
+public class EditorServlet  extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WriterServlet() {
+    public EditorServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,31 +33,23 @@ public class WriterServlet extends HttpServlet {
         String path = request.getPathInfo();
         switch (path) {
             case "/Home":
-            case "/ShowArticle": {
-                int author = Integer.parseInt(request.getParameter("id"));
-                List<Articles> list = d.getArticleByAuthor(author);
-                List<Categories> cate = d.getAllCategories();
-                String name = d.getUserName(author);
-                request.setAttribute("listA", list);
-                request.setAttribute("listC", cate);
+            case "/ShowCategory": {
+                int editor = Integer.parseInt(request.getParameter("id"));
+                List<Categories> list = d.getAllMainCategoriesByEditor(editor);
+                String name = d.getUserName(editor);
+                request.setAttribute("listC", list);
                 request.setAttribute("name", name);
-                request.setAttribute("writer", author);
-                request.setAttribute("path","");
-                request.getRequestDispatcher("/Writer.jsp").forward(request, response);
+                request.getRequestDispatcher("/Editor.jsp").forward(request, response);
                 break;
             }
 
-            case "/ShowArticle/Ok": {
-                int author = Integer.parseInt(request.getParameter("id"));
-                List<Articles> list = d.getArticleOKByAuthor(author);
-                List<Categories> cate = d.getAllCategories();
-                String name = d.getUserName(author);
-                request.setAttribute("listA", list);
-                request.setAttribute("listC", cate);
+            case "/ShowCategory/SubCategory": {
+                int parent_id = Integer.parseInt(request.getParameter("id"));
+                String name = d.getCategoryName(parent_id);
+                List<Categories> list = d.getAllSubCategories(parent_id);
+                request.setAttribute("listS", list);
                 request.setAttribute("name", name);
-                request.setAttribute("writer", author);
-                request.setAttribute("path"," đã duyệt");
-                request.getRequestDispatcher("/Writer.jsp").forward(request, response);
+                request.getRequestDispatcher("/SubCategory.jsp").forward(request, response);
                 break;
             }
 
@@ -168,4 +158,3 @@ public class WriterServlet extends HttpServlet {
         }
     }
 }
-

@@ -25,7 +25,7 @@
     <script type="text/javascript">
         tinymce.init({
             selector: '#editor',
-            width: 1000,
+            //width: 1000,
             height: 600,
             plugins: [
                 'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
@@ -35,7 +35,9 @@
             toolbar: false,
             menu: false,
             menubar: false,
-            content_css: 'css/content.css'
+            content_css: 'css/content.css',
+            //theme : "advanced",
+            readonly : true
         });
     </script>
 </head>
