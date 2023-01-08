@@ -1,6 +1,7 @@
 package Controller;
 
 import DAO.DAOAdmin;
+import Model.ArticleHasCategories;
 import Model.Articles;
 import Model.Categories;
 import Model.Tags;
@@ -27,13 +28,14 @@ public class TrangChu extends HttpServlet {
         List<Tags> listTags= d.getAllTag();
         request.setAttribute("listTags", listTags);
 
-        Map<Articles,String> listTopHotArt= d.getTopHotArticle();
+//        Map<Articles,String> listTopHotArt= d.getTopHotArticle();
+        List<ArticleHasCategories> listTopHotArt= d.getTopHotArticle();
         request.setAttribute("listTopHotArt", listTopHotArt);
 
         Map<Articles,String> listArtByView= d.getArticleByView();
         request.setAttribute("listArtByView", listArtByView);
 
-        Map<Articles,String> listNewArt= d.getNewArticle();
+        List<ArticleHasCategories> listNewArt= d.getNewArticle();
         request.setAttribute("listNewArt", listNewArt);
 
         RequestDispatcher rd= request.getRequestDispatcher("TrangChu.jsp");
