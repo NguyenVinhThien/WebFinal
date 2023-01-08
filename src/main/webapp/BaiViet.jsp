@@ -203,7 +203,7 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             Số bài viết</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"> ${sumlist}</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"> ${total}</div>
                                     </div>
                                     <div class="col-auto">
                                     </div>
@@ -220,7 +220,7 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Số bài viết draft</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">${sumlistDraft}</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">${total1}</div>
                                     </div>
                                     <div class="col-auto">
                                     </div>
@@ -237,7 +237,7 @@
                                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                             Số bài viết đã duyệt</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            ${sumlistOke}
+                                            ${total2}
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -317,30 +317,30 @@
                                 <div class="col-sm-12 col-md-7">
                                     <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
                                         <ul class="pagination">
-                                            <li class="paginate_button page-item previous disabled" id="dataTable_previous">
-                                                <a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                            <c:if test="${page != 1}">
+                                            <li class="paginate_button page-item" id="dataTable_previous">
+                                                <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiViet?keyword=<%= request.getParameter("keyword")%>&page=${page - 1 }" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
                                             </li>
-                                            <li class="paginate_button page-item active">
-                                                <a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                            </li>
-                                            <li class="paginate_button page-item ">
-                                                <a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                                            </li>
-                                            <li class="paginate_button page-item ">
-                                                <a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-                                            </li>
-                                            <li class="paginate_button page-item ">
-                                                <a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-                                            </li>
-                                            <li class="paginate_button page-item ">
-                                                <a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-                                            </li>
-                                            <li class="paginate_button page-item ">
-                                                <a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-                                            </li>
+                                            </c:if>
+                                            <c:forEach var="i" begin="1" end ="${totalpage}" >
+                                                <c:choose>
+                                                    <c:when test="${ page == i}">
+                                                    <li class="paginate_button page-item active">
+                                                        <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiViet?keyword=<%= request.getParameter("keyword")%>&page=${i}" aria-controls="dataTable" data-dt-idx="${ i}" tabindex="0" class="page-link">${ i}</a>
+                                                    </li>
+                                                </c:when>
+                                                    <c:otherwise>
+                                                        <li class="paginate_button page-item">
+                                                            <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiViet?keyword=<%= request.getParameter("keyword")%>&page=${i}" aria-controls="dataTable" data-dt-idx="${ i}" tabindex="0" class="page-link">${ i}</a>
+                                                        </li>
+                                                    </c:otherwise>
+                                                </c:choose >
+                                            </c:forEach>
+                                            <c:if test="${page < totalpage}">
                                             <li class="paginate_button page-item next" id="dataTable_next">
-                                                <a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                                                <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiViet?keyword=<%= request.getParameter("keyword")%>&page=${page + 1}" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
                                             </li>
+                                            </c:if>
                                         </ul>
                                     </div>
                                 </div>
