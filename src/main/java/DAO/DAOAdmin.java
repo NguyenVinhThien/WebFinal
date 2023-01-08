@@ -577,9 +577,10 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
-    public List<Articles> getAllArticle(String keyword)
+    public List<Articles> getAllArticle(String keyword,int page)
     {
-        String query = "Select * from articles where title like \"%" + keyword + "%\"" + "and status = 0 or status = 2 " ;
+        int offset = (page - 1) * 10;
+        String query = "Select * from articles \n where title like \"%" + keyword + "%\"\n" + "and status = 0 or status = 2 " + "LIMIT 10" + " \n OFFSET " + Integer.toString(offset);
         List<Articles> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -606,13 +607,30 @@ public class DAOAdmin {
         }
         return list;
     }
-    public List<Articles> getAllArticleByDraft(String keyword)
+    public int Count(String keyword)
     {
+        String query = "Select COUNT(*) as total from articles \n where title like \"%" + keyword + "%\"\n" + "and status = 0 or status = 2 " ;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt("total");
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return 0;
+    }
+    public List<Articles> getAllArticleByDraft(String keyword,int page)
+    {
+        int offset = (page - 1) * 10;
         List<Articles> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("Select * from articles where title like \"%" + keyword + "%\"" + "and status = 0");
+            PreparedStatement ps = con.prepareStatement("Select * from articles where title like \"%" + keyword + "%\"" + "and status = 0 \n" + "LIMIT 10" + " \n OFFSET " + Integer.toString(offset));
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {
@@ -634,13 +652,30 @@ public class DAOAdmin {
         }
         return list;
     }
-    public List<Articles> getAllArticleByOk(String keyword)
+    public int Count1(String keyword)
     {
+        String query = "Select COUNT(*) as total1 from articles \n where title like \"%" + keyword + "%\"\n" + "and status = 0";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt("total1");
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return 0;
+    }
+    public List<Articles> getAllArticleByOk(String keyword,int page)
+    {
+        int offset = (page - 1) * 10;
         List<Articles> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("Select * from articles where title like \"%" + keyword + "%\"" + "and status = 2");
+            PreparedStatement ps = con.prepareStatement("Select * from articles where title like \"%" + keyword + "%\"" + "and status = 2 \n" + "LIMIT 10" + " \n OFFSET " + Integer.toString(offset));
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {
@@ -661,6 +696,22 @@ public class DAOAdmin {
             e.getMessage();
         }
         return list;
+    }
+    public int Count2(String keyword)
+    {
+        String query = "Select COUNT(*) as total2 from articles \n where title like \"%" + keyword + "%\"\n" + "and status = 2";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt("total2");
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return 0;
     }
     public void Ok(int id)
     {

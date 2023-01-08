@@ -210,9 +210,9 @@
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                      Số bài viết đã duyệt</div>
+                      Số bài viết đã xuất bản</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      ${sumlistOke}
+                      ${total2}
                     </div>
                   </div>
                   <div class="col-auto">
@@ -224,7 +224,7 @@
         </div>
         <div class="container-fluid">
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Danh sách bài viết đã duyệt</h1>
+          <h1 class="h3 mb-2 text-gray-800">Danh sách bài viết đã xuất bản</h1>
           <!-- DataTales Example -->
           <div class="d-flex justify-content-end ">
             <a href="ShowBaiViet" class="btn btn-outline-primary  align-content-center" >
@@ -238,7 +238,7 @@
             <div class="col-auto">
             </div>
             <a href="ShowBaiVietOk" class="btn btn-outline-warning  align-content-center" >
-              <span class="text">Đã Duyệt</span>
+              <span class="text">Đã Xuất Bản</span>
             </a>
           </div>
           <div class="card shadow mb-4">
@@ -291,6 +291,36 @@
                     </tbody>
                   </c:forEach>
                 </table>
+                <div class="col-sm-12 col-md-7">
+                  <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                    <ul class="pagination">
+                      <c:if test="${page != 1}">
+                        <li class="paginate_button page-item" id="dataTable_previous">
+                          <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiViet?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : ""%>&page=${page - 1 }" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                        </li>
+                      </c:if>
+                      <c:forEach var="i" begin="1" end ="${totalpage}" >
+                        <c:choose>
+                          <c:when test="${ page == i}">
+                            <li class="paginate_button page-item active">
+                              <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiVietOk?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : ""%>&page=${i}" aria-controls="dataTable" data-dt-idx="${ i}" tabindex="0" class="page-link">${ i}</a>
+                            </li>
+                          </c:when>
+                          <c:otherwise>
+                            <li class="paginate_button page-item">
+                              <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiVietOk?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : ""%>&page=${i}" aria-controls="dataTable" data-dt-idx="${ i}" tabindex="0" class="page-link">${ i}</a>
+                            </li>
+                          </c:otherwise>
+                        </c:choose >
+                      </c:forEach>
+                      <c:if test="${page < totalpage}">
+                        <li class="paginate_button page-item next" id="dataTable_next">
+                          <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiVietOk?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : ""%>&page=${page + 1}" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                        </li>
+                      </c:if>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

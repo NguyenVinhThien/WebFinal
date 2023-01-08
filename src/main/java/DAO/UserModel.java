@@ -26,7 +26,7 @@ public class UserModel {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        null,
+                        rs.getTimestamp(5).toLocalDateTime(),
                         rs.getInt(6),
                         rs.getInt(7),
                         null,
@@ -47,9 +47,9 @@ public class UserModel {
 
 
 
-    public void addUser(String username, String password, String name, LocalDateTime dob, String email)
+    public void addUser(String username, String password, String name, LocalDateTime issue_at, LocalDateTime dob, String email)
     {
-        String query="INSERT INTO users (username, password, name, issue_at, expiration, role, second_name, dob, email, otp, otp_exp) VALUES(?, ?,?, null, 0, 0, null, ?, ?, null, null)";
+        String query="INSERT INTO users (username, password, name, issue_at, expiration, role, second_name, dob, email, otp, otp_exp) VALUES(?, ?,?, ?, 0, 0, null, ?, ?, null, null)";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
@@ -57,10 +57,33 @@ public class UserModel {
             ps.setString(1, username);
             ps.setString(2, password);
             ps.setString(3, name);
-            ps.setString(4, String.valueOf(dob));
-            ps.setString(5, email);
+            ps.setString(4, String.valueOf(issue_at));
+            ps.setString(5, String.valueOf(dob));
+            ps.setString(6, email);
 
             //ps.setInt(5,premium);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
+
+    public void updateUser(String username, String name, String second_name, LocalDateTime dob, String email)
+    {
+        String query="UPDATE  users\n"
+                + "SET name = ?, second_name = ?, dob = ?, email = ?\r\n"
+                + "WHERE username = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setString(1,name);
+            ps.setString(2,second_name);
+            ps.setString(3, String.valueOf(dob));
+            ps.setString(4,email);
+            ps.setString(5,username);
             ps.executeUpdate();
             con.close();
         }catch(Exception e)
