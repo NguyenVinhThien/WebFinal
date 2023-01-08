@@ -2,10 +2,7 @@ package Controller;
 
 
 import DAO.DAOAdmin;
-import Model.Articles;
-import Model.Categories;
-import Model.Tags;
-import Model.User;
+import Model.*;
 import Uti.ServletUtils;
 
 import javax.servlet.RequestDispatcher;
@@ -181,6 +178,13 @@ public class AdminServlet extends HttpServlet {
                 request.setAttribute("totalpage", totalpage);
                 request.setAttribute("page", page);
                 request.getRequestDispatcher("/BaiVietOk.jsp").forward(request, response);
+                break;
+            }
+            case "/User/ShowEditor": {
+                request.setCharacterEncoding("UTF-8");
+                List<Editor_Manage_Categories> list = d.getEditorCategories();
+                request.setAttribute("list", list);
+                request.getRequestDispatcher("/Phancong.jsp").forward(request, response);
                 break;
             }
             default: {

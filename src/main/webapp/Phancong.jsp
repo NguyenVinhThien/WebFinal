@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: acer
@@ -117,7 +118,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Lựa chọn:</h6>
           <a class="collapse-item" href="ThemPhanCong.jsp">Thêm biên tập viên</a>
-          <a class="collapse-item" href="Phancong.jsp">Danh sách biên tập viên</a>
+          <a class="collapse-item" href="${pageContext.request.contextPath}/Admin/User/ShowEditor">Danh sách biên tập viên</a>
         </div>
       </div>
     </li>
@@ -218,16 +219,18 @@
                               <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Chỉnh sửa: activate to sort column ascending" style="width: 202.938px;">Chỉnh sửa</th>
                               <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Xóa</th></tr>
                             </thead>
+                            <c:forEach items="${list}" var="t">
                             <tbody>
                             <tr class="odd" role="row">
-                              <td class="sorting_1">3</td>
-                              <td>Duong</td>
-                              <td>3</td>
-                              <td>Khoa học</td>
+                              <td class="sorting_1">${t.editor_id}</td>
+                              <td>${t.nameEditor}</td>
+                              <td>${t.category_id}</td>
+                              <td>${t.nameCategory}</td>
                               <td><a href="#" class="btn btn-info" data-target="#editDanhMuc" data-toggle="modal">Sửa</a></td>
                               <td><button class="btn btn-danger btn sweet-confirm destroy" data-url="#">Xóa</button>
                               </td>
                             </tbody>
+                            </c:forEach>
                           </div>
                         </div>
                       </div>

@@ -1,10 +1,7 @@
 package DAO;
 
 
-import Model.Articles;
-import Model.Categories;
-import Model.Tags;
-import Model.User;
+import Model.*;
 import Uti.ConnectDB;
 
 import java.sql.Connection;
@@ -848,6 +845,29 @@ public class DAOAdmin {
                         rs.getInt(9),
                         rs.getInt(10)))
                 ;
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return list;
+    }
+    public List<Editor_Manage_Categories> getEditorCategories()
+    {
+        List<Editor_Manage_Categories> list = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT a.id,a.editor_id,a.category_id,b.name,c.name FROM ( editor_manage_categories a inner join users b ON a.editor_id = b.id ) inner join categories c ON a.category_id = c.id");
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                list.add(new Editor_Manage_Categories(rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getString(5)
+                ));
             }
         }catch(Exception e)
         {
