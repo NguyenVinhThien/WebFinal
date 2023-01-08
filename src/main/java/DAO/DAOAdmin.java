@@ -440,10 +440,10 @@ public class DAOAdmin {
         return name;
     }
 
-    public void editArticle(int id, String title, String content, String abstract_article)
+    public void editArticle(int id, String title, String content, String abstract_article, int cate, int premium)
     {
         String query="UPDATE articles\n"
-                + "SET content = ?, title = ?, abstract = ?\r\n"
+                + "SET content = ?, title = ?, abstract = ?, categories_id = ?, premium = ? \r\n "
                 + "WHERE id = ?";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -452,7 +452,9 @@ public class DAOAdmin {
             ps.setString(1,content);
             ps.setString(2,title);
             ps.setString(3,abstract_article);
-            ps.setInt(4,id);
+            ps.setInt(4,cate);
+            ps.setInt(5,premium);
+            ps.setInt(6,id);
             ps.executeUpdate();
             con.close();
         }catch(Exception e)

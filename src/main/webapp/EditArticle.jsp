@@ -80,8 +80,13 @@
                                                                                              class="form-control" value="${article.abstract_article}"
                                                                                              placeholder="Tóm tắt"></div>
             <label class="col-md-12 mt-3">
-                <input id="checkPremium" type="checkbox"  name="qq" value="1">Premium</label>
-
+                <c:if test="${article.premium eq 1}">
+                    <input id="checkPremium" type="checkbox"  name="qq" value="1" checked>Premium
+                </c:if>
+                <c:if test="${article.premium eq 0}">
+                    <input id="checkPremium" type="checkbox"  name="qq" value="1">Premium
+                </c:if>
+            </label>
         </div>
         <textarea id="editor" style="width: 100%" name="content">${article.content}</textarea>
         <button type="submit">Đăng bài viết</button>
