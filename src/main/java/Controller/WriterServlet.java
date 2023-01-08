@@ -89,9 +89,13 @@ public class WriterServlet extends HttpServlet {
                 String id = request.getParameter("id");
                 int i = Integer.parseInt(id);
                 Articles t = d.getArticle(i);
+                String tag = d.getTagname(d.getTagbyArticle(i));
+                System.out.println(tag);
+                System.out.println(d.getTagbyArticle(i));
                 List<Categories> cate = d.getAllCategories();
                 request.setAttribute("listC", cate);
                 request.setAttribute("article", t);
+                request.setAttribute("tag", tag);
                 request.getRequestDispatcher("/EditArticle.jsp").forward(request, response);
                 break;
             }
@@ -127,6 +131,7 @@ public class WriterServlet extends HttpServlet {
             String title = request.getParameter("title");
             String abstract_article = request.getParameter("Tom_tat");
             String content = request.getParameter("content");
+            String tag = request.getParameter("Nhan");
             int categories_id = Integer.parseInt(request.getParameter("cate"));
             int premium;
             try {
@@ -137,7 +142,10 @@ public class WriterServlet extends HttpServlet {
             int writer_id = Integer.parseInt(request.getParameter("writer"));
             System.out.println(premium);
             DAOAdmin d = new DAOAdmin();
+            if (d.getTagID(tag) == 0 && tag != null)
+            d.addTag(null,tag);
             d.addArticle(title, abstract_article, content, categories_id, premium, writer_id);
+            d.setTag(d.getTagID(tag),d.getNewestArticleId());
             response.sendRedirect("/WebFinal/Writer/Home?id=" + writer_id);
         } catch (Exception e) {
             e.printStackTrace();
@@ -151,6 +159,7 @@ public class WriterServlet extends HttpServlet {
             int i = Integer.parseInt(id);
             String title = request.getParameter("title");
             String abstract_article = request.getParameter("Tom_tat");
+            String tag = request.getParameter("Nhan");
             int categories_id = Integer.parseInt(request.getParameter("cate"));
             int premium;
             try {
@@ -161,7 +170,10 @@ public class WriterServlet extends HttpServlet {
             int writer_id = Integer.parseInt(request.getParameter("writer"));
             String content = request.getParameter("content");
             DAOAdmin d = new DAOAdmin();
+            if (d.getTagID(tag) == 0 && tag != null)
+                d.addTag(null,tag);
             d.editArticle(i, title, content, abstract_article,categories_id,premium);
+            d.editTagHasArticles(d.getTagID(tag),i);
             response.sendRedirect("/WebFinal/Writer/Home?id=" + writer_id);
         } catch (Exception e) {
             e.printStackTrace();

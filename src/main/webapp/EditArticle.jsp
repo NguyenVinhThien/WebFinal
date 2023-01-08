@@ -65,7 +65,7 @@
             </div>
             <div class="col-md-4 mt-3"><label class="labels">Nhãn</label><input type="text"
                                                                                 name="Nhan"
-                                                                                class="form-control" value=""
+                                                                                class="form-control" value="${tag}"
                                                                                 placeholder="Nhãn"></div>
             <div class="col-md-4 mt-3"><label class="labels">ID Author</label><input type="text"
                                                                                      name="writer"

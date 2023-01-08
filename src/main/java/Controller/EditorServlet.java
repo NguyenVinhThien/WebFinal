@@ -121,7 +121,7 @@ public class EditorServlet  extends HttpServlet {
             System.out.println(premium);
             DAOAdmin d = new DAOAdmin();
             d.addArticle(title, abstract_article, content, categories_id, premium, writer_id);
-            response.sendRedirect("/WebFinal/Writer/ShowArticle?id=" + writer_id);
+            response.sendRedirect("/WebFinal/Writer/Home?id=" + writer_id);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -145,7 +145,7 @@ public class EditorServlet  extends HttpServlet {
             String content = request.getParameter("content");
             DAOAdmin d = new DAOAdmin();
             d.editArticle(i, title, content, abstract_article,categories_id,premium);
-            response.sendRedirect("/WebFinal/Writer/ShowArticle?id=" + writer_id);
+            response.sendRedirect("/WebFinal/Writer/Home?id=" + writer_id);
         } catch (Exception e) {
             e.printStackTrace();
         }

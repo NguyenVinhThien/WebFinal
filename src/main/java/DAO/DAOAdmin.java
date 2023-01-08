@@ -345,6 +345,107 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
+    public void editTagHasArticles(int tag, int article)
+    {
+        String query="UPDATE tags_has_articles\n"
+                + "SET tag_id = ?\r\n"
+                + "WHERE article_id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setInt(1,tag);
+            ps.setInt(2,article);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
+    public int getTagbyArticle(int i)
+    {
+        int id =0;
+        String query="SELECT tag_id from tags_has_articles WHERE article_id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setInt(1,i);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                id = rs.getInt(1);
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return id;
+    }
+
+    public int getTagID(String name)
+    {
+        int id =0;
+        String query="SELECT id from tags WHERE value = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setString(1,name);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                id = rs.getInt(1);
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return id;
+    }
+
+    public String getTagname(int id)
+    {
+        String name = new String();
+        String query="SELECT value from tags WHERE id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setInt(1,id);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                name = rs.getString(1);
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return name;
+    }
+
+    public int getNewestArticleId()
+    {
+        int id = 0;
+        String query="SELECT Max(id) from articles";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                id = rs.getInt(1);
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return id;
+    }
+
     public void editTag(int id,String name)
     {
         String query="UPDATE tags\n"
@@ -356,6 +457,22 @@ public class DAOAdmin {
             PreparedStatement ps= con.prepareStatement(query);
             ps.setString(1,name);
             ps.setInt(2,id);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
+    public void setTag(int tag, int article)
+    {
+        String query="INSERT INTO tags_has_articles (article_id,tag_id) VALUES(?,?)";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setInt(1,article);
+            ps.setInt(2,tag);
             ps.executeUpdate();
             con.close();
         }catch(Exception e)
