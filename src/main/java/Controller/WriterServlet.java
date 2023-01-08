@@ -43,6 +43,35 @@ public class WriterServlet extends HttpServlet {
                 request.setAttribute("listC", cate);
                 request.setAttribute("name", name);
                 request.setAttribute("writer", author);
+                request.setAttribute("path","");
+                request.getRequestDispatcher("/Writer.jsp").forward(request, response);
+                break;
+            }
+
+            case "/ShowArticle/Ok": {
+                int author = Integer.parseInt(request.getParameter("id"));
+                List<Articles> list = d.getArticleOKByAuthor(author);
+                List<Categories> cate = d.getAllCategories();
+                String name = d.getUserName(author);
+                request.setAttribute("listA", list);
+                request.setAttribute("listC", cate);
+                request.setAttribute("name", name);
+                request.setAttribute("writer", author);
+                request.setAttribute("path"," đã duyệt");
+                request.getRequestDispatcher("/Writer.jsp").forward(request, response);
+                break;
+            }
+
+            case "/ShowArticle/Draft": {
+                int author = Integer.parseInt(request.getParameter("id"));
+                List<Articles> list = d.getArticleDraftByAuthor(author);
+                List<Categories> cate = d.getAllCategories();
+                String name = d.getUserName(author);
+                request.setAttribute("listA", list);
+                request.setAttribute("listC", cate);
+                request.setAttribute("name", name);
+                request.setAttribute("writer", author);
+                request.setAttribute("path","chưa được duyệt");
                 request.getRequestDispatcher("/Writer.jsp").forward(request, response);
                 break;
             }

@@ -33,11 +33,23 @@
 
         <ul class="list-unstyled components">
             <p>Dummy Heading</p>
-            <li>
-                <a href="#">Bài Viết Của Tôi</a>
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bài Viết Của Tôi</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li value="Tất cả">
+                        <a href="/WebFinal/Writer/ShowArticle?id=${writer}">Tất Cả Bài viết</a>
+                    </li>
+                    <li>
+                        <a href="/WebFinal/Writer/ShowArticle/Draft?id=${writer}">Bài Viết Draft</a>
+                    </li>
+                    <li>
+                        <a href="/WebFinal/Writer/ShowArticle/Ok?id=${writer}">Bài viết đã duyệt</a>
+                    </li>
+                </ul>
             </li>
+
             <li>
-                <a href="DangBai?id=${writer}">Đăng Bài</a>
+                <a href="/WebFinal/Writer/DangBai?id=${writer}">Đăng Bài</a>
             </li>
         </ul>
 
@@ -58,7 +70,7 @@
         </nav>
 
         <div class="container">
-            <h2>Bài viết của tác giả ${name}</h2>
+            <h2> Bài viết ${path} của tác giả ${name}</h2>
                 <table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
                     <thead>
                     <tr role="row">
@@ -81,10 +93,29 @@
                                 </c:if>
                             </c:forEach>
                         </td>
-                        <td></td>
-                        <td> <a href="EditArticle?id=${o.id_article}">
-                            <button class="btn btn-danger btn sweet-confirm destroy">Chỉnh sửa</button>
-                        </a></td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${o.status == 1}">
+                                    <div>Bị từ chối</div>
+                                </c:when>
+                                <c:when test="${o.status == 2}">
+                                    <div>Đã Duyệt</div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div>Chưa Duyệt</div>
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+                        <c:if test="${o.status != 2}">
+                            <td> <a href="/WebFinal/Writer/EditArticle?id=${o.id_article}">
+                                <button class="btn btn-danger btn sweet-confirm destroy">Chỉnh sửa</button>
+                            </a></td>
+                        </c:if>
+                        <c:if test="${o.status == 2}">
+                            <td> <a href="/WebFinal/ChiTietBao?articleId=${o.id_article}">
+                                <button class="btn btn-info btn-icon-split">Xem Chi Tiết</button>
+                            </a></td>
+                        </c:if>
                     </tr>
                 </tbody>
                     </c:forEach>
