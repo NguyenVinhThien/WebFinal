@@ -286,7 +286,7 @@
                                                     </div>
                                                 </td>
                                                 <td><div class="d-flex justify-content-sm-center">
-                                                    <a href="DeleteArticle?id=${t.id_article}" class="btn btn-danger btn-icon-split " >
+                                                    <a href="DeleteArticleDraft?id=${t.id_article}" class="btn btn-danger btn-icon-split " >
                                                         <span class="icon text-white-50 ">
                                                             <i class="fas fa-trash"></i>
                                                         </span>

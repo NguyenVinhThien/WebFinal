@@ -113,6 +113,14 @@ public class AdminServlet extends HttpServlet {
                 DeleteArticle(request,response);
                 break;
             }
+            case "/BaiViet/DeleteArticleDraft":{
+                DeleteArticleDraft(request,response);
+                break;
+            }
+            case "/BaiViet/DeleteArticleOk":{
+                DeleteArticleOk(request,response);
+                break;
+            }
             case "/User/DeleteUser":{
                 DeleteUser(request,response);
                 break;
@@ -309,8 +317,8 @@ public class AdminServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-    private void DeleteSubCategory(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        String id =request.getParameter("id");
+    private void DeleteSubCategory(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String id = request.getParameter("id");
         DAOAdmin dao = new DAOAdmin();
         dao.deleteCategory(id);
         response.sendRedirect("/WebFinal/Admin/Category/ShowCategory");
@@ -375,6 +383,18 @@ public class AdminServlet extends HttpServlet {
         DAOAdmin dao = new DAOAdmin();
         dao.deleteArticle(id);
         response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiViet");
+    }
+    private void DeleteArticleDraft(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        String id =request.getParameter("id");
+        DAOAdmin dao = new DAOAdmin();
+        dao.deleteArticle(id);
+        response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiVietDraft");
+    }
+    private void DeleteArticleOk(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        String id =request.getParameter("id");
+        DAOAdmin dao = new DAOAdmin();
+        dao.deleteArticle(id);
+        response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiVietOk");
     }
     private void DeleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String id =request.getParameter("id");
