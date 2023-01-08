@@ -204,20 +204,12 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h4 class="card-title">Danh Sách Tag</h4>
+                      <h4 class="card-title">Danh Sách User</h4>
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">
                         <div id="example_wrapper" class="dataTables_wrapper">
                           <div id="example_wrapper" class="dataTables_wrapper">
-                            <div class="d-flex justify-content-end ">
-                              <a href="#" class="btn btn-warning btn-icon-split align-content-center" data-target="#editDanhMuc" data-toggle="modal" >
-                                        <span class="icon text-white-50" >
-                                            <i class="fas fa-exclamation-triangle"></i>
-                                        </span>
-                                <span class="text">Chỉnh sửa</span>
-                              </a>
-                            </div>
                             <table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
                               <thead>
                               <tr role="row"><th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã User</th>

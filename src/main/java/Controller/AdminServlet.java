@@ -38,6 +38,7 @@ public class AdminServlet extends HttpServlet {
         String path = request.getPathInfo();
         switch (path) {
             case "/User/UserExtend": {
+                request.setCharacterEncoding("UTF-8");
                 List<User> userList = d.getAllUsersByExTend();
                 request.setAttribute("listU", userList);
                 RequestDispatcher rd = request.getRequestDispatcher("/Giahan.jsp");
@@ -45,12 +46,14 @@ public class AdminServlet extends HttpServlet {
                 break;
             }
             case "/User/ShowUser": {
+                request.setCharacterEncoding("UTF-8");
                 List<User> list = d.getAllUsers();
                 request.setAttribute("list", list);
                 request.getRequestDispatcher("/Users.jsp").forward(request, response);
                 break;
             }
             case "/Category/ShowCategory": {
+                request.setCharacterEncoding("UTF-8");
                 List<Categories> list = d.getAllMainCategories();
                 request.setAttribute("listP", list);
                 request.getRequestDispatcher("/SuaCategory.jsp").forward(request, response);
@@ -65,12 +68,14 @@ public class AdminServlet extends HttpServlet {
                 break;
             }
             case "/Tag/ShowTag": {
+                request.setCharacterEncoding("UTF-8");
                 List<Tags> list = d.getAllTag();
                 request.setAttribute("listT", list);
                 request.getRequestDispatcher("/Tag.jsp").forward(request, response);
                 break;
             }
             case "/Category/ShowSubCategory": {
+                request.setCharacterEncoding("UTF-8");
                 int parent_id = Integer.parseInt(request.getParameter("id"));
                 String name = d.getCategoryName(parent_id);
                 List<Categories> list = d.getAllSubCategories(parent_id);
@@ -108,8 +113,14 @@ public class AdminServlet extends HttpServlet {
                 break;
             }
             case "/BaiViet/ShowBaiVietDraft": {
-                List<Articles> list = d.getAllArticleByDraft();
-                List<Articles> listDraft = d.getAllArticleByDraft();
+                request.setCharacterEncoding("UTF-8");
+                String keyword = request.getParameter("keyword");
+                if(keyword == null)
+                {
+                    keyword ="";
+                }
+                List<Articles> list = d.getAllArticleByDraft(keyword);
+                List<Articles> listDraft = d.getAllArticleByDraft(keyword);
                 int count1 = 0;
                 for (Articles a : listDraft){
                     count1++;
@@ -120,9 +131,20 @@ public class AdminServlet extends HttpServlet {
                 break;
             }
             case "/BaiViet/ShowBaiViet": {
-                List<Articles> list = d.getAllArticle();
-                List<Articles> listDraft = d.getAllArticleByDraft();
-                List<Articles> listOke = d.getAllArticleByOk();
+                request.setCharacterEncoding("UTF-8");
+                String keyword = request.getParameter("keyword");
+                int page = 1;
+                if(request.getParameter("page") != null)
+                {
+                    page = Integer.parseInt(request.getParameter("page"));
+                }
+                if(keyword == null)
+                {
+                    keyword ="";
+                }
+                List<Articles> list = d.getAllArticle(keyword);
+                List<Articles> listDraft = d.getAllArticleByDraft(keyword);
+                List<Articles> listOke = d.getAllArticleByOk(keyword);
                 int count = 0;
                 int count1 = 0;
                 int count2 = 0;
@@ -143,8 +165,14 @@ public class AdminServlet extends HttpServlet {
                 break;
             }
             case "/BaiViet/ShowBaiVietOk": {
-                List<Articles> list = d.getAllArticleByOk();
-                List<Articles> listDraft = d.getAllArticleByOk();
+                request.setCharacterEncoding("UTF-8");
+                String keyword = request.getParameter("keyword");
+                if(keyword == null)
+                {
+                    keyword ="";
+                }
+                List<Articles> list = d.getAllArticleByOk(keyword);
+                List<Articles> listDraft = d.getAllArticleByOk(keyword);
                 int count1 = 0;
                 for (Articles a : listDraft){
                     count1++;
@@ -198,6 +226,7 @@ public class AdminServlet extends HttpServlet {
     }
     private void AddCategory(HttpServletRequest request, HttpServletResponse response){
         try {
+            request.setCharacterEncoding("UTF-8");
             DAOAdmin d = new DAOAdmin();
             String id = request.getParameter("id");
             String name = request.getParameter("name");
@@ -209,6 +238,7 @@ public class AdminServlet extends HttpServlet {
     }
     private void EditCategory(HttpServletRequest request, HttpServletResponse response){
         try {
+            request.setCharacterEncoding("UTF-8");
             DAOAdmin d = new DAOAdmin();
             String id = request.getParameter("id");
             String name = request.getParameter("name");
@@ -227,6 +257,7 @@ public class AdminServlet extends HttpServlet {
     }
     private void AddTag(HttpServletRequest request, HttpServletResponse response){
         try {
+            request.setCharacterEncoding("UTF-8");
             String id= request.getParameter("id");
             String name= request.getParameter("name");
             DAOAdmin d= new DAOAdmin();
@@ -245,6 +276,7 @@ public class AdminServlet extends HttpServlet {
     }
     private void EditTag(HttpServletRequest request, HttpServletResponse response){
         try {
+            request.setCharacterEncoding("UTF-8");
             String id= request.getParameter("id");
             String name= request.getParameter("name");
             int i= Integer.parseInt(id);
@@ -264,6 +296,7 @@ public class AdminServlet extends HttpServlet {
     }
     private void AddSubCategory(HttpServletRequest request, HttpServletResponse response){
         try {
+            request.setCharacterEncoding("UTF-8");
             String id= request.getParameter("id");
             String name= request.getParameter("name");
             String parent_id= request.getParameter("parent_id");
@@ -277,6 +310,7 @@ public class AdminServlet extends HttpServlet {
     }
     private void EditSubCategory(HttpServletRequest request, HttpServletResponse response){
         try {
+            request.setCharacterEncoding("UTF-8");
             String id= request.getParameter("id");
             String name= request.getParameter("name");
             String parent_id = request.getParameter("parent_id");
@@ -304,6 +338,7 @@ public class AdminServlet extends HttpServlet {
     }
     private void Ok(HttpServletRequest request, HttpServletResponse response){
         try {
+            request.setCharacterEncoding("UTF-8");
             String id= request.getParameter("id");
             int i= Integer.parseInt(id);
             DAOAdmin d= new DAOAdmin();

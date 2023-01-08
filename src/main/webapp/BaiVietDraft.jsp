@@ -148,7 +148,20 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <div>
+                    <form  class="d-none d-sm-inline-block form-inline navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                   aria-label="Search" aria-describedby="basic-addon2" name = "keyword">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-auto">
+                    </div>
+                    <div >
                         <a href="${pageContext.request.contextPath}/Writer/DangBai?id=1" class="btn btn-primary btn-icon-split ">
                             <span class="text" >Đăng bài</span>
                         </a>
