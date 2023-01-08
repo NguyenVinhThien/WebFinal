@@ -110,7 +110,7 @@
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Lựa chọn:</h6>
-          <a class="collapse-item" href="ThemPhanCong.jsp">Thêm biên tập viên</a>
+          <a class="collapse-item" href="${pageContext.request.contextPath}/Admin/User/ThemEditor">Thêm biên tập viên</a>
           <a class="collapse-item" href="${pageContext.request.contextPath}/Admin/User/ShowEditor">Danh sách biên tập viên</a>
         </div>
       </div>
@@ -280,7 +280,7 @@
                       <td>${t.views}</td>
                       <td>Đã xuất bản</td>
                       <td><div class="d-flex justify-content-sm-center">
-                        <a href="DeleteArticle?id=${t.id_article}" class="btn btn-danger btn-icon-split " data-target="#deleteBaiviet" data-toggle="modal" >
+                        <a href="DeleteArticle?id=${t.id_article}" class="btn btn-danger btn-icon-split " >
                                                         <span class="icon text-white-50 ">
                                                             <i class="fas fa-trash"></i>
                                                         </span>

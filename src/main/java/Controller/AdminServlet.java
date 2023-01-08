@@ -390,7 +390,7 @@ public class AdminServlet extends HttpServlet {
             String editor_id = request.getParameter("editor_id");
             String category_id = request.getParameter("category_id");
             d.addEditor(id, editor_id,category_id);
-            response.sendRedirect("/WebFinal/Admin/User/ShowEditor");
+            response.sendRedirect("/WebFinal/Admin/User/ThemEditor");
         } catch (Exception e) {
             e.printStackTrace();
         }
