@@ -167,11 +167,11 @@
                         </a>
                     </div>
 
-                
+
                     <ul class="navbar-nav ml-auto">
 
-                      
-                          
+
+
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -218,7 +218,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>                
+                        </div>
                         <!-- Pending Requests Card Example -->
                     <div class="container-fluid">
                         <!-- Page Heading -->
@@ -293,7 +293,7 @@
                                                         <span class="text">Xoá</span>
                                                     </a>
                                                 </div></td>
-                                                
+
                                             </tr>
                                         </tbody>
                                         </c:forEach>
@@ -331,10 +331,10 @@
                                 </div>
                             </div>
                         </div>
-    
+
                     </div>
                     <!-- /.container-fluid -->
-    
+
                  </div>
 
                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -355,7 +355,7 @@
                     </div>
                 </div>
             </div>
-        
+
     </div>
         </div>
     </div>
