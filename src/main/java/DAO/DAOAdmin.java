@@ -10,9 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DAOAdmin {
     public List<Categories> getAllMainCategories()
@@ -1111,9 +1109,9 @@ public class DAOAdmin {
 
 
 
-    public void addUser(String username, String password, String name, LocalDateTime issue_at, LocalDateTime dob, String email)
+    public void addUser(String username, String password, String name, LocalDateTime issue_at, int role, LocalDateTime dob, String email)
     {
-        String query="INSERT INTO users (username, password, name, issue_at, expiration, role, second_name, dob, email, otp, otp_exp) VALUES(?, ?,?, ?, 0, 0, null, ?, ?, null, null)";
+        String query="INSERT INTO users (username, password, name, issue_at, expiration, role, second_name, dob, email, otp, otp_exp) VALUES(?, ?,?, ?, 0, ?, null, ?, ?, null, null)";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
@@ -1122,10 +1120,10 @@ public class DAOAdmin {
             ps.setString(2, password);
             ps.setString(3, name);
             ps.setString(4, String.valueOf(issue_at));
-            ps.setString(5, String.valueOf(dob));
-            ps.setString(6, email);
+            ps.setInt(5, role);
+            ps.setString(6, String.valueOf(dob));
+            ps.setString(7, email);
 
-            //ps.setInt(5,premium);
             ps.executeUpdate();
             con.close();
         }catch(Exception e)
