@@ -3,6 +3,7 @@ package Controller;
 import DAO.DAOAdmin;
 import Model.Articles;
 import Model.Categories;
+import Model.Tags;
 import Model.User;
 import Uti.ServletUtils;
 
@@ -71,9 +72,11 @@ public class EditorServlet  extends HttpServlet {
                 String id = request.getParameter("id");
                 int i = Integer.parseInt(id);
                 Articles t = d.getArticle(i);
+                List<Tags> tag = d.getAllTag();
                 List<Categories> cate = d.getAllCategories();
                 request.setAttribute("listC", cate);
                 request.setAttribute("article", t);
+                request.setAttribute("tag", tag);
                 request.getRequestDispatcher("/Editor.jsp").forward(request, response);
                 break;
             }
@@ -93,39 +96,12 @@ public class EditorServlet  extends HttpServlet {
         // TODO Auto-generated method stub
         String path = request.getPathInfo();
         switch (path) {
-            case "/DangBai": {
-                AddArticle(request, response);
-                break;
-            }
-            case "/EditArticle": {
+            case "/EditArticle":{
                 EditArticle(request, response);
                 break;
             }
         }
     }
-
-    private void AddArticle(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            String title = request.getParameter("title");
-            String abstract_article = request.getParameter("Tom_tat");
-            String content = request.getParameter("content");
-            int categories_id = Integer.parseInt(request.getParameter("cate"));
-            int premium;
-            try {
-                premium = Integer.parseInt(request.getParameter("qq"));
-            } catch (NumberFormatException e) {
-                premium = 0;
-            }
-            int writer_id = Integer.parseInt(request.getParameter("writer"));
-            System.out.println(premium);
-            DAOAdmin d = new DAOAdmin();
-            d.addArticle(title, abstract_article, content, categories_id, premium, writer_id);
-            response.sendRedirect("/WebFinal/Writer/Home?id=" + writer_id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     private void EditArticle(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setCharacterEncoding("UTF-8");
@@ -144,7 +120,7 @@ public class EditorServlet  extends HttpServlet {
             String content = request.getParameter("content");
             DAOAdmin d = new DAOAdmin();
             d.editArticle(i, title, content, abstract_article,categories_id,premium);
-            response.sendRedirect("/WebFinal/Writer/Home?id=" + writer_id);
+            response.sendRedirect("/WebFinal/Editor/Home?id=" + writer_id);
         } catch (Exception e) {
             e.printStackTrace();
         }

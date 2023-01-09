@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: USER
@@ -26,7 +27,7 @@
         tinymce.init({
             selector: '#editor',
             //width: 1000,
-            height: 600,
+            height: 500,
             plugins: [
                 'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
                 'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
@@ -94,135 +95,137 @@
 
     <!-- Page Content  -->
     <div id="content">
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <div class="nav navbar-nav ml-auto">
-                        <span>Info user</span>
-                        <img class="editor-profileIcon" src="./images/PD01.jpg" alt="">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="nav navbar-nav ml-auto">
+                            <span>Info user</span>
+                            <img class="editor-profileIcon" src="./images/PD01.jpg" alt="">
+                        </div>
                     </div>
                 </div>
+            </nav>
+            <div class="container">
+                <h2>Chi tiết bài viết</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="ArticleID">Mã bài viết</label>
+                            <input type="text" class="form-control" id="ArticleID" value="${article.id_article}" placeholder="Mã bài viết">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="authorID">Mã tác giả</label>
+                            <input type="text" class="form-control" id="authorID" value="${article.writer_id}" placeholder="Mã tác giả">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNameArticle">Tên bài viết</label>
+                        <input type="text" class="form-control" id="inputNameArticle" value="${article.title}" placeholder="Tên bài viết">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNameArticle">Tên bài viết</label>
+                        <input type="text" class="form-control" id="inputAbstractArticle" value="${article.abstract_article}" placeholder="Tóm Tắt">
+                    </div>
+                    <div>
+                        <label>Nội dung bài viết</label>
+                        <textarea id="editor" style="width: 100%" name="articlecontent">${article.content}</textarea>
+                    </div>
+
+                    <div class="modal fade" id="duyetModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modelTitle">Duyệt bài viết</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="artID">Mã bài viết</label>
+                                                <input type="text" class="form-control" id="artID" value="${article.id_article}" disabled>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="authID">Mã tác giả</label>
+                                                <input type="text" class="form-control" id="authID" value="${article.writer_id}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="artName">Tên bài viết</label>
+                                            <input type="text" class="form-control" id="artName" value="${article.title}" disabled>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputState">Hashtag</label>
+                                                <select id="inputState" class="form-control" name="tag">
+                                                    <option selected>Choose...</option>
+                                                    <c:forEach items="${tag}" var="t">
+                                                        <option value="${t.id}">${t.name}</option>
+                                                    </c:forEach>
+                                                    <option>...</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputZip">Ngày xuất bản</label>
+                                                <input type="date" class="form-control" id="inputZip" name="date">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>
+                                    <button type="submit" class="btn btn-success">Xác nhận</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="tuchoiModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Từ chối bài viết</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-row">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="artID1">Mã bài viết</label>
+                                                    <input type="text" class="form-control" id="artID1" value="${article.id_article}" disabled>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="authID2">Mã tác giả</label>
+                                                    <input type="text" class="form-control" id="authID2" value="${article.writer_id}" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="artName3">Tên bài viết</label>
+                                                <input type="text" class="form-control" id="artName3" value="${article.title}" disabled>
+                                            </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1">Ghi chú</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>
+                                    <button type="submit" class="btn btn-danger">Xác nhận</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tuchoiModalCenter">Từ chối</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#duyetModalCenter">Duyệt bài</button>
+                </form>
             </div>
-        </nav>
-
-        <div class="container">
-            <h2>Chi tiết bài viết</h2>
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="ArticleID">Mã bài viết</label>
-                        <input type="text" class="form-control" id="ArticleID" value="${article.id_article}" placeholder="Mã bài viết">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="authorID">Mã tác giả</label>
-                        <input type="text" class="form-control" id="authorID" value="${article.writer_id}" placeholder="Mã tác giả">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputNameArticle">Tên bài viết</label>
-                    <input type="text" class="form-control" id="inputNameArticle" value="${article.title}" placeholder="Tên bài viết">
-                </div>
-                <div class="form-group">
-                    <label for="inputNameArticle">Tên bài viết</label>
-                    <input type="text" class="form-control" id="inputAbstractArticle" value="${article.abstract_article}" placeholder="Tóm Tắt">
-                </div>
-                <div>
-                    <label>Nội dung bài viết</label>
-                    <textarea id="editor" style="width: 100%" name="articlecontent">${article.content}</textarea>
-                </div>
-
-                <div class="modal fade" id="duyetModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modelTitle">Duyệt bài viết</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-
-                                <form>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="artID">Mã bài viết</label>
-                                            <input type="text" class="form-control" id="artID" placeholder="Mã bài viết">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="authID">Mã tác giả</label>
-                                            <input type="text" class="form-control" id="authID" placeholder="Mã tác giả">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="artName">Tên bài viết</label>
-                                        <input type="text" class="form-control" id="artName" placeholder="Tên bài viết">
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label for="inputState">Hashtag</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Choose...</option>
-                                                <option>...</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="inputZip">Ngày xuất bản</label>
-                                            <input type="date" class="form-control" id="inputZip">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>
-                                <button type="button" class="btn btn-success">Xác nhận</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="tuchoiModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Từ chối bài viết</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputEmail4">Mã bài viết</label>
-                                            <input type="text" class="form-control" id="inputEmail4" placeholder="Mã bài viết">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputPassword4">Mã tác giả</label>
-                                            <input type="text" class="form-control" id="inputPassword4" placeholder="Mã tác giả">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputAddress">Tên bài viết</label>
-                                        <input type="text" class="form-control" id="inputAddress" placeholder="Tên bài viết">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Ghi chú</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>
-                                <button type="button" class="btn btn-danger">Xác nhận</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tuchoiModalCenter">Từ chối</button>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#duyetModalCenter">Duyệt bài</button>
-
-            </form>
-        </div>
     </div>
 </div>
 
