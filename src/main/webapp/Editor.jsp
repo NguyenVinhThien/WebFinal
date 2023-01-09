@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="authUser" scope="session" type="Model.User"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>

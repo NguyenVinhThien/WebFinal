@@ -105,21 +105,21 @@ public class EditorServlet  extends HttpServlet {
     private void EditArticle(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setCharacterEncoding("UTF-8");
-            String id = request.getParameter("id");
-            int i = Integer.parseInt(id);
-            String title = request.getParameter("title");
-            String abstract_article = request.getParameter("Tom_tat");
-            int categories_id = Integer.parseInt(request.getParameter("cate"));
-            int premium;
-            try {
-                premium = Integer.parseInt(request.getParameter("qq"));
-            } catch (NumberFormatException e) {
-                premium = 0;
-            }
-            int writer_id = Integer.parseInt(request.getParameter("writer"));
-            String content = request.getParameter("content");
-            DAOAdmin d = new DAOAdmin();
-            d.editArticle(i, title, content, abstract_article,categories_id,premium);
+//            String id = request.getParameter("id");
+//            int i = Integer.parseInt(id);
+//            String title = request.getParameter("title");
+//            String abstract_article = request.getParameter("Tom_tat");
+//            int categories_id = Integer.parseInt(request.getParameter("cate"));
+//            int premium;
+//            try {
+//                premium = Integer.parseInt(request.getParameter("qq"));
+//            } catch (NumberFormatException e) {
+//                premium = 0;
+//            }
+            int writer_id = Integer.parseInt(request.getParameter("authUser.id"));
+//            String content = request.getParameter("content");
+//            DAOAdmin d = new DAOAdmin();
+//            d.editArticle(i, title, content, abstract_article,categories_id,premium);
             response.sendRedirect("/WebFinal/Editor/Home?id=" + writer_id);
         } catch (Exception e) {
             e.printStackTrace();
