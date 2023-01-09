@@ -41,25 +41,9 @@
         <ul class="list-unstyled components">
             <p>Dummy Heading</p>
             <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bài Viết Của Tôi</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li value="Tất cả">
-                        <a href="/WebFinal/Writer/ShowArticle?id=${authUser.id}">Tất Cả Bài viết</a>
-                    </li>
-                    <li>
-                        <a href="/WebFinal/Writer/ShowArticle/Draft?id=${authUser.id}">Bài Viết Draft</a>
-                    </li>
-                    <li>
-                        <a href="/WebFinal/Writer/ShowArticle/Ok?id=${authUser.id}">Bài viết đã duyệt</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="/WebFinal/Writer/DangBai?id=${authUser.id}">Đăng Bài</a>
+                <a href="/WebFinal/Editor/ShowCategory?id=${authUser.id}">Tất cả chuyên mục</a>
             </li>
         </ul>
-
     </nav>
     <!-- Page Content  -->
     <div id="content">
@@ -89,7 +73,7 @@
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         Số bài viết draft
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">${total1}</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">${total}</div>
                                 </div>
                                 <div class="col-auto">
                                 </div>
@@ -100,23 +84,8 @@
                 <!-- Pending Requests Card Example -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Danh sách bài viết Draft</h1>
+                    <h1>Danh sách bài viết Draft</h1>
                     <!-- DataTales Example -->
-                    <div class="d-flex justify-content-end ">
-                        <a href="ShowBaiViet" class="btn btn-outline-primary  align-content-center">
-                            <span class="text">Tất cả</span>
-                        </a>
-                        <div class="col-auto">
-                        </div>
-                        <a href="ShowBaiVietDraft" class="btn btn-outline-success  align-content-center">
-                            <span class="text">Draft</span>
-                        </a>
-                        <div class="col-auto">
-                        </div>
-                        <a href="ShowBaiVietOk" class="btn btn-outline-warning  align-content-center">
-                            <span class="text">Đã Xuất Bản</span>
-                        </a>
-                    </div>
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="table-responsive">
@@ -125,106 +94,33 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Title</th>
-                                        <th>Content</th>
-                                        <th>Category id</th>
-                                        <th>Premium</th>
                                         <th>Writer id</th>
-                                        <th>Status</th>
-                                        <th>Public Date</th>
-                                        <th>Views</th>
                                         <th>
-                                            <div class="d-flex justify-content-sm-center">Xuất bản</div>
-                                        </th>
-                                        <th>
-                                            <div class="d-flex justify-content-sm-center">Xoá</div>
+                                            <div class="d-flex justify-content-sm-center">Xét Duyệt</div>
                                         </th>
                                     </tr>
                                     </thead>
-                                    <c:forEach items="${list}" var="t">
+                                    <c:forEach items="${listA}" var="t">
                                         <tbody>
                                         <tr>
                                             <td>${t.id_article}</td>
-                                            <td> ${t.title}</td>
-                                            <td>
-                                                <a href="${pageContext.request.contextPath}/ChiTietBao?articleId=${t.id_article}"
-                                                   class="btn btn-info btn-icon-split">
-                                                     <span class="icon text-white-50">
-                                                    <i class="fas fa-info-circle"></i>
-                                                     </span>
-                                                    <span class="text">Xem chi tiết</span>
-                                                </a></td>
-                                            <td>${t.categories_id}</td>
-                                            <td>${t.premium}</td>
+                                            <td>${t.title}</td>
                                             <td>${t.writer_id}</td>
-                                            <td>${t.status}</td>
-                                            <td>${t.publish_date}</td>
-                                            <td>${t.views}</td>
                                             <td>
                                                 <div class="d-flex justify-content-sm-center">
-                                                    <a href="Ok?id=${t.id_article}"
+                                                    <a href="/WebFinal/Editor/EditArticle?id=${t.id_article}"
                                                        class="btn btn-success btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-check"></i>
                                                     </span>
-                                                        <span class="text">Xuất bản</span>
+                                                        <span class="text">Xem Chi Tiết</span>
                                                     </a>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <div class="d-flex justify-content-sm-center">
-                                                    <a href="DeleteArticle?id=${t.id_article}"
-                                                       class="btn btn-danger btn-icon-split "
-                                                       data-target="#deleteBaiviet" data-toggle="modal">
-                                                        <span class="icon text-white-50 ">
-                                                            <i class="fas fa-trash"></i>
-                                                        </span>
-                                                        <span class="text">Xoá</span>
-                                                    </a>
-                                                </div>
-                                            </td>
-
                                         </tr>
                                         </tbody>
                                     </c:forEach>
                                 </table>
-                                <div class="col-sm-12 col-md-7">
-                                    <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-                                        <ul class="pagination">
-                                            <c:if test="${page != 1}">
-                                                <li class="paginate_button page-item" id="dataTable_previous">
-                                                    <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiVietDraft?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : ""%>&page=${page - 1 }"
-                                                       aria-controls="dataTable" data-dt-idx="0" tabindex="0"
-                                                       class="page-link">Previous</a>
-                                                </li>
-                                            </c:if>
-                                            <c:forEach var="i" begin="1" end="${totalpage}">
-                                                <c:choose>
-                                                    <c:when test="${ page == i}">
-                                                        <li class="paginate_button page-item active">
-                                                            <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiVietDraft?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : ""%>&page=${i}"
-                                                               aria-controls="dataTable" data-dt-idx="${ i}"
-                                                               tabindex="0" class="page-link">${ i}</a>
-                                                        </li>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <li class="paginate_button page-item">
-                                                            <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiVietDraft?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : ""%>&page=${i}"
-                                                               aria-controls="dataTable" data-dt-idx="${ i}"
-                                                               tabindex="0" class="page-link">${ i}</a>
-                                                        </li>
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </c:forEach>
-                                            <c:if test="${page < totalpage}">
-                                                <li class="paginate_button page-item next" id="dataTable_next">
-                                                    <a href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiVietDraft?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : ""%>&page=${page + 1}"
-                                                       aria-controls="dataTable" data-dt-idx="7" tabindex="0"
-                                                       class="page-link">Next</a>
-                                                </li>
-                                            </c:if>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

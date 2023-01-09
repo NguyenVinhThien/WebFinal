@@ -54,8 +54,7 @@ public class EditorServlet  extends HttpServlet {
                 break;
             }
 
-            case "/ShowArticle/ByMainCategory":
-            case "/ShowArticle/BySubCategory": {
+            case "/ShowArticle/ByCategory": {
                 int catID = Integer.parseInt(request.getParameter("id"));
                 List<Articles> list = d.getArticleByCatId(catID);
                 List<Categories> cate = d.getAllCategories();

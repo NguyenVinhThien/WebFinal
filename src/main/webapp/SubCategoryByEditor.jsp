@@ -16,21 +16,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>SubCategoryByEditor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Chi tiết duyệt</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS_ALL/DuyetBaiEditor.css">
     <script src=
                     "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
     </script>
     <!-- Custom fonts for this template-->
-    <link href="${pageContext.request.contextPath}/TemplateAdmin/vendor/fontawesome-free/css/all.min.css"
-          rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/TemplateAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
-        <!-- Custom styles for this template-->
-        <link href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS_ALL/DuyetBaiEditor.css">
+    <!-- Custom styles for this template-->
+    <link href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -43,25 +41,13 @@
         <ul class="list-unstyled components">
             <p>Dummy Heading</p>
             <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bài Viết Của
-                    Tôi</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li value="Tất cả">
-                        <a href="/WebFinal/Writer/ShowArticle?id=${authUser.id}">Tất Cả Bài viết</a>
-                    </li>
-                    <li>
-                        <a href="/WebFinal/Writer/ShowArticle/Draft?id=${authUser.id}">Bài Viết Draft</a>
-                    </li>
-                    <li>
-                        <a href="/WebFinal/Writer/ShowArticle/Ok?id=${authUser.id}">Bài viết đã duyệt</a>
-                    </li>
-                </ul>
+                <a href="/WebFinal/Editor/ShowCategory?id=${authUser.id}">Tất cả chuyên mục</a>
             </li>
 
-            <li>
-                <a href="/WebFinal/Writer/DangBai?id=${authUser.id}">Đăng Bài</a>
-            </li>
-        </ul>
+
+            <%--            <li>--%>
+            <%--                <a href="/WebFinal/Editor/ShowCategory?id=${authUser.id}">Đăng Bài</a>--%>
+            <%--            </li>--%>
 
     </nav>
     <!-- Page Content  -->
@@ -122,7 +108,7 @@
                                                     <th class="sorting" tabindex="0" aria-controls="example"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Xóa: activate to sort column ascending"
-                                                        style="width: 171.672px;">Xóa
+                                                        style="width: 171.672px;">Xem Danh Sách Bài Viết
                                                     </th>
                                                 </tr>
                                                 </thead>
@@ -132,9 +118,9 @@
                                                         <td>${o.id}</td>
                                                         <td>${o.name}</td>
                                                         <td>
-                                                            <a href="DeleteSubCategory?id=${o.id}">
+                                                            <a href="/WebFinal/Editor/ShowArticle/BySubCategory?id=${o.id}">
                                                                 <button class="btn btn-danger btn sweet-confirm destroy">
-                                                                    Xóa
+                                                                    Xem danh sách
                                                                 </button>
                                                             </a>
                                                         </td>

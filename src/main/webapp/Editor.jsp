@@ -112,20 +112,24 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="ArticleID">Mã bài viết</label>
-                        <input type="text" class="form-control" id="ArticleID" placeholder="Mã bài viết">
+                        <input type="text" class="form-control" id="ArticleID" value="${article.id_article}" placeholder="Mã bài viết">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="authorID">Mã tác giả</label>
-                        <input type="text" class="form-control" id="authorID" placeholder="Mã tác giả">
+                        <input type="text" class="form-control" id="authorID" value="${article.writer_id}" placeholder="Mã tác giả">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputNameArticle">Tên bài viết</label>
-                    <input type="text" class="form-control" id="inputNameArticle" placeholder="Tên bài viết">
+                    <input type="text" class="form-control" id="inputNameArticle" value="${article.title}" placeholder="Tên bài viết">
+                </div>
+                <div class="form-group">
+                    <label for="inputNameArticle">Tên bài viết</label>
+                    <input type="text" class="form-control" id="inputAbstractArticle" value="${article.abstract_article}" placeholder="Tóm Tắt">
                 </div>
                 <div>
                     <label>Nội dung bài viết</label>
-                    <textarea id="editor" style="width: 100%" name="articlecontent">ABcd</textarea>
+                    <textarea id="editor" style="width: 100%" name="articlecontent">${article.content}</textarea>
                 </div>
 
                 <div class="modal fade" id="duyetModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
