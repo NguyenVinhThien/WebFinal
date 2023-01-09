@@ -109,17 +109,22 @@ public class EditorServlet  extends HttpServlet {
             request.setCharacterEncoding("UTF-8");
             String id = request.getParameter("id");
             int i = Integer.parseInt(id);
+            String editor = request.getParameter("editor");
+            //int editor_id = Integer.parseInt(editor);
+            System.out.println(editor);
             String note = request.getParameter("note");
             int tag = Integer.parseInt(request.getParameter("tag"));
-            String strDob = request.getParameter("date") + " 00:00";
+            String strDob = request.getParameter("date");
             DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
             LocalDateTime dt = LocalDateTime.parse(strDob, df);
             DAOAdmin d = new DAOAdmin();
             if (dt == null)
-                d.updateArticle(i,dt,note,1);
-            else
-                d.updateArticle(i,dt,null,2);
-            d.editTagHasArticles(tag,i);
+                d.updateArticle(i,null,note,1);
+            else {
+                d.updateArticle(i, dt, null, 2);
+                d.editTagHasArticles(tag,i);
+            }
+            ;
 //            String abstract_article = request.getParameter("Tom_tat");
 //            int categories_id = Integer.parseInt(request.getParameter("cate"));
 //            int premium;
@@ -132,7 +137,7 @@ public class EditorServlet  extends HttpServlet {
 //            String content = request.getParameter("content");
 //            DAOAdmin d = new DAOAdmin();
 //            d.editArticle(i, title, content, abstract_article,categories_id,premium);
-            response.sendRedirect("/WebFinal/404.jsp");
+            response.sendRedirect("/WebFinal/Editor/Home?id="+editor);
         } catch (Exception e) {
             e.printStackTrace();
         }
