@@ -1057,17 +1057,18 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
-    public void editEditor(int editor_id,int category_id)
+    public void editEditor(int editor_id,int category_id,int id)
     {
         String query="UPDATE editor_manage_categories\n"
-                + "SET category_id = ? \r\n"
-                + "WHERE editor_id = ?";
+                + "SET category_id = ?,editor_id = ? \r\n"
+                + "WHERE id = ?";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
             PreparedStatement ps= con.prepareStatement(query);
             ps.setInt(1,category_id);
             ps.setInt(2,editor_id);
+            ps.setInt(3,id);
             ps.executeUpdate();
             con.close();
         }catch(Exception e)

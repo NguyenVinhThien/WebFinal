@@ -425,11 +425,13 @@ public class AdminServlet extends HttpServlet {
         try {
             request.setCharacterEncoding("UTF-8");
             DAOAdmin d = new DAOAdmin();
+            String id = request.getParameter("id");
             String editor_id = request.getParameter("editor_id");
             String category_id = request.getParameter("category_id");
+            int i = Integer.parseInt(id);
             int i1 = Integer.parseInt(editor_id );
             int i2 = Integer.parseInt(category_id);
-            d.editEditor(i1,i2);
+            d.editEditor(i1,i2,i);
             response.sendRedirect("/WebFinal/Admin/User/ShowEditor");
         } catch (Exception e) {
             e.printStackTrace();

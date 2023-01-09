@@ -221,6 +221,7 @@
                             <table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
                             <thead>
                             <tr role="row">
+                              <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã danh sách biên tập viên</th>
                               <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã biên tập viên</th>
                               <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên danh mục: activate to sort column ascending" style="width: 485.891px;">Tên biên tập viên</th>
                               <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã danh mục</th>
@@ -230,7 +231,8 @@
                             <c:forEach items="${list}" var="t">
                             <tbody>
                             <tr class="odd" role="row">
-                              <td class="sorting_1">${t.editor_id}</td>
+                              <td>${t.id}</td>
+                              <td>${t.editor_id}</td>
                               <td>${t.nameEditor}</td>
                               <td>${t.category_id}</td>
                               <td>${t.nameCategory}</td>
@@ -284,6 +286,10 @@
           </div>
             <form action="EditEditor" method="post">
           <div class="modal-body">
+            <div class="form-group">
+              <label>Mã danh sách biên tập viên</label>
+              <input name="id" type="text" class="form-control" required>
+            </div>
             <div class="form-group">
               <label>Mã biên tập viên</label>
               <input name="editor_id" type="text" class="form-control" required>
