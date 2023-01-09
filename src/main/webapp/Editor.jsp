@@ -52,46 +52,11 @@
         </div>
 
         <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
+            <input type="text" name="editor" value="${authUser.id}">
             <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Portfolio</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
+                <a href="/WebFinal/Editor/ShowCategory?id=${authUser.id}">Tất cả chuyên mục</a>
             </li>
         </ul>
-
     </nav>
 
     <!-- Page Content  -->
@@ -164,7 +129,12 @@
                                             <select id="inputState" class="form-control" name="tag">
                                                 <option selected>Choose...</option>
                                                 <c:forEach items="${tag}" var="t">
-                                                    <option value="${t.id}">${t.name}</option>
+                                                    <script type="text/javascript">
+                                                        if (${t.id} == ${article.categories_id})
+                                                            document.getElementById('inputState').add(new Option("${t.name}","${t.id}",false,true))
+                                                        else
+                                                            document.getElementById('inputState').add(new Option("${t.name}","${t.id}"));
+                                                    </script>
                                                 </c:forEach>
                                                 <option>...</option>
                                             </select>
