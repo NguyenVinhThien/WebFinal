@@ -110,20 +110,19 @@
 
         <div class="container">
             <h2>Chi tiết bài viết</h2>
-            <form>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="ArticleID">Mã bài viết</label>
-                        <input type="text" class="form-control" id="ArticleID" value="${article.id_article}" placeholder="Mã bài viết">
+                        <input type="text" class="form-control" id="ArticleID" value="${article.id_article}" disabled>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="authorID">Mã tác giả</label>
-                        <input type="text" class="form-control" id="authorID" value="${article.writer_id}" placeholder="Mã tác giả">
+                        <input type="text" class="form-control" id="authorID" value="${article.writer_id}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputNameArticle">Tên bài viết</label>
-                    <input type="text" class="form-control" id="inputNameArticle" value="${article.title}" placeholder="Tên bài viết">
+                    <input type="text" class="form-control" id="inputNameArticle" value="${article.title}" disabled>
                 </div>
                 <div class="form-group">
                     <label for="inputNameArticle">Tên bài viết</label>
@@ -143,22 +142,21 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+                            <form method="POST" novalidate="novalidate">
                             <div class="modal-body">
-
-                                <form>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="artID">Mã bài viết</label>
-                                            <input type="text" class="form-control" id="artID" value="${article.id_article}" disabled>
+                                            <input type="text" class="form-control" id="artID" name="id" value="${article.id_article}" readonly>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="authID">Mã tác giả</label>
-                                            <input type="text" class="form-control" id="authID" value="${article.writer_id}" disabled>
+                                            <input type="text" class="form-control" id="authID" name="writer" value="${article.writer_id}" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="artName">Tên bài viết</label>
-                                        <input type="text" class="form-control" id="artName" value="${article.title}" disabled>
+                                        <input type="text" class="form-control" id="artName" name="title" value="${article.title}" readonly>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
@@ -173,15 +171,15 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="inputZip">Ngày xuất bản</label>
-                                            <input type="date" class="form-control" id="inputZip" name="date">
+                                            <input type="datetime-local" class="form-control" id="inputZip" name="date">
                                         </div>
                                     </div>
-                                </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>
                                 <button type="submit" class="btn btn-success">Xác nhận</button>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -194,39 +192,38 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+                            <form method="POST" novalidate="novalidate">
                             <div class="modal-body">
-                                <form>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="inputEmail4">Mã bài viết</label>
-                                            <input type="text" class="form-control" id="inputEmail4" value="${article.id_article}" disabled>
+                                            <input type="text" class="form-control" id="inputEmail4"  name="id" value="${article.id_article}" readonly>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword4">Mã tác giả</label>
-                                            <input type="text" class="form-control" id="inputPassword4" value="${article.writer_id}"disabled>
+                                            <input type="text" class="form-control" id="inputPassword4" name="writer" value="${article.writer_id}"readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputAddress">Tên bài viết</label>
-                                        <input type="text" class="form-control" id="inputAddress" value="${article.title}" disabled>
+                                        <input type="text" class="form-control" id="inputAddress" name="title" value="${article.title}" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Ghi chú</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="note"></textarea>
                                     </div>
-                                </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay về</button>
                                 <button type="submit" class="btn btn-danger">Xác nhận</button>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tuchoiModalCenter">Từ chối</button>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#duyetModalCenter">Duyệt bài</button>
 
-            </form>
         </div>
     </div>
 </div>

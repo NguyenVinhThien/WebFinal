@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @WebServlet(name="Editor",urlPatterns = "/Editor/*")
@@ -105,9 +107,19 @@ public class EditorServlet  extends HttpServlet {
     private void EditArticle(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setCharacterEncoding("UTF-8");
-//            String id = request.getParameter("id");
-//            int i = Integer.parseInt(id);
-//            String title = request.getParameter("title");
+            String id = request.getParameter("id");
+            int i = Integer.parseInt(id);
+            String note = request.getParameter("note");
+            int tag = Integer.parseInt(request.getParameter("tag"));
+            String strDob = request.getParameter("date") + " 00:00";
+            DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            LocalDateTime dt = LocalDateTime.parse(strDob, df);
+            DAOAdmin d = new DAOAdmin();
+            if (dt == null)
+                d.updateArticle(i,dt,note,1);
+            else
+                d.updateArticle(i,dt,null,2);
+            d.editTagHasArticles(tag,i);
 //            String abstract_article = request.getParameter("Tom_tat");
 //            int categories_id = Integer.parseInt(request.getParameter("cate"));
 //            int premium;
@@ -116,11 +128,11 @@ public class EditorServlet  extends HttpServlet {
 //            } catch (NumberFormatException e) {
 //                premium = 0;
 //            }
-            int writer_id = Integer.parseInt(request.getParameter("authUser.id"));
+            //int writer_id = Integer.parseInt(request.getParameter("authUser.id"));
 //            String content = request.getParameter("content");
 //            DAOAdmin d = new DAOAdmin();
 //            d.editArticle(i, title, content, abstract_article,categories_id,premium);
-            response.sendRedirect("/WebFinal/Editor/Home?id=" + writer_id);
+            response.sendRedirect("/WebFinal/404.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }
