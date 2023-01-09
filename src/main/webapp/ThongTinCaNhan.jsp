@@ -84,10 +84,12 @@
                             <a href="#" class="btn_change_password">Đổi mật khẩu</a>
                         </div>
                     </div>
+                    <div class="message">
+                        <p>${message}</p>
+                    </div>
                     <div class="mt-3 text-center">
                         <button class="btn btn-primary profile-button" type="submit">Lưu Thay Đổi</button>
                     </div>
-
                 </div>
             </div>
             <div class="col-md-4">
@@ -113,35 +115,16 @@
                                    value="Admin"
                             </c:if>
                                    readonly>
-                            <%--                            <select class="form-control">--%>
-                            <%--                                <c:if test="${authUser.role eq 0}">--%>
-                            <%--                                    <option value="0">Subscriber</option>--%>
-                            <%--                                </c:if>--%>
-                            <%--                                <c:if test="${authUser.role eq 1}">--%>
-                            <%--                                    <option value="0">Writer</option>--%>
-                            <%--                                </c:if>--%>
-                            <%--                                <c:if test="${authUser.role eq 2}">--%>
-                            <%--                                    <option value="0">Editor</option>--%>
-                            <%--                                </c:if>--%>
-                            <%--                                <c:if test="${authUser.role eq 3}">--%>
-                            <%--                                    <option value="0">Admin</option>--%>
-                            <%--                                </c:if>--%>
-                            <%--                            </select>--%>
                         </div>
+                    </div>
+                    <div class="mt-3 text-center">
+                        <a href="${pageContext.request.contextPath}/TrangChu" class="btn btn-primary profile-button">Về Trang Chủ</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </form>
-
-<!--<script src="https://code.jquery.com/jquery-3.6.1.min.js" crossorigin="anonymous"></script>-->
-<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"-->
-<!--        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"-->
-<!--        crossorigin="anonymous"></script>-->
-<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"-->
-<!--        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"-->
-<!--        crossorigin="anonymous"></script>-->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"

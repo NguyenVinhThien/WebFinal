@@ -1,6 +1,6 @@
 package Controller;
 
-import DAO.UserModel;
+import DAO.DAOAdmin;
 import Model.User;
 import Uti.ServletUtils;
 import at.favre.lib.crypto.bcrypt.BCrypt;
@@ -29,11 +29,11 @@ public class AccountServlet extends HttpServlet {
                 break;
 
             case "/DangNhap":
-//                HttpSession session = request.getSession();
-//                if ((boolean) session.getAttribute("auth")) {
-//                    ServletUtils.redirect("/TrangChu", request, response);
-//                } else ServletUtils.forward("/DangNhap.jsp", request, response);
-                ServletUtils.forward("/DangNhap.jsp", request, response);
+                HttpSession session = request.getSession();
+                if ((boolean) session.getAttribute("auth")) {
+                    ServletUtils.redirect("/TrangChu", request, response);
+                } else ServletUtils.forward("/DangNhap.jsp", request, response);
+//                ServletUtils.forward("/DangNhap.jsp", request, response);
                 break;
 
             case "/ThongTinCaNhan":
@@ -43,7 +43,7 @@ public class AccountServlet extends HttpServlet {
             case "/IsAvailable":
                 String username = request.getParameter("user");
                 User user = null;
-                user = UserModel.findByUsername(username);
+                user = DAOAdmin.findByUsername(username);
                 boolean isAvailable = (user == null);
 
                 PrintWriter out = response.getWriter();
@@ -58,6 +58,7 @@ public class AccountServlet extends HttpServlet {
                 break;
         }
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
@@ -84,7 +85,7 @@ public class AccountServlet extends HttpServlet {
         }
     }
 
-    private void registerUser(HttpServletRequest request, HttpServletResponse response){
+    private void registerUser(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setCharacterEncoding("UTF-8");
             String rawpwd = request.getParameter("rawpwd");
@@ -100,18 +101,19 @@ public class AccountServlet extends HttpServlet {
 
             LocalDateTime issue_at = LocalDateTime.now(Clock.systemDefaultZone());
 
-            UserModel c = new UserModel();
+            DAOAdmin c = new DAOAdmin();
             c.addUser(username, bcryptHashString, name, issue_at, dob, email);
             response.sendRedirect("/WebFinal/Account/DangNhap");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            User user = UserModel.findByUsername(username);
+            User user = DAOAdmin.findByUsername(username);
             if (user != null) {
                 BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword().toCharArray());
                 if (result.verified) {
@@ -137,6 +139,7 @@ public class AccountServlet extends HttpServlet {
             throw new ServletException(e);
         }
     }
+
     private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         session.setAttribute("auth", false);
@@ -147,23 +150,8 @@ public class AccountServlet extends HttpServlet {
             url = "/TrangChu";
         ServletUtils.redirect(url, request, response);
     }
+
     private void updateProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        HttpSession session = request.getSession();
-//        User user = (User) session.getAttribute("authUser");
-//        int id = user.getId();
-//        String username = user.getUsername();
-//        String password = user.getPassword();
-//        String name = user.getName();
-//        LocalDateTime issue_at = user.getIssue_at();
-//        int expiration = user.getExpiration();
-//        int role = user.getRole();
-//        String second_name = user.getSecond_name();
-//        LocalDateTime dob = user.getDob();
-//        String email = user.getEmail();
-//        String otp = user.getOtp();;
-//        LocalDateTime otp_exp = user.getOtp_exp();
-//
-//        request.setAttribute("username", username);
 
         try {
             request.setCharacterEncoding("UTF-8");
@@ -177,16 +165,19 @@ public class AccountServlet extends HttpServlet {
             String second_name = request.getParameter("second_name");
             String email = request.getParameter("email");
 
-            UserModel c = new UserModel();
+            // Update the information here
+            DAOAdmin c = new DAOAdmin();
             c.updateUser(username, name, second_name, dob, email);
-//
-//            User user = UserModel.findByUsername(username);
-//            HttpSession session = request.getSession();
-//            session.setAttribute("authUser", user);
-//
-//
-            response.sendRedirect("/WebFinal/Account/DangNhap");
+
+            User user = DAOAdmin.findByUsername(username);
+            HttpSession session = request.getSession();
+            session.setAttribute("authUser", user);
+
+            request.setAttribute("message", "Update Success Information");
+            request.getRequestDispatcher("/ThongTinCaNhan.jsp").forward(request, response);
         } catch (Exception e) {
+            // Send an error response to the client with an error message
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while updating the information: " + e.getMessage());
             e.printStackTrace();
         }
     }
