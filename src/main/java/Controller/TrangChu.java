@@ -2,16 +2,17 @@ package Controller;
 
 import DAO.DAOAdmin;
 import Model.ArticleHasCategories;
-import Model.Articles;
 import Model.Categories;
 import Model.Tags;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 @WebServlet(name = "TrangChu", value = "/TrangChu")
 public class TrangChu extends HttpServlet {
@@ -37,6 +38,9 @@ public class TrangChu extends HttpServlet {
 
         List<ArticleHasCategories> listNewArt= d.getNewArticle();
         request.setAttribute("listNewArt", listNewArt);
+
+        List<ArticleHasCategories> listTopByCat= d.getTopByCat();
+        request.setAttribute("listTopByCat", listTopByCat);
 
         RequestDispatcher rd= request.getRequestDispatcher("TrangChu.jsp");
         rd.forward(request, response);
