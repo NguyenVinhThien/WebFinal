@@ -1154,4 +1154,25 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
+
+    public void updateArticle(int id, LocalDateTime dt, String txt, int status)
+    {
+        String query="UPDATE  articles\n"
+                + "SET status = ? ,publish_date = ?, note = ?\r\n"
+                + "WHERE id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setInt(1,status);
+            ps.setString(2, String.valueOf(dt));
+            ps.setString(3, txt);
+            ps.setInt(4,id);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
 }
