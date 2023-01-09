@@ -131,18 +131,45 @@ public class DAOAdmin {
         }
         return list;
     }
-    public Map<Articles,String> getTopHotArticle()
-    {
-        Map<Articles,String> list = new HashMap<>();
+//    public Map<Articles,String> getTopHotArticle()
+//    {
+//        Map<Articles,String> list = new HashMap<>();
+//
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Connection con = ConnectDB.getConnection();
+//            PreparedStatement ps = con.prepareStatement("select * from (select a.*, b.name  from articles a INNER JOIN categories b on a.categories_id = b.id) as c where yearweek(publish_date, 1)= yearweek(curdate(), 1) order by views desc limit 3");
+//            ResultSet rs = ps.executeQuery();
+//            while(rs.next())
+//            {
+//                list.put(new Articles(rs.getInt(1),
+//                        rs.getString(2),
+//                        rs.getString(3),
+//                        rs.getInt(4),
+//                        rs.getString(5),
+//                        rs.getString(6),
+//                        rs.getInt(7),
+//                        rs.getInt(8),
+//                        rs.getInt(9),
+//                        rs.getInt(10)),rs.getString(11));
+//            }
+//        }catch(Exception e)
+//        {
+//            e.getMessage();
+//        }
+//        return list;
+//    }
+    public List<ArticleHasCategories> getTopHotArticle(){
+        List<ArticleHasCategories> list = new ArrayList<>();
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select * from (select a.*, b.name  from articles a INNER JOIN categories b on a.categories_id = b.id) as c where yearweek(publish_date, 1)= yearweek(curdate(), 1) order by views desc limit 3");
+            PreparedStatement ps = con.prepareStatement("select a.*, c.name, c.parent_id from articles a inner join categories c on a.categories_id= c.id where yearweek(a.publish_date, 1)= yearweek(curdate() -7, 1) and a.publish_date<= current_date() order by a.views desc limit 3");
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
-                list.put(new Articles(rs.getInt(1),
+                list.add(new ArticleHasCategories(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
                         rs.getInt(4),
@@ -151,7 +178,9 @@ public class DAOAdmin {
                         rs.getInt(7),
                         rs.getInt(8),
                         rs.getInt(9),
-                        rs.getInt(10)),rs.getString(11));
+                        rs.getInt(10),
+                        rs.getString(11),
+                        rs.getInt(12)));
             }
         }catch(Exception e)
         {
@@ -316,6 +345,107 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
+    public void editTagHasArticles(int tag, int article)
+    {
+        String query="UPDATE tags_has_articles\n"
+                + "SET tag_id = ?\r\n"
+                + "WHERE article_id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setInt(1,tag);
+            ps.setInt(2,article);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
+    public int getTagbyArticle(int i)
+    {
+        int id =0;
+        String query="SELECT tag_id from tags_has_articles WHERE article_id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setInt(1,i);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                id = rs.getInt(1);
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return id;
+    }
+
+    public int getTagID(String name)
+    {
+        int id =0;
+        String query="SELECT id from tags WHERE value = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setString(1,name);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                id = rs.getInt(1);
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return id;
+    }
+
+    public String getTagname(int id)
+    {
+        String name = new String();
+        String query="SELECT value from tags WHERE id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setInt(1,id);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                name = rs.getString(1);
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return name;
+    }
+
+    public int getNewestArticleId()
+    {
+        int id = 0;
+        String query="SELECT Max(id) from articles";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                id = rs.getInt(1);
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return id;
+    }
+
     public void editTag(int id,String name)
     {
         String query="UPDATE tags\n"
@@ -327,6 +457,22 @@ public class DAOAdmin {
             PreparedStatement ps= con.prepareStatement(query);
             ps.setString(1,name);
             ps.setInt(2,id);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
+    public void setTag(int tag, int article)
+    {
+        String query="INSERT INTO tags_has_articles (article_id,tag_id) VALUES(?,?)";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setInt(1,article);
+            ps.setInt(2,tag);
             ps.executeUpdate();
             con.close();
         }catch(Exception e)
@@ -716,7 +862,7 @@ public class DAOAdmin {
     public void Ok(int id)
     {
         String query="UPDATE  articles\n"
-                + "SET status = 2 ,publish_date = CURDATE()\r\n"
+                + "SET status = 2 ,publish_date = CURRENT_TIMESTAMP()\r\n"
                 + "WHERE id = ?";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -852,5 +998,77 @@ public class DAOAdmin {
             e.getMessage();
         }
         return list;
+    }
+    public List<Editor_Manage_Categories> getEditorCategories()
+    {
+        List<Editor_Manage_Categories> list = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT a.id,a.editor_id,a.category_id,b.name,c.name FROM ( editor_manage_categories a inner join users b ON a.editor_id = b.id ) inner join categories c ON a.category_id = c.id");
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                list.add(new Editor_Manage_Categories(rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getString(5)
+                ));
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return list;
+    }
+    public void addEditor(String id, String editor_id,String category_id)
+    {
+        String query="INSERT INTO editor_manage_categories (id,editor_id,category_id) VALUES(?,?,?)";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setString(1,id);
+            ps.setString(2,editor_id);
+            ps.setString(3,category_id);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
+    public void deleteEditor(String id)
+    {
+        String query="DELETE FROM editor_manage_categories WHERE id = ? ";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setString(1, id);
+            ps.executeUpdate();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
+    public void editEditor(int editor_id,int category_id)
+    {
+        String query="UPDATE editor_manage_categories\n"
+                + "SET category_id = ? \r\n"
+                + "WHERE editor_id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setInt(1,category_id);
+            ps.setInt(2,editor_id);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
     }
 }

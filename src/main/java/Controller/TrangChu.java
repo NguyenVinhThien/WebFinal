@@ -28,7 +28,8 @@ public class TrangChu extends HttpServlet {
         List<Tags> listTags= d.getAllTag();
         request.setAttribute("listTags", listTags);
 
-        Map<Articles,String> listTopHotArt= d.getTopHotArticle();
+//        Map<Articles,String> listTopHotArt= d.getTopHotArticle();
+        List<ArticleHasCategories> listTopHotArt= d.getTopHotArticle();
         request.setAttribute("listTopHotArt", listTopHotArt);
 
         Map<Articles,String> listArtByView= d.getArticleByView();

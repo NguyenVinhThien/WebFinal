@@ -2,10 +2,7 @@ package Controller;
 
 
 import DAO.DAOAdmin;
-import Model.Articles;
-import Model.Categories;
-import Model.Tags;
-import Model.User;
+import Model.*;
 import Uti.ServletUtils;
 
 import javax.servlet.RequestDispatcher;
@@ -63,6 +60,10 @@ public class AdminServlet extends HttpServlet {
                 request.getRequestDispatcher("/Category.jsp").forward(request, response);
                 break;
             }
+            case "/User/ThemEditor": {
+                request.getRequestDispatcher("/ThemPhanCong.jsp").forward(request, response);
+                break;
+            }
             case "/Tag/ThemTag": {
                 request.getRequestDispatcher("/ThemTag.jsp").forward(request, response);
                 break;
@@ -82,6 +83,10 @@ public class AdminServlet extends HttpServlet {
                 request.setAttribute("listS", list);
                 request.setAttribute("name", name);
                 request.getRequestDispatcher("/SubCategory.jsp").forward(request, response);
+                break;
+            }
+            case "/User/DeleteEditor":{
+                DeleteEditor(request,response);
                 break;
             }
             case "/Category/DeleteCategory":{
@@ -106,6 +111,14 @@ public class AdminServlet extends HttpServlet {
             }
             case "/BaiViet/DeleteArticle":{
                 DeleteArticle(request,response);
+                break;
+            }
+            case "/BaiViet/DeleteArticleDraft":{
+                DeleteArticleDraft(request,response);
+                break;
+            }
+            case "/BaiViet/DeleteArticleOk":{
+                DeleteArticleOk(request,response);
                 break;
             }
             case "/User/DeleteUser":{
@@ -183,6 +196,13 @@ public class AdminServlet extends HttpServlet {
                 request.getRequestDispatcher("/BaiVietOk.jsp").forward(request, response);
                 break;
             }
+            case "/User/ShowEditor": {
+                request.setCharacterEncoding("UTF-8");
+                List<Editor_Manage_Categories> list = d.getEditorCategories();
+                request.setAttribute("list", list);
+                request.getRequestDispatcher("/Phancong.jsp").forward(request, response);
+                break;
+            }
             default: {
                 ServletUtils.forward("/404.jsp", request, response);
                 break;
@@ -201,6 +221,14 @@ public class AdminServlet extends HttpServlet {
         switch (path) {
             case "/Category/AddCategory": {
                 AddCategory(request,response);
+                break;
+            }
+            case "/User/AddEditor": {
+                AddEditor(request,response);
+                break;
+            }
+            case "/User/EditEditor": {
+                editEditor(request,response);
                 break;
             }
             case "/Category/EditCategory": {
@@ -289,8 +317,8 @@ public class AdminServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-    private void DeleteSubCategory(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        String id =request.getParameter("id");
+    private void DeleteSubCategory(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String id = request.getParameter("id");
         DAOAdmin dao = new DAOAdmin();
         dao.deleteCategory(id);
         response.sendRedirect("/WebFinal/Admin/Category/ShowCategory");
@@ -356,11 +384,56 @@ public class AdminServlet extends HttpServlet {
         dao.deleteArticle(id);
         response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiViet");
     }
+    private void DeleteArticleDraft(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        String id =request.getParameter("id");
+        DAOAdmin dao = new DAOAdmin();
+        dao.deleteArticle(id);
+        response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiVietDraft");
+    }
+    private void DeleteArticleOk(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        String id =request.getParameter("id");
+        DAOAdmin dao = new DAOAdmin();
+        dao.deleteArticle(id);
+        response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiVietOk");
+    }
     private void DeleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String id =request.getParameter("id");
         DAOAdmin d = new DAOAdmin();
         d.deleteUser(id);
         response.sendRedirect("/WebFinal/Admin/User/ShowUser");
+    }
+    private void AddEditor(HttpServletRequest request, HttpServletResponse response){
+        try {
+            request.setCharacterEncoding("UTF-8");
+            DAOAdmin d = new DAOAdmin();
+            String id = request.getParameter("id");
+            String editor_id = request.getParameter("editor_id");
+            String category_id = request.getParameter("category_id");
+            d.addEditor(id, editor_id,category_id);
+            response.sendRedirect("/WebFinal/Admin/User/ThemEditor");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void DeleteEditor(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        String id =request.getParameter("id");
+        DAOAdmin d = new DAOAdmin();
+        d.deleteEditor(id);
+        response.sendRedirect("/WebFinal/Admin/User/ShowEditor");
+    }
+    private void editEditor(HttpServletRequest request, HttpServletResponse response){
+        try {
+            request.setCharacterEncoding("UTF-8");
+            DAOAdmin d = new DAOAdmin();
+            String editor_id = request.getParameter("editor_id");
+            String category_id = request.getParameter("category_id");
+            int i1 = Integer.parseInt(editor_id );
+            int i2 = Integer.parseInt(category_id);
+            d.editEditor(i1,i2);
+            response.sendRedirect("/WebFinal/Admin/User/ShowEditor");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
