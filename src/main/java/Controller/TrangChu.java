@@ -32,7 +32,7 @@ public class TrangChu extends HttpServlet {
         List<ArticleHasCategories> listTopHotArt= d.getTopHotArticle();
         request.setAttribute("listTopHotArt", listTopHotArt);
 
-        Map<Articles,String> listArtByView= d.getArticleByView();
+        List<ArticleHasCategories> listArtByView= d.getArticleByView();
         request.setAttribute("listArtByView", listArtByView);
 
         List<ArticleHasCategories> listNewArt= d.getNewArticle();

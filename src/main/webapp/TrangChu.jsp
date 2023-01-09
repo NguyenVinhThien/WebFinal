@@ -12,7 +12,7 @@
 <jsp:useBean id="listSubCat" scope="request" type="java.util.List<Model.Categories>"/>
 <jsp:useBean id="listTags" scope="request" type="java.util.List<Model.Tags>"/>
 <jsp:useBean id="listTopHotArt" scope="request" type="java.util.List<Model.ArticleHasCategories>"/>
-<jsp:useBean id="listArtByView" scope="request" type="java.util.Map<Model.Articles,java.lang.String>"/>
+<jsp:useBean id="listArtByView" scope="request" type="java.util.List<Model.ArticleHasCategories>"/>
 <%--<jsp:useBean id="listNewArt" scope="request" type="java.util.Map<Model.Articles,java.lang.String>"/>--%>
 <jsp:useBean id="listNewArt" scope="request" type="java.util.List<Model.ArticleHasCategories>"/>
 <jsp:useBean id="authUser" scope="session" type="Model.User"/>
@@ -144,7 +144,6 @@
       <div class="cardInfo">
         <img class="cardImg" src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="Card image cap">
         <div class="card-body">
-<%--          <h5 class="card-title">${lh.title}</h5>--%>
           <h5 >
             <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${lh.id_article}">${lh.title}</a>
           </h5>
@@ -201,35 +200,34 @@
       <div class="horizontalCard">
         <img src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="" class="cardHorizontalImg">
         <div class="cardHorizontal-Body">
-          <h5 class="card-title">‘Cổng trời An Giang’, tọa độ check-in cực chất ở vùng đất Thất Sơn</h5>
-          <span class="cardCategory">Kinh doanh</span>
+          <h5 class="card-title">‘Cổng trời An Giang’, tọa độ check-in cực chất ở vùng đất Thất Sơn <span class="cardCategory">Kinh doanh</span>
           <p class="card-text"><small class="text-muted">Ngày đăng: 29/12/2022</small></p>
         </div>
       </div>
-      <div class="horizontalCard">
-        <img src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="" class="cardHorizontalImg">
-        <div class="cardHorizontal-Body">
-          <h5 class="card-title">‘Cổng trời An Giang’, tọa độ check-in cực chất ở vùng đất Thất Sơn</h5>
-          <span class="cardCategory">Kinh doanh</span>
-          <p class="card-text"><small class="text-muted">Ngày đăng: 29/12/2022</small></p>
-        </div>
-      </div>
-      <div class="horizontalCard">
-        <img src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="" class="cardHorizontalImg">
-        <div class="cardHorizontal-Body">
-          <h5 class="card-title">‘Cổng trời An Giang’, tọa độ check-in cực chất ở vùng đất Thất Sơn</h5>
-          <span class="cardCategory">Kinh doanh</span>
-          <p class="card-text"><small class="text-muted">Ngày đăng: 29/12/2022</small></p>
-        </div>
-      </div>
-      <div class="horizontalCard">
-        <img src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="" class="cardHorizontalImg">
-        <div class="cardHorizontal-Body">
-          <h5 class="card-title">‘Cổng trời An Giang’, tọa độ check-in cực chất ở vùng đất Thất Sơn</h5>
-          <span class="cardCategory">Kinh doanh</span>
-          <p class="card-text"><small class="text-muted">Ngày đăng: 29/12/2022</small></p>
-        </div>
-      </div>
+<%--      <div class="horizontalCard">--%>
+<%--        <img src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="" class="cardHorizontalImg">--%>
+<%--        <div class="cardHorizontal-Body">--%>
+<%--          <h5 class="card-title">‘Cổng trời An Giang’, tọa độ check-in cực chất ở vùng đất Thất Sơn</h5>--%>
+<%--          <span class="cardCategory">Kinh doanh</span>--%>
+<%--          <p class="card-text"><small class="text-muted">Ngày đăng: 29/12/2022</small></p>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--      <div class="horizontalCard">--%>
+<%--        <img src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="" class="cardHorizontalImg">--%>
+<%--        <div class="cardHorizontal-Body">--%>
+<%--          <h5 class="card-title">‘Cổng trời An Giang’, tọa độ check-in cực chất ở vùng đất Thất Sơn</h5>--%>
+<%--          <span class="cardCategory">Kinh doanh</span>--%>
+<%--          <p class="card-text"><small class="text-muted">Ngày đăng: 29/12/2022</small></p>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--      <div class="horizontalCard">--%>
+<%--        <img src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="" class="cardHorizontalImg">--%>
+<%--        <div class="cardHorizontal-Body">--%>
+<%--          <h5 class="card-title">‘Cổng trời An Giang’, tọa độ check-in cực chất ở vùng đất Thất Sơn</h5>--%>
+<%--          <span class="cardCategory">Kinh doanh</span>--%>
+<%--          <p class="card-text"><small class="text-muted">Ngày đăng: 29/12/2022</small></p>--%>
+<%--        </div>--%>
+<%--      </div>--%>
 
     </div>
 
@@ -239,16 +237,42 @@
     <img class="topViewBg" src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="Card image cap">
 
     <div class="largeTitle smallTitle">Tin xem nhiều nhất</div>
-    <c:forEach items="${listArtByView.keySet()}" var="lv">
+    <c:forEach items="${listArtByView}" var="la">
       <div class="horizontalCard smallCard">
         <img src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="" class="cardHorizontalImg">
         <div class="cardHorizontal-Body">
-          <h5 class="card-title custom-card-title">${lv.title}</h5>
-          <span class="cardCategory">${listArtByView.get(lv)}</span>
-          <p class="card-text"><small class="text-muted">Ngày đăng: ${lv.publish_date}</small></p>
+          <h5 >
+            <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${la.id_article}">${la.title}</a>
+          </h5>
+          <c:choose>
+            <c:when test="${la.parent_id eq 0}">
+              <span class="cardCategory">${la.cat_name}</span>
+            </c:when>
+            <c:otherwise>
+              <c:forEach items="${listCat}" var="c">
+                <c:if test="${c.id eq la.parent_id}">
+                  <span class="cardCategory">${c.name}</span>
+                </c:if>
+              </c:forEach>
+            </c:otherwise>
+          </c:choose>
+
+          <p class="card-text"><small class="text-muted">Ngày đăng: ${la.publish_date }</small></p>
         </div>
       </div>
     </c:forEach>
+
+
+<%--    <c:forEach items="${listArtByView.keySet()}" var="lv">--%>
+<%--      <div class="horizontalCard smallCard">--%>
+<%--        <img src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="" class="cardHorizontalImg">--%>
+<%--        <div class="cardHorizontal-Body">--%>
+<%--          <h5 class="card-title custom-card-title">${lv.title}</h5>--%>
+<%--          <span class="cardCategory">${listArtByView.get(lv)}</span>--%>
+<%--          <p class="card-text"><small class="text-muted">Ngày đăng: ${lv.publish_date}</small></p>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--    </c:forEach>--%>
 
 <%--    <div class="horizontalCard smallCard">--%>
 <%--      <img src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="" class="cardHorizontalImg">--%>
