@@ -866,7 +866,7 @@ public class DAOAdmin {
     public void Ok(int id)
     {
         String query="UPDATE  articles\n"
-                + "SET status = 2 ,publish_date = CURRENT_TIMESTAMP()\r\n"
+                + "SET status = 2 ,publish_date = CONVERT_TZ(CURRENT_TIMESTAMP(),'+00:00','+7:00')\r\n"
                 + "WHERE id = ?";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
