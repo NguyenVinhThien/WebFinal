@@ -25,37 +25,39 @@ public class TrangChu extends HttpServlet {
         {
             path= "/Index";
         }
+
+        DAOAdmin d = new DAOAdmin();
+
+        List<Categories> listMainCat = d.getAllMainCategories();
+        request.setAttribute("listCat", listMainCat);
+
+        List<Categories> listSubCat = d.getSubCategories();
+        request.setAttribute("listSubCat", listSubCat);
+
+        List<Tags> listTags = d.getAllTag();
+        request.setAttribute("listTags", listTags);
+
+        List<ArticleHasCategories> listTopHotArt = d.getTopHotArticle();
+        request.setAttribute("listTopHotArt", listTopHotArt);
+
+        List<ArticleHasCategories> listArtByView = d.getArticleByView();
+        request.setAttribute("listArtByView", listArtByView);
+
+        List<ArticleHasCategories> listNewArt = d.getNewArticle();
+        request.setAttribute("listNewArt", listNewArt);
+
+        List<ArticleHasCategories> listTopByCat = d.getTopByCat();
+        request.setAttribute("listTopByCat", listTopByCat);
         switch (path) {
             case "/Index":
-                DAOAdmin d = new DAOAdmin();
-
-                List<Categories> listMainCat = d.getAllMainCategories();
-                request.setAttribute("listCat", listMainCat);
-
-                List<Categories> listSubCat = d.getSubCategories();
-                request.setAttribute("listSubCat", listSubCat);
-
-                List<Tags> listTags = d.getAllTag();
-                request.setAttribute("listTags", listTags);
-
-                List<ArticleHasCategories> listTopHotArt = d.getTopHotArticle();
-                request.setAttribute("listTopHotArt", listTopHotArt);
-
-                List<ArticleHasCategories> listArtByView = d.getArticleByView();
-                request.setAttribute("listArtByView", listArtByView);
-
-                List<ArticleHasCategories> listNewArt = d.getNewArticle();
-                request.setAttribute("listNewArt", listNewArt);
-
-                List<ArticleHasCategories> listTopByCat = d.getTopByCat();
-                request.setAttribute("listTopByCat", listTopByCat);
-
                 RequestDispatcher rd = request.getRequestDispatcher("/TrangChu.jsp");
                 rd.forward(request, response);
                 break;
 
             case "/ShowArticleByCat":
-
+                int catId= Integer.parseInt(request.getParameter("catId"));
+                List <ArticleHasCategories> list= d.searchByCatId(catId);
+                request.setAttribute("listSearchByCat", list);
                 ServletUtils.forward("/ShowArticleByCat.jsp", request, response);
                 break;
 

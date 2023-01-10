@@ -109,7 +109,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where  categories_id = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles  where  categories_id = ?");
             ps.setInt(1,catId);
             ResultSet rs= ps.executeQuery();
             while(rs.next())
@@ -131,13 +131,42 @@ public class DAOAdmin {
         }
         return list;
     }
+    public List<ArticleHasCategories> searchByCatId(int catId){
+        List<ArticleHasCategories> list = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT  a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c .parent_id FROM articles a inner join categories c on a.categories_id= c.id  where  categories_id = ?");
+            ps.setInt(1,catId);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                list.add(new ArticleHasCategories(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getInt(10),
+                        rs.getString(11),
+                        rs.getInt(12)));
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return list;
+    }
     public List<ArticleHasCategories> getTopByCat(){
         List<ArticleHasCategories> list = new ArrayList<>();
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select * from(select distinct a.*, b.name, b.parent_id from articles a join categories b on a.categories_id = b.id order by a.publish_date desc) as t where parent_id is not null group by t.parent_id");
+            PreparedStatement ps = con.prepareStatement("select * from(select distinct a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, b.name, b.parent_id from articles a join categories b on a.categories_id = b.id order by a.publish_date desc) as t where parent_id is not null group by t.parent_id");
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
@@ -166,7 +195,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.*, c.name, c.parent_id from articles a inner join categories c on a.categories_id= c.id where yearweek(a.publish_date, 1)= yearweek(curdate()-7, 1) and a.publish_date<= current_date() order by a.views desc limit 3");
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id from articles a inner join categories c on a.categories_id= c.id where yearweek(a.publish_date, 1)= yearweek(curdate()-7, 1) and a.publish_date<= current_date() order by a.views desc limit 3");
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
@@ -189,34 +218,6 @@ public class DAOAdmin {
         }
         return list;
     }
-//    public Map<Articles,String> getArticleByView()
-//    {
-//        Map<Articles,String> list = new HashMap<>();
-//
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            Connection con = ConnectDB.getConnection();
-//            PreparedStatement ps = con.prepareStatement("select * from (select a.*,b.name from articles a INNER JOIN categories b on a.categories_id = b.id) as c where current_date()>= c.publish_date order by views desc limit 10");
-//            ResultSet rs = ps.executeQuery();
-//            while(rs.next())
-//            {
-//                list.put(new Articles(rs.getInt(1),
-//                        rs.getString(2),
-//                        rs.getString(3),
-//                        rs.getInt(4),
-//                        rs.getString(5),
-//                        rs.getString(6),
-//                        rs.getInt(7),
-//                        rs.getInt(8),
-//                        rs.getInt(9),
-//                        rs.getInt(10)),rs.getString(11));
-//            }
-//        }catch(Exception e)
-//        {
-//            e.getMessage();
-//        }
-//        return list;
-//    }
     public List<ArticleHasCategories> getArticleByView()
     {
         List<ArticleHasCategories> list = new ArrayList<>();
@@ -224,7 +225,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.*, c.name, c.parent_id from articles a inner join categories c on a.categories_id= c.id where a.publish_date <= current_date() order by a.views desc limit 10");
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id from articles a inner join categories c on a.categories_id= c.id where a.publish_date <= current_date() order by a.views desc limit 10");
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
@@ -256,7 +257,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.*, c.name, c.parent_id from articles a inner join categories c on a.categories_id= c.id where a.publish_date <= current_date() order by a.publish_date desc limit 10");
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id from articles a inner join categories c on a.categories_id= c.id where a.publish_date <= current_date() order by a.publish_date desc limit 10");
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
