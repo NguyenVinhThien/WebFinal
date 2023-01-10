@@ -155,13 +155,14 @@ public class DAOAdmin {
         }
         return list;
     }
-    public List<ArticleHasCategories> searchByCatId(int catId){
+    public List<ArticleHasCategories> searchByCatId(int catId,int page){
         List<ArticleHasCategories> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT  a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c .parent_id FROM articles a inner join categories c on a.categories_id= c.id  where  categories_id = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT  a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c .parent_id FROM articles a inner join categories c on a.categories_id= c.id  where  categories_id = ?  "  + " LIMIT 10 "   + "\r\n OFFSET ?" );
             ps.setInt(1,catId);
+            ps.setInt(2,(page - 1) * 10);
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {
@@ -183,6 +184,23 @@ public class DAOAdmin {
             e.getMessage();
         }
         return list;
+    }
+    public int CountbyCat(int catId)
+    {
+        String query = "SELECT COUNT(*) as total  FROM articles a inner join categories c on a.categories_id= c.id  where  categories_id = ? " ;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1,catId);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt("total");
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return 0;
     }
     public List<ArticleHasCategories> getTopByCat(){
         List<ArticleHasCategories> list = new ArrayList<>();

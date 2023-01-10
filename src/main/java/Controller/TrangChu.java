@@ -56,8 +56,18 @@ public class TrangChu extends HttpServlet {
 
             case "/ShowArticleByCat":
                 int catId= Integer.parseInt(request.getParameter("catId"));
-                List <ArticleHasCategories> list= d.searchByCatId(catId);
+                int page = 1;
+                if(request.getParameter("page") != null && request.getParameter("page") != "")
+                {
+                    page = Integer.parseInt(request.getParameter("page"));
+                }
+                int total1 = d.CountbyCat(catId);
+                int totalpage = (int) Math.ceil((float)total1/(float)10);
+                List <ArticleHasCategories> list= d.searchByCatId(catId,page);
                 request.setAttribute("listSearchByCat", list);
+                request.setAttribute("total1", total1);
+                request.setAttribute("totalpage", totalpage);
+                request.setAttribute("page", page);
                 ServletUtils.forward("/ShowArticleByCat.jsp", request, response);
                 break;
 
