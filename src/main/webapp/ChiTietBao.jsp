@@ -30,127 +30,6 @@
 </head>
 
 <body>
-<!-- Preloader -->
-<%--<div class="preloader d-flex align-items-center justify-content-center">--%>
-<%--  <div class="lds-ellipsis">--%>
-<%--    <div></div>--%>
-<%--    <div></div>--%>
-<%--    <div></div>--%>
-<%--    <div></div>--%>
-<%--  </div>--%>
-<%--</div>--%>
-
-<!-- ##### Header Area Start ##### -->
-<!--    <header class="header-area">-->
-<!--        &lt;!&ndash; Navbar Area &ndash;&gt;-->
-<!--        <div class="newsbox-main-menu">-->
-<!--            <div class="classy-nav-container breakpoint-off">-->
-<!--                <div class="container-fluid">-->
-<!--                    &lt;!&ndash; Menu &ndash;&gt;-->
-<!--                    <nav class="classy-navbar justify-content-between" id="newsboxNav">-->
-
-<!--                        &lt;!&ndash; Nav brand &ndash;&gt;-->
-<!--                        <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>-->
-
-<!--                        &lt;!&ndash; Navbar Toggler &ndash;&gt;-->
-<!--                        <div class="classy-navbar-toggler">-->
-<!--                            <span class="navbarToggler"><span></span><span></span><span></span></span>-->
-<!--                        </div>-->
-
-<!--                        &lt;!&ndash; Menu &ndash;&gt;-->
-<!--                        <div class="classy-menu">-->
-
-<!--                            &lt;!&ndash; Close Button &ndash;&gt;-->
-<!--                            <div class="classycloseIcon">-->
-<!--                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Nav Start &ndash;&gt;-->
-<!--                            <div class="classynav">-->
-<!--                                <ul>-->
-<!--                                    <li><a href="#">International</a>-->
-<!--                                        <div class="megamenu">-->
-<!--                                            <ul class="single-mega cn-col-4">-->
-<!--                                                <li class="title">Europe</li>-->
-<!--                                                <li><a href="#">United Kingdom</a></li>-->
-<!--                                                <li><a href="#">Germany</a></li>-->
-<!--                                                <li><a href="#">Latvia</a></li>-->
-<!--                                                <li><a href="#">Poland</a></li>-->
-<!--                                                <li><a href="#">Italy</a></li>-->
-<!--                                                <li><a href="#">France</a></li>-->
-<!--                                                <li><a href="#">Crotia</a></li>-->
-<!--                                            </ul>-->
-<!--                                            <ul class="single-mega cn-col-4">-->
-<!--                                                <li class="title">Africa</li>-->
-<!--                                                <li><a href="#">Algeria</a></li>-->
-<!--                                                <li><a href="#">Angola</a></li>-->
-<!--                                                <li><a href="#">Benin</a></li>-->
-<!--                                                <li><a href="#">Botswana</a></li>-->
-<!--                                                <li><a href="#">Burkina Faso</a></li>-->
-<!--                                                <li><a href="#">Burundi</a></li>-->
-<!--                                                <li><a href="#">Cameroon</a></li>-->
-<!--                                            </ul>-->
-<!--                                            <ul class="single-mega cn-col-4">-->
-<!--                                                <li class="title">Asia</li>-->
-<!--                                                <li><a href="#">Bangladesh</a></li>-->
-<!--                                                <li><a href="#">Chaina</a></li>-->
-<!--                                                <li><a href="#">India</a></li>-->
-<!--                                                <li><a href="#">Afganistan</a></li>-->
-<!--                                                <li><a href="#">Sri Lanka</a></li>-->
-<!--                                                <li><a href="#">Nepal</a></li>-->
-<!--                                                <li><a href="#">Bhutan</a></li>-->
-<!--                                            </ul>-->
-<!--                                            <ul class="single-mega cn-col-4">-->
-<!--                                                <li class="title">USA &amp; Canada</li>-->
-<!--                                                <li><a href="#">California</a></li>-->
-<!--                                                <li><a href="#">Florida</a></li>-->
-<!--                                                <li><a href="#">Alabama</a></li>-->
-<!--                                                <li><a href="#">New Yorks</a></li>-->
-<!--                                                <li><a href="#">Texas</a></li>-->
-<!--                                                <li><a href="#">Lowa</a></li>-->
-<!--                                                <li><a href="#">Montana</a></li>-->
-<!--                                            </ul>-->
-<!--                                        </div>-->
-<!--                                    </li>-->
-<!--                                    <li><a href="#">Local News</a></li>-->
-<!--                                    <li><a href="#">Pages</a>-->
-<!--                                        <ul class="dropdown">-->
-<!--                                            <li><a href="index.html">Home</a></li>-->
-<!--                                            <li><a href="catagory.html">Catagory</a></li>-->
-<!--                                            <li><a href="single-post.html">Single Post</a></li>-->
-<!--                                            <li><a href="contact.html">Contact</a></li>-->
-<!--                                            <li><a href="elements.html">Elements</a></li>-->
-<!--                                        </ul>-->
-<!--                                    </li>-->
-<!--                                    <li><a href="#">Sport</a>-->
-<!--                                        <ul class="dropdown">-->
-<!--                                            <li><a href="#">Archery</a></li>-->
-<!--                                            <li><a href="#">Badminton</a></li>-->
-<!--                                            <li><a href="#">Baseball</a></li>-->
-<!--                                            <li><a href="#">Boxing</a></li>-->
-<!--                                            <li><a href="#">Climbing</a></li>-->
-<!--                                            <li><a href="#">Cricket</a></li>-->
-<!--                                            <li><a href="#">Football</a></li>-->
-<!--                                        </ul>-->
-<!--                                    </li>-->
-<!--                                    <li><a href="#">Lifestyle</a></li>-->
-<!--                                </ul>-->
-
-<!--                                &lt;!&ndash; Header Add Area &ndash;&gt;-->
-<!--                                <div class="header-add-area">-->
-<!--                                    <a href="#">-->
-<!--                                       <img src="img/bg-img/add.png" alt="">-->
-<!--                                    </a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            &lt;!&ndash; Nav End &ndash;&gt;-->
-
-<!--                        </div>-->
-<!--                    </nav>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </header>-->
 
 <nav class="navbar navbar-expand-lg navbar-custom">
   <a class="navbar-brand" href="#">Navbar</a>
@@ -224,32 +103,6 @@
   </div>
 </nav>
 
-<!-- ##### Header Area End ##### -->
-
-<!-- ##### Breaking News Area Start ##### -->
-<%--<section class="breaking-news-area clearfix">--%>
-<%--  <div class="container-fluid">--%>
-<%--    <div class="row">--%>
-<%--      <div class="col-12">--%>
-<%--        <!-- Breaking News Widget -->--%>
-<%--        <div class="breaking-news-ticker d-flex flex-wrap align-items-center">--%>
-<%--          <div class="title">--%>
-<%--            <h6>Trending</h6>--%>
-<%--          </div>--%>
-<%--          <div id="breakingNewsTicker" class="ticker">--%>
-<%--            <ul>--%>
-<%--              <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum.</a></li>--%>
-<%--              <li><a href="#">Welcome to Colorlib Family.</a></li>--%>
-<%--              <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque</a></li>--%>
-<%--            </ul>--%>
-<%--          </div>--%>
-<%--        </div>--%>
-<%--      </div>--%>
-<%--    </div>--%>
-<%--  </div>--%>
-<%--</section>--%>
-<!-- ##### Breaking News Area End ##### -->
-
 <!-- ##### Post Details Title Area Start ##### -->
 <div class="post-details-title-area bg-overlay clearfix" style="height: 250px; margin-top: 10px">
   <div class="container-fluid h-100">
@@ -260,8 +113,8 @@
 
           <p class="post-title">${articleDetails.title}</p>
           <div class="d-flex align-items-center">
-            <span class="post-date mr-30">June 20, 2018</span>
-            <span class="post-date">By Michael Smith</span>
+            <span class="post-date mr-30">${articleDetails.publish_date}</span>
+            <span class="post-date">${articleDetails.writer_id}</span>
           </div>
         </div>
       </div>
@@ -278,13 +131,9 @@
       <div class="col-12 col-lg-8">
         <div class="post-details-content mb-100">
           <p>${articleDetails.content}</p>
-          <img class="mb-30" src="https://file.hstatic.net/200000201143/file/phong-cach-retro-vintage__1__fca23f5efab949f6a79fee9ac237c9f9_grande.jpg" alt="">
         </div>
-
-        <!-- Comment Area Start -->
         <div class="comment_area clearfix mb-100">
           <h4 class="mb-50">Comments</h4>
-
           <ol>
             <!-- Single Comment Area -->
             <li class="single_comment_area">
@@ -381,25 +230,25 @@
         <div class="sidebar-area">
 
           <!-- Newsletter Widget -->
-          <div class="single-widget-area newsletter-widget mb-30">
-            <h4>Subscribe to our newsletter</h4>
-            <form action="#" method="post">
-              <input type="email" name="nl-email" id="nlemail" placeholder="Your E-mail">
-              <button type="submit" class="btn newsbox-btn w-100">Subscribe</button>
-            </form>
-            <p class="mt-30">Nullam lacinia ex eleifend orci porttitor, suscipit interdum augue condimentum. Etiam pretium turpis eget nibh . volutpat lobortis.</p>
-          </div>
+<%--          <div class="single-widget-area newsletter-widget mb-30">--%>
+<%--            <h4>Subscribe to our newsletter</h4>--%>
+<%--            <form action="#" method="post">--%>
+<%--              <input type="email" name="nl-email" id="nlemail" placeholder="Your E-mail">--%>
+<%--              <button type="submit" class="btn newsbox-btn w-100">Subscribe</button>--%>
+<%--            </form>--%>
+<%--            <p class="mt-30">Nullam lacinia ex eleifend orci porttitor, suscipit interdum augue condimentum. Etiam pretium turpis eget nibh . volutpat lobortis.</p>--%>
+<%--          </div>--%>
 
           <!-- Add Widget -->
-          <div class="single-widget-area add-widget mb-30">
-            <a href="#">
-              <img src="img/bg-img/add3.png" alt="">
-            </a>
-          </div>
+<%--          <div class="single-widget-area add-widget mb-30">--%>
+<%--            <a href="#">--%>
+<%--              <img src="img/bg-img/add3.png" alt="">--%>
+<%--            </a>--%>
+<%--          </div>--%>
 
           <!-- Latest News Widget -->
           <div class="single-widget-area news-widget mb-30">
-            <h4>Tin mới</h4>
+            <h4>Tin cùng chuyên mục</h4>
 
             <!-- Single News Area -->
             <div class="single-blog-post d-flex style-4 mb-30">

@@ -17,6 +17,8 @@ public class ChiTietBao extends HttpServlet {
         int articleId= Integer.parseInt(request.getParameter("articleId"));
         Articles art= d.getArticle(articleId);
         request.setAttribute("articleDetails", art);
+        
+
         RequestDispatcher rd= request.getRequestDispatcher("ChiTietBao.jsp");
         rd.forward(request, response);
     }

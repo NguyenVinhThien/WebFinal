@@ -111,16 +111,23 @@ public class EditorServlet  extends HttpServlet {
             int i = Integer.parseInt(id);
             String editor = request.getParameter("editor");
             //int editor_id = Integer.parseInt(editor);
-            System.out.println(editor);
+            System.out.println(editor +"1");
             String note = request.getParameter("note");
-            int tag = Integer.parseInt(request.getParameter("tag"));
+            int tag;
+            try {
+                tag = Integer.parseInt(request.getParameter("tag"));
+            }
+            catch (Exception e){
+              tag = 0;
+            }
             String strDob = request.getParameter("date");
-            DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-            LocalDateTime dt = LocalDateTime.parse(strDob, df);
+            System.out.println(strDob);
+            DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
             DAOAdmin d = new DAOAdmin();
-            if (dt == null)
+            if (tag == 0)
                 d.updateArticle(i,null,note,1);
             else {
+                LocalDateTime dt = LocalDateTime.parse(strDob, df);
                 d.updateArticle(i, dt, null, 2);
                 d.editTagHasArticles(tag,i);
             }
