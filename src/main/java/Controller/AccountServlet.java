@@ -98,11 +98,11 @@ public class AccountServlet extends HttpServlet {
             String username = request.getParameter("username");
             String name = request.getParameter("name");
             String email = request.getParameter("email");
-
             LocalDateTime issue_at = LocalDateTime.now(Clock.systemDefaultZone());
+            int role = Integer.parseInt(request.getParameter("role"));
 
             DAOAdmin c = new DAOAdmin();
-            c.addUser(username, bcryptHashString, name, issue_at, dob, email);
+            c.addUser(username, bcryptHashString, name, issue_at, role, dob, email);
             response.sendRedirect("/WebFinal/Account/DangNhap");
         } catch (Exception e) {
             e.printStackTrace();
@@ -114,17 +114,24 @@ public class AccountServlet extends HttpServlet {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             User user = DAOAdmin.findByUsername(username);
+
             if (user != null) {
+
                 BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword().toCharArray());
                 if (result.verified) {
                     HttpSession session = request.getSession();
                     session.setAttribute("auth", true);
                     session.setAttribute("authUser", user);
-                    String url = (String) session.getAttribute("retUrl");
-                    if (url == null)
-                        url = "/TrangChu";
-                    ServletUtils.redirect(url, request, response);
+                    if (user.getId() == 1) {
+                        response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiViet");
+                    }
+                    else {
+                        String url = (String) session.getAttribute("retUrl");
+                        if (url == null)
+                            url = "/TrangChu";
+                        ServletUtils.redirect(url, request, response);
 //                    response.sendRedirect("/WebFinal/TrangChu");
+                    }
                 } else {
                     request.setAttribute("hasError", true);
                     request.setAttribute("errorMessage", "Invalid login.");

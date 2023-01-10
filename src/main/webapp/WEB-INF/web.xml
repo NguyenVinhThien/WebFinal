@@ -4,6 +4,11 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/public/*</url-pattern>
+    </servlet-mapping>
+
     <filter-mapping>
         <filter-name>SessionInitFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -11,7 +16,7 @@
 
     <filter-mapping>
         <filter-name>AuthFilter</filter-name>
-        <url-pattern>/Account/Profile</url-pattern>
+        <url-pattern>/Account/ThongTinCaNhan</url-pattern>
     </filter-mapping>
 
 </web-app>

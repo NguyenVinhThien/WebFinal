@@ -27,7 +27,9 @@ public class AuthFilter implements Filter {
       ServletUtils.redirect("/Account/DangNhap", request, (HttpServletResponse) res);
       return;
     }
-
+//    else {
+//      session.setAttribute("authUser", new User());
+//    }
     // đọc thông tin user, xem field permission để check xem user có được phép vào view hay không?
     // ...
 

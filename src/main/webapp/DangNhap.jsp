@@ -41,7 +41,7 @@
         <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
 
         <div class="form-group">
-            <a href="./DangKy.jsp" class="signup-link">Chưa có tài khoản? Đăng ký ngay</a>
+            <a href="${pageContext.request.contextPath}/Account/DangKy" class="signup-link">Chưa có tài khoản? Đăng ký ngay</a>
         </div>
         <div class="or-separator">
             <span>hoặc</span>
