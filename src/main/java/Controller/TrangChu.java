@@ -68,6 +68,7 @@ public class TrangChu extends HttpServlet {
                 request.setAttribute("total1", total1);
                 request.setAttribute("totalpage", totalpage);
                 request.setAttribute("page", page);
+                request.setAttribute("catId", catId);
                 ServletUtils.forward("/ShowArticleByCat.jsp", request, response);
                 break;
 
