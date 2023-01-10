@@ -52,36 +52,6 @@
                     </c:choose>
 
                 </div>
-                <div class="col-sm-12 col-md-7">
-                    <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-                        <ul class="pagination">
-                            <c:if test="${page != 1}">
-                                <li class="paginate_button page-item" id="dataTable_previous">
-                                    <a href="${pageContext.request.contextPath}/TrangChu/ShowArticleByCat?catId=${catId}&page=${page - 1 }" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                </li>
-                            </c:if>
-                            <c:forEach var="i" begin="1" end ="${totalpage}" >
-                                <c:choose>
-                                    <c:when test="${ page == i}">
-                                        <li class="paginate_button page-item active">
-                                            <a href="${pageContext.request.contextPath}/TrangChu/ShowArticleByCat?catId=${catId}&page=${i}" aria-controls="dataTable"  tabindex="0" class="page-link">${ i}</a>
-                                        </li>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <li class="paginate_button page-item">
-                                            <a href="${pageContext.request.contextPath}/TrangChu/ShowArticleByCat?catId=${catId}&page=${i}" aria-controls="dataTable"  tabindex="0" class="page-link">${ i}</a>
-                                        </li>
-                                    </c:otherwise>
-                                </c:choose >
-                            </c:forEach>
-                            <c:if test="${page < totalpage}">
-                                <li class="paginate_button page-item next" id="dataTable_next">
-                                    <a href="${pageContext.request.contextPath}/TrangChu/ShowArticleByCat?catId=${catId}&page=${page + 1}" aria-controls="dataTable"  tabindex="0" class="page-link">Next</a>
-                                </li>
-                            </c:if>
-                        </ul>
-                    </div>
-                </div>
             </div>
 
             <div class="topViews">
@@ -112,6 +82,36 @@
 <%--                        </div>--%>
 <%--                    </div>--%>
 <%--                </c:forEach>--%>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-7">
+            <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                <ul class="pagination">
+                    <c:if test="${page != 1}">
+                        <li class="paginate_button page-item" id="dataTable_previous">
+                            <a href="${pageContext.request.contextPath}/TrangChu/ShowAricleByCat?catId=${catId}&page=${page - 1 }" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                        </li>
+                    </c:if>
+                    <c:forEach var="i" begin="1" end ="${totalpage}" >
+                        <c:choose>
+                            <c:when test="${ page == i}">
+                                <li class="paginate_button page-item active">
+                                    <a href="${pageContext.request.contextPath}/TrangChu/ShowAricleByCat?catId=${catId}%>&page=${i}" aria-controls="dataTable"  tabindex="0" class="page-link">${ i}</a>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="paginate_button page-item">
+                                    <a href="${pageContext.request.contextPath}/TrangChu/ShowAricleByCat?catId=${catId}&page=${i}" aria-controls="dataTable"  tabindex="0" class="page-link">${ i}</a>
+                                </li>
+                            </c:otherwise>
+                        </c:choose >
+                    </c:forEach>
+                    <c:if test="${page < totalpage}">
+                        <li class="paginate_button page-item next" id="dataTable_next">
+                            <a href="${pageContext.request.contextPath}/TrangChu/ShowAricleByCat?catId=${catId}&page=${page + 1}" aria-controls="dataTable"  tabindex="0" class="page-link">Next</a>
+                        </li>
+                    </c:if>
+                </ul>
             </div>
         </div>
     </jsp:body>
