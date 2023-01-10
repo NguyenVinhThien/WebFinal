@@ -1,4 +1,5 @@
-
+<jsp:useBean id="authUser" scope="session" type="Model.User"/>
+<%= new java.util.Date() %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
@@ -25,7 +26,7 @@
     <link href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
-
+<c:if test="${authUser.id == 1}">
 <body id="page-top">
 
 <!-- Page Wrapper -->
@@ -184,7 +185,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
+                                Quay về trang chủ
                             </a>
                         </div>
                     </li>
@@ -359,15 +360,15 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Bạn muốn đăng xuất ??</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Bạn muốn thoát khỏi hệ thống ??</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
-                        <div class="modal-body">Bạn chọn Logout sẽ đăng xuất ra hệ thống.</div>
+                        <div class="modal-body">Bạn chọn xác nhận sẽ quay về trang chủ.</div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="${pageContext.request.contextPath}/TrangChu">Logout</a>
+                            <a class="btn btn-primary" href="${pageContext.request.contextPath}/TrangChu">Xác nhận</a>
                         </div>
                     </div>
                 </div>
@@ -392,7 +393,7 @@
 <!-- Page level custom scripts -->
 <script src="${pageContext.request.contextPath}/TemplateAdmin/js/demo/chart-area-demo.js"></script>
 <script src="${pageContext.request.contextPath}/TemplateAdmin/js/demo/chart-pie-demo.js"></script>
-
+</c:if>
 </body>
 
 </html>

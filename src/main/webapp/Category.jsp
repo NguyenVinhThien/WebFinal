@@ -5,6 +5,7 @@
   Time: 11:15 PM
   To change this template use File | Settings | File Templates.
 --%>
+<jsp:useBean id="authUser" scope="session" type="Model.User"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +30,7 @@
   <link href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
-
+<c:if test="${authUser.id == 1}">
 <body id="page-top">
 
 <!-- Page Wrapper -->
@@ -179,7 +180,7 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                Logout
+                Quay về trang chủ.
               </a>
             </div>
           </li>
@@ -286,24 +287,24 @@
 
 </div>
   </div>
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-       aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Bạn muốn đăng xuất ??</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Bạn chọn Logout sẽ đăng xuất ra hệ thống.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="${pageContext.request.contextPath}/TrangChu">Logout</a>
-        </div>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Bạn muốn thoát khỏi hệ thống ??</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Bạn chọn xác nhận sẽ quay về trang chủ.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/TrangChu">Xác nhận</a>
       </div>
     </div>
   </div>
+</div>
 
 
 <!-- Bootstrap core JavaScript-->
@@ -324,5 +325,5 @@
 <script src="${pageContext.request.contextPath}/TemplateAdmin/js/demo/chart-pie-demo.js"></script>
 
 </body>
-
+</c:if>
 </html>

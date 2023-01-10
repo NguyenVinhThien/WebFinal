@@ -128,6 +128,7 @@ public class WriterServlet extends HttpServlet {
 
     private void AddArticle(HttpServletRequest request, HttpServletResponse response) {
         try {
+            request.setCharacterEncoding("UTF-8");
             String title = request.getParameter("title");
             String abstract_article = request.getParameter("Tom_tat");
             String content = request.getParameter("content");
