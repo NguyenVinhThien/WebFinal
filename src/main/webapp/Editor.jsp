@@ -52,13 +52,6 @@
         <div class="sidebar-header">
             <h3>Bootstrap Sidebar</h3>
         </div>
-        <form method="POST" novalidate="novalidate">
-            <input type="text"
-                   name="editor"
-                   method="POST" novalidate="novalidate"
-                   class="form-control" value="${article.id_article}"
-                   placeholder="Nhãn">
-        </form>
         <ul class="list-unstyled components">
             <li class="active">
                 <a href="/WebFinal/Editor/ShowCategory?id=${authUser.id}">Tất cả chuyên mục</a>
@@ -120,6 +113,10 @@
                                             <label for="artID">Mã bài viết</label>
                                             <input type="text" class="form-control" id="artID" name="id" value="${article.id_article}" readonly>
                                         </div>
+                                    <div class="form-group col-md-6" >
+                                        <label for="artID">Mã Editor</label>
+                                        <input type="text" name="editor" class="form-control">
+                                    </div>
                                         <div class="form-group col-md-6">
                                             <label for="authID">Mã tác giả</label>
                                             <input type="text" class="form-control" id="authID" name="writer" value="${article.writer_id}" readonly>

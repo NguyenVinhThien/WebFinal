@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="WebFinal:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1acee4fa-cb0b-4c9c-8370-7b550c3d5109" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/WebFinal_war.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/WebFinal_war_exploded.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aefcda04-e208-4c54-b4e6-bb6174b856dc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aefcda04-e208-4c54-b4e6-bb6174b856dc/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aefcda04-e208-4c54-b4e6-bb6174b856dc/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aefcda04-e208-4c54-b4e6-bb6174b856dc/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aefcda04-e208-4c54-b4e6-bb6174b856dc/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_8_2023_6_51_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_8_2023_6_51_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    <list default="true" id="75c3f955-5072-4dcc-b5c1-8c0dc5b280d8" name="Changes" comment="Phân trang ShowArticleByCat">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ShowArticleByCat.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ShowArticleByCat.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -36,10 +41,70 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="RunManager">
-    <configuration name="Tomcat 9.0.68" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.68" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="temurin-11" nameIsGenerated="true">
-      <option name="BROWSER_ID" value="37cae5b9-e8b2-4949-9172-aafa37fbc09c" />
-      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2Jawr9PK5ClkK7ym3NzgE8mPQHY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/acer/IdeaProjects/WebFinal/src/main/webapp/WEB-INF/Lib/bytes-0.4.6.jar&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\acer\IdeaProjects\WebFinal\src\main\webapp\TemplateAdmin" />
+      <recent name="C:\Users\acer\IdeaProjects\WebFinal\src\main\webapp\admin" />
+      <recent name="C:\Users\acer\IdeaProjects\WebFinal\src\main\webapp" />
+      <recent name="C:\Users\acer\IdeaProjects\WebFinal\src\main\webapp\WEB-INF\Lib" />
+      <recent name="C:\Users\acer\IdeaProjects\WebFinal\src\main\webapp\ViewAdmin" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.701">
+    <configuration name="Category.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/WebFinal/Category.jsp">
+      <method v="2" />
+    </configuration>
+    <configuration name="ChiTietBao.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/WebFinal/ChiTietBao.jsp">
+      <method v="2" />
+    </configuration>
+    <configuration name="DangKy.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/WebFinal/DangKy.jsp">
+      <method v="2" />
+    </configuration>
+    <configuration name="Users.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/WebFinal/Users.jsp">
+      <method v="2" />
+    </configuration>
+    <configuration name="Writer.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/WebFinal/Writer.jsp">
+      <method v="2" />
+    </configuration>
+    <configuration name="Tomcat 9.0.701" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.70" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="11" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/WebFinal/Admin/User/ShowEditor" />
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="WebFinal:war exploded">
           <settings>
@@ -48,7 +113,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="80a9331e-fad3-450a-af08-3188badde933" />
+        <option name="BASE_DIRECTORY_NAME" value="55963960-52e1-4e94-b8e2-2e16fc5f4bce" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -56,7 +121,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="55099" />
+        <option name="DEBUG_PORT" value="58810" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -125,8 +190,428 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.Category.jsp" />
+      <item itemvalue="JavaScript Debug.ChiTietBao.jsp" />
+      <item itemvalue="JavaScript Debug.DangKy.jsp" />
+      <item itemvalue="JavaScript Debug.Users.jsp" />
+      <item itemvalue="JavaScript Debug.Writer.jsp" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.701" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.Writer.jsp" />
+        <item itemvalue="JavaScript Debug.ChiTietBao.jsp" />
+        <item itemvalue="JavaScript Debug.DangKy.jsp" />
+        <item itemvalue="JavaScript Debug.Category.jsp" />
+        <item itemvalue="JavaScript Debug.Users.jsp" />
+      </list>
+    </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="75c3f955-5072-4dcc-b5c1-8c0dc5b280d8" name="Changes" comment="" />
+      <created>1672329700018</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1672329700018</updated>
+      <workItem from="1672329701736" duration="10736000" />
+      <workItem from="1672340680063" duration="636000" />
+      <workItem from="1672586905744" duration="5898000" />
+      <workItem from="1672639234526" duration="3424000" />
+      <workItem from="1672674717959" duration="4928000" />
+      <workItem from="1672716747586" duration="13206000" />
+      <workItem from="1672746723725" duration="7701000" />
+      <workItem from="1672804253905" duration="16629000" />
+      <workItem from="1672825827885" duration="1083000" />
+      <workItem from="1672845250660" duration="3380000" />
+      <workItem from="1672992687169" duration="291000" />
+      <workItem from="1673012858549" duration="23425000" />
+      <workItem from="1673074072870" duration="19200000" />
+      <workItem from="1673110084980" duration="5665000" />
+      <workItem from="1673160771491" duration="22184000" />
+      <workItem from="1673189833610" duration="337000" />
+      <workItem from="1673190741900" duration="8538000" />
+      <workItem from="1673207759473" duration="3451000" />
+      <workItem from="1673254016898" duration="3138000" />
+      <workItem from="1673280418068" duration="3792000" />
+      <workItem from="1673334202607" duration="7460000" />
+    </task>
+    <task id="LOCAL-00001" summary="Trang quan ly bai viet">
+      <created>1672330119085</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1672330119085</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Trang quan ly bai viet">
+      <created>1672330305024</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1672330305024</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Trang quan ly bai viet">
+      <created>1672330332807</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672330332807</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Trang quan ly bai viet">
+      <created>1672330389571</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1672330389571</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Trang quan ly bai viet">
+      <created>1672330421856</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672330421856</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Them danh muc">
+      <created>1672330857192</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1672330857192</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Trang admin gia han">
+      <created>1672330989275</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1672330989275</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Trang phan cong">
+      <created>1672331180948</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1672331180948</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Trang show Category sua va xoa">
+      <created>1672331399243</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1672331399243</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Trang tag">
+      <created>1672331493259</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1672331493259</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Trang them bien tap vien">
+      <created>1672331575459</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1672331575459</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Database Category and update pom.xml">
+      <created>1672334185722</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1672334185722</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Them va xoa Category">
+      <created>1672334643863</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1672334643863</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Sua Category">
+      <created>1672341288198</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1672341288198</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Thêm sửa xoá Tag">
+      <created>1672592202356</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1672592202356</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Thêm sửa xoá danh mục phụ và show danh mục phụ">
+      <created>1672679439908</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1672679439908</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Edit">
+      <created>1672716955348</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1672716955348</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Thư viện">
+      <created>1672718905044</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1672718905044</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Edit">
+      <created>1672751342467</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1672751342467</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Edit">
+      <created>1672806929381</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1672806929381</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Show Users">
+      <created>1672817321911</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1672817321911</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Update">
+      <created>1672819875723</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1672819875723</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Update">
+      <created>1672822343811</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1672822343811</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Update">
+      <created>1672822477351</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1672822477351</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Gia hạn">
+      <created>1672824881877</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1672824881877</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Edit">
+      <created>1672846286062</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1672846286062</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Edit">
+      <created>1672847723334</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1672847723334</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Update">
+      <created>1672849227270</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1672849227270</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Update">
+      <created>1673030426945</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1673030426945</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Update">
+      <created>1673036376096</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1673036376096</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Update">
+      <created>1673078679227</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1673078679227</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Update">
+      <created>1673086942292</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1673086942292</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Update">
+      <created>1673089099650</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1673089099650</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Update">
+      <created>1673090182724</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1673090182724</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Update">
+      <created>1673098188268</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1673098188268</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Update">
+      <created>1673106265121</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1673106265121</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Update">
+      <created>1673115138523</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1673115138523</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Update">
+      <created>1673178660738</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1673178660738</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Update">
+      <created>1673184523193</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1673184523193</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Update">
+      <created>1673187742385</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1673187742385</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Update">
+      <created>1673205887861</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1673205887861</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Phân công editor">
+      <created>1673207729678</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1673207729678</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Update">
+      <created>1673208918799</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1673208918799</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Update">
+      <created>1673211145350</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1673211145350</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Update">
+      <created>1673254892733</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1673254892733</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Update">
+      <created>1673280584813</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1673280584813</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Update">
+      <created>1673280731493</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1673280731493</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Phân trang ShowArticleByCat">
+      <created>1673339848350</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1673339848350</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Trang admin" />
+    <MESSAGE value="Trang quan ly bai viet" />
+    <MESSAGE value="Them danh muc" />
+    <MESSAGE value="Trang admin gia han" />
+    <MESSAGE value="Trang phan cong" />
+    <MESSAGE value="Trang show Category sua va xoa" />
+    <MESSAGE value="Trang tag" />
+    <MESSAGE value="Trang them bien tap vien" />
+    <MESSAGE value="Database Category and update pom.xml" />
+    <MESSAGE value="Them va xoa Category" />
+    <MESSAGE value="Sua Category" />
+    <MESSAGE value="Thêm sửa xoá Tag" />
+    <MESSAGE value="Thêm sửa xoá danh mục phụ và show danh mục phụ" />
+    <MESSAGE value="Thư viện" />
+    <MESSAGE value="Show Users" />
+    <MESSAGE value="Gia hạn" />
+    <MESSAGE value="Edit" />
+    <MESSAGE value="Phân công editor" />
+    <MESSAGE value="Update" />
+    <MESSAGE value="Phân trang ShowArticleByCat" />
+    <option name="LAST_COMMIT_MESSAGE" value="Phân trang ShowArticleByCat" />
   </component>
 </project>
