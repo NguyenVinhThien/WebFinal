@@ -81,7 +81,31 @@ public class DAOAdmin {
             }
             return list;
         }
+    public List<Comment> getCmtByArtId(int article_id){
+        List<Comment> list = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("select u.name, u.username, u.second_name, c.* from comments c inner join users u on c.user_id= u.id where c.article_id= ?");
+            ps.setInt(1,article_id);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                list.add(new Comment(rs.getString(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getInt(4),
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getString(7)));
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return list;
 
+    }
     public List<Categories> getSubCategories()
     {
         List<Categories> list = new ArrayList<>();

@@ -9,6 +9,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:useBean id="articleDetails" scope="request" type="Model.Articles"/>
+<jsp:useBean id="listCmt" scope="request" type="java.util.List<Model.Comment>" />
 <html lang="en">
 
 <head>
@@ -136,64 +137,91 @@
           <h4 class="mb-50">Comments</h4>
           <ol>
             <!-- Single Comment Area -->
-            <li class="single_comment_area">
-              <!-- Comment Content -->
-              <div class="comment-content d-flex">
-                <!-- Comment Author -->
-                <div class="comment-author">
-                  <img src="img/bg-img/32.jpg" alt="author">
-                </div>
-                <!-- Comment Meta -->
-                <div class="comment-meta">
-                  <div class="d-flex">
-                    <a href="#" class="post-author">Maria Williams</a>
-                    <a href="#" class="post-date">June 23, 2018 </a>
-                    <a href="#" class="reply">Reply</a>
-                  </div>
-                  <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tinci dunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis sus cipit sem a consequat.</p>
-                </div>
-              </div>
-              <ol class="children">
-                <li class="single_comment_area">
-                  <!-- Comment Content -->
-                  <div class="comment-content d-flex">
-                    <!-- Comment Author -->
-                    <div class="comment-author">
-                      <img src="img/bg-img/33.jpg" alt="author">
-                    </div>
-                    <!-- Comment Meta -->
-                    <div class="comment-meta">
-                      <div class="d-flex">
-                        <a href="#" class="post-author">Christian Williams</a>
-                        <a href="#" class="post-date">April 15, 2018</a>
-                        <a href="#" class="reply">Reply</a>
+<%--            <li class="single_comment_area">--%>
+<%--              <!-- Comment Content -->--%>
+<%--              <div class="comment-content d-flex">--%>
+<%--                <!-- Comment Author -->--%>
+<%--                <div class="comment-author">--%>
+<%--                  <img src="img/bg-img/32.jpg" alt="author">--%>
+<%--                </div>--%>
+<%--                <!-- Comment Meta -->--%>
+<%--                <div class="comment-meta">--%>
+<%--                  <div class="d-flex">--%>
+<%--                    <a href="#" class="post-author">Maria Williams</a>--%>
+<%--                    <a href="#" class="post-date">June 23, 2018 </a>--%>
+<%--                    <a href="#" class="reply">Reply</a>--%>
+<%--                  </div>--%>
+<%--                  <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tinci dunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis sus cipit sem a consequat.</p>--%>
+<%--                </div>--%>
+<%--              </div>--%>
+<%--              <ol class="children">--%>
+<%--                <li class="single_comment_area">--%>
+<%--                  <!-- Comment Content -->--%>
+<%--                  <div class="comment-content d-flex">--%>
+<%--                    <!-- Comment Author -->--%>
+<%--                    <div class="comment-author">--%>
+<%--                      <img src="img/bg-img/33.jpg" alt="author">--%>
+<%--                    </div>--%>
+<%--                    <!-- Comment Meta -->--%>
+<%--                    <div class="comment-meta">--%>
+<%--                      <div class="d-flex">--%>
+<%--                        <a href="#" class="post-author">Christian Williams</a>--%>
+<%--                        <a href="#" class="post-date">April 15, 2018</a>--%>
+<%--                        <a href="#" class="reply">Reply</a>--%>
+<%--                      </div>--%>
+<%--                      <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, Nullam vel orci dui. Su spendisse sit amet laoreet neque.</p>--%>
+<%--                    </div>--%>
+<%--                  </div>--%>
+<%--                </li>--%>
+<%--              </ol>--%>
+<%--            </li>--%>
+            <c:choose>
+              <c:when test="${listCmt.size() eq 0}">
+                <tr>
+                  <td>Bài viết chưa có bình luận nào</td>
+                </tr>
+              </c:when>
+              <c:otherwise>
+                <c:forEach items="${listCmt}" var="lc">
+                  <li class="single_comment_area">
+                    <div class="comment-content d-flex">
+<%--                      <div class="comment-author">--%>
+<%--                        <img src="img/bg-img/32.jpg" alt="author">--%>
+<%--                      </div>--%>
+                      <div class="comment-meta">
+                        <div class="d-flex">
+                          <a href="#" class="post-author">${lc.name}</a>
+                          <a href="#" class="post-date">${lc.date}</a>
+<%--                          <a href="#" class="reply">Reply</a>--%>
+                        </div>
+                        <p>${lc.comment}</p>
                       </div>
-                      <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, Nullam vel orci dui. Su spendisse sit amet laoreet neque.</p>
                     </div>
-                  </div>
-                </li>
-              </ol>
-            </li>
+                  </li>
+
+                </c:forEach>
+              </c:otherwise>
+            </c:choose>
 
             <!-- Single Comment Area -->
-            <li class="single_comment_area">
-              <!-- Comment Content -->
-              <div class="comment-content d-flex">
-                <!-- Comment Author -->
-                <div class="comment-author">
-                  <img src="img/bg-img/32.jpg" alt="author">
-                </div>
-                <!-- Comment Meta -->
-                <div class="comment-meta">
-                  <div class="d-flex">
-                    <a href="#" class="post-author">Lisa Moore</a>
-                    <a href="#" class="post-date">June 23, 2018</a>
-                    <a href="#" class="reply">Reply</a>
-                  </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis suscipit.</p>
-                </div>
-              </div>
-            </li>
+<%--            <li class="single_comment_area">--%>
+<%--              <!-- Comment Content -->--%>
+<%--              <div class="comment-content d-flex">--%>
+<%--                <!-- Comment Author -->--%>
+<%--                <div class="comment-author">--%>
+<%--                  <img src="img/bg-img/32.jpg" alt="author">--%>
+<%--                </div>--%>
+<%--                <!-- Comment Meta -->--%>
+<%--                <div class="comment-meta">--%>
+<%--                  <div class="d-flex">--%>
+<%--                    <a href="#" class="post-author">Lisa Moore</a>--%>
+<%--                    <a href="#" class="post-date">June 23, 2018</a>--%>
+<%--                    <a href="#" class="reply">Reply</a>--%>
+<%--                  </div>--%>
+<%--                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis suscipit.</p>--%>
+<%--                </div>--%>
+<%--              </div>--%>
+<%--            </li>--%>
           </ol>
         </div>
 
