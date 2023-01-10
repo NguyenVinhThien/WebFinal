@@ -8,7 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-
+<style><%@include file="TemplateAdmin/vendor/fontawesome-free/css/all.min.css"%></style>
+<style><%@include file="TemplateAdmin/css/sb-admin-2.min.css"%></style>
 <head>
 
   <meta charset="UTF-8">
