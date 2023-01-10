@@ -10,7 +10,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%--<jsp:useBean id="listSearchByCat" scope="request" type="java.util.List<Model.ArticleHasCategories>"/>--%>
-<jsp:useBean id="listArtByCat" scope="request" type="java.util.List<Model.ArticleHasTag>"/>
+<jsp:useBean id="listArtAll" scope="request" type="java.util.List<Model.ArticleHasTag>"/>
 
 <t:main>
     <jsp:body>
@@ -19,13 +19,13 @@
                 <div class="newPost">
                     <div class="largeTitle">Kết quả</div>
                     <c:choose>
-                        <c:when test="${listArtByCat.size() eq 0}">
+                        <c:when test="${listArtAll.size() eq 0}">
                             <tr>
                                 <td>Không có kết quả phù hợp</td>
                             </tr>
                         </c:when>
                         <c:otherwise>
-                            <c:forEach items="${listArtByCat}" var="la">
+                            <c:forEach items="${listArtAll}" var="la">
                                 <div class="card mb-3">
                                     <img class="card-img-top" style="height: 120px;" src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="Card image cap">
                                     <div class="card-body">
