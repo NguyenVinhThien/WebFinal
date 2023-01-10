@@ -1,5 +1,4 @@
 <jsp:useBean id="authUser" scope="session" type="Model.User"/>
-<%= new java.util.Date() %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
@@ -34,7 +33,7 @@
 
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
-
+        <%= new java.util.Date() %>
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath}/Admin/BaiViet/ShowBaiViet">
             <div class="sidebar-brand-icon rotate-n-15">
