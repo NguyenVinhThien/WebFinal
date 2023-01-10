@@ -6,7 +6,7 @@
 
     <servlet-mapping>
         <servlet-name>default</servlet-name>
-        <url-pattern>/public/*</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <filter-mapping>
@@ -18,5 +18,25 @@
         <filter-name>AuthFilter</filter-name>
         <url-pattern>/Account/ThongTinCaNhan</url-pattern>
     </filter-mapping>
+
+<!--    <filter-mapping>-->
+<!--        <filter-name>AuthFilter</filter-name>-->
+<!--        <url-pattern>/Admin/*</url-pattern>-->
+<!--    </filter-mapping>-->
+
+<!--    <filter-mapping>-->
+<!--        <filter-name>AuthFilter</filter-name>-->
+<!--        <url-pattern>/Editor/*</url-pattern>-->
+<!--    </filter-mapping>-->
+
+<!--    <filter-mapping>-->
+<!--        <filter-name>AuthFilter</filter-name>-->
+<!--        <url-pattern>/Writer/*</url-pattern>-->
+<!--    </filter-mapping>-->
+
+<!--    <filter-mapping>-->
+<!--        <filter-name>AuthFilter</filter-name>-->
+<!--        <url-pattern>/TrangChu</url-pattern>-->
+<!--    </filter-mapping>-->
 
 </web-app>
