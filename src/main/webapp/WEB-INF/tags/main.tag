@@ -136,35 +136,6 @@
         </ul>
     </div>
 </nav>
-<%--<div class="noibat">--%>
-<%--    <div class="largeTitle">Tin nổi bật</div>--%>
-<%--    <div class="groupCard">--%>
-<%--        <c:forEach items="${listTopHotArt}" var="lh">--%>
-<%--            <div class="cardInfo">--%>
-<%--                <img class="cardImg" src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="Card image cap">--%>
-<%--                <div class="card-body">--%>
-<%--                    <h5 >--%>
-<%--                        <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${lh.id_article}">${lh.title}</a>--%>
-<%--                    </h5>--%>
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${lh.parent_id eq 0}">--%>
-<%--                            <span class="cardCategory">${lh.cat_name}</span>--%>
-<%--                        </c:when>--%>
-<%--                        <c:otherwise>--%>
-<%--                            <c:forEach items="${listCat}" var="c">--%>
-<%--                                <c:if test="${c.id eq lh.parent_id}">--%>
-<%--                                    <span class="cardCategory">${c.name}</span>--%>
-<%--                                </c:if>--%>
-<%--                            </c:forEach>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
-
-<%--                    <p class="card-text"><small class="text-muted">Ngày đăng: ${lh.publish_date}</small></p>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </c:forEach>--%>
-<%--    </div>--%>
-<%--</div>--%>
 
 <jsp:doBody />
 
