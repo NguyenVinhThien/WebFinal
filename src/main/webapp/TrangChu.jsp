@@ -13,7 +13,7 @@
       <div class="groupCard">
         <c:forEach items="${listTopHotArt}" var="lh">
           <div class="cardInfo">
-            <img class="cardImg" src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="Card image cap">
+            <img class="cardImg" src="${pageContext.request.contextPath}/public/HinhAnh/${lh.id_article}/tieude.png" alt="Card image cap">
             <div class="card-body">
               <h5 >
                 <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${lh.id_article}">${lh.title}</a>
@@ -43,7 +43,7 @@
           <div class="largeTitle">Tin mới</div>
           <c:forEach items="${listNewArt}" var="ln">
             <div class="horizontalCard">
-              <img src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="" class="cardHorizontalImg">
+              <img src="${pageContext.request.contextPath}/public/HinhAnh/${ln.id_article}/tieude.png" alt="" class="cardHorizontalImg">
               <div class="cardHorizontal-Body">
                 <h5 >
                   <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${ln.id_article}">${ln.title}</a>
@@ -70,7 +70,7 @@
           <div class="largeTitle">Top 10 chuyên mục</div>
           <c:forEach items="${listTopByCat}" var="ltc">
             <div class="horizontalCard">
-              <img src="${pageContext.request.contextPath}/public/HinhAnh/1/tieude.png" alt="" class="cardHorizontalImg">
+              <img src="${pageContext.request.contextPath}/public/HinhAnh/${ltc.id_article}/tieude.png" alt="" class="cardHorizontalImg">
               <div class="cardHorizontal-Body">
                 <h5 >
                   <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${ltc.id_article}">${ltc.title}</a>
@@ -101,7 +101,7 @@
         <div class="largeTitle smallTitle">Tin xem nhiều nhất</div>
         <c:forEach items="${listArtByView}" var="la">
           <div class="horizontalCard smallCard">
-            <img src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="" class="cardHorizontalImg">
+            <img src="${pageContext.request.contextPath}/public/HinhAnh/${la.id_article}/tieude.png" alt="" class="cardHorizontalImg">
             <div class="cardHorizontal-Body">
               <h5 >
                 <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${la.id_article}">${la.title}</a>
