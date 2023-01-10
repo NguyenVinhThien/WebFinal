@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<style><%@include file="CSS_ALL/DangKy.css"%></style>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">

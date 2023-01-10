@@ -10,6 +10,7 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:useBean id="articleDetails" scope="request" type="Model.Articles"/>
 <jsp:useBean id="listCmt" scope="request" type="java.util.List<Model.Comment>" />
+
 <html lang="en">
 
 <head>
@@ -26,7 +27,7 @@
   <link rel="icon" href="img/core-img/favicon.ico">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="CSS_ALL/ChiTietSanPham.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS_ALL/ChiTietSanPham.css">
 
 </head>
 
