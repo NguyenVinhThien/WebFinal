@@ -9,7 +9,6 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<%--<jsp:useBean id="listSearchByCat" scope="request" type="java.util.List<Model.ArticleHasCategories>"/>--%>
 <jsp:useBean id="listArtByCat" scope="request" type="java.util.List<Model.ArticleHasTag>"/>
 
 <t:main>
@@ -29,7 +28,10 @@
                                 <div class="card mb-3">
                                     <img class="card-img-top" style="height: 120px;" src="${pageContext.request.contextPath}/public/HinhAnh/${la.id_article}/tieude.png" alt="Card image cap">
                                     <div class="card-body">
-                                        <h5 class="card-title">${la.title}</h5>
+                                        <h5 class="card-title">
+                                            <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${la.id_article}">${la.title}</a>
+
+                                        </h5>
                                         <p class="card-text">${la.abstract_article}</p>
                                         <p class="card-text"><small class="text-muted">Ngày đăng: ${la.publish_date}</small></p>
                                         <span class="cardCategory">${la.cat_name}</span>

@@ -91,6 +91,7 @@ public class TrangChu extends HttpServlet {
                 ServletUtils.forward("/404.jsp", request, response);
                 break;
         }
+
     }
 
     @Override
