@@ -27,7 +27,7 @@
                         <c:otherwise>
                             <c:forEach items="${listArtAll}" var="la">
                                 <div class="card mb-3">
-                                    <img class="card-img-top" style="height: 120px;" src="https://image.vtc.vn/resize/th/upload/2022/12/27/chua-koh-kas-hieu-hieu-vi-vu-14410460.jpg" alt="Card image cap">
+                                    <img class="card-img-top" style="height: 150px;" src="${pageContext.request.contextPath}/public/HinhAnh/${la.id_article}/tieude.png" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">${la.title}</h5>
                                         <p class="card-text">${la.abstract_article}</p>
