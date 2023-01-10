@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="WebFinal:war exploded" />
+      <artifact name="WebFinal:war" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6b482ef-f71c-4864-81c6-50d26439b44d" name="Changes" comment="Update">
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Editor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Editor.jsp" afterDir="false" />
+    <list default="true" id="c6b482ef-f71c-4864-81c6-50d26439b44d" name="Changes" comment="Update Editor.jsp">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AccountServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AdminServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AdminServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/EditorServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/EditorServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/WriterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/WriterServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +52,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
+    "last_opened_file_path": "C:/Users/acer/IdeaProjects/WebFinal",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
@@ -60,12 +65,12 @@
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.701" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.701" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/WebFinal/TrangChu" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/TrangChu" />
       <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="WebFinal:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="/WebFinal" />
+            <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
       </deployment>
@@ -172,7 +177,7 @@
       <updated>1673346405027</updated>
       <workItem from="1673346406958" duration="380000" />
       <workItem from="1673346971000" duration="318000" />
-      <workItem from="1673363444708" duration="2112000" />
+      <workItem from="1673363444708" duration="8223000" />
     </task>
     <task id="LOCAL-00003" summary="Update">
       <created>1673365358427</created>
@@ -181,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673365358427</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Update Editor.jsp">
+      <created>1673365669217</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1673365669217</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,6 +212,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="Update Editor.jsp" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Editor.jsp" />
   </component>
 </project>

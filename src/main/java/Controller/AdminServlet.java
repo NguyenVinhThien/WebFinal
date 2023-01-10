@@ -260,7 +260,7 @@ public class AdminServlet extends HttpServlet {
             String id = request.getParameter("id");
             String name = request.getParameter("name");
             d.addCategory(id, name);
-            response.sendRedirect("/WebFinal/Admin/Category/ThemCategory");
+            response.sendRedirect("/Admin/Category/ThemCategory");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -273,7 +273,7 @@ public class AdminServlet extends HttpServlet {
             String name = request.getParameter("name");
             int i = Integer.parseInt(id);
             d.editCategory(i, name);
-            response.sendRedirect("/WebFinal/Admin/Category/ShowCategory");
+            response.sendRedirect("/Admin/Category/ShowCategory");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -282,7 +282,7 @@ public class AdminServlet extends HttpServlet {
         String id =request.getParameter("id");
         DAOAdmin dao = new DAOAdmin();
         dao.deleteCategory(id);
-        response.sendRedirect("/WebFinal/Admin/Category/ShowCategory");
+        response.sendRedirect("/Admin/Category/ShowCategory");
     }
     private void AddTag(HttpServletRequest request, HttpServletResponse response){
         try {
@@ -291,7 +291,7 @@ public class AdminServlet extends HttpServlet {
             String name= request.getParameter("name");
             DAOAdmin d= new DAOAdmin();
             d.addTag(id, name);
-            response.sendRedirect("/WebFinal/Admin/Tag/ThemTag");
+            response.sendRedirect("/Admin/Tag/ThemTag");
         }catch(Exception e)
         {
             e.printStackTrace();
@@ -301,7 +301,7 @@ public class AdminServlet extends HttpServlet {
         String id =request.getParameter("id");
         DAOAdmin dao = new DAOAdmin();
         dao.deleteTag(id);
-        response.sendRedirect("/WebFinal/Admin/Tag/ShowTag");
+        response.sendRedirect("/Admin/Tag/ShowTag");
     }
     private void EditTag(HttpServletRequest request, HttpServletResponse response){
         try {
@@ -311,7 +311,7 @@ public class AdminServlet extends HttpServlet {
             int i= Integer.parseInt(id);
             DAOAdmin d= new DAOAdmin();
             d.editTag(i,name);
-            response.sendRedirect("/WebFinal/Admin/Tag/ShowTag");
+            response.sendRedirect("/Admin/Tag/ShowTag");
         }catch(Exception e)
         {
             e.printStackTrace();
@@ -321,7 +321,7 @@ public class AdminServlet extends HttpServlet {
         String id = request.getParameter("id");
         DAOAdmin dao = new DAOAdmin();
         dao.deleteCategory(id);
-        response.sendRedirect("/WebFinal/Admin/Category/ShowCategory");
+        response.sendRedirect("/Admin/Category/ShowCategory");
     }
     private void AddSubCategory(HttpServletRequest request, HttpServletResponse response){
         try {
@@ -331,7 +331,7 @@ public class AdminServlet extends HttpServlet {
             String parent_id= request.getParameter("parent_id");
             DAOAdmin d= new DAOAdmin();
             d.addSubCategory(id,name,parent_id);
-            response.sendRedirect("/WebFinal/Admin/Category/ThemCategory");
+            response.sendRedirect("/Admin/Category/ThemCategory");
         }catch(Exception e)
         {
             e.printStackTrace();
@@ -347,7 +347,7 @@ public class AdminServlet extends HttpServlet {
             int pid = Integer.parseInt(parent_id);
             DAOAdmin d= new DAOAdmin();
             d.editSubCategory(i,name,pid);
-            response.sendRedirect("/WebFinal/Admin/Category/ShowCategory");
+            response.sendRedirect("/Admin/Category/ShowCategory");
         }catch(Exception e)
         {
             e.printStackTrace();
@@ -359,7 +359,7 @@ public class AdminServlet extends HttpServlet {
             int i= Integer.parseInt(id);
             DAOAdmin d= new DAOAdmin();
             d.UpdateUser(i);
-            response.sendRedirect("/WebFinal/Admin/User/UserExtend");
+            response.sendRedirect("/Admin/User/UserExtend");
         }catch(Exception e)
         {
             e.printStackTrace();
@@ -372,7 +372,7 @@ public class AdminServlet extends HttpServlet {
             int i= Integer.parseInt(id);
             DAOAdmin d= new DAOAdmin();
             d.Ok(i);
-            response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiVietDraft");
+            response.sendRedirect("/Admin/BaiViet/ShowBaiVietDraft");
         }catch(Exception e)
         {
             e.printStackTrace();
@@ -382,25 +382,25 @@ public class AdminServlet extends HttpServlet {
         String id =request.getParameter("id");
         DAOAdmin dao = new DAOAdmin();
         dao.deleteArticle(id);
-        response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiViet");
+        response.sendRedirect("/Admin/BaiViet/ShowBaiViet");
     }
     private void DeleteArticleDraft(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String id =request.getParameter("id");
         DAOAdmin dao = new DAOAdmin();
         dao.deleteArticle(id);
-        response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiVietDraft");
+        response.sendRedirect("/Admin/BaiViet/ShowBaiVietDraft");
     }
     private void DeleteArticleOk(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String id =request.getParameter("id");
         DAOAdmin dao = new DAOAdmin();
         dao.deleteArticle(id);
-        response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiVietOk");
+        response.sendRedirect("/Admin/BaiViet/ShowBaiVietOk");
     }
     private void DeleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String id =request.getParameter("id");
         DAOAdmin d = new DAOAdmin();
         d.deleteUser(id);
-        response.sendRedirect("/WebFinal/Admin/User/ShowUser");
+        response.sendRedirect("/Admin/User/ShowUser");
     }
     private void AddEditor(HttpServletRequest request, HttpServletResponse response){
         try {
@@ -410,7 +410,7 @@ public class AdminServlet extends HttpServlet {
             String editor_id = request.getParameter("editor_id");
             String category_id = request.getParameter("category_id");
             d.addEditor(id, editor_id,category_id);
-            response.sendRedirect("/WebFinal/Admin/User/ThemEditor");
+            response.sendRedirect("/Admin/User/ThemEditor");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -419,7 +419,7 @@ public class AdminServlet extends HttpServlet {
         String id =request.getParameter("id");
         DAOAdmin d = new DAOAdmin();
         d.deleteEditor(id);
-        response.sendRedirect("/WebFinal/Admin/User/ShowEditor");
+        response.sendRedirect("/Admin/User/ShowEditor");
     }
     private void editEditor(HttpServletRequest request, HttpServletResponse response){
         try {
@@ -432,7 +432,7 @@ public class AdminServlet extends HttpServlet {
             int i1 = Integer.parseInt(editor_id );
             int i2 = Integer.parseInt(category_id);
             d.editEditor(i1,i2,i);
-            response.sendRedirect("/WebFinal/Admin/User/ShowEditor");
+            response.sendRedirect("/Admin/User/ShowEditor");
         } catch (Exception e) {
             e.printStackTrace();
         }
