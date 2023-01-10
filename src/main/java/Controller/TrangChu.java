@@ -2,6 +2,7 @@ package Controller;
 
 import DAO.DAOAdmin;
 import Model.ArticleHasCategories;
+import Model.ArticleHasTag;
 import Model.Categories;
 import Model.Tags;
 import Uti.ServletUtils;
@@ -55,21 +56,30 @@ public class TrangChu extends HttpServlet {
                 break;
 
             case "/ShowArticleByCat":
-                int catId= Integer.parseInt(request.getParameter("catId"));
-                int page = 1;
-                if(request.getParameter("page") != null && request.getParameter("page") != "")
-                {
-                    page = Integer.parseInt(request.getParameter("page"));
-                }
-                int total1 = d.CountbyCat(catId);
-                int totalpage = (int) Math.ceil((float)total1/(float)10);
-                List <ArticleHasCategories> list= d.searchByCatId(catId,page);
-                request.setAttribute("listSearchByCat", list);
-                request.setAttribute("total1", total1);
-                request.setAttribute("totalpage", totalpage);
-                request.setAttribute("page", page);
-                request.setAttribute("catId", catId);
+                int cat_id= Integer.parseInt(request.getParameter("cat_id"));
+
+                List <ArticleHasTag> listArtByCat= d.getArticleByTagId(cat_id);
+                request.setAttribute("listArtByCat", listArtByCat);
+//                int page = 1;
+//                if(request.getParameter("page") != null && request.getParameter("page") != "")
+//                {
+//                    page = Integer.parseInt(request.getParameter("page"));
+//                }
+//                int total1 = d.CountbyCat(catId);
+//                int totalpage = (int) Math.ceil((float)total1/(float)10);
+//                List <ArticleHasCategories> list= d.searchByCatId(catId,page);
+//                request.setAttribute("listSearchByCat", list);
+//                request.setAttribute("total1", total1);
+//                request.setAttribute("totalpage", totalpage);
+//                request.setAttribute("page", page);
+//                request.setAttribute("catId", catId);
                 ServletUtils.forward("/ShowArticleByCat.jsp", request, response);
+                break;
+            case "/ShowArticleByTag":
+                int tag_id= Integer.parseInt(request.getParameter("tag_id"));
+                List <ArticleHasTag> listArtByTags= d.getArticleByTagId(tag_id);
+                request.setAttribute("listArtByTag", listArtByTags);
+                ServletUtils.forward("/ShowArticleByTag.jsp", request, response);
                 break;
 
             default:

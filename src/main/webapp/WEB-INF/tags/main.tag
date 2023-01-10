@@ -80,7 +80,7 @@
                                 </a>
                                 <c:forEach items="${listSubCat}" var="s">
                                     <c:if test="${l.id eq s.paren_ID}">
-                                        <a class="dropdown-item" href="${pageContext.request.contextPath}/TrangChu/ShowArticleByCat?catId=${s.id}">${s.name}</a>
+                                        <a class="dropdown-item" href="${pageContext.request.contextPath}/TrangChu/ShowArticleByCat?cat_id=${s.id}">${s.name}</a>
                                     </c:if>
                                 </c:forEach>
                             </div>
@@ -96,7 +96,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownLinkTag">
 
                     <c:forEach items="${listTags}" var="t">
-                        <a class="dropdown-item" href="#">${t.name}</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/TrangChu/ShowArticleByTag?tag_id=${t.id}">#${t.name}</a>
                     </c:forEach>
                 </div>
             </li>
@@ -143,7 +143,7 @@
     <div class="container">
         <div class="noi-dung about">
             <h2>Về Chúng Tôi</h2>
-            <p>Yankee auction...</p>
+            <p>...</p>
         </div>
         <div class="noi-dung links">
             <h2>Đường Dẫn</h2>
