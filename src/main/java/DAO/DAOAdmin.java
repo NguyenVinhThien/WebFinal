@@ -160,7 +160,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT  a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c .parent_id FROM articles a inner join categories c on a.categories_id= c.id  where  categories_id = ?  "  + " LIMIT 10 "   + "\r\n OFFSET ?" );
+            PreparedStatement ps = con.prepareStatement("SELECT  a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c .parent_id FROM articles a inner join categories c on a.categories_id= c.id  where  a.categories_id = ? and a.publish_date<= current_date()"  + " LIMIT 10 "   + "\r\n OFFSET ?" );
             ps.setInt(1,catId);
             ps.setInt(2,(page - 1) * 10);
             ResultSet rs= ps.executeQuery();
