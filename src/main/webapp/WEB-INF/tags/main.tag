@@ -58,14 +58,14 @@
     </div>
 </div>
 <nav class="navbar navbar-expand-lg navbar-custom">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/TrangChu">Trang chủ</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/TrangChu">Trang chủ<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/TrangChu/ShowArticleAll">Tất cả<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -75,7 +75,7 @@
                     <div class="row" id="dropContent">
                         <c:forEach items="${listCat}" var="l">
                             <div class="col-sm-6 col-lg-3 groupCatalog">
-                                <a href="${pageContext.request.contextPath}/TrangChu/ShowArticleByCat?catId=${l.id}">
+                                <a href="${pageContext.request.contextPath}/TrangChu/ShowArticleByCat?cat_id=${l.id}">
                                     <span class="nav-title">${l.name}</span>
                                 </a>
                                 <c:forEach items="${listSubCat}" var="s">

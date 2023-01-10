@@ -81,6 +81,11 @@ public class TrangChu extends HttpServlet {
                 request.setAttribute("listArtByTag", listArtByTags);
                 ServletUtils.forward("/ShowArticleByTag.jsp", request, response);
                 break;
+            case "/ShowArticleAll":
+                List <ArticleHasTag> listArtAll= d.getArticleAll();
+                request.setAttribute("listArtAll", listArtAll);
+                ServletUtils.forward("/ShowArticleAll.jsp", request, response);
+                break;
 
             default:
                 ServletUtils.forward("/404.jsp", request, response);
