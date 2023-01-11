@@ -40,6 +40,7 @@ public class EditorServlet  extends HttpServlet {
             case "/ShowCategory": {
                 int editor = Integer.parseInt(request.getParameter("id"));
                 List<Categories> list = d.getAllMainCategoriesByEditor(editor);
+                System.out.println(list);
                 String name = d.getUserName(editor);
                 request.setAttribute("listC", list);
                 request.setAttribute("name", name);

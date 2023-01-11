@@ -118,7 +118,7 @@
                                                         <td>${o.id}</td>
                                                         <td>${o.name}</td>
                                                         <td>
-                                                            <a href="${pageContext.request.contextPath}/Editor/ShowArticle/BySubCategory?id=${o.id}">
+                                                            <a href="${pageContext.request.contextPath}/Editor/ShowArticle/ByCategory?id=${o.id}">
                                                                 <button class="btn btn-danger btn sweet-confirm destroy">
                                                                     Xem danh sách
                                                                 </button>

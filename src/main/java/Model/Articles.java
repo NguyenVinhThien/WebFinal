@@ -12,7 +12,6 @@ public class Articles {
     private int writer_id;
     private int status;
 
-
     public int getId_article() {
         return id_article;
     }

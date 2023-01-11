@@ -40,7 +40,7 @@ public class DAOAdmin {
         String query = "SELECT a.* \n"
                 +"FROM categories a inner join editor_manage_categories b\n"
                 +"on a.id = b.category_id\n"
-                +"where a.parent_id is null and b.editor = ?";
+                +"where b.editor_id = ?";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
@@ -1166,13 +1166,18 @@ public class DAOAdmin {
 
     public List<Articles> getArticleDraftByCatID(int catID)
     {
+        String query = "SELECT b.* \n"
+                +"FROM categories a inner join articles b\n"
+                +"on a.id = b.categories_id\n"
+                +"where a.parent_id = ? and status == 0";
         List<Articles> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where (categories_id = ? or parent_id = ?) and status = 0");
+            PreparedStatement ps = con.prepareStatement(query);
+            if (catID >10)
+                ps = con.prepareStatement("SELECT * FROM articles where categories_id = ? and status = 0");
             ps.setInt(1,catID);
-            ps.setInt(2,catID);
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {

@@ -101,12 +101,12 @@
                                                     <td class="sorting_1">${o.id}</td>
                                                     <td><a>${o.name}</a></td>
                                                     <td>
-                                                        <a href ="${pageContext.request.contextPath}/Editor/ShowArticle/ByMainCategory?id=${o.id}" >
+                                                        <a href ="${pageContext.request.contextPath}/Editor/ShowArticle/ByCategory?id=${o.id}" >
                                                             <button class="btn btn-danger btn sweet-confirm destroy">Xem Bài Viết</button>
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <a href ="${pageContext.request.contextPath}/Editor/ShowCategory/BySubCategory?id=${o.id}" >
+                                                        <a href ="${pageContext.request.contextPath}/Editor/ShowCategory/SubCategory?id=${o.id}" >
                                                             <button class="btn btn-info btn-icon-split">Xem Chuyên Mục Phụ</button>
                                                         </a>
                                                     </td>
