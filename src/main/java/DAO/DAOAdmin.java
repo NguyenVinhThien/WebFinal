@@ -1273,7 +1273,7 @@ public class DAOAdmin {
 
     public void addUser(String username, String password, String name, LocalDateTime issue_at, int role, LocalDateTime dob, String email)
     {
-        String query="INSERT INTO users (username, password, name, issue_at, expiration, role, second_name, dob, email, otp, otp_exp) VALUES(?, ?,?, ?, 0, ?, null, ?, ?, null, null)";
+        String query="INSERT INTO users (username, password, name, issue_at, expiration, role, second_name, dob, email, otp, otp_exp) VALUES(?, ?,?, ?, 10052, ?, null, ?, ?, null, null)";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();

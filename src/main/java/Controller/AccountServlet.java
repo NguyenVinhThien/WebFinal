@@ -122,8 +122,14 @@ public class AccountServlet extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("auth", true);
                     session.setAttribute("authUser", user);
-                    if (user.getId() == 1) {
+                    if (user.getRole() == 3) {
                         response.sendRedirect("/Admin/BaiViet/ShowBaiViet");
+                    }
+                    if (user.getRole() == 2) {
+                        response.sendRedirect("/Editor/Home?id="+user.getId());
+                    }
+                    if (user.getRole() == 1) {
+                        response.sendRedirect("/Writer/Home?id="+user.getId());
                     }
                     else {
                         String url = (String) session.getAttribute("retUrl");
