@@ -35,18 +35,18 @@
 <div class="wrapper" style="width: 100%;">
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
+            <h3>Editor Sidebar</h3>
         </div>
 
         <ul class="list-unstyled components">
             <p>Dummy Heading</p>
             <li class="active">
-                <a href="/WebFinal/Editor/ShowCategory?id=${authUser.id}">Tất cả chuyên mục</a>
+                <a href="${pageContext.request.contextPath}/Editor/ShowCategory?id=${authUser.id}">Tất cả chuyên mục</a>
             </li>
 
 
             <%--            <li>--%>
-            <%--                <a href="/WebFinal/Editor/ShowCategory?id=${authUser.id}">Đăng Bài</a>--%>
+            <%--                <a href="${pageContext.request.contextPath}/Editor/ShowCategory?id=${authUser.id}">Đăng Bài</a>--%>
             <%--            </li>--%>
 
     </nav>
@@ -118,7 +118,7 @@
                                                         <td>${o.id}</td>
                                                         <td>${o.name}</td>
                                                         <td>
-                                                            <a href="/WebFinal/Editor/ShowArticle/BySubCategory?id=${o.id}">
+                                                            <a href="${pageContext.request.contextPath}/Editor/ShowArticle/BySubCategory?id=${o.id}">
                                                                 <button class="btn btn-danger btn sweet-confirm destroy">
                                                                     Xem danh sách
                                                                 </button>

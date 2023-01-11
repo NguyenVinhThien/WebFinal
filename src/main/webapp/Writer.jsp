@@ -30,28 +30,27 @@
 <div class="wrapper" style="width: 100%;">
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
+            <h3>Writer Sidebar</h3>
         </div>
 
         <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
             <li class="active">
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bài Viết Của Tôi</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li value="Tất cả">
-                        <a href="/WebFinal/Writer/ShowArticle?id=${authUser.id}">Tất Cả Bài viết</a>
+                        <a href="${pageContext.request.contextPath}/Writer/ShowArticle?id=${authUser.id}">Tất Cả Bài viết</a>
                     </li>
                     <li>
-                        <a href="/WebFinal/Writer/ShowArticle/Draft?id=${authUser.id}">Bài Viết Draft</a>
+                        <a href="${pageContext.request.contextPath}/Writer/ShowArticle/Draft?id=${authUser.id}">Bài Viết Draft</a>
                     </li>
                     <li>
-                        <a href="/WebFinal/Writer/ShowArticle/Ok?id=${authUser.id}">Bài viết đã duyệt</a>
+                        <a href="${pageContext.request.contextPath}/Writer/ShowArticle/Ok?id=${authUser.id}">Bài viết đã duyệt</a>
                     </li>
                 </ul>
             </li>
 
             <li>
-                <a href="/WebFinal/Writer/DangBai?id=${authUser.id}">Đăng Bài</a>
+                <a href="${pageContext.request.contextPath}/Writer/DangBai?id=${authUser.id}">Đăng Bài</a>
             </li>
         </ul>
 
@@ -109,12 +108,12 @@
                             </c:choose>
                         </td>
                         <c:if test="${o.status != 2}">
-                            <td> <a href="/WebFinal/Writer/EditArticle?id=${o.id_article}">
+                            <td> <a href="${pageContext.request.contextPath}/Writer/EditArticle?id=${o.id_article}">
                                 <button class="btn btn-danger btn sweet-confirm destroy">Chỉnh sửa</button>
                             </a></td>
                         </c:if>
                         <c:if test="${o.status == 2}">
-                            <td> <a href="/WebFinal/ChiTietBao?articleId=${o.id_article}">
+                            <td> <a href="${pageContext.request.contextPath}/ChiTietBao?articleId=${o.id_article}">
                                 <button class="btn btn-info btn-icon-split">Xem Chi Tiết</button>
                             </a></td>
                         </c:if>

@@ -50,11 +50,11 @@
 <div class="wrapper" style="width: 100%;">
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
+            <h3>Editor Sidebar</h3>
         </div>
         <ul class="list-unstyled components">
             <li class="active">
-                <a href="/WebFinal/Editor/ShowCategory?id=${authUser.id}">Tất cả chuyên mục</a>
+                <a href="${pageContext.request.contextPath}/Editor/ShowCategory?id=${authUser.id}">Tất cả chuyên mục</a>
             </li>
         </ul>
     </nav>
@@ -89,7 +89,7 @@
                     <input type="text" class="form-control" id="inputNameArticle" value="${article.title}" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="inputNameArticle">Tên bài viết</label>
+                    <label for="inputNameArticle">Tóm tắt</label>
                     <input type="text" class="form-control" id="inputAbstractArticle" value="${article.abstract_article}" placeholder="Tóm Tắt">
                 </div>
                 <div>
@@ -143,6 +143,19 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-md-4">
+                                            <label for="select">Hashtag</label>
+                                            <select id="select" class="form-control" name="cate">
+                                                <c:forEach items="${listC}" var="t">
+                                                    <script type="text/javascript">
+                                                        if (${t.id} == ${article.categories_id})
+                                                            document.getElementById('select').add(new Option("${t.name}","${t.id}",false,true))
+                                                        else
+                                                            document.getElementById('select').add(new Option("${t.name}","${t.id}"));
+                                                    </script>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-4">
                                             <label for="inputZip">Ngày xuất bản</label>
                                             <input type="datetime-local" class="form-control" id="inputZip" name="date">
                                         </div>
@@ -187,7 +200,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Ghi chú</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="note"></textarea>
+                                        <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="note">
                                     </div>
                             </div>
                             <div class="modal-footer">

@@ -35,27 +35,26 @@
 <div class="wrapper" style="width: 100%;">
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
+            <h3>Editor Sidebar</h3>
         </div>
 
         <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
             <li class="active">
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bài Viết Của Tôi</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li value="Tất cả">
-                        <a href="/WebFinal/Editor/ShowCategory?id=${authUser.id}">Tất cả chuyên mục</a>
+                        <a href="${pageContext.request.contextPath}/Editor/ShowCategory?id=${authUser.id}">Tất cả chuyên mục</a>
                     </li>
                     <c:forEach items="${listC}" var="o">
                     <li>
-                        <a href="/WebFinal/Editor/ShowCategory/SubCategory?id=${o.id}">${o.name}</a>
+                        <a href="${pageContext.request.contextPath}/Editor/ShowCategory/SubCategory?id=${o.id}">${o.name}</a>
                     </li>
                     </c:forEach>
                 </ul>
             </li>
 
 <%--            <li>--%>
-<%--                <a href="/WebFinal/Editor/ShowCategory?id=${authUser.id}">Đăng Bài</a>--%>
+<%--                <a href="${pageContext.request.contextPath}/Editor/ShowCategory?id=${authUser.id}">Đăng Bài</a>--%>
 <%--            </li>--%>
         </ul>
 
@@ -102,12 +101,12 @@
                                                     <td class="sorting_1">${o.id}</td>
                                                     <td><a>${o.name}</a></td>
                                                     <td>
-                                                        <a href ="/WebFinal/Editor/ShowArticle/ByMainCategory?id=${o.id}" >
+                                                        <a href ="${pageContext.request.contextPath}/Editor/ShowArticle/ByMainCategory?id=${o.id}" >
                                                             <button class="btn btn-danger btn sweet-confirm destroy">Xem Bài Viết</button>
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <a href ="/WebFinal/Editor/ShowCategory/BySubCategory?id=${o.id}" >
+                                                        <a href ="${pageContext.request.contextPath}/Editor/ShowCategory/BySubCategory?id=${o.id}" >
                                                             <button class="btn btn-info btn-icon-split">Xem Chuyên Mục Phụ</button>
                                                         </a>
                                                     </td>

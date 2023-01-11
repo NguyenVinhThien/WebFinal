@@ -59,7 +59,7 @@ public class EditorServlet  extends HttpServlet {
 
             case "/ShowArticle/ByCategory": {
                 int catID = Integer.parseInt(request.getParameter("id"));
-                List<Articles> list = d.getArticleByCatId(catID);
+                List<Articles> list = d.getArticleDraftByCatID(catID);
                 List<Categories> cate = d.getAllCategories();
                 List<User> name = d.getAllUsers();
                 request.setAttribute("listA", list);
@@ -109,6 +109,7 @@ public class EditorServlet  extends HttpServlet {
             request.setCharacterEncoding("UTF-8");
             String id = request.getParameter("id");
             int i = Integer.parseInt(id);
+            int cate;
             String editor = request.getParameter("editor");
             //int editor_id = Integer.parseInt(editor);
             System.out.println(editor +"1");
@@ -116,22 +117,24 @@ public class EditorServlet  extends HttpServlet {
             int tag;
             try {
                 tag = Integer.parseInt(request.getParameter("tag"));
+                cate = Integer.parseInt(request.getParameter("cate"));
             }
             catch (Exception e){
               tag = 0;
+              cate =0;
             }
             String strDob = request.getParameter("date");
-            System.out.println(strDob);
+            System.out.println(note);
             DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
             DAOAdmin d = new DAOAdmin();
-            if (tag == 0)
-                d.updateArticle(i,null,note,1);
+            if (strDob == null)
+                d.TuChoiArticle(i,note);
             else {
                 LocalDateTime dt = LocalDateTime.parse(strDob, df);
-                d.updateArticle(i, dt, null, 2);
+                d.updateArticle(i, dt, null,cate, 2);
                 d.editTagHasArticles(tag,i);
             }
-            ;
+
 //            String abstract_article = request.getParameter("Tom_tat");
 //            int categories_id = Integer.parseInt(request.getParameter("cate"));
 //            int premium;

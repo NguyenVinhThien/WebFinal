@@ -41,7 +41,7 @@
         <ul class="list-unstyled components">
             <p>Dummy Heading</p>
             <li class="active">
-                <a href="/WebFinal/Editor/ShowCategory?id=${authUser.id}">Tất cả chuyên mục</a>
+                <a href="${pageContext.request.contextPath}/Editor/ShowCategory?id=${authUser.id}">Tất cả chuyên mục</a>
             </li>
         </ul>
     </nav>
@@ -108,7 +108,7 @@
                                             <td>${t.writer_id}</td>
                                             <td>
                                                 <div class="d-flex justify-content-sm-center">
-                                                    <a href="/WebFinal/Editor/EditArticle?id=${t.id_article}"
+                                                    <a href="${pageContext.request.contextPath}/Editor/EditArticle?id=${t.id_article}"
                                                        class="btn btn-success btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-check"></i>

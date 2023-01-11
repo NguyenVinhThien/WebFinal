@@ -778,7 +778,7 @@ public class DAOAdmin {
     public void editArticle(int id, String title, String content, String abstract_article, int cate, int premium)
     {
         String query="UPDATE articles\n"
-                + "SET content = ?, title = ?, abstract = ?, categories_id = ?, premium = ? \r\n "
+                + "SET content = ?, title = ?, abstract = ?, categories_id = ?, premium = ?, status = 0 \r\n "
                 + "WHERE id = ?";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -1141,8 +1141,37 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where writer_id = ? and status != 2");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where writer_id = ? and status !=2");
             ps.setInt(1,authorID);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                list.add(new Articles(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getInt(10)));
+            }
+        }catch(Exception e)
+        {
+            e.getMessage();
+        }
+        return list;
+    }
+
+    public List<Articles> getArticleDraftByCatID(int catID)
+    {
+        List<Articles> list = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where categories_id = ? and status = 0");
+            ps.setInt(1,catID);
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {
@@ -1164,6 +1193,7 @@ public class DAOAdmin {
         }
         return list;
     }
+
     public List<Editor_Manage_Categories> getEditorCategories()
     {
         List<Editor_Manage_Categories> list = new ArrayList<>();
@@ -1316,10 +1346,10 @@ public class DAOAdmin {
         }
     }
 
-    public void updateArticle(int id, LocalDateTime dt, String txt, int status)
+    public void updateArticle(int id, LocalDateTime dt, String txt, int cate, int status)
     {
         String query="UPDATE  articles\n"
-                + "SET status = ? ,publish_date = ?, note = ?\r\n"
+                + "SET status = ? ,publish_date = ?, categories_id = ?, note = ?\r\n"
                 + "WHERE id = ?";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -1327,8 +1357,28 @@ public class DAOAdmin {
             PreparedStatement ps= con.prepareStatement(query);
             ps.setInt(1,status);
             ps.setString(2, String.valueOf(dt));
-            ps.setString(3, txt);
-            ps.setInt(4,id);
+            ps.setInt(3,cate);
+            ps.setString(4, txt);
+            ps.setInt(5,id);
+            System.out.println(ps);
+            ps.executeUpdate();
+            con.close();
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+        }
+    }
+    public void TuChoiArticle(int id, String txt)
+    {
+        String query="UPDATE  articles\n"
+                + "SET status = 1 ,publish_date = null, note = ?\r\n"
+                + "WHERE id = ?";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps= con.prepareStatement(query);
+            ps.setString(1, txt);
+            ps.setInt(2,id);
             ps.executeUpdate();
             con.close();
         }catch(Exception e)

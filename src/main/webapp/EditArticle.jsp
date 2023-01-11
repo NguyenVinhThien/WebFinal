@@ -45,7 +45,7 @@
 </head>
 <body>
 <header>
-    <h1>New Article E-Newspaper</h1>
+    <h1>Edit Article E-Newspaper</h1>
 </header>
 <main>
     <form id="article-form" method="POST" novalidate="novalidate">
@@ -89,7 +89,7 @@
             </label>
         </div>
         <textarea id="editor" style="width: 100%" name="content">${article.content}</textarea>
-        <button type="submit">Đăng bài viết</button>
+        <button type="submit">Chỉnh Sửa bài viết</button>
     </form>
 </main>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" crossorigin="anonymous"></script>
