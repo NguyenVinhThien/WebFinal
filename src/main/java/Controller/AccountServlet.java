@@ -122,13 +122,16 @@ public class AccountServlet extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("auth", true);
                     session.setAttribute("authUser", user);
+//                    if (user.getId() == 1) {
+//                        response.sendRedirect("/Admin/BaiViet/ShowBaiViet");
+//                    }
                     if (user.getRole() == 3) {
                         response.sendRedirect("/Admin/BaiViet/ShowBaiViet");
                     }
-                    if (user.getRole() == 2) {
+                    else if (user.getRole() == 2) {
                         response.sendRedirect("/Editor/Home?id="+user.getId());
                     }
-                    if (user.getRole() == 1) {
+                    else if (user.getRole() == 1) {
                         response.sendRedirect("/Writer/Home?id="+user.getId());
                     }
                     else {
@@ -138,6 +141,32 @@ public class AccountServlet extends HttpServlet {
                         ServletUtils.redirect(url, request, response);
 //                    response.sendRedirect("/TrangChu");
                     }
+
+
+//                    if (user.getRole() == 3) {
+//                        String url1 = (String) session.getAttribute("retUrl");
+//                        url1 = "/Admin/BaiViet/ShowBaiViet";
+//                        ServletUtils.redirect(url1, request, response);
+//                    }
+//                    if (user.getRole() == 2) {
+//                        String url2 = (String) session.getAttribute("retUrl");
+//                        if (url2 == null)
+//                            url2 = "/Editor/Home?id="+user.getId();
+//                        ServletUtils.redirect(url2, request, response);
+//                    }
+//                    if (user.getRole() == 1) {
+//                        String url3 = (String) session.getAttribute("retUrl");
+//                        if (url3 == null)
+//                            url3 = "/Writer/Home?id="+user.getId();
+//                        ServletUtils.redirect(url3, request, response);
+//                    }
+//                    else {
+//                        String url = (String) session.getAttribute("retUrl");
+//                        if (url == null)
+//                            url = "/TrangChu";
+//                        ServletUtils.redirect(url, request, response);
+////                    response.sendRedirect("/TrangChu");
+//                    }
                 } else {
                     request.setAttribute("hasError", true);
                     request.setAttribute("errorMessage", "Invalid login.");
