@@ -1170,8 +1170,9 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where categories_id = ? and status = 0");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where (categories_id = ? or parent_id = ?) and status = 0");
             ps.setInt(1,catID);
+            ps.setInt(2,catID);
             ResultSet rs= ps.executeQuery();
             while(rs.next())
             {
