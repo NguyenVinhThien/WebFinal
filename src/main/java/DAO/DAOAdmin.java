@@ -190,7 +190,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tag_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.article_id inner join tags s on t.tag_id= s.id where a.publish_date<= current_date() and a.categories_id=?");
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tag_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.article_id inner join tags s on t.tag_id= s.id where a.publish_date<= current_date() and a.status=2  and a.categories_id=?");
             ps.setInt(1,cat_id);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
@@ -220,7 +220,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tag_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.article_id inner join tags s on t.tag_id= s.id where a.publish_date<= current_date()");
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tag_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.article_id inner join tags s on t.tag_id= s.id where a.publish_date<= current_date() and a.status=2");
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
@@ -249,7 +249,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tag_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.article_id inner join tags s on t.tag_id= s.id where a.publish_date<= current_date() and t.tag_id=?");
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tag_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.article_id inner join tags s on t.tag_id= s.id where a.publish_date<= current_date() and a.status=2 and t.tag_id=?");
             ps.setInt(1,tag_id);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
