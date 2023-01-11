@@ -31,7 +31,7 @@
   <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
-<c:if test="${authUser.id == 1}">
+<c:if test="${authUser.role == 3}">
 <body id="page-top">
 <!-- Page Wrapper -->
 <div id="wrapper">
