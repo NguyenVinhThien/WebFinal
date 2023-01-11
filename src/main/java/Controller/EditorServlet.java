@@ -144,7 +144,7 @@ public class EditorServlet  extends HttpServlet {
 //            String content = request.getParameter("content");
 //            DAOAdmin d = new DAOAdmin();
 //            d.editArticle(i, title, content, abstract_article,categories_id,premium);
-            response.sendRedirect("/WebFinal/Editor/Home?id="+editor);
+            response.sendRedirect("/Editor/Home?id="+editor);
         } catch (Exception e) {
             e.printStackTrace();
         }

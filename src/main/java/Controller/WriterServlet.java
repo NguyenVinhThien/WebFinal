@@ -147,7 +147,7 @@ public class WriterServlet extends HttpServlet {
             d.addTag(null,tag);
             d.addArticle(title, abstract_article, content, categories_id, premium, writer_id);
             d.setTag(d.getTagID(tag),d.getNewestArticleId());
-            response.sendRedirect("/WebFinal/Writer/Home?id=" + writer_id);
+            response.sendRedirect("/Writer/Home?id=" + writer_id);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -175,7 +175,7 @@ public class WriterServlet extends HttpServlet {
                 d.addTag(null,tag);
             d.editArticle(i, title, content, abstract_article,categories_id,premium);
             d.editTagHasArticles(d.getTagID(tag),i);
-            response.sendRedirect("/WebFinal/Writer/Home?id=" + writer_id);
+            response.sendRedirect("/Writer/Home?id=" + writer_id);
         } catch (Exception e) {
             e.printStackTrace();
         }

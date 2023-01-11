@@ -114,8 +114,8 @@
                                             <input type="text" class="form-control" id="artID" name="id" value="${article.id_article}" readonly>
                                         </div>
                                     <div class="form-group col-md-6" >
-                                        <label for="artID">Mã Editor</label>
-                                        <input type="text" name="editor" class="form-control">
+                                        <label for="editID">Mã Editor</label>
+                                        <input type="text"  id="editID"name="editor" class="form-control" value="${authUser.id}" readonly>
                                     </div>
                                         <div class="form-group col-md-6">
                                             <label for="authID">Mã tác giả</label>
@@ -171,6 +171,10 @@
                                         <div class="form-group col-md-6">
                                             <label for="inputEmail4">Mã bài viết</label>
                                             <input type="text" class="form-control" id="inputEmail4"  name="id" value="${article.id_article}" readonly>
+                                        </div>
+                                        <div class="form-group col-md-6" >
+                                            <label >Mã Editor</label>
+                                            <input type="text" name="editor" class="form-control" value="${authUser.id}" readonly>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword4">Mã tác giả</label>

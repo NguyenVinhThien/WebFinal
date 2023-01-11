@@ -2,7 +2,9 @@ package Controller;
 
 import DAO.DAOAdmin;
 import Model.Articles;
+import Model.Categories;
 import Model.Comment;
+import Model.Tags;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -15,6 +17,15 @@ public class ChiTietBao extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DAOAdmin d= new DAOAdmin();
+        List<Categories> listMainCat = d.getAllMainCategories();
+        request.setAttribute("listCat", listMainCat);
+
+        List<Categories> listSubCat = d.getSubCategories();
+        request.setAttribute("listSubCat", listSubCat);
+
+        List<Tags> listTags = d.getAllTag();
+        request.setAttribute("listTags", listTags);
+
         int articleId= Integer.parseInt(request.getParameter("articleId"));
         Articles art= d.getArticle(articleId);
         request.setAttribute("articleDetails", art);

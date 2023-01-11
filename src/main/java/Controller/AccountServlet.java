@@ -103,7 +103,7 @@ public class AccountServlet extends HttpServlet {
 
             DAOAdmin c = new DAOAdmin();
             c.addUser(username, bcryptHashString, name, issue_at, role, dob, email);
-            response.sendRedirect("/WebFinal/Account/DangNhap");
+            response.sendRedirect("/Account/DangNhap");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -122,21 +122,15 @@ public class AccountServlet extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("auth", true);
                     session.setAttribute("authUser", user);
-                    if (user.getRole() == 3) {
-                        response.sendRedirect("/WebFinal/Admin/BaiViet/ShowBaiViet");
-                    }
-                    else if (user.getRole() == 2) {
-                        response.sendRedirect("/WebFinal/Editor/Home?id="+user.getId());
-                    }
-                    else if (user.getRole() == 1) {
-                        response.sendRedirect("/WebFinal/Writer/Home?id="+user.getId());
+                    if (user.getId() == 1) {
+                        response.sendRedirect("/Admin/BaiViet/ShowBaiViet");
                     }
                     else {
                         String url = (String) session.getAttribute("retUrl");
                         if (url == null)
                             url = "/TrangChu";
                         ServletUtils.redirect(url, request, response);
-//                    response.sendRedirect("/WebFinal/TrangChu");
+//                    response.sendRedirect("/TrangChu");
                     }
                 } else {
                     request.setAttribute("hasError", true);
