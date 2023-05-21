@@ -13,7 +13,7 @@ public class ConnectDB {
         try {
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 
-            String url= "jdbc:mySQL://enewspaper.cjmoqgajssku.us-east-1.rds.amazonaws.com:3306/enewspaper";
+            String url= "jdbc:mySQL://enewspaperwebapp.ctcaoeyungfz.us-east-1.rds.amazonaws.com:3306/enewspaper";
             String username= "admin";
             String password= "qqwas123";
 

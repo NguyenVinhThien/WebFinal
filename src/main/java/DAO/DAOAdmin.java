@@ -813,7 +813,6 @@ public class DAOAdmin {
                         rs.getString(4),
                         null,
                         rs.getInt(6),
-                        rs.getInt(7),
                         null,
                         null,
                         null,
@@ -860,10 +859,9 @@ public class DAOAdmin {
                         rs.getString(4),
                         null,
                         rs.getInt(6),
-                        rs.getInt(7),
-                        rs.getString(8),
+                        rs.getString(7),
                         null,
-                        rs.getString(10),
+                        rs.getString(9),
                         null,
                         null
                 ));
@@ -1288,10 +1286,9 @@ public class DAOAdmin {
                         rs.getString(4),
                         rs.getTimestamp(5).toLocalDateTime(),
                         rs.getInt(6),
-                        rs.getInt(7),
-                        rs.getString(8),
-                        rs.getTimestamp(9).toLocalDateTime(),
-                        rs.getString(10),
+                        rs.getString(7),
+                        rs.getTimestamp(8).toLocalDateTime(),
+                        rs.getString(9),
                         null,
                         null
                 ));

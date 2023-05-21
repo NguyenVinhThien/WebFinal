@@ -5,12 +5,12 @@ import java.time.LocalDateTime;
 public class User {
     private String username, password, name, second_name, email, otp;
     private LocalDateTime issue_at, dob, otp_exp;
-    private int id,  expiration, role;
+    private int id, role;
 
     public User() {
     }
 
-    public User(int id, String username, String password, String name, LocalDateTime issue_at, int expiration, int role
+    public User(int id, String username, String password, String name, LocalDateTime issue_at,  int role
             , String second_name, LocalDateTime dob, String email, String otp, LocalDateTime otp_exp) {
         this.username = username;
         this.password = password;
@@ -22,7 +22,6 @@ public class User {
         this.dob = dob;
         this.otp_exp = otp_exp;
         this.id = id;
-        this.expiration = expiration;
         this.role = role;
     }
 
@@ -104,14 +103,6 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getExpiration() {
-        return expiration;
-    }
-
-    public void setExpiration(int expiration) {
-        this.expiration = expiration;
     }
 
     public int getRole() {
