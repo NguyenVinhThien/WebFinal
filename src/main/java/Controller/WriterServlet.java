@@ -130,6 +130,7 @@ public class WriterServlet extends HttpServlet {
         try {
             request.setCharacterEncoding("UTF-8");
             String title = request.getParameter("title");
+            String headline = request.getParameter("headline_image");
             String abstract_article = request.getParameter("Tom_tat");
             String content = request.getParameter("content");
             String tag = request.getParameter("Nhan");
@@ -145,7 +146,7 @@ public class WriterServlet extends HttpServlet {
             DAOAdmin d = new DAOAdmin();
             if (d.getTagID(tag) == 0 && tag != null)
             d.addTag(null,tag);
-            d.addArticle(title, abstract_article, content, categories_id, premium, writer_id);
+            d.addArticle(title, headline, abstract_article, content, categories_id, premium, writer_id);
             d.setTag(d.getTagID(tag),d.getNewestArticleId());
             response.sendRedirect("/Writer/Home?id=" + writer_id);
         } catch (Exception e) {
@@ -159,6 +160,7 @@ public class WriterServlet extends HttpServlet {
             String id = request.getParameter("id");
             int i = Integer.parseInt(id);
             String title = request.getParameter("title");
+            String headline_image = request.getParameter("headline_image");
             String abstract_article = request.getParameter("Tom_tat");
             String tag = request.getParameter("Nhan");
             int categories_id = Integer.parseInt(request.getParameter("cate"));
@@ -173,7 +175,7 @@ public class WriterServlet extends HttpServlet {
             DAOAdmin d = new DAOAdmin();
             if (d.getTagID(tag) == 0 && tag != null)
                 d.addTag(null,tag);
-            d.editArticle(i, title, content, abstract_article,categories_id,premium);
+            d.editArticle(i, title, headline_image, content, abstract_article,categories_id,premium);
             d.editTagHasArticles(d.getTagID(tag),i);
             response.sendRedirect("/Writer/Home?id=" + writer_id);
         } catch (Exception e) {

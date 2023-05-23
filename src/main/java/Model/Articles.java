@@ -3,6 +3,7 @@ package Model;
 public class Articles {
     private int id_article;
     private String title;
+    private String headline_image;
     private String publish_date;
     private int views;
     private String abstract_article;
@@ -27,6 +28,14 @@ public class Articles {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getHeadline_image() {
+        return headline_image;
+    }
+
+    public void setHeadline_image(String headline_image) {
+        this.headline_image = headline_image;
     }
 
     public String getPublish_date() {
@@ -99,7 +108,7 @@ public class Articles {
 
 
 
-    public Articles(int id_article, String title, String publish_date, int views, String abstract_article,String content, int categories_id, int premium, int writer_id, int status) {
+    public Articles(int id_article, String title,String publish_date, int views, String abstract_article,String content, int categories_id, int premium, int writer_id, int status, String headline_image) {
         super();
         this.id_article = id_article;
         this.title = title;
@@ -111,5 +120,6 @@ public class Articles {
         this.premium = premium;
         this.writer_id = writer_id;
         this.status = status;
+        this.headline_image = headline_image;
     }
 }

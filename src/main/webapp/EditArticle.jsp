@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Home
@@ -56,35 +56,47 @@
                     <c:forEach items="${listC}" var="t">
                         <script type="text/javascript">
                             if (${t.id} == ${article.categories_id})
-                                document.getElementById('select').add(new Option("${t.name}","${t.id}",false,true))
+                                document.getElementById('select').add(new Option("${t.name}", "${t.id}", false, true))
                             else
-                                document.getElementById('select').add(new Option("${t.name}","${t.id}"));
+                                document.getElementById('select').add(new Option("${t.name}", "${t.id}"));
                         </script>
                     </c:forEach>
                 </select>
             </div>
             <div class="col-md-4 mt-3"><label class="labels">Nhãn</label><input type="text"
                                                                                 name="Nhan"
-                                                                                class="form-control" value="${tag}"
+                                                                                class="form-control"
+                                                                                value="${tag}"
                                                                                 placeholder="Nhãn"></div>
             <div class="col-md-4 mt-3"><label class="labels">ID Author</label><input type="text"
                                                                                      name="writer"
-                                                                                     class="form-control" value="${article.writer_id}"
-                                                                                     placeholder="ID_Author"></div>
+                                                                                     class="form-control"
+                                                                                     value="${article.writer_id}"
+                                                                                     placeholder="ID_Author"
+                                                                                     readonly></div>
             <div class="col-md-12 mt-3"><label class="labels">Tiêu đề</label><input type="text"
                                                                                     name="title"
-                                                                                    class="form-control" value="${article.title}"
+                                                                                    class="form-control"
+                                                                                    value="${article.title}"
                                                                                     placeholder="Tiêu đề"></div>
+            <div class="col-md-12 mt-3"><label class="labels">Hình ảnh tiêu đề</label><input type="text"
+                                                                                             name="headline_image"
+                                                                                             class="form-control"
+                                                                                             value="${article.headline_image}"
+                                                                                             placeholder="Hình ảnh tiêu đề">
+            </div>
             <div class="col-md-12 mt-3"><label class="labels">Tóm tắt nội dung</label><input type="text"
                                                                                              name="Tom_tat"
-                                                                                             class="form-control" value="${article.abstract_article}"
-                                                                                             placeholder="Tóm tắt"></div>
+                                                                                             class="form-control"
+                                                                                             value="${article.abstract_article}"
+                                                                                             placeholder="Tóm tắt">
+            </div>
             <label class="col-md-12 mt-3">
                 <c:if test="${article.premium eq 1}">
-                    <input id="checkPremium" type="checkbox"  name="qq" value="1" checked>Premium
+                    <input id="checkPremium" type="checkbox" name="qq" value="1" checked>Premium
                 </c:if>
                 <c:if test="${article.premium eq 0}">
-                    <input id="checkPremium" type="checkbox"  name="qq" value="1">Premium
+                    <input id="checkPremium" type="checkbox" name="qq" value="1">Premium
                 </c:if>
             </label>
         </div>
