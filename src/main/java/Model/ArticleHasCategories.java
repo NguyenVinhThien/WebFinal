@@ -15,6 +15,7 @@ public class ArticleHasCategories {
     private int parent_id;
 
     private String headline_image;
+
     public ArticleHasCategories() {
     }
 

@@ -53,12 +53,9 @@ public class ChiTietBao extends HttpServlet {
 
 
             Date currentDate= new Date();
-            System.out.println(currentDate);
+//            System.out.println(currentDate);
 
             java.sql.Date sqlDate= new java.sql.Date(currentDate.getTime());
-
-//            SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//            String dateStr= dateFormat.format(currentDate);
 
             System.out.println(sqlDate);
             DAOComments dcmt= new DAOComments();

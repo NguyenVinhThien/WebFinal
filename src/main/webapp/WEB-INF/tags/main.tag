@@ -11,20 +11,21 @@
 <jsp:useBean id="listCat" scope="request" type="java.util.List<Model.Categories>"/>
 <jsp:useBean id="listSubCat" scope="request" type="java.util.List<Model.Categories>"/>
 <jsp:useBean id="listTags" scope="request" type="java.util.List<Model.Tags>"/>
-<jsp:useBean id="listTopHotArt" scope="request" type="java.util.List<Model.ArticleHasCategories>"/>
-<jsp:useBean id="listArtByView" scope="request" type="java.util.List<Model.ArticleHasCategories>"/>
-<jsp:useBean id="listNewArt" scope="request" type="java.util.List<Model.ArticleHasCategories>"/>
-<jsp:useBean id="listTopByCat" scope="request" type="java.util.List<Model.ArticleHasCategories>"/>
 <jsp:useBean id="authUser" scope="session" type="Model.User"/>
-<%--<jsp:useBean id="auth" scope="session" type="Model.User"/>--%>
-
-<%--<jsp:useBean id="article" scope="request" type="Model.Articles"/>--%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%--    <meta name="viewport" content="width=device-width, initial-scale=1.0">--%>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="img/core-img/favicon.ico">
+    <style><%@include file="/CSS_ALL/DetailArticle.css"%></style>
     <style><%@include file="/CSS_ALL/Trangchu.css"%></style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS_ALL/ChiTietSanPham.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>HOME</title>
 </head>
@@ -107,7 +108,7 @@
             </c:if>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <input id="key_word" name="key_word" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn customBtnSearch my-2 my-sm-0" type="submit">Search</button>
         </form>
         <ul class="navbar-nav">

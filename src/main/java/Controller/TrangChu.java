@@ -1,6 +1,7 @@
 package Controller;
 
 import DAO.DAOAdmin;
+import DAO.DAOComments;
 import Model.ArticleHasCategories;
 import Model.ArticleHasTag;
 import Model.Categories;
@@ -16,8 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+
+
 @WebServlet(name = "TrangChu", urlPatterns = "/TrangChu/*")
 public class TrangChu extends HttpServlet {
+
+    String key_word= null;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -28,6 +34,8 @@ public class TrangChu extends HttpServlet {
         }
 
         DAOAdmin d = new DAOAdmin();
+
+        DAOComments dcmt= new DAOComments();
 
         List<Categories> listMainCat = d.getAllMainCategories();
         request.setAttribute("listCat", listMainCat);
@@ -49,15 +57,26 @@ public class TrangChu extends HttpServlet {
 
         List<ArticleHasCategories> listTopByCat = d.getTopByCat();
         request.setAttribute("listTopByCat", listTopByCat);
+
+
         switch (path) {
             case "/Index":
-                RequestDispatcher rd = request.getRequestDispatcher("/TrangChu.jsp");
-                rd.forward(request, response);
-                break;
 
+//                if(key_word !=null){
+//                    List <ArticleHasCategories> listSearch= dcmt.searchTitle(key_word);
+//                    request.setAttribute("listSearch", listSearch);
+//                    System.out.println(listSearch.size());
+//                    RequestDispatcher rd = request.getRequestDispatcher("/ShowSearchResult.jsp");
+//                    break;
+//                }
+//                else{
+                    RequestDispatcher rd = request.getRequestDispatcher("/TrangChu.jsp");
+                    rd.forward(request, response);
+                    break;
+//                }
             case "/ShowArticleByCat":
                 int cat_id= Integer.parseInt(request.getParameter("cat_id"));
-                List <ArticleHasTag> listArtByCat= d.getArticleByTagId(cat_id);
+                List <ArticleHasCategories> listArtByCat= d.getArtByCatId(cat_id);
                 request.setAttribute("listArtByCat", listArtByCat);
                 ServletUtils.forward("/ShowArticleByCat.jsp", request, response);
                 break;
@@ -72,7 +91,14 @@ public class TrangChu extends HttpServlet {
                 request.setAttribute("listArtAll", listArtAll);
                 ServletUtils.forward("/ShowArticleAll.jsp", request, response);
                 break;
-
+            case "/search":
+//                String key_word= request.getParameter("key_word");
+//                System.out.println(key_word);
+//                List <ArticleHasCategories> listSearch= dcmt.searchTitle(key_word);
+//                request.setAttribute("listSearch", listSearch);
+//                System.out.println(listSearch.size());
+                ServletUtils.forward("/ShowSearchResult.jsp", request, response);
+                break;
             default:
                 ServletUtils.forward("/404.jsp", request, response);
                 break;
@@ -82,6 +108,18 @@ public class TrangChu extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        searchArticle(request, response);
+    }
+
+    private void searchArticle(HttpServletRequest request, HttpServletResponse response){
+        try {
+            request.setCharacterEncoding("UTF-8");
+            key_word = request.getParameter("key_word");
+            System.out.println(key_word);
+            response.sendRedirect("/TrangChu/search");
+        }catch (Exception e){
+            e.getStackTrace();
+        }
 
     }
 }
