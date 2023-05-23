@@ -13,6 +13,7 @@
 <jsp:useBean id="listCat" scope="request" type="java.util.List<Model.Categories>"/>
 <jsp:useBean id="listSubCat" scope="request" type="java.util.List<Model.Categories>"/>
 <jsp:useBean id="listTags" scope="request" type="java.util.List<Model.Tags>"/>
+<jsp:useBean id="authUser" scope="session" type="Model.User"/>
 
 <html lang="en">
 
@@ -29,7 +30,9 @@
   <!-- Favicon -->
   <link rel="icon" href="img/core-img/favicon.ico">
   <style><%@include file="/CSS_ALL/Trangchu.css"%></style>
+  <style><%@include file="/CSS_ALL/DetailArticle.css"%></style>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS_ALL/ChiTietSanPham.css">
 
 </head>
@@ -135,6 +138,7 @@
 
 <!-- ##### Post Details Area Start ##### -->
 <section class="post-news-area section-padding-100-0 mb-70">
+
   <div class="container">
     <div class="row justify-content-center">
       <!-- Post Details Content Area -->
@@ -142,8 +146,51 @@
         <div class="post-details-content mb-100">
           <p>${articleDetails.content}</p>
         </div>
+        <div class="post-toolbar">
+          <div class="toolbar-item">
+            <button class="like-button"><i class="fas fa-thumbs-up"></i>
+              <span class="glyphicon glyphicon-thumbs-up"></span>Like</button>
+            <span class="like-count">100</span>
+          </div>
+          <div class="toolbar-item">
+            <button class="comment-button" id="cmtBtn"><i class="fas fa-comment"></i> Comment</button>
+<%--            <span class="comment-count">50</span>--%>
+          </div>
+          <div class="toolbar-item">
+            <button class="share-button"><i class="fas fa-share"></i> Share</button>
+<%--            <span class="share-count">20</span>--%>
+          </div>
+        </div>
+        <div class="post-a-comment-area mb-30 clearfix" id="cmtDiv">
+          <h5 class="mb-50">Leave a reply</h5>
+
+          <!-- Reply Form -->
+          <div class="contact-form-area">
+            <form id="cmtForm" action="#" method="post">
+              <div class="row">
+                <%--                <div class="col-12 col-lg-6">--%>
+                <%--                  <input type="text" class="form-control" id="name" placeholder="Name*">--%>
+                <%--                </div>--%>
+                <%--                <div class="col-12 col-lg-6">--%>
+                <%--                  <input type="email" class="form-control" id="email" placeholder="Email*">--%>
+                <%--                </div>--%>
+                <%--                <div class="col-12">--%>
+                <%--                  <input type="text" class="form-control" id="subject" placeholder="Website">--%>
+                <%--                </div>--%>
+                <div class="col-12">
+                  <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                </div>
+                <div class="col-12">
+                  <button class="btn newsbox-btn mt-30" type="submit">Gửi</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
         <div class="comment_area clearfix mb-100">
-          <h4 class="mb-50">Comments</h4>
+          <h5 class="mb-50">Bình luận</h5>
           <ol>
             <c:choose>
               <c:when test="${listCmt.size() eq 0}">
@@ -164,40 +211,13 @@
                       </div>
                     </div>
                   </li>
-
                 </c:forEach>
               </c:otherwise>
             </c:choose>
-
           </ol>
         </div>
 
-        <div class="post-a-comment-area mb-30 clearfix">
-          <h4 class="mb-50">Leave a reply</h4>
 
-          <!-- Reply Form -->
-          <div class="contact-form-area">
-            <form action="#" method="post">
-              <div class="row">
-                <div class="col-12 col-lg-6">
-                  <input type="text" class="form-control" id="name" placeholder="Name*">
-                </div>
-                <div class="col-12 col-lg-6">
-                  <input type="email" class="form-control" id="email" placeholder="Email*">
-                </div>
-                <div class="col-12">
-                  <input type="text" class="form-control" id="subject" placeholder="Website">
-                </div>
-                <div class="col-12">
-                  <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-                </div>
-                <div class="col-12">
-                  <button class="btn newsbox-btn mt-30" type="submit">Submit Comment</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
       </div>
 
       <!-- Sidebar Widget -->
@@ -321,6 +341,35 @@
     </div>
   </div>
 </footer>
+
+<script>
+  <%--document.getElementById("cmtForm").addEventListener("submit", function (event){--%>
+  <%--  event.preventDefault();--%>
+  <%--  var article_id= "<%=articleDetails.getId_article()%>>"--%>
+  <%--  var user_id= "<%=authUser.getId()%>"--%>
+  <%--  var formData= new FormData(event.target);--%>
+  <%--  var comment= formData.get("message")--%>
+
+  <%--  sendPostRequest(user_id, article_id, comment);--%>
+
+  <%--})--%>
+  var liscmt_size= "<%=listCmt.size()%>>"
+  console.log(liscmt_size);
+  document.getElementById("cmtBtn").addEventListener("click", function (event){
+    var user_id= "<%=authUser.getId()%>"
+    if(user_id ==0){
+      alert("Vui lòng đăng nhập tài khoản trước khi binh luận!")
+    } else{
+      var x = document.getElementById("cmtDiv");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+  })
+
+</script>
 
 
 <!-- ##### All Javascript Script ##### -->

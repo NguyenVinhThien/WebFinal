@@ -86,7 +86,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select u.name, u.username, u.second_name, c.* from comments c inner join users u on c.user_id= u.id where c.article_id= ?");
+            PreparedStatement ps = con.prepareStatement("select u.name, u.username, c.* from comments c inner join users u on c.user_id= u.id where c.article_id= ?");
             ps.setInt(1,article_id);
             ResultSet rs= ps.executeQuery();
             while(rs.next())
@@ -99,6 +99,8 @@ public class DAOAdmin {
                         rs.getString(6),
                         rs.getString(7)));
             }
+
+
         }catch(Exception e)
         {
             e.getMessage();
@@ -297,7 +299,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select * from(select distinct a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, b.name, b.parent_id from articles a join categories b on a.categories_id = b.id order by a.publish_date desc) as t where status= 2 and parent_id is not null group by t.parent_id");
+            PreparedStatement ps = con.prepareStatement("select * from(select distinct a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, b.name, b.parent_id,  a.headline_image  from articles a join categories b on a.categories_id = b.id order by a.publish_date desc) as t where status= 2 and parent_id is not null group by t.parent_id");
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
@@ -312,7 +314,9 @@ public class DAOAdmin {
                         rs.getInt(9),
                         rs.getInt(10),
                         rs.getString(11),
-                        rs.getInt(12)));
+                        rs.getInt(12),
+                        rs.getString(13)));
+
             }
         }catch(Exception e)
         {
@@ -326,7 +330,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id from articles a inner join categories c on a.categories_id= c.id where yearweek(a.publish_date, 1)= yearweek(curdate()-7, 1) and a.publish_date<= current_date() and a.status=2 order by a.views desc limit 3");
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id, a.headline_image from articles a inner join categories c on a.categories_id= c.id where yearweek(a.publish_date, 1)= yearweek(curdate()-7, 1) and a.publish_date<= current_date() and a.status=2 order by a.views desc limit 3");
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
@@ -341,7 +345,8 @@ public class DAOAdmin {
                         rs.getInt(9),
                         rs.getInt(10),
                         rs.getString(11),
-                        rs.getInt(12)));
+                        rs.getInt(12),
+                        rs.getString(13)));
             }
         }catch(Exception e)
         {
@@ -356,7 +361,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id from articles a inner join categories c on a.categories_id= c.id where a.publish_date <= current_date() and a.status=2 order by a.views desc limit 10");
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id, a.headline_image from articles a inner join categories c on a.categories_id= c.id where a.publish_date <= current_date() and a.status=2 order by a.views desc limit 10");
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
@@ -371,7 +376,8 @@ public class DAOAdmin {
                         rs.getInt(9),
                         rs.getInt(10),
                         rs.getString(11),
-                        rs.getInt(12)));
+                        rs.getInt(12),
+                        rs.getString(13)));
             }
         }catch(Exception e)
         {
@@ -388,7 +394,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id from articles a inner join categories c on a.categories_id= c.id where a.publish_date <= current_date() and a.status=2 order by a.publish_date desc limit 10");
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id, a.headline_image from articles a inner join categories c on a.categories_id= c.id where a.publish_date <= current_date() and a.status=2 order by a.publish_date desc limit 10");
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
@@ -403,7 +409,8 @@ public class DAOAdmin {
                         rs.getInt(9),
                         rs.getInt(10),
                         rs.getString(11),
-                        rs.getInt(12)));
+                        rs.getInt(12),
+                        rs.getString(13)));
             }
         }catch(Exception e)
         {
@@ -442,6 +449,7 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
+
     public void editCategory(int id,String name)
     {
         String query="UPDATE categories\n"

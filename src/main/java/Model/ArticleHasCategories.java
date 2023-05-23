@@ -14,10 +14,11 @@ public class ArticleHasCategories {
     private String cat_name;
     private int parent_id;
 
+    private String headline_image;
     public ArticleHasCategories() {
     }
 
-    public ArticleHasCategories(int id_article, String title, String publish_date, int views, String abstract_article, String content, int categories_id, int premium, int writer_id, int status, String cat_name, int parent_id) {
+    public ArticleHasCategories(int id_article, String title, String publish_date, int views, String abstract_article, String content, int categories_id, int premium, int writer_id, int status, String cat_name, int parent_id, String headline_image) {
         this.id_article = id_article;
         this.title = title;
         this.publish_date = publish_date;
@@ -30,7 +31,31 @@ public class ArticleHasCategories {
         this.status = status;
         this.cat_name = cat_name;
         this.parent_id = parent_id;
+        this.headline_image = headline_image;
     }
+
+    public String getHeadline_image() {
+        return headline_image;
+    }
+
+    public void setHeadline_image(String headline_image) {
+        this.headline_image = headline_image;
+    }
+
+    //    public ArticleHasCategories(int id_article, String title, String publish_date, int views, String abstract_article, String content, int categories_id, int premium, int writer_id, int status, String cat_name, int parent_id) {
+//        this.id_article = id_article;
+//        this.title = title;
+//        this.publish_date = publish_date;
+//        this.views = views;
+//        this.abstract_article = abstract_article;
+//        this.content = content;
+//        this.categories_id = categories_id;
+//        this.premium = premium;
+//        this.writer_id = writer_id;
+//        this.status = status;
+//        this.cat_name = cat_name;
+//        this.parent_id = parent_id;
+//    }
 
     public int getId_article() {
         return id_article;

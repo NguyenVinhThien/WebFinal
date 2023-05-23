@@ -104,6 +104,8 @@ public class AccountServlet extends HttpServlet {
             DAOAdmin c = new DAOAdmin();
             c.addUser(username, bcryptHashString, name, issue_at, role, dob, email);
             response.sendRedirect("/Account/DangNhap");
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }

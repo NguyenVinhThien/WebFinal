@@ -1,0 +1,41 @@
+.post-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /*background-color: #f2f2f2;*/
+    padding: 10px;
+}
+
+.toolbar-item {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+/*.like-button {*/
+/*    color: blue;*/
+/*}*/
+
+/*.comment-button {*/
+/*    color: green;*/
+/*}*/
+
+/*.share-button {*/
+/*    color: orange;*/
+/*}*/
+
+.like-count, .comment-count, .share-count {
+    margin-left: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+#cmtDiv{
+    display: none;
+}
