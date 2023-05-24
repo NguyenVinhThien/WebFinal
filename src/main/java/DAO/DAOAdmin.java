@@ -119,6 +119,37 @@ public class DAOAdmin {
         }
         return list;
     }
+    public List<ArticleHasCategories> getArtByCatId(int catId) {
+        List<ArticleHasCategories> list = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id, a.headline_image from articles a inner join categories c on a.categories_id= c.id where  categories_id = ?");
+            ps.setInt(1, catId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new ArticleHasCategories(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getInt(10),
+                        rs.getString(11),
+                        rs.getInt(12),
+                        rs.getString(13)
+                ));
+            }
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return list;
+    }
+
 
     public List<Articles> getArticleByCatId(int catId) {
         List<Articles> list = new ArrayList<>();
