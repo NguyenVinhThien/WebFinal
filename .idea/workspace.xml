@@ -9,16 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6b482ef-f71c-4864-81c6-50d26439b44d" name="Changes" comment="Update Editor.jsp">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/DAOComments.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/CSS_ALL/DetailArticle.css" afterDir="false" />
+    <list default="true" id="c6b482ef-f71c-4864-81c6-50d26439b44d" name="Changes" comment="fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AccountServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ChiTietBao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ChiTietBao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/DAOAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/DAOAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ArticleHasCategories.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ArticleHasCategories.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ChiTietBao.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ChiTietBao.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/TrangChu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/TrangChu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +23,7 @@
       <list>
         <option value="Class" />
         <option value="CSS File" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -296,7 +290,9 @@
       <workItem from="1684748725020" duration="1734000" />
       <workItem from="1684750536014" duration="444000" />
       <workItem from="1684751098891" duration="16765000" />
-      <workItem from="1684805428012" duration="17960000" />
+      <workItem from="1684805428012" duration="42692000" />
+      <workItem from="1684892690149" duration="303000" />
+      <workItem from="1684893007901" duration="2385000" />
     </task>
     <task id="LOCAL-00003" summary="Update">
       <created>1673365358427</created>
@@ -312,7 +308,28 @@
       <option name="project" value="LOCAL" />
       <updated>1673365669217</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="comment post">
+      <created>1684827496611</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684827496611</updated>
+    </task>
+    <task id="LOCAL-00006" summary="search">
+      <created>1684864184895</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684864184895</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix">
+      <created>1684894118213</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684894118213</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,6 +349,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update" />
     <MESSAGE value="Update Editor.jsp" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Editor.jsp" />
+    <MESSAGE value="comment post" />
+    <MESSAGE value="search" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
 </project>
