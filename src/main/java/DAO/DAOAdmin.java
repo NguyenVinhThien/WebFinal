@@ -124,7 +124,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id, a.headline_image from articles a inner join categories c on a.categories_id= c.id where  categories_id = ?");
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id, a.headline_image from articles a inner join categories c on a.categories_id= c.id where  categories_id = ?  and status = 2 ");
             ps.setInt(1, catId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
