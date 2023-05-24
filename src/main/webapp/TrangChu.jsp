@@ -18,18 +18,19 @@
               <h5 >
                 <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${lh.id_article}">${lh.title}</a>
               </h5>
-              <c:choose>
-                <c:when test="${lh.parent_id eq 0}">
-                  <span class="cardCategory">${lh.cat_name}</span>
-                </c:when>
-                <c:otherwise>
-                  <c:forEach items="${listCat}" var="c">
-                    <c:if test="${c.id eq lh.parent_id}">
-                      <span class="cardCategory">${c.name}</span>
-                    </c:if>
-                  </c:forEach>
-                </c:otherwise>
-              </c:choose>
+              <span class="cardCategory">${lh.cat_name}</span>
+<%--              <c:choose>--%>
+<%--                <c:when test="${lh.parent_id eq 0}">--%>
+<%--                  <span class="cardCategory">${lh.cat_name}</span>--%>
+<%--                </c:when>--%>
+<%--                <c:otherwise>--%>
+<%--                  <c:forEach items="${listCat}" var="c">--%>
+<%--                    <c:if test="${c.id eq lh.parent_id}">--%>
+<%--                      <span class="cardCategory">${c.name}</span>--%>
+<%--                    </c:if>--%>
+<%--                  </c:forEach>--%>
+<%--                </c:otherwise>--%>
+<%--              </c:choose>--%>
 
               <p class="card-text"><small class="text-muted">Ngày đăng: ${lh.publish_date}</small></p>
             </div>
@@ -48,18 +49,19 @@
                 <h5 >
                   <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${ln.id_article}">${ln.title}</a>
                 </h5>
-                <c:choose>
-                  <c:when test="${ln.parent_id eq 0}">
-                    <span class="cardCategory">${ln.cat_name}</span>
-                  </c:when>
-                  <c:otherwise>
-                    <c:forEach items="${listCat}" var="c">
-                      <c:if test="${c.id eq ln.parent_id}">
-                        <span class="cardCategory">${c.name}</span>
-                      </c:if>
-                    </c:forEach>
-                  </c:otherwise>
-                </c:choose>
+                <span class="cardCategory">${ln.cat_name}</span>
+<%--                <c:choose>--%>
+<%--                  <c:when test="${ln.parent_id eq 0}">--%>
+<%--                    <span class="cardCategory">${ln.cat_name}</span>--%>
+<%--                  </c:when>--%>
+<%--                  <c:otherwise>--%>
+<%--                    <c:forEach items="${listCat}" var="c">--%>
+<%--                      <c:if test="${c.id eq ln.parent_id}">--%>
+<%--                        <span class="cardCategory">${c.name}</span>--%>
+<%--                      </c:if>--%>
+<%--                    </c:forEach>--%>
+<%--                  </c:otherwise>--%>
+<%--                </c:choose>--%>
 
                 <p class="card-text"><small class="text-muted">Ngày đăng: ${ln.publish_date }</small></p>
               </div>
@@ -75,18 +77,19 @@
                 <h5 >
                   <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${ltc.id_article}">${ltc.title}</a>
                 </h5>
-                <c:choose>
-                  <c:when test="${ltc.parent_id eq 0}">
-                    <span class="cardCategory">${ltc.cat_name}</span>
-                  </c:when>
-                  <c:otherwise>
-                    <c:forEach items="${listCat}" var="c">
-                      <c:if test="${c.id eq ltc.parent_id}">
-                        <span class="cardCategory">${c.name}</span>
-                      </c:if>
-                    </c:forEach>
-                  </c:otherwise>
-                </c:choose>
+                <span class="cardCategory">${ltc.cat_name}</span>
+<%--                <c:choose>--%>
+<%--                  <c:when test="${ltc.parent_id eq 0}">--%>
+<%--                    <span class="cardCategory">${ltc.cat_name}</span>--%>
+<%--                  </c:when>--%>
+<%--                  <c:otherwise>--%>
+<%--                    <c:forEach items="${listCat}" var="c">--%>
+<%--                      <c:if test="${c.id eq ltc.parent_id}">--%>
+<%--                        <span class="cardCategory">${c.name}</span>--%>
+<%--                      </c:if>--%>
+<%--                    </c:forEach>--%>
+<%--                  </c:otherwise>--%>
+<%--                </c:choose>--%>
                 <p class="card-text"><small class="text-muted">Ngày đăng: ${ltc.publish_date }</small></p>
               </div>
             </div>
@@ -106,25 +109,24 @@
               <h5 >
                 <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${la.id_article}">${la.title}</a>
               </h5>
-              <c:choose>
-                <c:when test="${la.parent_id eq 0}">
-                  <span class="cardCategory">${la.cat_name}</span>
-                </c:when>
-                <c:otherwise>
-                  <c:forEach items="${listCat}" var="c">
-                    <c:if test="${c.id eq la.parent_id}">
-                      <span class="cardCategory">${c.name}</span>
-                    </c:if>
-                  </c:forEach>
-                </c:otherwise>
-              </c:choose>
+              <span class="cardCategory">${la.cat_name}</span>
+<%--              <c:choose>--%>
+<%--                <c:when test="${la.parent_id eq 0}">--%>
+<%--                  <span class="cardCategory">${la.cat_name}</span>--%>
+<%--                </c:when>--%>
+<%--                <c:otherwise>--%>
+<%--                  <c:forEach items="${listCat}" var="c">--%>
+<%--                    <c:if test="${c.id eq la.parent_id}">--%>
+<%--                      <span class="cardCategory">${c.name}</span>--%>
+<%--                    </c:if>--%>
+<%--                  </c:forEach>--%>
+<%--                </c:otherwise>--%>
+<%--              </c:choose>--%>
 
               <p class="card-text"><small class="text-muted">Ngày đăng: ${la.publish_date }</small></p>
             </div>
           </div>
         </c:forEach>
-
-
       </div>
 
     </div>

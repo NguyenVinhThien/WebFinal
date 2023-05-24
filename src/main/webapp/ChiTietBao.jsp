@@ -7,7 +7,7 @@
 <jsp:useBean id="authUser" scope="session" type="Model.User"/>
 <t:main>
   <jsp:body>
-    <div class="post-details-title-area bg-gradient-light clearfix"  style="height: 280px; margin-top: 10px; position: relative">
+    <div class="post-details-title-area bg-overlay clearfix"  style="height: 280px; margin-top: 10px; position: relative">
         <div class="container-fluid h-100">
           <div class="row h-100 align-items-center">
             <div class="col-12 col-lg-8">
