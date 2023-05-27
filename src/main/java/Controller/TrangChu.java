@@ -61,19 +61,9 @@ public class TrangChu extends HttpServlet {
 
         switch (path) {
             case "/Index":
-
-//                if(key_word !=null){
-//                    List <ArticleHasCategories> listSearch= dcmt.searchTitle(key_word);
-//                    request.setAttribute("listSearch", listSearch);
-//                    System.out.println(listSearch.size());
-//                    RequestDispatcher rd = request.getRequestDispatcher("/ShowSearchResult.jsp");
-//                    break;
-//                }
-//                else{
-                    RequestDispatcher rd = request.getRequestDispatcher("/TrangChu.jsp");
-                    rd.forward(request, response);
-                    break;
-//                }
+                RequestDispatcher rd = request.getRequestDispatcher("/TrangChu.jsp");
+                rd.forward(request, response);
+                break;
             case "/ShowArticleByCat":
                 int cat_id= Integer.parseInt(request.getParameter("cat_id"));
                 List <ArticleHasCategories> listArtByCat= d.getArtByCatId(cat_id);
@@ -92,34 +82,25 @@ public class TrangChu extends HttpServlet {
                 ServletUtils.forward("/ShowArticleAll.jsp", request, response);
                 break;
             case "/search":
-//                String key_word= request.getParameter("key_word");
+                request.setCharacterEncoding("UTF-8");
+                String key_word= request.getParameter("key_word");
 //                System.out.println(key_word);
-//                List <ArticleHasCategories> listSearch= dcmt.searchTitle(key_word);
-//                request.setAttribute("listSearch", listSearch);
-//                System.out.println(listSearch.size());
+                List <ArticleHasCategories> listSearch= dcmt.searchTitle(key_word);
+                request.setAttribute("listSearch", listSearch);
+                System.out.println(listSearch.get(0).getCat_name());
                 ServletUtils.forward("/ShowSearchResult.jsp", request, response);
                 break;
             default:
                 ServletUtils.forward("/404.jsp", request, response);
                 break;
         }
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        searchArticle(request, response);
-    }
 
-    private void searchArticle(HttpServletRequest request, HttpServletResponse response){
-        try {
-            request.setCharacterEncoding("UTF-8");
-            key_word = request.getParameter("key_word");
-            System.out.println(key_word);
-            response.sendRedirect("/TrangChu/search");
-        }catch (Exception e){
-            e.getStackTrace();
-        }
 
     }
+
+
 }

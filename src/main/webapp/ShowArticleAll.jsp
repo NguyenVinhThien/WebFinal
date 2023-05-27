@@ -20,9 +20,10 @@
                     <div class="largeTitle">Kết quả</div>
                     <c:choose>
                         <c:when test="${listArtAll.size() eq 0}">
-                            <tr>
-                                <td>Không có kết quả phù hợp</td>
-                            </tr>
+<%--                            <tr>--%>
+<%--                                <td>Không có kết quả phù hợp</td>--%>
+<%--                            </tr>--%>
+                            <div>Không có kết quả</div>
                         </c:when>
                         <c:otherwise>
                             <c:forEach items="${listArtAll}" var="la">

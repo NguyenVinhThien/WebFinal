@@ -18,22 +18,18 @@
                     <div class="largeTitle">Kết quả</div>
                     <c:choose>
                         <c:when test="${listSearch.size() eq 0}">
-                            <tr>
-                                <td>Không có kết quả phù hợp</td>
-                            </tr>
+                            <div>Không có kết quả phù hợp</div>
                         </c:when>
                         <c:otherwise>
                             <c:forEach items="${listSearch}" var="ls">
-                                <div class="card mb-3">
-                                    <img class="card-img-top" style="height: 150px;" src="${ls.headline_image}" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
+                                <div class="horizontalCard">
+                                    <img src="${ls.headline_image}" alt="" class="cardHorizontalImg">
+                                    <div class="cardHorizontal-Body">
+                                        <h5 >
                                             <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${ls.id_article}">${ls.title}</a>
                                         </h5>
-                                        <p class="card-text">${ls.abstract_article}</p>
-                                        <p class="card-text"><small class="text-muted">Ngày đăng: ${ls.publish_date}</small></p>
                                         <span class="cardCategory">${ls.cat_name}</span>
-                                        <span class="cardCategory">#${ls.tags}</span>
+                                        <p class="card-text"><small class="text-muted">Ngày đăng: ${ls.publish_date }</small></p>
                                     </div>
                                 </div>
                             </c:forEach>

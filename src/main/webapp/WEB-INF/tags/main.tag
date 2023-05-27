@@ -16,7 +16,6 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<%--    <meta name="viewport" content="width=device-width, initial-scale=1.0">--%>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -69,9 +68,10 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/TrangChu/ShowArticleAll">Tất cả<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<%--                nav-link--%>
+                <button class="btn nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Chủ đề
-                </a>
+                </button>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <div class="row" id="dropContent">
                         <c:forEach items="${listCat}" var="l">
@@ -91,9 +91,9 @@
                 </div>
             </li>
             <li class="nav-item dropdown" style="position: relative">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLinkTag" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Tag
-                </a>
+                <button class="btn nav-link dropdown-toggle" id="navbarDropdownLinkTag" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Tags
+                </button>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownLinkTag">
 
                     <c:forEach items="${listTags}" var="t">
@@ -107,14 +107,14 @@
                 </li>
             </c:if>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0" method="get" action="${pageContext.request.contextPath}/TrangChu/search" >
             <input id="key_word" name="key_word" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn customBtnSearch my-2 my-sm-0" type="submit">Search</button>
         </form>
         <ul class="navbar-nav">
             <c:choose>
                 <c:when test="${auth}">
-                    <form id="frmLogout" method="post" action="${pageContext.request.contextPath}/Account/Logout"></form>
+                    <form id="frmLogout" accept-charset="UTF-8" method="post" action="${pageContext.request.contextPath}/Account/Logout"></form>
                     <li class="nav-item dropdown" style="position: relative">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownR" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Hi, <b>${authUser.name}!</b>
@@ -182,5 +182,6 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 </html>

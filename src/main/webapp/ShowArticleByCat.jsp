@@ -12,9 +12,10 @@
                     <div class="largeTitle">Kết quả</div>
                     <c:choose>
                         <c:when test="${listArtByCat.size() eq 0}">
-                            <tr>
-                                <td>Không có kết quả phù hợp</td>
-                            </tr>
+<%--                            <tr>--%>
+<%--                                <td>Không có kết quả phù hợp</td>--%>
+<%--                            </tr>--%>
+                            <div>Không có kết quả</div>
                         </c:when>
                         <c:otherwise>
                             <c:forEach items="${listArtByCat}" var="la">
@@ -23,7 +24,6 @@
                                     <div class="card-body">
                                         <h5 class="card-title">
                                             <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${la.id_article}">${la.title}</a>
-
                                         </h5>
                                         <p class="card-text">${la.abstract_article}</p>
                                         <p class="card-text"><small class="text-muted">Ngày đăng: ${la.publish_date}</small></p>

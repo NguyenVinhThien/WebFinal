@@ -31,7 +31,7 @@ public class DAOComments {
     }
     public List<ArticleHasCategories> searchTitle(String key_word){
         List<ArticleHasCategories> list= new ArrayList<>();
-        String query="SELECT a.*, c.name, c.parent_id FROM articles a inner join categories c on a.categories_id= c.id WHERE MATCH(title) AGAINST (?)";
+        String query="SELECT a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id, a.headline_image FROM articles a inner join categories c on a.categories_id= c.id WHERE MATCH(title) AGAINST (?)";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
