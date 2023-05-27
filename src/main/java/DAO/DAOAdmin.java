@@ -405,7 +405,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id, a.headline_image from articles a inner join categories c on a.categories_id= c.id where a.publish_date <= current_date() and a.status=2 order by a.publish_date desc limit 10");
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content, a.categories_id, a.premium, a.writer_id, a.status, c.name, c.parent_id, a.headline_image from articles a inner join categories c on a.categories_id= c.id where a.publish_date <= CONVERT_TZ(CURRENT_TIMESTAMP(),'+00:00','+7:00') and a.status=2 order by a.publish_date desc limit 10");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new ArticleHasCategories(rs.getInt(1),
