@@ -1006,7 +1006,18 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
-
+    public void deleteTagsHasArticles(String id) {
+        String query = "DELETE FROM tags_has_articles WHERE articles_id= ? ";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+    }
     public void deleteArticle(String id) {
         String query = "DELETE FROM articles WHERE id= ? ";
         try {

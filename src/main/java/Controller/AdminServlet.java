@@ -379,18 +379,21 @@ public class AdminServlet extends HttpServlet {
     private void DeleteArticle(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String id =request.getParameter("id");
         DAOAdmin dao = new DAOAdmin();
+        dao.deleteTagsHasArticles(id);
         dao.deleteArticle(id);
         response.sendRedirect("/Admin/BaiViet/ShowBaiViet");
     }
     private void DeleteArticleDraft(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String id =request.getParameter("id");
         DAOAdmin dao = new DAOAdmin();
+        dao.deleteTagsHasArticles(id);
         dao.deleteArticle(id);
         response.sendRedirect("/Admin/BaiViet/ShowBaiVietDraft");
     }
     private void DeleteArticleOk(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String id =request.getParameter("id");
         DAOAdmin dao = new DAOAdmin();
+        dao.deleteTagsHasArticles(id);
         dao.deleteArticle(id);
         response.sendRedirect("/Admin/BaiViet/ShowBaiVietOk");
     }
