@@ -23,15 +23,16 @@
                             <div>Không có kết quả phù hợp</div>
                         </c:when>
                         <c:otherwise>
-                            <c:forEach items="${listArtAll}" var="la">
+                            <c:forEach items="${listArtAll}" var="laa">
                                 <div class="horizontalCard">
-                                    <img src="${la.headline_image}" alt="" class="cardHorizontalImg">
+                                    <img src="${laa.headline_image}" alt="" class="cardHorizontalImg">
                                     <div class="cardHorizontal-Body">
                                         <h5 >
-                                            <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${la.id_article}">${la.title}</a>
+                                            <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${laa.id_article}">${laa.title}</a>
                                         </h5>
-                                        <span class="cardCategory">${la.cat_name}</span>
-                                        <p class="card-text"><small class="text-muted">Ngày đăng: ${la.publish_date }</small></p>
+                                        <span class="cardCategory">${laa.cat_name}</span>
+                                        <span class="cardCategory">#${laa.tags}</span>
+                                        <p class="card-text"><small class="text-muted">Ngày đăng: ${laa.publish_date }</small></p>
                                     </div>
                                 </div>
 <%--                                <div class="card mb-3">--%>

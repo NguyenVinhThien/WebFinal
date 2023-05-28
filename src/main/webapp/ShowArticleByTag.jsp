@@ -17,15 +17,16 @@
                             </tr>
                         </c:when>
                         <c:otherwise>
-                            <c:forEach items="${listArtByTag}" var="la">
+                            <c:forEach items="${listArtByTag}" var="lat">
                                 <div class="horizontalCard">
-                                    <img src="${la.headline_image}" alt="" class="cardHorizontalImg">
+                                    <img src="${lat.headline_image}" alt="" class="cardHorizontalImg">
                                     <div class="cardHorizontal-Body">
                                         <h5 >
-                                            <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${la.id_article}">${la.title}</a>
+                                            <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${lat.id_article}">${lat.title}</a>
                                         </h5>
-                                        <span class="cardCategory">${la.cat_name}</span>
-                                        <p class="card-text"><small class="text-muted">Ngày đăng: ${la.publish_date }</small></p>
+                                        <span class="cardCategory">${lat.cat_name}</span>
+                                        <span class="cardCategory">${lat.tags}</span>
+                                        <p class="card-text"><small class="text-muted">Ngày đăng: ${lat.publish_date }</small></p>
                                     </div>
                                 </div>
 <%--                                <div class="card mb-3">--%>

@@ -12,9 +12,6 @@
                     <div class="largeTitle">Kết quả</div>
                     <c:choose>
                         <c:when test="${listArtByCat.size() eq 0}">
-<%--                            <tr>--%>
-<%--                                <td>Không có kết quả phù hợp</td>--%>
-<%--                            </tr>--%>
                             <div>Không có kết quả phù hợp</div>
                         </c:when>
                         <c:otherwise>

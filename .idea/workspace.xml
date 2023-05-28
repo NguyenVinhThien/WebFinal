@@ -9,11 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6b482ef-f71c-4864-81c6-50d26439b44d" name="Changes" comment="code for share function">
+    <list default="true" id="c6b482ef-f71c-4864-81c6-50d26439b44d" name="Changes" comment="update show article page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/DAOAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/DAOAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ArticleHasTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ArticleHasTag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/ShowArticleAll.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ShowArticleAll.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/ShowArticleByCat.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ShowArticleByCat.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/ShowArticleByTag.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ShowArticleByTag.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/main.tag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/main.tag" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,7 +297,7 @@
       <workItem from="1684805428012" duration="17960000" />
       <workItem from="1684895669876" duration="1757000" />
       <workItem from="1684901608467" duration="319000" />
-      <workItem from="1685243028047" duration="13558000" />
+      <workItem from="1685243028047" duration="18155000" />
     </task>
     <task id="LOCAL-00003" summary="Update">
       <created>1673365358427</created>
@@ -331,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685265204404</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update show article page">
+      <created>1685284180145</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1685284180145</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,6 +363,7 @@
     <MESSAGE value="Update Editor.jsp" />
     <MESSAGE value="update" />
     <MESSAGE value="code for share function" />
-    <option name="LAST_COMMIT_MESSAGE" value="code for share function" />
+    <MESSAGE value="update show article page" />
+    <option name="LAST_COMMIT_MESSAGE" value="update show article page" />
   </component>
 </project>

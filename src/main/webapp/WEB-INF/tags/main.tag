@@ -37,13 +37,16 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="https://toquoc.mediacdn.vn/280518851207290880/2022/12/26/e7015e56-f3af-41ad-85d1-be5adb241a54-16720772952291421497933.jpeg" alt="First slide" style="height: 250px;">
+            <img class="d-block w-100" src="https://couchclarity.com/wp-content/uploads/2015/10/sample-slide5.jpg" alt="Third slide" style="height: 250px;">
+<%--            <img class="d-block w-100" src="https://toquoc.mediacdn.vn/280518851207290880/2022/12/26/e7015e56-f3af-41ad-85d1-be5adb241a54-16720772952291421497933.jpeg" alt="First slide" style="height: 250px;">--%>
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="https://toquoc.mediacdn.vn/280518851207290880/2022/12/26/31939488358112695089333688253323408624507656n-16720767972671513381080.png" alt="Second slide" style="height: 250px;">
+            <img class="d-block w-100" src="https://th.bing.com/th/id/OIP.wwxK07x0Umfnh0l-nrjxjgHaDg?pid=ImgDet&rs=1" alt="Third slide" style="height: 250px;">
+<%--            <img class="d-block w-100" src="https://toquoc.mediacdn.vn/280518851207290880/2022/12/26/31939488358112695089333688253323408624507656n-16720767972671513381080.png" alt="Second slide" style="height: 250px;">--%>
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="https://toquoc.mediacdn.vn/thumb_w/640/280518851207290880/2022/12/26/san-may-tam-dao-photo-doan-van-thang-16720776970141644702300.png" alt="Third slide" style="height: 250px;">
+            <img class="d-block w-100" src="https://th.bing.com/th/id/R.7f34a70a5bee79488309934920d316cb?rik=IRJI6pSFo6OI%2fQ&riu=http%3a%2f%2fallpicts.in%2fwp-content%2fuploads%2f2018%2f03%2fNatural-Images-HD-1080p-Download-with-Keyhole-Arch-at-Pfeiffer-Beach.jpg&ehk=JPI0MFI04N62Xtd7MT1P2sw4vJgwODLsp1EcpgvuGFo%3d&risl=&pid=ImgRaw&r=0" alt="Third slide" style="height: 250px;">
+<%--            <img class="d-block w-100" src="https://toquoc.mediacdn.vn/thumb_w/640/280518851207290880/2022/12/26/san-may-tam-dao-photo-doan-van-thang-16720776970141644702300.png" alt="Third slide" style="height: 250px;">--%>
         </div>
     </div>
     <div>
