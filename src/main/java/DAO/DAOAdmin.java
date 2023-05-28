@@ -213,7 +213,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tag_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.articles_id inner join tags s on t.tag_id= s.id where a.publish_date<= current_date() and a.status=2  and a.categories_id=?");
+            PreparedStatement ps = con.prepareStatement("select a.*, c.name, t.tag_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.articles_id inner join tags s on t.tag_id= s.id where a.publish_date<= current_date() and a.status=2  and a.categories_id=?");
             ps.setInt(1, cat_id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -229,7 +229,10 @@ public class DAOAdmin {
                         rs.getInt(10),
                         rs.getString(11),
                         rs.getInt(12),
-                        rs.getString(13)));
+                        rs.getString(13),
+                        rs.getString(14),
+                        rs.getInt(15),
+                        rs.getString(16)));
             }
         } catch (Exception e) {
             e.getMessage();
@@ -242,7 +245,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tags_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.articles_id inner join tags s on t.tags_id= s.id where a.publish_date<= current_date() and a.status=2");
+            PreparedStatement ps = con.prepareStatement("select a.*,c.name, t.tags_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.articles_id inner join tags s on t.tags_id= s.id where a.publish_date<= current_date() and a.status=2");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new ArticleHasTag(rs.getInt(1),
@@ -257,7 +260,10 @@ public class DAOAdmin {
                         rs.getInt(10),
                         rs.getString(11),
                         rs.getInt(12),
-                        rs.getString(13)));
+                        rs.getString(13),
+                        rs.getString(14),
+                        rs.getInt(15),
+                        rs.getString(16)));
             }
         } catch (Exception e) {
             e.getMessage();
@@ -270,7 +276,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tags_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.articles_id inner join tags s on t.tags_id= s.id where a.publish_date<= current_date() and a.status=2 and t.tags_id=?");
+            PreparedStatement ps = con.prepareStatement("select a.*,c.name, t.tags_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.articles_id inner join tags s on t.tags_id= s.id where a.publish_date<= current_date() and a.status=2 and t.tags_id=?");
             ps.setInt(1, tag_id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -286,7 +292,10 @@ public class DAOAdmin {
                         rs.getInt(10),
                         rs.getString(11),
                         rs.getInt(12),
-                        rs.getString(13)));
+                        rs.getString(13),
+                        rs.getString(14),
+                        rs.getInt(15),
+                        rs.getString(16)));
             }
         } catch (Exception e) {
             e.getMessage();
@@ -589,7 +598,6 @@ public class DAOAdmin {
         }
         return name;
     }
-
     public int getNewestArticleId() {
         int id = 0;
         String query = "SELECT Max(id) from articles";
@@ -606,7 +614,6 @@ public class DAOAdmin {
         }
         return id;
     }
-
     public void editTag(int id, String name) {
         String query = "UPDATE tags\n"
                 + "SET value = ?\r\n"
@@ -623,7 +630,6 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
-
     public void setTag(int tag, int article) {
         String query = "INSERT INTO tags_has_articles (tags_id,articles_id) VALUES(?,?)";
         try {
@@ -725,33 +731,6 @@ public class DAOAdmin {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 name = new String(rs.getString(1));
-            }
-        } catch (Exception e) {
-            e.getMessage();
-        }
-        return name;
-    }
-
-    public Articles getArticle(int id) {
-        Articles name = new Articles();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles where id = ?");
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                name = new Articles(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getInt(4),
-                        rs.getString(5),
-                        rs.getString(6),
-                        rs.getInt(7),
-                        rs.getInt(8),
-                        rs.getInt(9),
-                        rs.getInt(10),
-                        rs.getString(13));
             }
         } catch (Exception e) {
             e.getMessage();

@@ -17,20 +17,31 @@
                             </tr>
                         </c:when>
                         <c:otherwise>
-                            <c:forEach items="${listArtByTag}" var="la">
-                                <div class="card mb-3">
-                                    <img class="card-img-top" style="height: 150px;" src="${pageContext.request.contextPath}/public/HinhAnh/${la.id_article}/tieude.png" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${la.id_article}">${la.title}</a>
-
+                            <c:forEach items="${listArtByTag}" var="lat">
+                                <div class="horizontalCard">
+                                    <img src="${lat.headline_image}" alt="" class="cardHorizontalImg">
+                                    <div class="cardHorizontal-Body">
+                                        <h5 >
+                                            <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${lat.id_article}">${lat.title}</a>
                                         </h5>
-                                        <p class="card-text">${la.abstract_article}</p>
-                                        <p class="card-text"><small class="text-muted">Ngày đăng: ${la.publish_date}</small></p>
-                                        <span class="cardCategory">${la.cat_name}</span>
-                                        <span class="cardCategory">${la.tags}</span>
+                                        <span class="cardCategory">${lat.cat_name}</span>
+                                        <span class="cardCategory">${lat.tags}</span>
+                                        <p class="card-text"><small class="text-muted">Ngày đăng: ${lat.publish_date }</small></p>
                                     </div>
                                 </div>
+<%--                                <div class="card mb-3">--%>
+<%--                                    <img class="card-img-top" style="height: 150px;" src="${pageContext.request.contextPath}/public/HinhAnh/${la.id_article}/tieude.png" alt="Card image cap">--%>
+<%--                                    <div class="card-body">--%>
+<%--                                        <h5 class="card-title">--%>
+<%--                                            <a class="card-title card-title-custom card-link" href="${pageContext.request.contextPath}/ChiTietBao?articleId=${la.id_article}">${la.title}</a>--%>
+
+<%--                                        </h5>--%>
+<%--                                        <p class="card-text">${la.abstract_article}</p>--%>
+<%--                                        <p class="card-text"><small class="text-muted">Ngày đăng: ${la.publish_date}</small></p>--%>
+<%--                                        <span class="cardCategory">${la.cat_name}</span>--%>
+<%--                                        <span class="cardCategory">${la.tags}</span>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
                             </c:forEach>
                         </c:otherwise>
                     </c:choose>

@@ -7,9 +7,9 @@
 <jsp:useBean id="authUser" scope="session" type="Model.User"/>
 <t:main>
   <jsp:body>
-    <div class="post-details-title-area bg-overlay clearfix"  style="height: 280px; margin-top: 10px; position: relative">
-        <div class="container-fluid h-100">
-          <div class="row h-100 align-items-center">
+    <div class="post-details-title-area bg-overlay clearfix"  style="height: fit-content;margin-top: 10px; position: relative">
+        <div class="container-fluid">
+          <div class="row align-items-center">
             <div class="col-12 col-lg-8">
               <!-- Post Content -->
               <div class="post-content">
@@ -22,9 +22,8 @@
             </div>
           </div>
         </div>
-      </div>
+    </div>
     <div class="post-news-area section-padding-100-0 mb-70" style="position: relative">
-
       <div class="container">
         <div class="row justify-content-center">
           <!-- Post Details Content Area -->
@@ -35,15 +34,15 @@
             <div class="post-toolbar">
               <div class="toolbar-item">
                 <button class="like-button"><i class="fas fa-thumbs-up"></i>
-                  <span class="glyphicon glyphicon-thumbs-up"></span>Like</button>
+                  <span class="glyphicon glyphicon-thumbs-up"></span>Thích</button>
 <%--                <span class="like-count">100</span>--%>
               </div>
               <div class="toolbar-item">
-                <button class="comment-button" id="cmtBtn"><i class="fas fa-comment"></i> Comment</button>
+                <button class="comment-button" id="cmtBtn"><i class="fas fa-comment"></i> Bình luận</button>
                   <%--            <span class="comment-count">50</span>--%>
               </div>
               <div class="toolbar-item">
-                <button class="share-button"><i class="fas fa-share"></i> Share</button>
+                <button id="shareBtn" type="button" class="share-button" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-share"></i> Chia sẻ</button>
                   <%--            <span class="share-count">20</span>--%>
               </div>
             </div>
@@ -94,7 +93,34 @@
                 </c:choose>
               </ol>
             </div>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Chia sẻ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div>
+                      <button id="shareFbBtn" class="fa fa-facebook"></button>
+                    </div>
+                    <div class="input-group mb-3">
+                      <input id="shareUrl" type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                      <div class="input-group-append">
+                        <button id="copyBtn" class="btn btn-outline-secondary" type="button">Copy</button>
+                      </div>
+                    </div>
 
+                  </div>
+<%--                  <div class="modal-footer">--%>
+<%--                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
+<%--                    <button type="button" class="btn btn-primary">Save changes</button>--%>
+<%--                  </div>--%>
+                </div>
+              </div>
+            </div>
 
           </div>
 
@@ -204,7 +230,21 @@
         x.style.display = "none";
       }
     }
+  });
+  document.getElementById("shareBtn").addEventListener("click", function (e){
+    var url= window.location.href;
+    var inputText= document.getElementById("shareUrl");
+    inputText.value= url;
+    document.getElementById("shareFbBtn").addEventListener("click", function (e){
+      var shareURL = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
+      window.open(shareURL, "_blank");
+    })
+    document.getElementById("copyBtn").addEventListener("click", function(e){
+      navigator.clipboard.writeText(url);
+      alert("Copied to clipboard");
+    })
   })
+
 
 </script>
 <!-- ##### All Javascript Script ##### -->
@@ -218,4 +258,8 @@
 <script src="js/plugins/plugins.js"></script>
 <!-- Active js -->
 <script src="js/active.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 

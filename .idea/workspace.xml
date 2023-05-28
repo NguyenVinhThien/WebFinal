@@ -2,16 +2,21 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="WebFinal:war" />
+      <artifact name="WebFinal:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6b482ef-f71c-4864-81c6-50d26439b44d" name="Changes" comment="update">
+    <list default="true" id="c6b482ef-f71c-4864-81c6-50d26439b44d" name="Changes" comment="update show article page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/DAOAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/DAOAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ArticleHasTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ArticleHasTag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ShowArticleAll.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ShowArticleAll.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ShowArticleByCat.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ShowArticleByCat.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ShowArticleByTag.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ShowArticleByTag.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/main.tag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/main.tag" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -78,7 +83,7 @@
       <recent name="C:\Users\acer\IdeaProjects\WebFinal\src\main\webapp" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.701">
+  <component name="RunManager" selected="Tomcat Server.Tomcat">
     <configuration name="Tomcat 9.0.701" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.701" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/TrangChu" />
       <option name="UPDATING_POLICY" value="redeploy-artifacts" />
@@ -292,6 +297,7 @@
       <workItem from="1684805428012" duration="17960000" />
       <workItem from="1684895669876" duration="1757000" />
       <workItem from="1684901608467" duration="319000" />
+      <workItem from="1685243028047" duration="18155000" />
     </task>
     <task id="LOCAL-00003" summary="Update">
       <created>1673365358427</created>
@@ -314,7 +320,28 @@
       <option name="project" value="LOCAL" />
       <updated>1684896358056</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update">
+      <created>1685255702370</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1685255702370</updated>
+    </task>
+    <task id="LOCAL-00007" summary="code for share function">
+      <created>1685265204404</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685265204404</updated>
+    </task>
+    <task id="LOCAL-00008" summary="update show article page">
+      <created>1685284180145</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1685284180145</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,6 +362,8 @@
     <MESSAGE value="Update" />
     <MESSAGE value="Update Editor.jsp" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="code for share function" />
+    <MESSAGE value="update show article page" />
+    <option name="LAST_COMMIT_MESSAGE" value="update show article page" />
   </component>
 </project>

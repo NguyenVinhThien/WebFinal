@@ -21,9 +21,6 @@ import java.util.List;
 
 @WebServlet(name = "TrangChu", urlPatterns = "/TrangChu/*")
 public class TrangChu extends HttpServlet {
-
-    String key_word= null;
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -32,9 +29,7 @@ public class TrangChu extends HttpServlet {
         {
             path= "/Index";
         }
-
         DAOAdmin d = new DAOAdmin();
-
         DAOComments dcmt= new DAOComments();
 
         List<Categories> listMainCat = d.getAllMainCategories();
@@ -57,7 +52,6 @@ public class TrangChu extends HttpServlet {
 
         List<ArticleHasCategories> listTopByCat = d.getTopByCat();
         request.setAttribute("listTopByCat", listTopByCat);
-
 
         switch (path) {
             case "/Index":
@@ -84,10 +78,8 @@ public class TrangChu extends HttpServlet {
             case "/search":
                 request.setCharacterEncoding("UTF-8");
                 String key_word= request.getParameter("key_word");
-//                System.out.println(key_word);
                 List <ArticleHasCategories> listSearch= dcmt.searchTitle(key_word);
                 request.setAttribute("listSearch", listSearch);
-                System.out.println(listSearch.get(0).getCat_name());
                 ServletUtils.forward("/ShowSearchResult.jsp", request, response);
                 break;
             default:
@@ -98,7 +90,6 @@ public class TrangChu extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
     }
 

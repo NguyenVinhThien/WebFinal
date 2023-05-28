@@ -11,6 +11,9 @@ public class ArticleHasTag {
     private int premium;
     private int writer_id;
     private int status;
+    private String note;
+    private int like;
+    private String headline_image;
     private String cat_name;
     private int tag_id;
     private String tags;
@@ -18,7 +21,7 @@ public class ArticleHasTag {
     public ArticleHasTag() {
     }
 
-    public ArticleHasTag(int id_article, String title, String publish_date, int views, String abstract_article, String content, int categories_id, int premium, int writer_id, int status, String cat_name, int tag_id, String tags) {
+    public ArticleHasTag(int id_article, String title, String publish_date, int views, String abstract_article, String content, int categories_id, int premium, int writer_id, int status, String note, int like, String headline_image, String cat_name, int tag_id, String tags) {
         this.id_article = id_article;
         this.title = title;
         this.publish_date = publish_date;
@@ -29,9 +32,36 @@ public class ArticleHasTag {
         this.premium = premium;
         this.writer_id = writer_id;
         this.status = status;
+        this.note = note;
+        this.like = like;
+        this.headline_image = headline_image;
         this.cat_name = cat_name;
         this.tag_id = tag_id;
         this.tags = tags;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public String getHeadline_image() {
+        return headline_image;
+    }
+
+    public void setHeadline_image(String headline_image) {
+        this.headline_image = headline_image;
     }
 
     public int getId_article() {

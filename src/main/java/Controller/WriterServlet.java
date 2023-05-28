@@ -2,6 +2,7 @@ package Controller;
 
 
 import DAO.DAOAdmin;
+import DAO.DAOArticles;
 import Model.Articles;
 import Model.Categories;
 import Uti.ServletUtils;
@@ -32,6 +33,7 @@ public class WriterServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DAOAdmin d = new DAOAdmin();
+        DAOArticles da= new DAOArticles();
         String path = request.getPathInfo();
         switch (path) {
             case "/Home":
@@ -88,7 +90,7 @@ public class WriterServlet extends HttpServlet {
             case "/EditArticle": {
                 String id = request.getParameter("id");
                 int i = Integer.parseInt(id);
-                Articles t = d.getArticle(i);
+                Articles t = da.getArticle(i);
                 String tag = d.getTagname(d.getTagbyArticle(i));
                 System.out.println(tag);
                 System.out.println(d.getTagbyArticle(i));
