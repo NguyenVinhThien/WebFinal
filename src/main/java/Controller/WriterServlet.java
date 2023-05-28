@@ -145,7 +145,7 @@ public class WriterServlet extends HttpServlet {
             System.out.println(premium);
             DAOAdmin d = new DAOAdmin();
             if (d.getTagID(tag) == 0 && tag != null)
-            d.addTag(null,tag);
+                d.addTag(null,tag);
             d.addArticle(title, headline, abstract_article, content, categories_id, premium, writer_id);
             d.setTag(d.getTagID(tag),d.getNewestArticleId());
             response.sendRedirect("/Writer/Home?id=" + writer_id);
