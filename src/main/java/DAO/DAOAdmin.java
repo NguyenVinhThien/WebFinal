@@ -589,7 +589,6 @@ public class DAOAdmin {
         }
         return name;
     }
-
     public int getNewestArticleId() {
         int id = 0;
         String query = "SELECT Max(id) from articles";
@@ -606,7 +605,6 @@ public class DAOAdmin {
         }
         return id;
     }
-
     public void editTag(int id, String name) {
         String query = "UPDATE tags\n"
                 + "SET value = ?\r\n"
@@ -623,7 +621,6 @@ public class DAOAdmin {
             e.getStackTrace();
         }
     }
-
     public void setTag(int tag, int article) {
         String query = "INSERT INTO tags_has_articles (tags_id,articles_id) VALUES(?,?)";
         try {
