@@ -213,7 +213,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tag_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.article_id inner join tags s on t.tag_id= s.id where a.publish_date<= current_date() and a.status=2  and a.categories_id=?");
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tag_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.articles_id inner join tags s on t.tag_id= s.id where a.publish_date<= current_date() and a.status=2  and a.categories_id=?");
             ps.setInt(1, cat_id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -242,7 +242,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tag_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.article_id inner join tags s on t.tag_id= s.id where a.publish_date<= current_date() and a.status=2");
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tags_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.articles_id inner join tags s on t.tags_id= s.id where a.publish_date<= current_date() and a.status=2");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new ArticleHasTag(rs.getInt(1),
@@ -270,7 +270,7 @@ public class DAOAdmin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tag_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.article_id inner join tags s on t.tag_id= s.id where a.publish_date<= current_date() and a.status=2 and t.tag_id=?");
+            PreparedStatement ps = con.prepareStatement("select a.id, a.title, a.publish_date, a.views, a.abstract, a.content,a.categories_id, a.premium, a.writer_id, a.status,c.name, t.tags_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.articles_id inner join tags s on t.tags_id= s.id where a.publish_date<= current_date() and a.status=2 and t.tags_id=?");
             ps.setInt(1, tag_id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -521,8 +521,8 @@ public class DAOAdmin {
 
     public void editTagHasArticles(int tag, int article) {
         String query = "UPDATE tags_has_articles\n"
-                + "SET tag_id = ?\r\n"
-                + "WHERE article_id = ?";
+                + "SET tags_id = ?\r\n"
+                + "WHERE articles_id = ?";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
@@ -538,7 +538,7 @@ public class DAOAdmin {
 
     public int getTagbyArticle(int i) {
         int id = 0;
-        String query = "SELECT tag_id from tags_has_articles WHERE article_id = ?";
+        String query = "SELECT tags_id from tags_has_articles WHERE articles_id = ?";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
@@ -625,13 +625,13 @@ public class DAOAdmin {
     }
 
     public void setTag(int tag, int article) {
-        String query = "INSERT INTO tags_has_articles (article_id,tag_id) VALUES(?,?)";
+        String query = "INSERT INTO tags_has_articles (tags_id,articles_id) VALUES(?,?)";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, article);
-            ps.setInt(2, tag);
+            ps.setInt(1, tag);
+            ps.setInt(2, article);
             ps.executeUpdate();
             con.close();
         } catch (Exception e) {
