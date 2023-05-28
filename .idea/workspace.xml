@@ -2,16 +2,23 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="WebFinal:war" />
+      <artifact name="WebFinal:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6b482ef-f71c-4864-81c6-50d26439b44d" name="Changes" comment="update">
+    <list default="true" id="c6b482ef-f71c-4864-81c6-50d26439b44d" name="Changes" comment="code for search function">
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/DAOArticles.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ChiTietBao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ChiTietBao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/EditorServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/EditorServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/TrangChu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/TrangChu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/WriterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/WriterServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/DAOAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/DAOAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ChiTietBao.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ChiTietBao.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ShowArticleByCat.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ShowArticleByCat.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -78,7 +85,7 @@
       <recent name="C:\Users\acer\IdeaProjects\WebFinal\src\main\webapp" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.701">
+  <component name="RunManager" selected="Tomcat Server.Tomcat">
     <configuration name="Tomcat 9.0.701" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.701" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/TrangChu" />
       <option name="UPDATING_POLICY" value="redeploy-artifacts" />
@@ -292,6 +299,7 @@
       <workItem from="1684805428012" duration="17960000" />
       <workItem from="1684895669876" duration="1757000" />
       <workItem from="1684901608467" duration="319000" />
+      <workItem from="1685243028047" duration="4044000" />
     </task>
     <task id="LOCAL-00003" summary="Update">
       <created>1673365358427</created>

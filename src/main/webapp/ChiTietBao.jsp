@@ -7,9 +7,9 @@
 <jsp:useBean id="authUser" scope="session" type="Model.User"/>
 <t:main>
   <jsp:body>
-    <div class="post-details-title-area bg-overlay clearfix"  style="height: 280px; margin-top: 10px; position: relative">
-        <div class="container-fluid h-100">
-          <div class="row h-100 align-items-center">
+    <div class="post-details-title-area bg-overlay clearfix"  style="height: fit-content;margin-top: 10px; position: relative">
+        <div class="container-fluid">
+          <div class="row align-items-center">
             <div class="col-12 col-lg-8">
               <!-- Post Content -->
               <div class="post-content">
@@ -22,9 +22,8 @@
             </div>
           </div>
         </div>
-      </div>
+    </div>
     <div class="post-news-area section-padding-100-0 mb-70" style="position: relative">
-
       <div class="container">
         <div class="row justify-content-center">
           <!-- Post Details Content Area -->
@@ -94,8 +93,6 @@
                 </c:choose>
               </ol>
             </div>
-
-
           </div>
 
           <!-- Sidebar Widget -->

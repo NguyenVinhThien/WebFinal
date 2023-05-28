@@ -1,6 +1,7 @@
 package Controller;
 
 import DAO.DAOAdmin;
+import DAO.DAOArticles;
 import Model.Articles;
 import Model.Categories;
 import Model.Tags;
@@ -34,6 +35,7 @@ public class EditorServlet  extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DAOAdmin d = new DAOAdmin();
+        DAOArticles da= new DAOArticles();
         String path = request.getPathInfo();
         switch (path) {
             case "/Home":
@@ -74,7 +76,7 @@ public class EditorServlet  extends HttpServlet {
             case "/EditArticle": {
                 String id = request.getParameter("id");
                 int i = Integer.parseInt(id);
-                Articles t = d.getArticle(i);
+                Articles t = da.getArticle(i);
                 List<Tags> tag = d.getAllTag();
                 List<Categories> cate = d.getAllCategories();
                 request.setAttribute("listC", cate);
