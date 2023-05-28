@@ -151,34 +151,34 @@ public class DAOAdmin {
     }
 
 
-    public List<Articles> getArticleByCatId(int catId) {
-        List<Articles> list = new ArrayList<>();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles  where  categories_id = ?");
-            ps.setInt(1, catId);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                list.add(new Articles(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getInt(4),
-                        rs.getString(5),
-                        rs.getString(6),
-                        rs.getInt(7),
-                        rs.getInt(8),
-                        rs.getInt(9),
-                        rs.getInt(10),
-                        rs.getString(13)));
-            }
-        } catch (Exception e) {
-            e.getMessage();
-        }
-        return list;
-    }
+//    public List<Articles> getArticleByCatId(int catId) {
+//        List<Articles> list = new ArrayList<>();
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Connection con = ConnectDB.getConnection();
+//            PreparedStatement ps = con.prepareStatement("SELECT * FROM articles  where  categories_id = ?");
+//            ps.setInt(1, catId);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                list.add(new Articles(rs.getInt(1),
+//                        rs.getString(2),
+//                        rs.getString(3),
+//                        rs.getInt(4),
+//                        rs.getString(5),
+//                        rs.getString(6),
+//                        rs.getInt(7),
+//                        rs.getInt(8),
+//                        rs.getInt(9),
+//                        rs.getInt(10),
+//                        rs.getString(13)));
+//            }
+//        } catch (Exception e) {
+//            e.getMessage();
+//        }
+//        return list;
+//    }
 
-    //    public List<ArticleHasCategories> searchByCatId(int catId,int page){
+//    public List<ArticleHasCategories> searchByCatId(int catId,int page){
 //        List<ArticleHasCategories> list = new ArrayList<>();
 //        try {
 //            Class.forName("com.mysql.cj.jdbc.Driver");
@@ -208,37 +208,37 @@ public class DAOAdmin {
 //        }
 //        return list;
 //    }
-    public List<ArticleHasTag> searchByCatId(int cat_id) {
-        List<ArticleHasTag> list = new ArrayList<>();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select a.*, c.name, t.tag_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.articles_id inner join tags s on t.tag_id= s.id where a.publish_date<= current_date() and a.status=2  and a.categories_id=?");
-            ps.setInt(1, cat_id);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                list.add(new ArticleHasTag(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getInt(4),
-                        rs.getString(5),
-                        rs.getString(6),
-                        rs.getInt(7),
-                        rs.getInt(8),
-                        rs.getInt(9),
-                        rs.getInt(10),
-                        rs.getString(11),
-                        rs.getInt(12),
-                        rs.getString(13),
-                        rs.getString(14),
-                        rs.getInt(15),
-                        rs.getString(16)));
-            }
-        } catch (Exception e) {
-            e.getMessage();
-        }
-        return list;
-    }
+//    public List<ArticleHasTag> searchByCatId(int cat_id) {
+//        List<ArticleHasTag> list = new ArrayList<>();
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Connection con = ConnectDB.getConnection();
+//            PreparedStatement ps = con.prepareStatement("select a.*, c.name, t.tag_id, s.value from articles a inner join categories c on a.categories_id= c.id inner join tags_has_articles t on a.id = t.articles_id inner join tags s on t.tag_id= s.id where a.publish_date<= current_date() and a.status=2  and a.categories_id=?");
+//            ps.setInt(1, cat_id);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                list.add(new ArticleHasTag(rs.getInt(1),
+//                        rs.getString(2),
+//                        rs.getString(3),
+//                        rs.getInt(4),
+//                        rs.getString(5),
+//                        rs.getString(6),
+//                        rs.getInt(7),
+//                        rs.getInt(8),
+//                        rs.getInt(9),
+//                        rs.getInt(10),
+//                        rs.getString(11),
+//                        rs.getInt(12),
+//                        rs.getString(13),
+//                        rs.getString(14),
+//                        rs.getInt(15),
+//                        rs.getString(16)));
+//            }
+//        } catch (Exception e) {
+//            e.getMessage();
+//        }
+//        return list;
+//    }
 
     public List<ArticleHasTag> getArticleAll() {
         List<ArticleHasTag> list = new ArrayList<>();
@@ -303,21 +303,21 @@ public class DAOAdmin {
         return list;
     }
 
-    public int CountbyCat(int catId) {
-        String query = "SELECT COUNT(*) as total  FROM articles a inner join categories c on a.categories_id= c.id  where  categories_id = ? ";
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, catId);
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            return rs.getInt("total");
-        } catch (Exception e) {
-            e.getMessage();
-        }
-        return 0;
-    }
+//    public int CountbyCat(int catId) {
+//        String query = "SELECT COUNT(*) as total  FROM articles a inner join categories c on a.categories_id= c.id  where  categories_id = ? ";
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Connection con = ConnectDB.getConnection();
+//            PreparedStatement ps = con.prepareStatement(query);
+//            ps.setInt(1, catId);
+//            ResultSet rs = ps.executeQuery();
+//            rs.next();
+//            return rs.getInt("total");
+//        } catch (Exception e) {
+//            e.getMessage();
+//        }
+//        return 0;
+//    }
 
     public List<ArticleHasCategories> getTopByCat() {
         List<ArticleHasCategories> list = new ArrayList<>();
@@ -760,55 +760,55 @@ public class DAOAdmin {
         }
     }
 
-    public List<User> getAllUsersByExTend() {
-        List<User> list = new ArrayList<>();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users where issue_at is null and role != 3");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                list.add(new User(rs.getInt(1),
-                        null,
-                        null,
-                        rs.getString(4),
-                        null,
-                        rs.getInt(6),
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
-                ));
-            }
-        } catch (Exception e) {
-            e.getMessage();
-        }
-        return list;
-    }
+//    public List<User> getAllUsersByExTend() {
+//        List<User> list = new ArrayList<>();
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Connection con = ConnectDB.getConnection();
+//            PreparedStatement ps = con.prepareStatement("SELECT * FROM users where issue_at is null and role != 3");
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                list.add(new User(rs.getInt(1),
+//                        null,
+//                        null,
+//                        rs.getString(4),
+//                        null,
+//                        rs.getInt(6),
+//                        null,
+//                        null,
+//                        null,
+//                        null,
+//                        null
+//                ));
+//            }
+//        } catch (Exception e) {
+//            e.getMessage();
+//        }
+//        return list;
+//    }
 
-    public void UpdateUser(int id) {
-        String query = "UPDATE  users\n"
-                + "SET issue_at = CURDATE() , expiration = expiration + 7\r\n"
-                + "WHERE id = ?";
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, id);
-            ps.executeUpdate();
-            con.close();
-        } catch (Exception e) {
-            e.getStackTrace();
-        }
-    }
+//    public void UpdateUser(int id) {
+//        String query = "UPDATE  users\n"
+//                + "SET issue_at = CURDATE() , expiration = expiration + 7\r\n"
+//                + "WHERE id = ?";
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Connection con = ConnectDB.getConnection();
+//            PreparedStatement ps = con.prepareStatement(query);
+//            ps.setInt(1, id);
+//            ps.executeUpdate();
+//            con.close();
+//        } catch (Exception e) {
+//            e.getStackTrace();
+//        }
+//    }
 
     public List<User> getAllUsers() {
         List<User> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users where role != 3");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users where role NOT IN (3, 2, 1)");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new User(rs.getInt(1),
@@ -829,7 +829,18 @@ public class DAOAdmin {
         }
         return list;
     }
-
+    public void deleteUserComments(String id) {
+        String query = "DELETE FROM comments WHERE user_id= ? ";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+    }
     public void deleteUser(String id) {
         String query = "DELETE FROM users WHERE id= ? ";
         try {
@@ -1242,9 +1253,9 @@ public class DAOAdmin {
         }
     }
 
-
+    //String query = "INSERT INTO users (username, password, name, issue_at, expiration, role, second_name, dob, email, otp, otp_exp) VALUES(?, ?,?, ?, 10052, ?, null, ?, ?, null, null)";
     public void addUser(String username, String password, String name, LocalDateTime issue_at, int role, LocalDateTime dob, String email) {
-        String query = "INSERT INTO users (username, password, name, issue_at, expiration, role, second_name, dob, email, otp, otp_exp) VALUES(?, ?,?, ?, 10052, ?, null, ?, ?, null, null)";
+        String query = "INSERT INTO users (username, password, name, issue_at, role, second_name, dob, email, otp, otp_exp) VALUES(?, ?,?, ?, ?, null, ?, ?, null, null)";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = ConnectDB.getConnection();

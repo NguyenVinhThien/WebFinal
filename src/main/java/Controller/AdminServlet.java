@@ -32,14 +32,14 @@ public class AdminServlet extends HttpServlet {
         DAOAdmin d = new DAOAdmin();
         String path = request.getPathInfo();
         switch (path) {
-            case "/User/UserExtend": {
-                request.setCharacterEncoding("UTF-8");
-                List<User> userList = d.getAllUsersByExTend();
-                request.setAttribute("listU", userList);
-                RequestDispatcher rd = request.getRequestDispatcher("/Giahan.jsp");
-                rd.forward(request, response);
-                break;
-            }
+//            case "/User/UserExtend": {
+//                request.setCharacterEncoding("UTF-8");
+//                List<User> userList = d.getAllUsersByExTend();
+//                request.setAttribute("listU", userList);
+//                RequestDispatcher rd = request.getRequestDispatcher("/Giahan.jsp");
+//                rd.forward(request, response);
+//                break;
+//            }
             case "/User/ShowUser": {
                 request.setCharacterEncoding("UTF-8");
                 List<User> list = d.getAllUsers();
@@ -99,10 +99,10 @@ public class AdminServlet extends HttpServlet {
                 DeleteTag(request,response);
                 break;
             }
-            case "/User/Expire":{
-                ExpireUser(request,response);
-                break;
-            }
+//            case "/User/Expire":{
+//                ExpireUser(request,response);
+//                break;
+//            }
             case "/BaiViet/Ok":{
                 Ok(request,response);
                 break;
@@ -351,18 +351,18 @@ public class AdminServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-    private void ExpireUser(HttpServletRequest request, HttpServletResponse response){
-        try {
-            String id= request.getParameter("id");
-            int i= Integer.parseInt(id);
-            DAOAdmin d= new DAOAdmin();
-            d.UpdateUser(i);
-            response.sendRedirect("/Admin/User/UserExtend");
-        }catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
+//    private void ExpireUser(HttpServletRequest request, HttpServletResponse response){
+//        try {
+//            String id= request.getParameter("id");
+//            int i= Integer.parseInt(id);
+//            DAOAdmin d= new DAOAdmin();
+//            d.UpdateUser(i);
+//            response.sendRedirect("/Admin/User/UserExtend");
+//        }catch(Exception e)
+//        {
+//            e.printStackTrace();
+//        }
+//    }
     private void Ok(HttpServletRequest request, HttpServletResponse response){
         try {
             request.setCharacterEncoding("UTF-8");
@@ -400,6 +400,7 @@ public class AdminServlet extends HttpServlet {
     private void DeleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String id =request.getParameter("id");
         DAOAdmin d = new DAOAdmin();
+        d.deleteUserComments(id);
         d.deleteUser(id);
         response.sendRedirect("/Admin/User/ShowUser");
     }

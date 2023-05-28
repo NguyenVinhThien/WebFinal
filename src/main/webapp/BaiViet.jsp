@@ -117,13 +117,13 @@
             </div>
         </li>
 
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="${pageContext.request.contextPath}/Admin/User/UserExtend"
-               aria-expanded="true">
-                <span>Gia hạn</span>
-            </a>
-        </li>
+<%--        <!-- Nav Item - Charts -->--%>
+<%--        <li class="nav-item">--%>
+<%--            <a class="nav-link collapsed" href="${pageContext.request.contextPath}/Admin/User/UserExtend"--%>
+<%--               aria-expanded="true">--%>
+<%--                <span>Gia hạn</span>--%>
+<%--            </a>--%>
+<%--        </li>--%>
 
         <!-- Nav Item - Tables -->
 

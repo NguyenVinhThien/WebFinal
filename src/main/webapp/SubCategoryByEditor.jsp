@@ -39,7 +39,6 @@
         </div>
 
         <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
             <li class="active">
                 <a href="${pageContext.request.contextPath}/Editor/ShowCategory?id=${authUser.id}">Tất cả chuyên mục</a>
             </li>
@@ -78,8 +77,8 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <div id="example_wrapper" class="dataTables_wrapper">
-                                        <div id="example_wrapper" class="dataTables_wrapper">
+                                    <div class="dataTables_wrapper">
+                                        <div class="dataTables_wrapper">
                                             <div class="d-flex justify-content-end ">
                                                 <a href="#"
                                                    class="btn btn-warning btn-icon-split align-content-center"

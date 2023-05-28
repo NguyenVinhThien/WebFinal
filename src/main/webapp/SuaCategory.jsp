@@ -123,13 +123,13 @@
       </div>
     </li>
 
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="${pageContext.request.contextPath}/Admin/User/UserExtend"
-         aria-expanded="true">
-        <span>Gia hạn</span>
-      </a>
-    </li>
+<%--    <!-- Nav Item - Charts -->--%>
+<%--    <li class="nav-item">--%>
+<%--      <a class="nav-link collapsed" href="${pageContext.request.contextPath}/Admin/User/UserExtend"--%>
+<%--         aria-expanded="true">--%>
+<%--        <span>Gia hạn</span>--%>
+<%--      </a>--%>
+<%--    </li>--%>
 
     <!-- Nav Item - Tables -->
 
@@ -200,8 +200,8 @@
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <div id="example_wrapper" class="dataTables_wrapper">
-                      <div id="example_wrapper" class="dataTables_wrapper">
+                    <div class="dataTables_wrapper">
+                      <div class="dataTables_wrapper">
                         <div class="d-flex justify-content-end ">
                           <a href="#" class="btn btn-warning btn-icon-split align-content-center" data-target="#editDanhMuc" data-toggle="modal" >
                                         <span class="icon text-white-50" >
@@ -251,7 +251,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Bạn muốn thoát khỏi hệ thống ??</h5>
+        <h5 class="modal-title">Bạn muốn thoát khỏi hệ thống ??</h5>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -269,7 +269,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sửa danh mục</h5>
+        <h5 class="modal-title">Sửa danh mục</h5>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
